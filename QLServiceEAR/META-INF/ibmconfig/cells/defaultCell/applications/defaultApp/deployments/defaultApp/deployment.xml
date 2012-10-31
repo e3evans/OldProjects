@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appdeployment:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:appdeployment="http://www.ibm.com/websphere/appserver/schemas/5.0/appdeployment.xmi" xmi:id="Deployment_1351707526693">
+  <deployedObject xmi:type="appdeployment:ApplicationDeployment" xmi:id="ApplicationDeployment_1351707526693" startingWeight="10">
+    <modules xmi:type="appdeployment:WebModuleDeployment" xmi:id="WebModuleDeployment_1351707526693" startingWeight="10000" uri="QLService.war"/>
+    <classloader xmi:id="Classloader_1351707526693" mode="PARENT_FIRST">
+      <libraries xmi:id="LibraryRef_1351707526693" libraryName="JAXRSLibrary [JAX-RS Library]"/>
+    </classloader>
+  </deployedObject>
+</appdeployment:Deployment>
