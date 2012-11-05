@@ -14,7 +14,7 @@ public class QLServices extends Application {
 		Set<Class<?>> classes = new HashSet<Class<?>>();
 		classes.add(QLSearch.class);
 		classes.add(QLModify.class);
-//		classes.add(TestService.class);
+
 		return classes;
 	}
 }
