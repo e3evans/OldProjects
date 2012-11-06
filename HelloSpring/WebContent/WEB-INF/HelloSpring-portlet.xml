@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="selectController"	class="com.eb.controller.SelectController">
+		<property name="contactDAO" ref="contactDAO"></property>
+	</bean>
+
+	<bean id="insertController" class="com.eb.controller.InsertController">
+		<property name="contactDAO" ref="contactDAO"></property>
+		<property name="commandName" value="contact"/>
+		<property name="commandClass" value="com.eb.domain.Contact" />
+		<property name="formView" value="insert"></property>
+		<property name="successView" value="list"></property>
+	</bean>
+
+	<bean id="updateController"
+		class="com.eb.controller.UpdateController">
+		<property name="contactDAO" ref="contactDAO"></property>
+		<property name="commandName" value="contact"/>
+		<property name="commandClass" value="com.eb.domain.Contact" />
+		<property name="formView" value="update"></property>
+		<property name="successView" value="list"></property>
+	</bean>
+
+	<bean id="deleteController"
+		class="com.eb.controller.DeleteController">
+		<property name="contactDAO" ref="contactDAO"></property>
+		<property name="commandClass" value="com.eb.domain.Contact" />
+		<property name="successView" value="list"></property>
+	</bean>
+
+
+	<bean id="parameterMappingInterceptor"
+		class="org.springframework.web.portlet.handler.ParameterMappingInterceptor" />
+
+	<bean id="portletModeParameterHandlerMapping"
+		class="org.springframework.web.portlet.handler.PortletModeParameterHandlerMapping">
+		<property name="order" value="1" />
+		<property name="interceptors">
+			<list>
+				<ref bean="parameterMappingInterceptor" />
+			</list>
+		</property>
+		<property name="portletModeParameterMap">
+			<map>
+				<entry key="view">
+					<map>
+						<entry key="select">
+							<ref bean="selectController" />
+						</entry>
+						<entry key="insert">
+							<ref bean="insertController" />
+						</entry>
+						<entry key="update">
+							<ref bean="updateController" />
+						</entry>
+						<entry key="delete">
+							<ref bean="deleteController" />
+						</entry>
+					</map>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<bean id="portletModeHandlerMapping"
+		class="org.springframework.web.portlet.handler.PortletModeHandlerMapping">
+		<property name="order" value="2" />
+		<property name="portletModeMap">
+			<map>
+				<entry key="view">
+					<ref bean="selectController" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>
