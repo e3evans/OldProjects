@@ -16,6 +16,8 @@ public class Application {
 	@Column(name="PT2B_APP_DESC")
     private String appDesc;
 	public AppKey getAppKey() {
+		
+		
 		return appKey;
 	}
 	public void setAppKey(AppKey appKey) {

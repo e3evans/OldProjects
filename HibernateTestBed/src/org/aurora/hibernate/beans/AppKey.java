@@ -8,7 +8,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class AppKey
     implements Serializable
-{
+    {
 
     /**
 	 * 
