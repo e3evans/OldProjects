@@ -1,0 +1,383 @@
+/*
+ * Copyright (c) 2009, 2010 Cisco Systems, Inc.
+ * All rights reserved.
+ */
+
+/* button toolbar styles */
+.masterbrand .xwtOsToolbar {
+	height: 26px;
+	/* margin-bottom : 0px; */
+	background-color: #EEEDED;
+	border-bottom: 1px solid #d1d6da;
+	/* padding: 0px; */
+}
+.dijit_a11y .xwtOsToolbar {
+	height: auto;
+}
+.masterbrand .xwtOsToolbar .xwtOsToolbarLeft {
+	/* height: 100%; */
+	float: left;
+    /*
+	border: 0px;
+	margin: 0px; */
+	/* margin-left: 4px; */
+	/* padding: 0px; */
+    margin: 0px 0px 0px 0px;
+}
+.masterbrand .xwtOsToolbar .xwtOsToolbarRight {
+	/* height: 100%; */
+	float: right;
+/*	border: 0px;
+	margin: 0px;
+	margin-right: 5px;
+	padding: 0px; */
+    margin: 0px 5px 0px 0px;
+}
+
+
+/*********** Back Button ********************/
+.masterbrand .xwtOsToolbar table.dijitComboButton {
+    /*
+	border: none;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+	background: none;
+	font-size: 12px;
+	font-family: Arial, Helvetica;
+	font-weight: normal;
+	text-align: center;
+	height: 26px; */
+	/* padding: 0; */
+}
+.masterbrand .xwtOsToolbar .xwtOSback {
+    margin: 0px 0px 0px 5px;
+	border: 0px;
+	background: none;
+    height: 26px;
+    padding: 1px 0px 0px 0px;
+}
+.dj_ie .masterbrand .xwtOsToolbar .xwtOSback {
+    padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 8px;
+}
+/*
+.masterbrand .xwtOsToolbar .xwtOSback {
+	border: none;
+	background: none;
+	font-size: 12px;
+	font-family: Arial, Helvetica;
+	font-weight: normal;
+	text-align:center;
+	height: 20px;
+	/* padding: 0; * /
+}
+*/
+.masterbrand .xwtOsToolbar .xwtOSback .dijitButtonNode {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	border: 0px;
+	background: none;	/* override the dijit "disabled" background */
+}
+.masterbrand .xwtOsToolbar .xwtOSback .dijitButtonContents{
+	width: 21px;
+	height: 22px;
+    margin: 0px 0px 0px 0px;
+    /* margin-bottom: 2px;
+	margin-left: 5px; */
+	background: none;
+}
+/*
+.dj_ie .masterbrand .xwtOsToolbar .xwtOSback .dijitButtonContents{
+	width: 21px;
+	height: 22px;
+	margin-bottom: 2px;
+	margin-bottom: 2px;
+	background: none;
+}
+*/
+/*
+.dj_ie .masterbrand .xwtOsToolbar table.dijitComboButton {
+	border: none;
+	background: none;
+	font-size: 12px;
+	font-family: Arial, Helvetica;
+	font-weight: normal;	 	
+	text-align:center;	
+	height: 20px;
+	padding: 0;
+	margin-left: 2px;
+	margin-right: -3px;
+}
+*/
+.masterbrand .xwtOsToolbar table.dijitComboButtonDisabled {
+	border: none;
+    background: #ECEDED;	
+}
+.masterbrand .xwtOsToolbar .dijitComboButtonDisabled .dijitButtonContents{
+	border-right: none;
+}
+.masterbrand .xwtObjectSelectorIconBack {
+	width: 21px;
+	height: 22px;
+/*	margin: -2px 0 0 0;
+	padding: 0px; */
+}
+.xwtObjectSelectorIconBackText {
+	display: none;
+}
+.dijit_a11y .xwtObjectSelectorIconBackText {
+	display: inline-block;
+}
+.masterbrand .xwtObjectSelectorIconBackNormal {
+	background: url(../images/objectselector/os_toolbar_backarrow_icon_normal.png) no-repeat;
+	/* margin-left: -3px; */
+}
+.dj_ie .masterbrand .xwtObjectSelectorIconBackNormal {
+	background: url(../images/objectselector/os_toolbar_backarrow_icon_normal.png) no-repeat;
+	/* margin-left: 0px; */
+}
+.masterbrand .xwtObjectSelectorIconBackHover,
+.masterbrand .dijitComboButtonHover .xwtObjectSelectorIconBackNormal {
+	background: url(../images/objectselector/os_toolbar_backarrow_icon_hover.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconBackPressed,
+.masterbrand .dijitComboButtonActive .xwtObjectSelectorIconBackNormal {
+	background: url(../images/objectselector/os_toolbar_backarrow_icon_pressed.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconBackDisabled {
+	background: url(../images/objectselector/os_toolbar_backarrow_icon_disable.png) no-repeat;
+	/* margin-left: -3px; */
+}
+.dj_ie .masterbrand .xwtObjectSelectorIconBackDisabled {
+	background: url(../images/objectselector/os_toolbar_backarrow_icon_disable.png) no-repeat;
+	/* margin-left: 0px; */
+}
+/* The split part containing the back button */
+.masterbrand .xwtOsToolbar .xwtOSback .dijitArrowButton {
+	width: 7px;
+	height: 22px;
+    /*
+	padding-right: 1px;
+	padding-bottom: 2px;
+    */
+	margin: 0px 2px 4px 0px;
+	border: 0px;
+}
+.masterbrand .xwtOsToolbar .xwtOSback .dijitArrowButtonInner {
+	width: 7px;
+	height: 22px;
+	padding: 0px;
+	margin: 0px;
+	margin-left: 2px;
+	border: 0px;
+    font-size:1px;
+}
+.masterbrand .xwtOsToolbar .xwtOSback .dijitArrowButtonInner {
+    background: url(../images/spriteArrows.png) no-repeat scroll 0 center transparent;
+}
+.masterbrand .xwtOsToolbar .xwtOSback.dijitDownArrowHover .dijitArrowButtonInner {
+    background: url(../images/objectselector/os_greenarrow_dropdown_hover.png) center center no-repeat transparent;
+}
+.masterbrand .xwtOsToolbar .xwtOSback .dijitHasDropDownOpen .dijitArrowButtonInner {
+    background: url(../images/objectselector/os_greenarrow_dropdown_pressed.png) center center no-repeat transparent;
+}
+/* dropdown menu styles */
+.masterbrand .dijitMenu.xwtobjectselectorbackmenu {
+	margin-left: 22px;
+}
+.masterbrand .xwtobjectselectorbackmenu .dijitMenuItemIcon.xwtcheckmarkicon {
+	background: url(../images/objectselector/checkmark_icon.png) no-repeat;
+	width: 16px;
+	height: 16px;
+	margin-top: 2px;
+}
+
+/*********** Back Button Accessibility ********************/
+.dijit_a11y .xwtOsToolbar .xwtOSback,
+.dijit_a11y .xwtOsToolbar .xwtOSback .dijitButtonContents,
+.dijit_a11y .xwtObjectSelectorIconBack {
+	height:auto;	
+	width:auto;
+	margin:0px;
+}	
+
+/*********** View Buttons ********************/
+.masterbrand .xwtOsToolbar .xwtViewButtons {
+/* 	margin: 0px;
+	padding: 0px;
+	border: 0px; */
+	display: inline;
+	height: inherit;
+    border: 0px 0px 0px 0px;
+}
+
+.masterbrand .xwtOsToolbar .xwt-IconButtonContents {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    border: 0px 0px 0px 0px;
+}
+
+.masterbrand .xwtOsToolbar .xwtViewButtons .dijitButton {
+    margin: 0px 0px 0px 0px;
+    border: 0px 0px 0px 0px;
+/* 	margin: 0px;
+	padding: 0px;
+	border: 0px;
+*/
+}
+.dj_ie .masterbrand .xwtOsToolbar .xwtViewButtons .dijitButton {
+	/* margin: 0px;
+	padding: 0px 1px 0px 0px;
+	border: 0px;
+    */
+}
+.masterbrand .xwtOsToolbar .xwtViewButtons .dijitButton button {
+	margin: 0px 1px 0px 0px;
+	padding: 2px 0px 2px 0px;
+	border: 0px 0px 0px 0px;
+	height: 26px;
+	width: 22px;
+}
+
+.masterbrand .xwtViewButtons .xwt-IconButtonContents .xwtObjectSelectorIconView {
+	width: 22px;
+	height: 22px;
+/*    background-position: -5px center; */
+    margin: 0px 0px 0px -3px;
+}
+.dj_ie .masterbrand .xwtViewButtons .xwt-IconButtonContents .xwtObjectSelectorIconView {
+    margin: 0px 0px 0px 0px;
+}
+
+.masterbrand .xwtObjectSelectorIconTableNormal {
+	background: url(../images/objectselector/os_toolbar_table_icon_normal.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconTableHover {
+	background: url(../images/objectselector/os_toolbar_table_icon_hover.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconTablePressed {
+	background: url(../images/objectselector/os_toolbar_table_icon_pressed.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconTableDisabled {
+	background: url(../images/objectselector/os_toolbar_table_icon_disabled.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconRichTableNormal {
+	background: url(../images/objectselector/os_toolbar_richtable_icon_normal.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconRichTableHover {
+	background: url(../images/objectselector/os_toolbar_richtable_icon_hover.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconRichTablePressed {
+	background: url(../images/objectselector/os_toolbar_richtable_icon_pressed.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconTreeNormal {
+	background: url(../images/objectselector/os_toolbar_treeview_icon_normal.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconTreeHover {
+	background: url(../images/objectselector/os_toolbar_treeview_icon_hover.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconTreePressed {
+	background: url(../images/objectselector/os_toolbar_treeview_icon_pressed.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconTreeDisabled {
+	background: url(../images/objectselector/os_toolbar_treeview_icon_disabled.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorToolbarDivider {
+	background: #BFC0C5;
+	width: 1px;
+	height: 22px;
+    margin: 2px 1px 2px 1px;
+	/* margin-left: -1px; */
+}
+
+/*********** Accessibility classes for View Buttons ********************/
+.dijit_a11y .xwtOsToolbar .xwtViewButtons .dijitButton button,
+.dijit_a11y .xwtViewButtons .xwt-IconButtonContents .xwtObjectSelectorIconView {
+	height:auto;	
+	width:auto;
+	margin:0px;
+	padding:0px;
+}
+
+.dijit_a11y .xwtObjectSelectorIconTableNormal, 
+.dijit_a11y .xwtObjectSelectorIconTableHover,
+.dijit_a11y .xwtObjectSelectorIconTablePressed,
+.dijit_a11y .xwtObjectSelectorIconTableDisabled, 
+.dijit_a11y .xwtObjectSelectorIconRichTableNormal, 
+.dijit_a11y .xwtObjectSelectorIconRichTableHover,
+.dijit_a11y .xwtObjectSelectorIconRichTablePressed,
+.dijit_a11y .xwtObjectSelectorIconTreeNormal,
+.dijit_a11y .xwtObjectSelectorIconTreeHover,
+.dijit_a11y .xwtObjectSelectorIconTreePressed,
+.dijit_a11y .xwtObjectSelectorIconTreeDisabled, 
+{	
+	height:auto;	
+	width:auto;
+	padding:0px;
+}
+
+/*********** Tool Button ********************/
+/* The split part containing the down arrow */
+.masterbrand .xwtOStool button .dijitArrowButtonInner
+{
+	display: none;
+}
+
+/* override the dijit button image */
+.masterbrand  .xwtOsToolbar .xwtOStool.menubutton .dijitRight .dijitButtonNode {
+	background: none;
+	height: 26px;
+	padding: 0px;
+}
+
+
+.masterbrand .xwtOsToolbar .xwtOStool.menubutton .dijitButtonNode button {
+	width: 29px;
+	height: 22px;
+	margin-top: 2px;
+	overflow: hidden;
+	border: none;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+.dijit_a11y .xwtOsToolbar .xwtOStool.menubutton .dijitButtonNode button {
+	width: auto;
+	height: auto;
+}
+.xwtObjectSelectorIconToolsText {
+	display: none;
+}
+.dijit_a11y .xwtObjectSelectorIconToolsText {
+	display: inline-block;
+}
+.masterbrand .xwtOsToolbar .xwtOStool .dijitButtonNode button{
+	background: url(../images/objectselector/os_toolbar_gear_icon_normal.png) no-repeat;
+}
+.masterbrand .xwtOsToolbar .xwtOStool.dijitHover .dijitButtonNode button {
+	background: url(../images/objectselector/os_toolbar_gear_icon_hover.png) no-repeat;
+}
+.masterbrand .xwtOsToolbar .xwtOStool.dijitActive .dijitButtonNode button,
+.masterbrand .xwtOsToolbar .xwtOStool.dijitOpenedFocused .dijitButtonNode button {
+	background: url(../images/objectselector/os_toolbar_gear_icon_pressed.png) no-repeat;
+}
+
+/* Override the menu button behavior here! */
+.masterbrand .xwtOStool.menubuttonDisabled  .dijitButtonNode button:hover,
+.masterbrand .xwtOStool.menubuttonDisabled  .dijitButtonNode button:active,
+.masterbrand .xwtOStool.menubuttonDisabled  .dijitButtonNode button{
+	background: url(../images/objectselector/os_toolbar_gear_icon_disable.png) no-repeat;
+}
+/* Add Button removed for now
+.masterbrand .xwtObjectSelectorIconAdd {
+	width: 29px;
+	height: 22px;
+}
+.masterbrand .xwtObjectSelectorIconAddNormal {
+	background: url(images/objectselector/os_toolbar_add_icon_normal.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconAddHover {
+	background: url(images/objectselector/os_toolbar_add_icon_hover.png) no-repeat;
+}
+.masterbrand .xwtObjectSelectorIconAddPressed {
+	background: url(images/objectselector/os_toolbar_add_icon_pressed.png) no-repeat;
+}
+*/

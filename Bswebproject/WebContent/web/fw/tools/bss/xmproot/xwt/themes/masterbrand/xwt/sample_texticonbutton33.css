@@ -1,0 +1,90 @@
+/*
+This CSS is for a customized xwt.widget.TextIconButton instance
+
+In the TextIconText instance has property set as buttonCSSClassIndicator="xwt-sample"
+This CSS as the special string "xwt-sample" as prefix string in css class
+Check text_TextIconButton.html for reference.    
+
+*/
+.xwt-sample_texticonbutton-table{
+	/*set nothing here*/
+}
+.xwt-sample_top-left {
+	background: transparent url('images/texticonbutton/xwt-sample/top-left.png') no-repeat;
+	width: 9px;
+	height: 31px;
+	opacity:1.0;
+}
+
+.xwt-sample_top-center {
+	background: transparent url('images/texticonbutton/xwt-sample/top-center.png')  repeat-x;
+	height: 31px;
+	opacity:1.0;
+}
+.xwt-sample_top-right {
+	background: transparent url('images/texticonbutton/xwt-sample/top-right.png')  no-repeat;
+	width: 10px;
+	height: 31px;
+	opacity:1.0;
+}
+.xwt-sample_middle-left {
+	background: transparent url('images/texticonbutton/xwt-sample/middle-left.png') repeat-y;
+	width: 9px;
+	opacity:1.0;
+}
+.xwt-sample_middle-center {
+	background: transparent url('images/texticonbutton/xwt-sample/middle-center.png');
+	opacity:1.0;
+}
+.xwt-sample_middle-right {
+	background: transparent url('images/texticonbutton/xwt-sample/middle-right.png') repeat-y;
+	width: 10px;
+	opacity:1.0;
+}
+.xwt-sample_bottom-left {
+	background: transparent url('images/texticonbutton/xwt-sample/bottom-left.png') no-repeat;
+	width: 9px;
+	height: 11px;
+	opacity:1.0;
+}
+.xwt-sample_bottom-center {
+	background: transparent url('images/texticonbutton/xwt-sample/bottom-center.png') repeat-x;
+	height: 11px;
+	opacity:1.0;
+}
+.xwt-sample_bottom-right {
+	background: transparent url('images/texticonbutton/xwt-sample/bottom-right.png') no-repeat;
+	width: 10px;
+	height: 11px;
+	opacity:1.0;
+}
+
+/* start style the button state */
+
+.xwt-sample_buttonwrapper-Hover {
+	/* border:1px solid red; */
+	background-color:white;
+}
+
+.xwt-sample_buttonwrapper-Pressed {
+	/* border:1px solid black; */
+	background-color:red;
+}
+
+.xwt-sample_buttonwrapper{   
+   margin:0px;
+   padding:2px;
+   /* background-color:none;  */
+   opacity: 1.0;
+}
+
+/* end style the button state */
+
+/* style the button state below*/
+.xwt-sample_ButtonContents{
+   padding:0px;
+   border-color:white;	
+   background-color:transparent;
+   margin:0px;
+}
+

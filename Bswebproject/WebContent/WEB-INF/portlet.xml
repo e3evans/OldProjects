@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portlet-app xmlns='http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd' version='2.0' id="BSSPortlet.war">
+
+	<portlet>
+		<portlet-name>BSSPortlet</portlet-name>
+		<display-name xml:lang="en">BSSPortlet</display-name>
+		<display-name>BSSPortlet</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>wps.markup</name>
+			<value>html</value>
+		</init-param>
+		<init-param> 
+			<name>wps.multiple.action.execution</name> 
+			<value>true</value> 
+		</init-param> 
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<resource-bundle>com.cisco.swtg.bss.nl.BSSPortletResource</resource-bundle>
+		<portlet-info>
+			<title>BSSPortlet</title>
+			<short-title>BSSPortlet</short-title>
+			<keywords>BSSPortlet</keywords>
+		</portlet-info>
+	</portlet>
+	<default-namespace>http://BSSPortlet/</default-namespace>
+</portlet-app>

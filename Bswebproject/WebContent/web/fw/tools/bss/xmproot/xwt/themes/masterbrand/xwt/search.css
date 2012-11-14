@@ -1,0 +1,243 @@
+/* 
+* Copyright (c) 2009, 2010 Cisco Systems, Inc.
+* All rights reserved.
+* @author harjeesi@cisco.com
+* All the CSS elements for search bar and search results go here.
+*/ 
+
+
+/* ---------- Search START ---------- */
+.masterbrand .applicationSearch {
+	margin-right: 0px;
+}
+
+.masterbrand .applicationSearch .searchBarContainer {
+	border-spacing: 0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: inset 1px 1px 3px rgba(135, 136, 137, .9);
+	background-color:#ffffff;
+	border: 1px solid #7e7e7e;
+	height:18px;
+}
+
+.dj_ie8 .masterbrand .applicationSearch .searchBarContainer {
+	border: none;
+	background-color: transparent;
+}
+/*START*/
+
+.advancedSearch_16x16,.clear16x16,.dd_arrow_8x8,.enter_clk_16x16,.field_l_up,.field_r,.savedSearch_16x16,.search_clk_16x16
+{
+	background: url('images/search/search-sprite.png') no-repeat;
+}
+
+
+.masterbrand .applicationSearch .searchBarContainer .field_l_up {
+	z-index: 3;
+	position: relative; 
+	top:0px; 
+	width: 51px;
+	height: 19px;
+	-moz-border-radius-topleft: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	/* fallback option for mac FF, Opera*/
+	background:#ECF1F5;
+	/* Mozilla */
+	background-image: -moz-linear-gradient(top, #F7FAFD, #BEC8D3); 
+	/* Chrome, Safari:*/
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#F7FAFD), to(#BEC8D3));
+	/* MSIE */	
+	xxfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#BEC8D3', endColorstr='#F7FAFD', gradientType='0');
+}
+
+.dj_ie8 .masterbrand .applicationSearch .searchBarContainer .field_l_up {
+	background: url('images/search/reboot_search_left_normal.png') no-repeat;
+	width: 50px;
+	height:21px;
+}
+
+.dj_ie8 .masterbrand .applicationSearch .searchBarContainer .field_l_up:HOVER {
+	background: url('images/search/reboot_search_left_hover.png') no-repeat;
+}
+
+.dj_ie8 .masterbrand .applicationSearch .searchBarContainer .field_l_up:PRESSED {
+	background: url('images/search/reboot_search_left_pressed.png') no-repeat;
+}
+
+.masterbrand .applicationSearch .searchBarContainer .field_l_up:HOVER {
+	background:#DEE4EB;
+	background-image: -moz-linear-gradient(top, #FFFFFF, #E1E8EF); 
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#FFFFFF), to(#E1E8EF));
+}
+
+
+.masterbrand .applicationSearch .searchBarContainer .field-l-up:HOVER { 
+	opacity: 0.9;
+	background-image: -moz-linear-gradient(top, #BEC8D3, #F7FAFD);
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#BEC8D3), to(#F7FAFD));
+}
+.masterbrand .applicationSearch .searchBarContainer .field_r {
+	height: 18px;
+}
+
+.dj_ie8 .masterbrand .applicationSearch .searchBarContainer .field_r {
+	background: transparent url('images/search/reboot_search_right.png') no-repeat;
+	width: 10px;
+	height:21px;
+}
+
+.masterbrand .applicationSearch .enter_clk_16x16 {
+	background-position: 0 -55px;
+	width: 16px;
+	height: 16px;
+	margin-right: 2px;
+}
+.dj_ie8 .masterbrand .applicationSearch .enter_clk_16x16 {
+	margin: 0 0 1px 0;
+}
+.masterbrand .applicationSearch .search_clk_16x16 {
+	background-position: 0 -188px;
+	width: 16px;
+	height: 16px;
+	padding-bottom: 2px;
+}
+
+.masterbrand .applicationSearch .advancedSearch_16x16 {
+	background-position: 0 0;
+	width: 16px;
+	height: 16px;
+}
+
+.masterbrand .applicationSearch .savedSearch_16x16 {
+	background-position: 0 -188px;
+	width: 16px;
+	height: 16px;
+}
+
+.masterbrand .applicationSearch .searchDropDownIcon {
+    margin: 0 0 2px 0;
+}
+.dj_chrome .masterbrand .applicationSearch .searchDropDownIcon {
+    margin: 0 0 0px 0;
+}
+                                               
+.masterbrand .applicationSearch .clear16x16 {
+	background-position: 0 -21px;
+	width: 16px;
+	height: 16px;
+	margin-bottom: -1px;	
+}
+
+.dj_ie8 .masterbrand .applicationSearch .clear16x16 {
+	margin-right: 5px;	
+}
+/*
+.masterbrand .applicationSearch .deviceIcon, .masterbrand .applicationSearch .alarmIcon {
+	margin-right:-5px;
+	margin-top: -6px;	
+}
+*/
+
+.masterbrand .applicationSearch .searchBarContainer .searchTextboxBG {
+	background-color: transparent;
+	border: none;
+	height: 18px;
+}
+
+.dj_ie8 .masterbrand .applicationSearch .searchBarContainer .searchTextboxBG {
+	background: transparent url('images/search/reboot_search_middle1.png') repeat-x;
+	height:21px;
+}
+
+.masterbrand .applicationSearch .searchBarContainer .searchButtonBG {
+	height: 21px;
+}
+
+.dj_ie8 .masterbrand .applicationSearch .searchBarContainer .searchButtonBG {
+	background: transparent url('images/search/reboot_search_middle1.png') repeat-x;
+	height: 21px;
+}
+
+/*END*/
+.DELMEdd-arrow-8x8 {
+	background-position: -37px -46px;
+}
+
+.masterbrand .applicationSearch .searchBarContainer .searchTextboxBG .searchText {
+	border: none;
+	width: 141px;
+	background: transparent;
+	font-size: 12px;
+	margin-left: 1px;
+	height: inherit;
+	font-family: Arial, Helvetica;
+}
+
+.masterbrand .applicationSearch .searchBarContainer .searchTextboxBG .searchText:FOCUS {
+	font-style: normal;
+	font-size: 12px;
+	font-family: Arial, Helvetica;
+}
+
+.masterbrand .applicationSearch .searchDropdownButton {
+	float: right;
+	height: 20px;
+	width: 45px;
+}
+
+.dj_ie8 .masterbrand .applicationSearch .searchDropdownButton {
+	xxxpadding-right: 4px;
+	width: 40px;
+}
+
+.masterbrand .applicationSearch .showCancel {
+	
+}
+
+.masterbrand .applicationSearch .hideCancel {
+	background: none;
+}
+
+.masterbrand .applicationSearch .dijitButtonNode {
+	background: none;
+	border: none;
+	padding: 0;
+}
+
+.dj_ie .masterbrand .applicationSearch .dijitButtonNode {
+    padding: 2px 0 0 0;
+}
+
+.masterbrand .applicationSearch .dijitButton {
+	margin: 0;
+}
+
+.masterbrand .applicationSearch .dijitArrowButtonInner {
+	height:7px;
+	margin:4px 0px 0 0;
+	width:8px;
+}
+.dj_ie8 .masterbrand .applicationSearch .dijitArrowButtonInner {
+	margin:4px 0px 2px -3px;
+}
+
+.masterbrand .applicationSearch .dijitMenuItemIcon {
+	height: 16px;
+	width: 16px;
+}
+
+.masterbrand .applicationSearch .searchDropdownButton .dijitDropDownButton {
+	margin:0;
+	padding-left: 5px;
+}
+.dj_chrome .masterbrand .applicationSearch .searchDropdownButton .dijitDropDownButton {
+	margin:0;
+	padding-left: 7px;
+}
+
+.masterbrand .applicationSearch .dijitButtonText {
+	margin: 0;
+}

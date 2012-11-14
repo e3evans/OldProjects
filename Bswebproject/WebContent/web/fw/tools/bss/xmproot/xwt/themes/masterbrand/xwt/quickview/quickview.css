@@ -1,0 +1,577 @@
+.masterbrand  .quickview .dijitTooltipContainer {
+	padding: 10px;	
+	background: none #FFFFFF;
+	border: solid 1px #546E8B;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-box-shadow:rgba(57,57,57,.48) 3px 3px 3px;
+	 box-shadow: 3px 3px 3px rgba(57,57,57,.48);
+	-webkit-box-shadow: 3px 3px 3px rgba(57,57,57,.48);
+}
+
+.dj_ie .masterbrand .quickview .dijitTooltipContainer {
+/*	filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=3, OffY=3, Color='gray', Positive='true') !important;
+*/
+	filter:progid:DXImageTransform.Microsoft.Shadow(color='gray',direction='120',strength='5');
+}
+
+
+/*psesumic defect DE765*/
+.dj_ie .masterbrand  .quickview .dijitTooltipContainer {
+	border: solid 1px #546E8B;
+	background: none #FFFFFF;
+	background-position:bottom;
+	padding-top:0px;
+	/*margin-bottom:1px;*/
+	margin-top: -3px;
+	margin-left: -3px;
+	
+}
+/*psesumic defect DE765*/
+.dj_ie8 .masterbrand  .quickview .dijitTooltipContainer {
+	border: solid 1px #546E8B;
+	background: none #FFFFFF;
+	background-position:bottom;
+	padding-top:0px;
+	/*margin-bottom:1px;*/
+	margin-top: -3px;
+	margin-left:0.10em;
+
+	
+}
+
+
+.masterbrand  .quickview .xwtDialogCloseIcon {
+	background: url(../images/quickview/close_icon.png) no-repeat scroll right top;
+	cursor: pointer;
+	height: 15px;
+	position: absolute;
+	right: 11px;
+	vertical-align: middle;
+	width: 15px;
+	margin-top: 3px;
+}
+
+.dj_ie .masterbrand  .quickview .xwtDialogCloseIcon {
+	right: 10px;
+}
+
+.masterbrand  .quickview .tooltipcontentarea {
+	background: transparent;
+	zoom:1;/*IE6 fix background now showing*/
+	padding-top:0px;
+	padding-bottom: 3px;
+	margin-top: -8px;
+	
+	
+}
+
+
+.masterbrand  .quickview .tooltiptitle {
+	padding: 0px 0px 8px 0px;
+  	-moz-user-select:none;
+  	cursor:default;
+  	color:#DA7A02;
+	font-family:Arial, Helvetica;
+	font-size:13px;
+	margin-top: -3px;    
+
+}
+
+.dj_ie .masterbrand  .quickview .tooltiptitle {
+	padding-top: 8px;
+	margin-top: -1px;    
+}
+
+.masterbrand  .quickview.dijitTooltipAbove .dijitTooltipConnector {
+	/* the arrow piece for tooltips above an element */
+	bottom: 5px; 
+/*	left: 43px; */
+	background:url(../images/quickview/arrow_bot.png) no-repeat top left;
+	width:20px !important; 
+	height:18px;
+	margin-top: 9px;
+}
+
+.dj_ie .masterbrand  .quickview.dijitTooltipAbove .dijitTooltipConnector {
+	/* the arrow piece for tooltips above an element */
+	bottom: 7px;
+	width:22px !important; 
+	height:18px;
+}
+
+
+.masterbrand  .quickview.dijitTooltipLeft .dijitTooltipConnector {
+	/* the arrow piece for tooltips to the left of an element, bottom borders aligned */
+	right: 4px;
+	bottom: 20px;
+	background:url(../images/quickview/arrow_right.png) no-repeat top left;
+	width:12px;
+	height:20px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	margin-left: 0px;
+}
+
+
+.masterbrand  .quickview.dijitTooltipRight .dijitTooltipConnector {
+	background:url(../images/quickview/arrow_left.png) no-repeat top left;
+	height:20px;
+	margin-left: 2px; 
+}
+
+.dj_ie .masterbrand .quickview.dijitTooltipRight .dijitTooltipConnector {
+	margin-left: 3px;
+}
+
+.masterbrand  .quickview.dijitTooltipBelow .dijitTooltipConnector {
+	/* the arrow piece for tooltips below an element */
+	top: 3px;
+	left: 13px;
+	right: 13px;
+	background:url(../images/quickview/new/arrow_top.png) no-repeat top left;
+	width:22px !important;
+	height:20px;
+}
+
+.dj_ie .masterbrand  .quickview.dijitTooltipBelow .dijitTooltipConnector {
+	top: 0px;
+}
+
+.masterbrand  .quickview .dijitTooltipBelow {
+	/* leave room for arrow above content */
+	padding-top: 9px;
+	margin-left: -8px;
+}
+
+.masterbrand  .quickview .dijitTooltipAbove {
+	padding-bottom: 5px;
+	margin-left: -8px;
+	margin-bottom: -5px;
+}
+
+.masterbrand  .quickview.dijitTooltipAbove .dijitTooltipContainer {
+	margin-top: -12px;
+}
+.dj_ie .masterbrand  .quickview.dijitTooltipAbove .dijitTooltipContainer {
+	margin-top: -20px;
+}
+.dj_ie6 .masterbrand .quickview .dijitTooltipAbove {
+	padding-bottom: 2px;
+}
+
+.masterbrand  .quickview .dijitTooltipLeft {
+	padding-right: 10px;
+	margin-bottom: -22px;
+	margin-right: -5px;
+}
+
+.dj_ie6 .masterbrand .quickview .dijitTooltipLeft {
+	padding-right: 10px;
+}
+
+.masterbrand  .quickview.dijitTooltipLeft .xwtDialogCloseIcon {
+		margin-right: 17px;
+}
+
+
+/*
+.masterbrand  .quickview .dijitTooltipRight {
+	padding-left: 9px;
+	margin-bottom: -22px;
+	margin-left: -3px;
+}*/
+
+
+.masterbrand  .quickview.dijitTooltipRight {
+	margin-right: 8px;
+	padding-left: 2px;
+	margin-left: -2px;
+}
+
+
+.dj_ie6 .masterbrand .quickview .dijitTooltipLeft .xwtDialogCloseIcon {
+	right: 5px;
+}
+
+
+.masterbrand .quickview .dijitButtonText {
+	color: #222222;
+	margin-left: 2px;
+}
+.dj_ie .masterbrand .quickview .dijitButtonText {
+	color: #222222;
+	margin-left: 3px;
+}
+
+//
+
+.masterbrand .quickview .table {
+	width: 100%;
+}	
+	
+.dj_ie .masterbrand .quickview .mytable,	
+.masterbrand .quickview .mytable {
+				border: 0px;
+				width: 100%;
+				padding: 0;
+				padding-bottom: 2px;
+				text-align: left;
+}
+
+.masterbrand .quickview .myrow {
+	height: 100%;			
+}
+
+.dj_ie .masterbrand .quickview .myrow,
+.masterbrand .quickview .myrow {
+				border: 0px;
+				width: 100%;
+				height: 14px;
+				padding: 0;
+				text-align: left;
+}
+
+.dj_ie .masterbrand .quickview .mydata, 
+.masterbrand .quickview .mydata {
+				padding: 5px;
+				height: 13px;
+				padding: 0;
+				text-align: left;
+				width: 33%;
+}
+
+
+.dj_ie .masterbrand .quickview .actiontable,
+.masterbrand .quickview .actiontable {
+				border: 0px;
+				width: 100%;
+				padding: 0;
+				text-align: left;
+				margin: 0;
+				margin-left:-4px;
+}
+
+.masterbrand .quickview .actionarea {
+	padding-top: 0px;
+	padding-bottom: 3px;
+	padding-left: 4px;
+	color:#DA7A02;
+	font-family:Arial, Helvetica;
+	font-size:13px;
+}
+			
+.dj_ie .masterbrand .quickview .actionarea {
+	padding-bottom: 6px;
+	padding-left: 0px;
+}
+
+
+.masterbrand .quickview div.defaultarea {
+				background-color: transparent;
+				width: 100%; 
+				/*margin-top: -5px; */
+				margin-top: 0px;
+			}
+
+.masterbrand div.expandarea{
+				background-color: transparent;
+				margin-top: -1px;
+				width: 100%;
+			}
+
+			
+.masterbrand .actionitem {
+				border: none;
+				background-color: transparent;
+				vertical-align:middle;
+				width: 100%;
+				opacity: 100;
+				text-align: left;
+			}
+
+		
+.masterbrand div.moretools {
+				border:none; 
+				background-color: transparent;
+				width: 100%; 
+				position:relative; 
+				text-align:right;
+				padding-bottom: 0px;
+				color:#0088C2;
+				font-family:Arial, Helvetica;
+				font-size:11px;
+				font-weight: normal;
+				cursor: pointer;
+				bottom: -1px;
+			
+			}
+			
+.masterbrand .quickview .dijitButtonContents {
+				background-color: transparent;
+				border: none;
+				border-style:none;
+				background: transparent;
+			}
+
+			.masterbrand .quickview .dijitButton.dijitButtonHover,
+			.masterbrand .quickview .dijitButtonNode {
+				background: transparent;
+				border: none;
+				background-color: transparent;
+				border: none;
+				border-style:none;
+				padding: 0;
+				
+			}
+//
+.masterbrand .quickview .panelTitle {
+			color:#2f6c90;
+			font-family:Arial, Helvetica;
+			font-size:12px;
+			font-weight:Bold;
+		}
+			
+.masterbrand .quickview .panelContentLabel {
+			color:#000000;
+			font-family:Arial, Helvetica;
+			font-size:12px;
+			font-weight: normal;
+		}
+			
+.masterbrand .quickview .panelContentValue {
+			color:#000000;
+			font-family:Arial, Helvetica;
+			font-size:12px;
+			font-weight: Bold;
+		}
+
+.masterbrand .quickview .actionAreaText {
+			color:#000000;
+			font-family:Arial, Helvetica;
+			font-size:11px;
+			font-weight: normal;
+			margin-left: -2px;
+			
+		}
+
+.dj_ie7 .masterbrand .quickview .actionAreaText .dijitInline.dijitButtonText {
+			color:#000000;
+			font-family:Arial, Helvetica;
+			font-size:11px;
+			font-weight: normal;
+			margin-left: -2px;
+}
+
+.masterbrand  .quickview  .actionDivider {
+	/*
+	background: transparent url('../images/quickview/tool_divider.png') repeat-x;
+	width: 100%;
+	height: 2px;
+	padding-bottom: 1px;
+	padding-top: 4px;
+	margin-top: 2px;
+	*/
+	background: #B0B9BE;
+	width: 100%;
+	height: 1px;
+	margin-bottom: 7px;
+}
+.dj_ie .masterbrand  .quickview  .actionDivider {
+	background: #B0B9BE;
+	width: 100%;
+	height: 1px;
+	margin-bottom: 7px;
+	margin-top: 5px;
+}
+.masterbrand  .quickview  .containerTable {
+	border-collapse: collapse;
+	margin-left: 10px;
+}
+
+/*
+.masterbrand .quickview .dijitTooltipConnector {
+	width:14px;
+	height:20px;
+	margin-left: 0px;
+	bottom: 20px;
+}
+.dj_ie .masterbrand .quickview.dijitTooltipAbove .dijitTooltipConnector {
+	margin-left: 14px;
+}
+*/
+
+.masterbrand  .quickview.dijitTooltipRight .dijitTooltipConnector {
+/*	background:url(../images/quickview/arrow_left.png) no-repeat top left; */
+	height:20px;
+	margin-left: 0px; 
+}
+
+.dj_ie .masterbrand .quickview.dijitTooltipRight .dijitTooltipConnector {
+	margin-left: 0px;
+}
+
+
+.dj_ie .masterbrand .quickview .dijitTooltipConnector {
+/*	background:url(../images/quickview/arrow_left.png) no-repeat top left; */
+/*	width:14px; */
+	height:20px;
+	margin-left: 0px;
+/*	bottom: 20px; */
+}
+
+.masterbrand  .quickview  .top-left {
+	background: transparent;
+	width: 0px;
+	height: 0px;
+}
+
+ .masterbrand .quickview  .top-center {
+	background: transparent;
+	height: 0px;
+}
+ .masterbrand .quickview  .top-right {
+	background: transparent;
+	width: 0px;
+	height: 0px;
+}
+
+
+ .masterbrand .quickview  .middle-left {
+	background: transparent;
+	width: 0px;
+}
+
+ .masterbrand .quickview .middle-center {
+ 	/*background-color: #FEFEFE;
+	background: url('images/quickview/mid_bot_center.png') repeat-x scroll center;
+	background-position:bottom;
+	*/
+	border:none;
+	padding: 0;
+}
+
+
+.masterbrand .quickview .middle-right {
+	background: transparent;	
+	width: 0px;
+}
+
+ .masterbrand .quickview  .bottom-left {
+	background: transparent;
+	width: 0px;
+	height: 0px;
+}
+ .masterbrand .quickview  .bottom-center {
+	background: transparent;
+	height: 0px;
+}
+ .masterbrand .quickview  .bottom-right {
+	background: transparent;
+	width: 0px;
+	height: 0px;
+}
+
+
+ .masterbrand .quickview .middle-right-lower {
+	background: transparent;
+	background-position:bottom;
+	width: 0px;
+	
+}
+	
+ .masterbrand .quickview .middle-left-lower {  	
+	background: transparent;
+	background-position:bottom;
+	width: 0px;
+	
+}
+
+  .masterbrand .quickview  .middle-column-table{
+	border-collapse: collapse;
+}
+
+
+
+
+/* styles  for the content area */
+
+.masterbrand .quickview .cLabel {
+				padding: 0 0 0 0;
+				height: 100%;
+				text-align: right;
+				color:#000000;
+				font-family:Arial, Helvetica;
+				font-size:12px;
+				font-weight: normal;
+				margin: 0;
+				margin-right: -5px;
+
+}
+
+
+.dj_ie .masterbrand .quickview .cLabel {
+				padding: 0 5px 0 0;
+}
+
+
+.dj_ie7 .masterbrand .quickview .cLabel .dijitInline.dijitButtonText {
+				padding: 0 0 0 0;
+				height: 100%;
+				text-align: right;
+				color:#222222;
+				font-family:Arial, Helvetica;
+				font-size:12px;
+				font-weight: normal;
+				margin: 0;
+}
+
+.masterbrand .quickview .cValue {
+				padding: 0;
+				height: 100%;
+				text-align: left;
+				color:#222222;
+				font-family:Arial, Helvetica;
+				font-size:12px;
+				font-weight: Bold;
+				margin: 0 0 0 -5px;
+
+}
+
+.dj_ie .masterbrand .quickview .cValue {
+				margin: 0 0 0 -8px;
+
+}
+
+
+.dj_ie7 .masterbrand .quickview .cValue .dijitInline.dijitButtonText {
+				padding: 0px 3px 0 10px;
+				height: 100%;
+				text-align: left;
+				color:#000000;
+				font-family:Arial, Helvetica;
+				font-size:12px;
+				font-weight: Bold;
+				overflow: none;
+
+}
+
+
+// dijit icon styles for demo -
+.dj_ie .masterbrand .quickview .dijitEditorIconPaste,
+.masterbrand .quickview .dijitEditorIconPaste {
+	background-position:-486px 50%;
+}
+
+
+
+.dj_ie .masterbrand .quickview .dijitEditorIcon,
+.masterbrand .quickview .dijitEditorIcon {
+	background-image:url(../../images/editor.gif);
+	background-repeat:no-repeat;
+	height:18px;
+	text-align:center;
+	width:18px;
+}
+
+

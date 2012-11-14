@@ -1,0 +1,179 @@
+/*
+* Copyright (c) 2009,2010 Cisco Systems, Inc.
+* All rights reserved. 
+* @author harjeesi 
+* All the CSS elements for scroll pane go here.
+*/
+
+.masterbrand .scrollPane {
+	/*border: 1px solid grey;*/
+	height: 100%;
+	width: 100%;
+    /*height: 400px;
+	width: 400px;*/
+}
+
+.masterbrand .scrollPane .parentContainer {
+	overflow:hidden;
+	position:relative;
+	float: left;           
+}
+
+.masterbrand .scrollPane .containerNode {
+	position: relative;
+	left:3px;
+}
+
+.masterbrand .scrollPane .vslider {
+	height: 100%;
+	border: 0px solid;
+	float: right;
+	width:10px;
+}
+
+.masterbrand .scrollPane .vslider .scrollUp {
+	width: 100%;
+	height: 10px;/*7*/
+	background: transparent
+		/*url(../images/scrollpane/arrowUp.gif) no-repeat*/
+		url(../images/scrollpane/scrollbar_arrow_top.png) no-repeat
+		scroll center center;
+}
+
+.masterbrand .scrollPane .vslider .vScrollBar {
+	/*height: 366px;*/
+	width:100%;
+	/*background: #E0DFE3 none repeat scroll 0 0;*/
+	background: transparent
+		url(../images/scrollpane/scrollbar_back.png) repeat-y
+		scroll center center;
+}
+
+.masterbrand .scrollPane .vslider .vScrollTop {
+	height: 3px;
+	width:100%;
+	/*background: #E0DFE3 none repeat scroll 0 0;*/
+	background: transparent
+		url(../images/scrollpane/scrollbar_control_top.png) no-repeat
+		scroll center center;
+}
+.masterbrand .scrollPane .vslider .vScrollMid {
+	height:10px ;
+	width:100%;
+	/*background: #E0DFE3 none repeat scroll 0 0;*/
+	background: transparent
+		url(../images/scrollpane/scrollbar_control_mid.png) repeat-y
+		scroll center center;
+}
+
+.masterbrand .scrollPane .vslider .vScrollBottom {
+	height: 3px;
+	width:100%;
+	/*background: #E0DFE3 none repeat scroll 0 0;*/
+	background: transparent
+		url(../images/scrollpane/scrollbar_control_bot.png) no-repeat
+		scroll center center;
+}
+
+
+.masterbrand .scrollPane .vslider .vScroll {
+	width: 100%;
+	height: 16px;
+	/*background-color: gray; visibility:visible;*/	
+	position : relative;
+	
+	
+}
+
+.masterbrand .scrollPane .vslider .scrollDown {
+	width: 100%;
+	height: 10px;/*7*/
+	background: transparent
+		/*url(../images/scrollpane/arrowDown.gif) no-repeat*/
+		url(../images/scrollpane/scrollbar_arrow_bot.png) no-repeat
+		scroll center center;
+}
+
+/* horizontal*/
+.masterbrand .scrollPane .hslider {
+	width: 100%;
+	border: 0px solid;
+	height:10px;
+	
+	clear :both;
+}
+
+.masterbrand .scrollPane .hslider .scrollRight {
+	width: 10px;/*7*/
+	height: 100%;
+	background: transparent
+		url(../images/scrollpane/scrollbar_arrow_right.png) no-repeat
+		scroll center center;
+	float:right;
+}
+
+.masterbrand .scrollPane .hslider .hScrollBar {
+	/*width:418px;*/ 
+	/*background: #E0DFE3 none repeat scroll 0 0;*/
+	background: transparent
+		url(../images/scrollpane/hscrollbar_back.png) repeat-x
+		scroll center center;
+	height:100%;
+	float:left;
+}
+
+.masterbrand .scrollPane .hslider .hScroll {
+	width: 16px;
+	height: 100%;
+	/*background-color: gray;visibility:visible;*/
+	position : relative;
+	
+	clear:both;
+}
+
+.masterbrand .scrollPane .hslider .hScrollTop {
+	height: 100%;
+	width:3px;
+	/*background: #E0DFE3 none repeat scroll 0 0;*/
+	background: transparent
+		url(../images/scrollpane/hscrollbar_control_top.png) no-repeat;
+	background-position:left;
+	float:left;	
+		
+		
+	
+}
+
+.masterbrand .scrollPane .hslider .hScrollMid {
+	height:100%;
+	width:10px;
+	/*background: #E0DFE3 none repeat scroll 0 0;*/
+	background: transparent
+		url(../images/scrollpane/hscrollbar_control_mid.png) repeat-x;
+	background-position:center;
+	float:left;
+	
+}
+
+.masterbrand .scrollPane .hslider .hScrollBottom {
+	height:100%;
+	width:3px;
+	/*background: #E0DFE3 none repeat scroll 0 0;*/
+	background: transparent
+		url(../images/scrollpane/hscrollbar_control_bot.png) no-repeat;
+			background-position:right;
+			float:left;
+		
+		
+}
+
+.masterbrand .scrollPane .hslider .scrollLeft {
+	width: 10px;/*7*/
+	height: 100%;
+	float:left;
+	background: transparent
+		url(../images/scrollpane/scrollbar_arrow_left.png) no-repeat
+		scroll center center;
+}
+
+

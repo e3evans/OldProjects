@@ -1,0 +1,27 @@
+/**
+WOW scenario common css styles.
+**/
+
+.masterbrand .wow .accessories {
+    background: url(images/accessories.png);
+}
+
+.masterbrand .wow .calls {
+    background: url(images/calls.png);
+}
+
+.masterbrand .wow .favorites {
+    background: url(images/favorites16.png);
+}
+
+.masterbrand .wow .gauge {
+    background: url(images/gauge16.png);
+}
+
+.masterbrand .wow .help {
+    background: url(images/help.png);
+}
+
+.masterbrand .wow .tools {
+    background: url(images/tools.png);
+}

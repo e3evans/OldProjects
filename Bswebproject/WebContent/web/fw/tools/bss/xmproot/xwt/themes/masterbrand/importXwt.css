@@ -1,0 +1,53 @@
+/*
+ * Copyright (c) 2009, 2010 Cisco Systems, Inc.
+ * All rights reserved.
+ *
+ * Import from xwt
+ *
+ * No individual styles should be included here.
+ */
+
+/* xwt layout style sheets */
+@import url("xwt/dropshadowlarge.css");
+@import url("xwt/toolbar/layouttoolbar.css");
+@import url("xwt/overlay.css");
+
+/* widgets */
+@import url("xwt/anchoredoverlay/anchoredoverlay.css");
+@import url("xwt/filtertoolbar/filtertoolbar.css");
+@import url("xwt/objectselector/objectselector.css");
+@import url("xwt/objectselector/objectselectortoolbar.css");
+
+@import url("xwt/textboxselector.css");
+@import url("xwt/DataFormat.css");
+
+/* xwt widget style sheets */
+@import url("xwt/calendar.css");
+/*@import url("xwt/datagrid.css");*/
+@import url("xwt/menu.css");
+@import url("xwt/messagebox.css");
+
+@import url("xwt/quickview/quickview.css");
+@import url("xwt/repeater/repeater.css");
+
+/* xwt tree styles */
+@import url("xwt/tree/treepanel.css");
+@import url("../../../dojo/resources/dnd.css");
+@import url("xwt/tree/dnd.css");
+
+/* temp table and treetable solution. Will do a proper placement once sitepen gives
+   a final code update */
+@import url("xwt/table/Table.css");
+@import url("xwt/table/Toolbar.css");
+
+/*
+not ready
+@import url("../../widget/table/resources/TreeTable.css");
+*/
+
+/* misc (common) */
+/* @import url("xwt/appcommon.css");  /* common styles for application developers */
+/* @import url("xwt/refimplcommon.css"); /*needed for reference implementation*/
+/* @import url("xwt/refimplcommonnew.css"); /*needed for reference implementation*/
+@import url("xwt/aboutpage.css");
+

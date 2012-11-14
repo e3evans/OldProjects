@@ -1,0 +1,5 @@
+/* import the notification widget styles */
+@import url("alert.css");
+@import url("errorMessage.css");
+@import url("toaster.css");
+@import url("notification.css");

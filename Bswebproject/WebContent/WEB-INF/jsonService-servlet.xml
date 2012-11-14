@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/requestproxy/get/**">proxyGetController</prop>
+				<prop key="/requestproxy/post/**">proxyPostController</prop>
+				<prop key="/requestproxy/put/**">proxyPutController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="proxyGetController"
+		class="com.cisco.swtg.bss.web.controller.requestproxy.ProxyGetServiceController">
+		<constructor-arg index="0" ref="serviceInterface"/>
+		</bean>
+		
+		<bean id="proxyPostController"
+		class="com.cisco.swtg.bss.web.controller.requestproxy.ProxyPostServiceController">
+		<constructor-arg index="0" ref="serviceInterface"/>
+		</bean>
+		
+		<bean id="proxyPutController"
+		class="com.cisco.swtg.bss.web.controller.requestproxy.ProxyPutServiceController">
+		<constructor-arg index="0" ref="serviceInterface"/>
+		</bean>
+</beans>

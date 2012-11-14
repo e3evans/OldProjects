@@ -1,0 +1,32 @@
+/*
+ * Copyright (c) 2009, 2010 Cisco Systems, Inc.
+ * All rights reserved.
+ *
+ * This stylesheet will be used to assemble all the stylesheets
+ * associated with the Kubrick Theme.
+ *
+ * No individual styles should be included here.
+ */
+
+
+/* form widgets */
+@import url("combobox.css");
+@import url("timefield.css");
+@import url("textbutton.css");
+@import url("textbuttongroup.css");
+@import url("texticonbutton.css");
+@import url("iconbutton.css");
+@import url("icondropdownbutton.css");
+@import url("combobutton.css");
+@import url("datefield.css");
+@import url("datepicker.css");
+@import url("menubutton.css");
+@import url("ipv6.css");
+@import url("singletimefield.css");
+@import url("sample_texticonbutton.css");
+@import url("dropdown.css");
+@import url("listbox.css");
+@import url("slider.css");
+@import url("dropdownmenu.css");
+@import url("groupbox.css");
+

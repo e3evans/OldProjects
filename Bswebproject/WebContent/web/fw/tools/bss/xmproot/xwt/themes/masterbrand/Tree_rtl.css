@@ -1,0 +1,17 @@
+
+/* Tree */
+.dijitRtl .masterbrand .dijitTreeContainer .dijitTreeNode {
+    background-image : none;
+}
+
+.dijitRtl .masterbrand .dijitTreeContainer .dijitTreeExpandoOpened {
+	background-image: url('images/treeExpand_minus_rtl.gif');
+}
+
+.dijitRtl .masterbrand .dijitTreeContainer .dijitTreeExpandoClosed {
+	background-image: url('images/treeExpand_plus_rtl.gif');
+}
+
+.dijitRtl .masterbrand .dijitTreeContainer .dijitTreeExpandoLeaf {
+	background-image: none;
+}

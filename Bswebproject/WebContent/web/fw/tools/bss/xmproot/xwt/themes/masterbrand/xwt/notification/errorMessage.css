@@ -1,0 +1,49 @@
+.masterbrand .xwtErrorMessage {
+	position: relative;
+	/*left: 50%;
+	width: 500px;*/
+	max-width:500px;
+	/*margin: 30px 0 0 -240px;*/
+}
+
+.masterbrand .xwtErrorMessage .xwtErrorMessageWrapper {
+	float: right;
+	/*width: 64%;*/
+	max-width:454px;
+	padding-left: 46px;
+	font: bold 12px Arial, Helvetica;
+	background: url("../images/messagebox/alert_critical_2000_256-alert_critical_2000_32.png") no-repeat left top;
+	overflow-x:hidden;
+}
+
+.masterbrand .xwtErrorMessage .xwtErrorMessageWrapper a {
+	text-decoration: none;
+	color: #12A4E2;	
+	outline:0 none;
+}
+
+.masterbrand .xwtErrorMessage .xwtErrorMessageText,
+.masterbrand .xwtErrorMessage .xwtHelpLink {
+	display: inline-block;
+}
+
+.masterbrand .xwtErrorMessage .xwtErrorMessageText {
+	color: #000000;
+	margin: 0 2px 3px 0;
+	line-height: 16px;
+}
+
+.masterbrand .xwtErrorMessage .xwtHelpLink,
+.masterbrand .xwtErrorMessage .xwtErrorDetailsLink {
+
+}
+
+.masterbrand .xwtErrorMessage .xwtErrorDetailsLink,
+.masterbrand .xwtErrorMessage .xwtErrorDetails {
+	display: block;
+	margin-top: 9px;
+}
+
+.masterbrand .xwtErrorMessage .xwtErrorDetailsLink span {
+	font-size: 90%;
+}

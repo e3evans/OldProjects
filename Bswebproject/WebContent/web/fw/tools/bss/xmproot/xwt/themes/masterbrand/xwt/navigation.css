@@ -1,0 +1,1084 @@
+/*
+ * Copyright (c) 2009, 2010 Cisco Systems, Inc.
+ * All rights reserved.
+ * @author harjeesi
+ * All the CSS elements for search bar and search results go here.
+ */
+.masterbrand .navigationContainer {
+	width: 100%;
+	background: url(../../masterbrand/xwt/images/pageBackgroundR2.png) repeat-x left bottom;
+}
+
+.masterbrand #navigation-container-table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+}
+
+.masterbrand .navigationContainer .mainNavigation {
+	min-height: 25px;
+	min-width: 10px;
+	padding: 0 15px;
+	background:url("../../masterbrand/xwt/images/header/header_shadow_bottom.png") repeat-x scroll center bottom transparent;
+}	
+
+.masterbrand .mainNavigationBC {
+    min-height: 25px;
+    min-width: 400px;
+	background-color:#576E8A;
+	xxxbackground-image: -moz-linear-gradient(100% 20% 90deg, #7a8da2, #607588);
+	xxxbackground-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#607588), to(#7a8da2));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#607588', endColorstr='#7a8da2');
+	-moz-box-shadow:0 2px 2px rgba(0, 0, 0, 0.3) inset;
+	-webkit-box-shadow:0 2px 2px rgba(0, 0, 0, 0.3) inset;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+    height:25px;
+    width: 100%;
+    margin-bottom:16px;
+}
+
+.masterbrand .navigationContainer .tabMenuLeft, .masterbrand .navigationContainer .tabMenuRight {
+	visibility: hidden;
+}
+
+.masterbrand .mainNavigationBC > .dijitSplitterV {
+	background: url("../../masterbrand/xwt/images/misc/gripperh.gif") no-repeat scroll center center transparent !important;
+}
+.masterbrand .mainNavigationBC > .dijitSplitterV .dijitSplitterThumb {
+	border: none;
+	background: transparent;
+}
+
+.masterbrand .mainNavigationBC .navigation {
+	overflow: hidden;
+}
+
+.masterbrand .navigationContainer .portalMenuRight {
+	width: 0px;
+}
+
+.masterbrand .mainNavigation .xwtToolbarContainer {
+	margin-right: 1px;
+    padding-right: 0px;
+	padding-left: 0px;
+	float: right;
+	box-shadow: inset 3px 3px 5px rgba(0, 0, 0, .27);
+	-moz-box-shadow: inset 3px 3px 5px rgba(0, 0, 0, .27);
+	-webkit-box-shadow: inset 3px 3px 5px rgba(0, 0, 0, .27);
+	-moz-border-radius: 0 5px 5px 0;
+	-webkit-border-radius: 0 5px 5px 0;
+	background-color: #ced5dd; /* fallback color */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bac4d0', endColorstr='#ced5dd');
+}
+
+.masterbrand .navigationContainer ul {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	/*height: 25px;*/ /* IE 7 resize problem DE722 */
+}
+
+
+.masterbrand .contextLevelNavigation {
+	
+}
+
+.contextLevelNavigationRow {
+}
+
+.masterbrand .contextLevelNavigation .xwtContentLevelContainerBackgroundLeft {
+	background: url(../../masterbrand/xwt/images/header/header_left.png) repeat-x 0 -78px;
+	height: 33px;
+	width: 50%;
+	left: 0px;
+	position: absolute;
+}
+
+.masterbrand .contextLevelNavigation .xwtContentLevelContainerBackgroundRight {
+	background: url(../../masterbrand/xwt/images/header/header_right.png) repeat-x 0 -78px;
+	height: 33px;
+	width: 50%;
+	right: 0px;
+	position: absolute;
+}
+
+.masterbrand .contextLevelNavigation .xwtContentLevelContainerBackgroundCenter {
+	background: url(../../masterbrand/xwt/images/header/header_background0.png) 0 -78px;
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
+	width:990px;
+	height: 33px;
+}	
+
+.masterbrand .thirdLevelNavigation {
+	xxxbackground: transparent url("../../masterbrand/xwt/images/header/header_shadow_bottom.png") repeat-x;
+}
+
+.masterbrand .navigationContainer .thirdLevelNavigationRow {
+	xxxdisplay: table-row;
+}
+
+.masterbrand .thirdLevelContainer ul {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	height: 30px;
+}
+
+.masterbrand .contextLevelContainer {
+	height: 33px;
+	background: none;
+	position: relative;
+}
+
+.masterbrand .thirdLevelContainer {
+	background-color:#FFFFFF;
+	border-bottom:1px solid #AACCD7;
+	height:25px;
+	background-image:-moz-linear-gradient(center top , #FDFEFE, #EAF4F7);
+	background-image:-webkit-gradient(linear, center top , from(#FDFEFE), to(#EAF4F7));
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#FDFEFE', EndColorStr='#EAF4F7');}
+}
+
+.masterbrand .contextLevelContainer ul, .masterbrand .thirdLevelContainer ul {
+	background: none;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	margin: 0 0px;
+	padding: 0;
+	position: absolute;
+	top: 0px;
+}
+
+.masterbrand .contextLevelContainer ul {
+	margin-left: 19px;	
+}
+
+.masterbrand .thirdLevelContainer ul {
+	margin: -1px 15px 0;
+	position: relative;
+}
+
+.masterbrand .navigation li {
+	float: left;
+	height: 24px;
+	padding-left: 1px;
+	padding-right: 1px;
+	z-index: 99px;
+	color: #FFFFFF;
+	outline: none;
+}
+
+.dj_webkit .masterbrand .navigation li {
+	padding-top:3px;
+}
+
+.masterbrand .navigation li:first-child {
+	-xxmoz-border-radius-topleft: 3px;
+	-xxxmoz-border-radius-bottomleft: 20px;
+	-xxxwebkit-border-top-left-radius: 3px;
+	-xxxwebkit-border-bottom-left-radius: 20px;
+}
+
+
+.masterbrand .contextLevelContainer li {
+	float: left;
+	padding-right: 14px;
+	padding-left: 14px;
+	height: 21px;
+	vertical-align: middle;
+	margin: 5px 1px;
+	border: 1px solid transparent;
+}
+
+.dj_ie .masterbrand .contextLevelContainer li {
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.masterbrand .thirdLevelContainer li {
+	color: #474747;
+	float: left;
+	height: 18px;
+	border: 1px solid transparent;
+	margin: 0px 0.5px;
+}
+
+.masterbrand .thirdLevelContainer li.onhover {
+	padding-bottom: 0px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #7D888B;
+	background: #fffeff;
+	height: 18px;
+}
+
+.masterbrand .thirdLevelContainer li.selected {
+	padding-bottom: 0px;
+	/* border was removed by Priston on 10th Jan 11. border is not mentioned in the spec
+	border: 1px solid #94A7AC;*/
+	/* background modified by Priston on 10th Jan 11 - Refer bill email
+	background color should be #C3D4D9 
+	background: #94A7AC;*/
+	background:#C3D4D9;
+	color: #FFFFFF;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5) inset;
+	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5) inset;
+}
+
+.dj_ie8 .masterbrand .thirdLevelContainer li.selected {
+	background: url(../../masterbrand/xwt/images/navigation/third_selected_ie.png) repeat-x;
+}
+
+.masterbrand .navigation li span {
+	vertical-align: middle;
+}
+
+.dj_webkit .masterbrand .navigation li span {
+	vertical-align: baseline;
+}
+ 
+.masterbrand .navigation li .centerBG {
+	padding: 5px 11px;
+}
+
+
+.dj_ie8 .masterbrand .navigation li .centerBG {
+	padding: 2px 8px 8px 11px;
+}
+
+.masterbrand .navigation li .textLabelSpan {
+	xxpadding-top: 2px;
+}
+
+.dj_ie8 .masterbrand .navigation li .textLabelSpan, .dj_ie8 .masterbrand .navigation li .textLabelSpan a {
+	padding: 2px 0px 8px 0px;
+}
+.dj_ie8 .masterbrand .navigation ul li {
+	xxxline-height: 1.3em;
+}
+
+.masterbrand .navigation li:focus .centerBG {
+	outline: 1px dotted white;
+}	
+
+.masterbrand .navigation li span a {
+	color: inherit;
+	text-decoration: none;
+}
+
+
+/*
+dj_ie8 .masterbrand .navigation li span, dj_ie8  .masterbrand .navigation li span a {
+	vertical-align: auto;
+	padding: 4px 5px;
+}
+*/
+
+.masterbrand .contextLevelContainer li span {
+	color: #333333;
+	text-decoration: none;
+	vertical-align: middle;
+	padding: 0px 0px;
+	cursor: default;
+	height: 21px;
+	display: inline;
+}
+.dj_webkit .masterbrand .contextLevelContainer li span {
+	vertical-align: text-bottom;
+}
+
+.masterbrand .contextLevelContainer li .textLabelSpan {
+	padding-bottom: 2px;
+}
+.masterbrand .thirdLevelContainer li span {
+	color: #454343;
+	text-decoration: none;
+	vertical-align: middle;
+	padding: 0px;
+	cursor: default;
+	display: inline;
+}
+
+.dj_webkit .masterbrand .thirdLevelContainer li span {
+	vertical-align: baseline;
+}
+
+.masterbrand .thirdLevelContainer li .centerBG {
+	padding: 1px 12px 4px;
+}
+
+.masterbrand .navigation .leftRC, .masterbrand .navigation .rightRC, .masterbrand .navigation .megamenuIndicator
+{
+	padding: 0;
+	margin: 0;
+}
+
+.dj_ie8 .masterbrand .navigation .leftRC, .masterbrand .navigation .rightRC
+{
+	visibility: hidden;
+}
+
+.dj_ie7 .masterbrand .navigation .leftRC,.dj_ie7 .masterbrand .navigation .centerBG,.dj_ie7 .masterbrand .navigation .rightRC
+{
+	padding-top: 2px;
+}
+
+.dj_ie .masterbrand .navigation span .iconNode {
+	padding-bottom: 4px;
+}
+
+
+.masterbrand .navigationContainer .navigationItemIcon {
+	padding:8px 11px 4px !important;
+	background-position: center center;
+	xxxvertical-align: bottom;
+}
+
+.dj_webkit .masterbrand .navigationContainer .navigationItemIcon {
+	background-position: 50% 70%;
+}
+
+.dj_ie8 .navigationContainer .navigationItemIcon {
+	padding: 2px 14px 8px 14px !important;
+	margin-right: 2px;
+	vertical-align: bottom;
+}
+
+.masterbrand .contextLevelContainer .navigationItemIcon {
+	padding:1px 8px !important;
+	height: 16px;
+	margin-right: 7px;
+	vertical-align:middle;
+}
+
+.dj_webkit .masterbrand .contextLevelContainer .navigationItemIcon {
+	vertical-align: text-bottom;
+}
+
+.masterbrand .thirdLevelContainer .navigationItemIcon {
+	padding: 0 8px !important;
+	margin: 40x 0 0 4px !important;
+} 
+
+.masterbrand .contextLevelContainer li span ,.masterbrand .contextLevelContainer li span a, .masterbrand .thirdLevelContainer li span, .masterbrand .thirdLevelContainer li span a {
+	text-decoration: none;
+	cursor: default;
+}
+
+.masterbrand .contextLevelContainer li span,.masterbrand .thirdLevelContainer li span
+{
+}
+
+.dj_ie7 .masterbrand .navigation li span
+{
+	vertical-align: middle;
+	display:inline-block;
+}
+
+.dj_ie .masterbrand .contextLevelContainer li span {
+	vertical-align: middle;
+	display:inline-block;
+	padding-top: 1px;
+}
+.dj_ie .masterbrand .thirdLevelContainer li span {
+	vertical-align: top;
+}
+.masterbrand .navigation li:HOVER {
+	background-image: -moz-linear-gradient(100% 0% 270deg, rgba(255, 255, 255, 0.23), rgba(88, 111, 138, 0.23));
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0.23)), to(rgba(88, 111, 138, 0.23)));
+	xxxfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9dabbb', endColorstr='#73869d'); /*messes up font and margins*/
+	margin: 0px;
+}
+
+.dj_ie8 .masterbrand .navigation li:HOVER {
+	background: url(../../masterbrand/xwt/images/navigation/ie8_menu_hover.png) repeat-x;
+}
+
+.dj_ie8 .masterbrand .navigation .megamenuOpen .centerBG, .dj_ie8 .masterbrand .navigation .selected.megamenuOpen .centerBG {
+	background: #FFFFFF;
+}
+
+/*Main menu item selected START*/
+
+.masterbrand .navigation li.selected {
+	background-image: url(../../masterbrand/xwt/images/navigation/navigationBarSelectedLeft.png), url(../../masterbrand/xwt/images/navigation/navigationBarSelectedRight.png);
+	background-repeat: no-repeat;
+	background-position: left, right;
+	background-color: #4b5d74;
+}
+
+.dj_ie8 .masterbrand .navigation li.selected .leftRC {
+	background: url(../../masterbrand/xwt/images/navigation/navigationBarSelectedLeft.png) no-repeat left center;
+	background-color: #4b5d74;
+	xxxfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#526e8b', endColorstr='#1a2836');
+	padding:2px 4px 8px 4px;
+	visibility: visible;
+}
+.dj_ie8 .masterbrand .navigation li.selected.megamenuOpen .leftRC {
+	background: #FFFFFF;
+	padding: 2px 4px 8px 4px;
+}
+
+.dj_ie8 .masterbrand .navigation li.selected .centerBG {
+	background: url(../../masterbrand/xwt/images/navigation/navigationBarSelectedRight.png) no-repeat right center;
+	background-color: #4b5d74;
+	padding-left: 0px;
+}
+
+
+.masterbrand .navigation li.selected span {
+	font-size: 12px;
+}
+.masterbrand .navigation li:first-child.selected {
+	xxxbackground: transparent url(../../masterbrand/xwt/images/navigation/navigationBarSelectedRight.png) no-repeat scroll right;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	background-color: #4b5d74;
+}
+
+.masterbrand .navigation li:first-child.megamenuOpen, .masterbrand .navigation li:first-child.selected.megamenuOpen {
+	background: none;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-bottomleft: 0px;
+}
+
+.dj_ie .masterbrand .navigation li.selected .leftRC, .dj_ie .masterbrand .navigation li.selected .rightRC {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+/*
+.dj_ie8 .masterbrand .navigation li.selected .leftRC, .dj_ie8 .masterbrand .navigation li.selected .rightRC {
+	padding-top: 3px;
+	padding-bottom: 5px;
+}
+*/
+
+.dj_ie7 .masterbrand .navigation li.selected .leftRC, .dj_ie7 .masterbrand .navigation li.selected .centerBG, .dj_ie7 .masterbrand .navigation li.selected .rightRC {
+	vertical-align: middle;
+}
+
+.dj_ie7 .masterbrand .navigation li.selected .hasMegamenu {
+	margin-top:4px;
+	display:inline-block;
+}
+
+.masterbrand .navigation .hasMegamenu, .masterbrand .navigation li.selected .hasMegamenu {
+	background: transparent url("images/megamenu/downarrow_white.png") no-repeat scroll right 4px;
+	padding-left: 14px;
+}
+
+.dj_ie8 .masterbrand .navigation .hasMegamenu, .dj_ie8 .masterbrand .navigation li.selected .hasMegamenu {
+	background: transparent url("images/megamenu/downarrow_white.png") no-repeat scroll 3px 11px;
+	padding: 2px 0px 8px 14px;
+	margin-left: 4px;
+}
+
+/*Main menu item selected END*/
+
+
+.masterbrand .navigation ul .megamenuOpen {
+	color: #3f484e ;
+	background-image: none ;
+	background-color: #FFFFFF !important;
+	box-shadow: 4px 0px 0px #6b7e92;
+	-webkit-box-shadow: 3px 3px 3px rgba(57, 57, 57, 0.48);
+	-moz-box-shadow: 3px 3px 3px rgba(57, 57, 57, 0.48);
+	border-left: solid 1px #546e8b;
+	border-right: solid 1px #546e8b;
+	border-top: solid 1px #546e8b;
+	padding: 0px;
+	margin: 0px;
+}
+
+.masterbrand .navigation ul .megamenuOpen span {
+	color: #3f484e;
+}
+
+
+.masterbrand .navigation ul .megamenuOpen .hasMegamenu, .masterbrand .navigation .megamenuOpen .megamenuIndicator {
+	background-color: #FFFFFF !important;
+	background-image: url("images/megamenu/downArrow_active.png") !important;
+}
+
+.dj_ie8 .masterbrand .navigation li:HOVER {
+	background: url("../../masterbrand/xwt/images/navigation/ie8_menu_hover.png") repeat-x;
+}
+
+.masterbrand .contextLevelContainer li:HOVER {
+	background-color: #FAFEFF;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px #C6E0E8 solid;
+}
+
+.masterbrand .thirdLevelContainer li:HOVER {
+	
+}
+
+
+/*Context level START*/
+.masterbrand .contextLevelContainer li span, .masterbrand .contextLevelContainer li span a {
+}
+
+.masterbrand .contextLevelContainer li.selected {
+	background-color: #E6F3F7;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.6);
+	-moz-box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.6);
+}
+.masterbrand .contextLevelContainer li.selected:HOVER {
+	border-color: transparent;
+}
+.dj_ie8 .masterbrand .contextLevelContainer li.selected {
+	background: url("images/navigation/context/contexttab_selected_middle.png") repeat-x;
+	border-color: #C6E0E8;
+}
+.masterbrand .contextLevelContainer li.selected span{
+	color: #454343;
+}
+
+.dj_ff3 .masterbrand .contextLevelContainer li.selected span .textLabelSpan{
+	xxxpadding-top: 1px;
+}
+
+
+/*Context level END*/
+
+/*Third level START*/
+.masterbrand .thirdLevelContainer li span, .masterbrand .thirdLevelContainer li span a {
+	color: #474747;
+	padding: 1px 0 4px;
+}
+
+.masterbrand .thirdLevelContainer li.selected span, .masterbrand .thirdLevelContainer li.selected span a {
+	/* Color changed by Priton on 10th Jan 11 - Refer Bill email
+	 selected color should be #222222.	 
+	color: #FFFFFF; */
+	color:#222222;
+}
+
+/*Third level END*/
+
+
+.masterbrand .hideToolbar {
+	display: none;
+}
+
+.masterbrand #global-toolbar li img,.masterbrand #portal-toolbar li img,.masterbrand #page-toolbar li img
+	{
+	padding: 2px;
+	vertical-align: middle;
+}
+
+/* START Global Toolbal*/
+.masterbrand .floatingGlobalMain {
+	margin: 0;
+    padding: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+	height: 26px;
+	border-top: 1px solid #a6a6a6;
+	background-image:url(images/navigation/gtBackground_rx.png);
+}
+
+.masterbrand .secondaryNavigation .dijitButtonText {
+	margin: 0;
+	padding: 0;
+}
+
+.dj_ie8 .masterbrand .floatingGlobalToolbar .secondaryNavigation .dijitButtonNode .dijitButtonText {
+	margin-left: 0px;
+}
+
+.masterbrand .secondaryNavigation .dijitButton,.masterbrand .secondaryNavigation .dijitDropDownButton,.masterbrand .globalUtilitiesToolbar .dijitButton,.masterbrand .globalUtilitiesToolbar .dijitDropDownButton
+	{
+	background: transparent url(images/misc/divider.png) no-repeat scroll right;
+	margin: 0px;
+	padding: 3px 4px 3px 1px;
+}
+.dj_ie8 .masterbrand .secondaryNavigation .dijitDropDownButton,.dj_ie8 .masterbrand .globalUtilitiesToolbar .dijitButton,.dj_ie8 .masterbrand .globalUtilitiesToolbar .dijitDropDownButton
+{
+	padding: 3px 0px 3px 8px;
+}
+.dj_ie8 .masterbrand .secondaryNavigation .dijitButton {
+	padding: 3px 8px 3px 7px;
+}
+
+.dj_ie8 .masterbrand .secondaryNavigation .dijitButtonNode {
+	padding-top: 2px;
+	padding-bottom: 1px;
+}
+
+.masterbrand .globalUtilitiesToolbar .dijitDropDownButton{
+	padding-right: 0px;	
+}
+
+/*will not work as popup menu will not have this style.*/
+.masterbrand .secondaryNavigation .dijitMenuActive,.masterbrand .secondaryNavigation .dijitMenuExpand,.masterbrand .secondaryNavigation .dijitMenuItemHover,.masterbrand .secondaryNavigation .dijitMenuItemSelected
+	{
+	margin: 1px 2px;
+}
+
+.masterbrand .floatingGlobalMain .globalUtilitiesToolbar .dijitArrowButtonInner, .masterbrand .floatingGlobalMain .secondaryNavigation .dijitArrowButtonInner {
+	width: 0;
+	height: 0;
+}
+
+.masterbrand .floatingGlobalMain .secondaryNavigation .dijitMenuBar, .masterbrand .floatingGlobalMain .globalUtilitiesToolbar .dijitMenuBar {
+	background: transparent;
+	border: 0px;
+}
+
+.masterbrand .floatingGlobalMain .globalToolbarIcon {
+	height: 18px;
+	width: 18px;
+	padding-right: 0px;
+	padding-left: 0px;
+	margin-right: 7px;
+}
+
+.masterbrand .floatingGlobalMain .globalToolbarIconEmpty {
+	height: 18px;
+	width: 1px;
+}
+
+.masterbrand .floatingGlobalMain .globalUtilitiesToolbar .dijitMenuBar {
+	float: right;
+}
+
+.masterbrand .floatingGlobalMain .secondaryNavigation .dijitMenuBar {
+	float: left;
+}
+
+.masterbrand .floatingGlobalMain .secondaryNavigation .dijitMenuBar .dijitMenuItem, .masterbrand .floatingGlobalMain .globalUtilitiesToolbar .dijitMenuBar .dijitMenuItem {
+	background: transparent url(images/misc/divider.png) no-repeat scroll
+		right;
+	margin: 0 0 0px;
+	padding: 6px 11px 7px 10px;
+}
+
+.masterbrand .floatingGlobalMain .globalUtilitiesToolbar .dijitMenuItem:last-child, .masterbrand .floatingGlobalMain .secondaryNavigation .dijitMenuItem:last-child {
+	background-image: none;
+}
+
+.masterbrand .globalUtilitiesToolbar .dijitButtonNode {
+	background: transparent;
+	border: none;
+	padding: 0px;
+	color: #000000;
+}
+
+.masterbrand .globalUtilitiesToolbar .dijitPopup {
+	top: 1800px;
+}
+
+.masterbrand .floatingGlobalToolbar .dijitButton .dijitButtonNode button:HOVER
+	{
+	background: transparent;
+}
+
+.masterbrand .floatingGlobalToolbarLeftRC {
+	background:transparent;
+	height:27px;
+	width:23px;
+	float: left;
+}
+
+.masterbrand .floatingGlobalToolbar {
+	background: transparent;
+    float: left;
+    height: 27px;
+	xxmargin-left: 23px;
+	xxmargin-right: 23px;
+	xxxmin-width: 750px;
+	width: 100%;
+}
+
+.masterbrand .floatingGlobalToolbarRightRC {
+	background:transparent;
+	height:27px;
+	width:23px;
+	float: left;
+}
+
+.masterbrand .secondaryNavigation {
+	float: left;
+}
+
+.masterbrand .secondaryNavigation .dijitButtonNode {
+	background: transparent;
+	border: none;
+	padding: 0px;
+}
+
+.masterbrand .secondaryNavigation .dijitButtonHover .dijitButtonNode,.masterbrand .secondaryNavigation .dijitButtonNodeHover,.masterbrand .secondaryNavigation .dijitDropDownButtonHover .dijitButtonNode,.masterbrand .globalUtilitiesToolbar .dijitButtonHover .dijitButtonNode,.masterbrand .globalUtilitiesToolbar .dijitButtonNodeHover,.masterbrand .globalUtilitiesToolbar .dijitDropDownButtonHover .dijitButtonNode 
+	{
+	color: #FFFFFF;
+}
+
+.masterbrand .globalUtilitiesToolbar {
+	float: right;
+}
+
+.dj_ie7 .masterbrand .globalUtilitiesToolbar {
+	width: auto;
+}
+
+.masterbrand .globalUtilitiesToolbar .noRightSeparator,.masterbrand .secondaryNavigation .noRightSeparator
+{
+	background: transparent !important;
+}
+
+.masterbrand .globalUtilitiesToolbar .dijitButtonHover,
+.masterbrand .globalUtilitiesToolbar .dijitDropDownButtonHover,
+.masterbrand .secondaryNavigation .dijitButtonHover,
+.masterbrand .secondaryNavigation .dijitDropDownButtonHover, 
+.masterbrand .globalUtilitiesToolbar .sliderPanelOpen
+{
+	background-image: -moz-linear-gradient(100% 100% 90deg, #526e8b, #2f4255) !important;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#526e8b), to(#2f4255)) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#526e8b', endColorstr='#2f4255');
+	color: #FFFFFF !important;
+}
+.masterbrand .floatingGlobalToolbar .secondaryNavigation{	
+	font-family: Arial, Helvetica;
+	font-size: 12px;
+	font-weight: normal;
+	color: #3c3c3c;
+}
+.masterbrand .floatingGlobalMain .globalUtilitiesToolbar .dijitMenuItemLabel{	
+	font-family: Arial, Helvetica;
+	font-size: 12px;
+	font-weight: normal;
+	color: #3c3c3c;
+}
+
+.masterbrand .globalUtilitiesToolbar .dijitButtonNode button {
+	xxpadding: 4px 5px;
+}
+
+.masterbrand .globalUtilitiesToolbar .dijitMenuItemSelected {
+	/*background: #6A6969;*/
+}
+
+.masterbrand .navigationIcon {
+	background-repeat: no-repeat;
+	height: 16px;
+	text-align: center;
+	width: 16px;
+}
+
+.masterbrand .defaultIcon {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+
+.masterbrand .navigationContainer.contextLevelNavigationOpen .mainNavigation {
+	background: none;
+}
+.masterbrand .navigationContainer.contextLevelNavigationOpen .mainNavigationBC {
+	margin-bottom:0px;
+}
+.masterbrand .navigationContainer.contextLevelNavigationOpen .contextLevelNavigation {
+	background:url("../../masterbrand/xwt/images/header/header_shadow_bottom.png") repeat-x scroll center bottom transparent;
+}
+.masterbrand .navigationContainer.contextLevelNavigationOpen .contextLevelContainer {
+	margin-bottom:8px;
+}
+
+
+
+
+
+
+
+
+/* START Slider Panel*/
+
+.masterbrand .globalToolbarSliderPanel {
+	background: transparent;
+	border: 0px solid;
+	width: 98%;
+	position: fixed;
+	bottom: 27px;
+	left: 10px;
+}
+.dj_ie7 .masterbrand .globalToolbarSliderPanel {
+	z-index: -1;/*990;*/
+}
+
+.masterbrand .globalToolbarSliderPanel .sliderClose {
+	background: transparent url(../../masterbrand/xwt/images/navigation/gt_close.png) no-repeat scroll center center;
+    float: right;
+    margin: 2px 5px 2px 2px;
+    width: 16px;
+    height: 16px;
+}
+
+.masterbrand .globalToolbarSliderPanel .sliderPullout {
+	background: transparent url(../../masterbrand/xwt/images/navigation/gt_tearoff.png) no-repeat scroll center center;
+    float: right;
+    margin: 2px 1px 3px -2px;
+    width: 16px;
+    height: 16px;
+}
+
+.masterbrand .globalToolbarSliderPanel .sliderPullup {
+	background: transparent url(../../masterbrand/xwt/images/navigation/gt_uparrow.png) no-repeat scroll center center;
+    float: right;
+    margin: 2px 2px 2px 5px;
+    width: 20px;
+    height: 16px;
+	opacity: 0.5;
+}
+
+.masterbrand .globalToolbarSliderPanel .sliderPulldown {
+	background: transparent url(images/navigation/gt_dwarrow.png) no-repeat
+		scroll center center;
+	float: right;
+	margin: 2px;
+	width: 20px;
+	height: 16px;
+}
+
+.masterbrand .globalToolbarSliderPanel .sliderPulloutDisabled {
+	cursor: not-allowed;
+}
+
+/*TODO harjeesi namespace it*/
+.masterbrand .globalToolbarSliderPanel .top {
+	height: auto;
+	width: auto;
+	background: transparent;
+	border: 0px solid;
+	margin-right: -2px;
+	z-index: 999;
+	position: relative;
+}
+
+/*TODO harjeesi namespace it*/
+.masterbrand .globalToolbarSliderPanel .left {
+	background: transparent;
+	width: auto; /*set progmatically*/
+	float: left;
+	margin-left: 4px;
+}
+
+.masterbrand .globalToolbarSliderPanel .contentSliderPanel {
+	background: #FFFFFF;
+    border-right: 1px solid #546E8B;
+    border-left: 1px solid #546E8B;
+    width: 100%;
+    height: 275px;
+	-moz-box-shadow:rgba(57,57,65,.48) 2px -1px 3px;
+	box-shadow: 2px -1px 3px rgba(57,57,65,.48);
+	-webkit-box-shadow: 2px -1px 3px rgba(57,57,65,.48);
+	z-index: 997;
+	padding: 0px 5px;
+}
+.dj_ie7 .masterbrand .globalToolbarSliderPanel .contentSliderPanel {
+	background: #FFFFFF;
+	border-right: 1px solid #84AAC6;
+	border-left: 1px solid #84AAC6;
+	width: 100%;
+	height: 275px;
+	position:relative;
+}
+
+.masterbrand .globalToolbarSliderPanel .title {
+	color: #404040;
+	float: left;
+	margin-top: 2px;
+	margin-right: 5px;
+	font-size: 11px;
+	font-family: Arial, Helvetica;
+}
+
+.masterbrand .globalToolbarSliderPanel .right {
+	background: transparent;
+    margin-left: -2px;
+    margin-right: 2px;
+    width: auto;
+    height: 21px;
+    float: right;
+	-moz-box-shadow:rgba(57,57,65,.48) 2px -1px 3px;
+	box-shadow: 2px -1px 3px rgba(57,57,65,.48);
+	-webkit-box-shadow: 2px -1px 3px rgba(57,57,65,.48);
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-webkit-border-top-left-radius: 4px;
+	border-top-left-radius: 4px;
+}
+
+.masterbrand .globalToolbarSliderPanel .resizeHandle {
+	background: #FFFFFF url(../../masterbrand/xwt/images/misc/splitter_horiz.png) no-repeat scroll center center;
+    height: 5px;
+    margin: 2px auto 0;
+    cursor: n-resize;
+    border-right: 1px solid #546E8B;
+    border-left: 1px solid #546E8B;
+    border-top: 1px solid #546E8B;
+    border-bottom: 1px solid transparent;
+    width: 100%;
+    clear: both;
+    z-index: 998;
+	position: relative;
+	-moz-box-shadow:rgba(57,57,65,.48) 2px -1px 3px;
+	box-shadow: 2px -1px 3px rgba(57,57,65,.48);
+	-webkit-box-shadow: 2px -1px 3px rgba(57,57,65,.48);
+	padding-bottom: 3px;
+}
+
+
+.dj_ie8 .masterbrand .globalToolbarSliderPanel .resizeHandle {
+	background: #FFFFFF url(../../masterbrand/xwt/images/misc/splitter_horiz.png) no-repeat scroll center center;
+    height: 5px;
+    margin: 2px auto 0;
+    cursor: n-resize;
+    border-right: 1px solid #546E8B;
+    border-left: 1px solid #546E8B;
+    border-top: 2px solid #546E8B;
+    border-bottom: 1px solid transparent;
+    width: 100%;
+    clear: both;
+    z-index: 998;
+	position: relative;
+	-moz-box-shadow:rgba(57,57,65,.48) 2px -1px 3px;
+	box-shadow: 2px -1px 3px rgba(57,57,65,.48);
+	-webkit-box-shadow: 2px -1px 3px rgba(57,57,65,.48);
+	padding-bottom: 3px;
+}
+
+.masterbrand .resizeIndicator {
+	height: 5px;
+    margin: 2px auto 0;
+    border-right: 1px solid #546E8B;
+    border-left: 1px solid #546E8B;
+    border-top: 1px solid #546E8B;
+    border-bottom: 1px solid transparent;
+    z-index: 9999;
+	position: absolute;
+	-moz-box-shadow:rgba(57,57,65,.48) 2px -1px 3px;
+	box-shadow: 2px -1px 3px rgba(57,57,65,.48);
+	-webkit-box-shadow: 2px -1px 3px rgba(57,57,65,.48);
+	padding-bottom: 3px;
+}
+
+.masterbrand .globalToolbarSliderPanel .right .tr {
+	width: 3px;
+	height: 22px;
+	background: #FFFFFF;
+	border-top: 1px solid #546E8B;
+	border-right: 1px solid #546E8B;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.masterbrand .globalToolbarSliderPanel .right .tl {
+	width: 3px;
+	height: 22px;
+	background: #FFFFFF;
+	border-top: 1px solid #546E8B;
+	border-left: 1px solid #546E8B;
+	-moz-border-radius-topleft: 4px;
+	-webkit-border-top-left-radius: 4px;
+	border-top-left-radius: 4px;
+}
+
+.masterbrand .globalToolbarSliderPanel .right .tm {
+	background: #FFFFFF;
+	border-top: 1px solid #546E8B;
+}
+
+.masterbrand .globalToolbarSliderPanel .right table {
+	border-spacing: 0;
+	/*border-collapse: collapse;*/
+	border: none;
+	width: 100%;
+}
+
+.masterbrand .globalToolbarSliderPanel .right .shadow {
+	background: url(images/navigation/sliderpanel/gt_panel_shadow.png)
+		no-repeat;
+	width: 8px;
+	height: 8px;
+	margin-left: -11px;
+}
+
+.masterbrand .globalToolbarSliderPanel .right .shadowtop {
+	background: #FFFFFF none repeat scroll 0 0;
+	border-top: 1px solid #546E8B;
+	width: 6px;
+	height: 8px
+}
+.dj_ie8 .masterbrand .globalToolbarSliderPanel .right .shadowtop {
+	background: #FFFFFF none repeat scroll 0 0;
+	border-top: 1px solid #546E8B;
+	width: 4px;
+	height: 8px
+}
+
+/*END SliderPanel*/
+
+
+/* Gadget START*/
+.masterbrand .gadget {
+	
+}
+
+.masterbrand .gadget .categoryvalue {
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+.masterbrand .gadget .categoryhead {
+	margin-left: 10px;
+	margin-right: 2px;
+	font-weight: bold;
+}
+
+.masterbrand .globalUtilitiesToolbar .gadgetselected {
+	/*background-color: #6A6969 !important;*/
+	color: #FFF !important;
+	border-left: 2px solid #4C4B4B;
+	border-top: 2px solid #4C4B4B;
+	padding: 3px 5px 6px 1px;
+}
+.masterbrand .contextItem{
+	margin-left:13px;
+}
+
+
+
+
+
+
+/*Use only for demo purposes*/
+.masterbrand .alarmTitle {
+	font-weight: bold;
+	margin-right: 3px;
+	margin-left: 6px;
+}
+.masterbrand .xwtDisplayNone {
+	xxxdisplay: none;
+	bottom: 9999px;
+}

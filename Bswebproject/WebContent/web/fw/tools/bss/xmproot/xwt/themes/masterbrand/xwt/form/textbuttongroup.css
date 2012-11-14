@@ -1,0 +1,36 @@
+/*   
+ *        Copyright (c) 2009, 2010 Cisco Systems, Inc.   
+ *        All rights reserved.   
+ *
+ * @author jefhu
+ * CSS rules for textbuttongroup
+ */
+
+.masterbrand .xwtTextButtonGroup
+{ 	
+	background: none;
+	border-bottom: 0px;
+	padding: 0px, 0px, 0px, 0px;	
+}
+
+/*the following rule overwrite dijitToolbar [.dijitToolbar.xwtTextButtonGroup] is important */ 
+.masterbrand  .dijitToolbar.xwtTextButtonGroup
+{ 	
+	background: none ;
+	border-bottom: 0px ;
+	padding: 0px, 0px, 0px, 0px;		
+}
+
+.masterbrand .xwtTextButtonGroup .xwt-TextButton, 
+.masterbrand .xwtTextButtonGroup .dijitButtonDisabled,
+.masterbrand .xwtTextButtonGroup .defaultButton 
+{
+	padding:0;
+	margin-left: 0px;
+	margin-right:5px;
+}
+
+.dj_ie .masterbrand .xwtTextButtonGroup .xwt-TextButtonText
+{ 	
+	margin-bottom:1px;
+}
