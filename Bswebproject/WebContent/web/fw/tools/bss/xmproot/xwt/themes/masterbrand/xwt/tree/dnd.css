@@ -1,0 +1,319 @@
+/* inherit standard dnd */
+@import url("../../../../../dojo/resources/dnd.css");
+                               
+
+/* avatar look and feel */
+
+
+/* resets */
+.masterbrand TABLE.treeDojoDndAvatar {
+    font-size: 100%;
+    padding:0;
+    border: none;
+    opacity: 1.0;
+}
+
+/* slight shadow and translucent white background for legibility of the avatar */
+/* Mozilla styling for avatar */
+.dj_gecko .masterbrand .treeDojoDndAvatar {
+    -moz-border-radius: 3px;
+    -moz-box-shadow: rgba(0,0,0,0.0) 1px 3px 4px 2px;
+    background-color: rgba(255,255,255,0.0);
+}
+
+/*fix to make avatar transparent*/
+.dj_ie .masterbrand .dojoDndAvatarItem  {
+	background:none;
+}
+
+.masterbrand .dojoDndAvatarItem  {
+	background:none repeat scroll 0 0 rgba(255, 255, 255, 0);
+}
+
+/* IE styling for avatar box */
+.dj_ie .masterbrand .treeDojoDndAvatar {
+   zoom: 1;
+   padding:1px;
+   background-color:transparent;
+    /*Delete style to amke DndAvatar transparent in IE
+   filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#ccffffff, endColorstr=#ccffffff);*/
+				
+}
+
+.dj_ie .masterbrand .treeDojoDndAvatar .dojoDndAvatarItem {
+    padding:2px;
+}
+
+
+
+/* avatar styling box ( not droppable ) */
+.masterbrand .treeDojoDndAvatar .dojoDndAvatarHeader {
+    background:none;
+    display:none;
+}
+
+
+/* droppable */
+.masterbrand.dojoDndMove .treeDojoDndAvatar.dojoDndAvatarCanDrop .dojoDndAvatarHeader	{
+	xbackground-color: #f89;
+}
+
+.masterbrand .treeDojoDndAvatar .dojoDndAvatarHeader TD {
+}
+
+/* avatar item row */
+.masterbrand .treeDojoDndAvatar .dojoDndAvatarItem {
+}
+
+/* avatar item cell */
+.masterbrand .treeDojoDndAvatar .dojoDndAvatarItem TD {
+    padding:0px;
+    padding-left:5px;
+}
+
+/* avatar TreeNode inside of item cell */
+/* remove indentation */
+.masterbrand .treeDojoDndAvatar .dojoDndAvatarItem .dijitTreeRow {
+    padding-left: 0px !important;
+    padding-bottom: 1px;
+    min-height: inherit;
+}
+
+/* gone */
+.masterbrand .treeDojoDndAvatar .dojoDndAvatarItem .dijitTreeRow .dijitTreeExpando  {
+    display:none;
+}
+
+
+
+
+/* drag n drop styles */
+.masterbrand.dojoDndCopy, .masterbrand.dojoDndMove	{
+xcolor: #888;
+}
+
+
+.masterbrand.dojoDndCopy .container,
+.masterbrand.dojoDndMove .container	{
+xbackground: #ddf;
+}
+		
+		/* container-specific settings */
+.masterbrand .dijitTree.dojoDndContainer		{
+xborder: none;
+xcolor: black;
+}
+
+.masterbrand .dijitTree.dojoDndContainerOver	{
+border: none;
+ color: black;
+}
+
+.masterbrand .container.dojoDndTargetDisabled	{
+background: #ccc;
+ color: #888;
+}
+		
+/* item-specific settings */
+.masterbrand .dojoDndItemOver		{
+xbackground: #0ba;
+}
+
+.masterbrand .dojoDndItemSelected	{
+background: #fea;
+color: #444;
+}
+
+/* item which is candidate for drag'n'drop moving */
+.masterbrand .dojoDndItemAnchor		{
+xbackground: #ff0;
+xcolor: #fff;
+}
+
+/* when moving, change the cursor when over the tree nodes */
+
+.masterbrand.dojoDndMove,
+.masterbrand.dojoDndMove .dijitTree
+.masterbrand.dojoDndMove .dijitTreeNode .dijitTreeContent {
+    cursor: move;
+    xopacity: 0.8;
+}
+
+/* style when dragging over some tree node */
+.masterbrand.dojoDndMove .dijitTree .dijitTreeNode .dojoDndItemOver	{
+    xbackground: #f56 !important;
+    xcursor: move !important;
+}
+
+
+
+/* the insertion style for treenode drag n drop services */
+.masterbrand.dojoDndMove .dijitTreeNode .dojoDndItemBefore,
+.masterbrand.dojoDndMove .dijitTreeNode .dojoDndItemAfter {
+   xborder: 2px #04BFFD solid;
+   xborder: none;
+}
+
+/* TreeNode Insertion indicator line */
+.masterbrand.dojoDndMove .dijitTreeNode .dojoDndItemBefore .dijitTreeContent {
+	border-top: 2px solid #04BFFD;
+    cursor: move;
+}
+
+/* TreeNode Insertion after indicator line */
+.masterbrand.dojoDndMove .dijitTreeNode .dojoDndItemAfter .dijitTreeContent {
+    cursor: move;
+	border-bottom: 2px solid #04BFFD;
+}
+/*psesumic*/
+.masterbrand.dojoDndMove .dijitTreeNode .dijitTreeNodeHover{
+	border-bottom:2px solid #04BFFD
+}
+
+/* when dragging over a treenode, change background */
+.masterbrand.dojoDndMove .dijitTreeNode .dijitTreeNodeHover {
+    xbackground-color: #fa0;
+}
+
+
+
+
+
+/* move an UNSELECTED tree node , gray out the anchor's TreeLabel node to denote movement in progress */
+.masterbrand.dojoDndMove .dijitTreeNode .dojoDndItemAnchor .dijitTreeLabel{
+xbackground-color: #f00;
+color: #a2a2a2;
+}
+
+
+/* move a SELECTED tree node , gray out the anchor's TreeLabel node to denote movement in progress */
+.masterbrand.dojoDndMove .dijitTreeNode .dijitTreeNodeSelected.dojoDndItemAnchor .dijitTreeLabel{
+background-color: #a2a2a2;
+color: #fff;
+}
+
+
+
+
+/*
+.masterbrand .dojoDndItemOver.dojoDndItemSelected	{background: #456;}
+.masterbrand	.dojoDndItemOver.dojoDndItemAnchor		{background: #9fa;}
+.masterbrand	.dojoDndItemBefore		{border-top:    3px solid red;}
+.masterbrand	.dojoDndItemAfter		{border-bottom: 3px solid red;}
+
+.masterbrand	.dojoDndHorizontal .dojoDndItemBefore		{border-top:    none;}
+.masterbrand	.dojoDndHorizontal .dojoDndItemAfter		{border-bottom: none;}
+.masterbrand	.dojoDndHorizontal .dojoDndItemBefore img	{border-left:  3px solid red;}
+.masterbrand	.dojoDndHorizontal .dojoDndItemAfter img	{border-right: 3px solid red;}
+
+
+.masterbrand	.dojoDndVertical .dojoDndItemBefore		{border-top:    none;}
+.masterbrand	.dojoDndVertical .dojoDndItemAfter		{border-bottom: none;}
+.masterbrand	.dojoDndVertical .dojoDndItemBefore img	{border-left:  3px solid red;}
+.masterbrand	.dojoDndVertical .dojoDndItemAfter img	{border-right: 3px solid red;}
+*/
+
+
+/*
+
+.masterbrand .dojoDndAvatar {
+font-size: 75%;
+	background-color: #f00;
+}
+
+
+.masterbrand .dojoDndAvatarHeader {
+	background-color: #ff0;
+}
+
+.masterbrand .dojoDndAvatarHeader TD {
+padding-left: 20px; padding-right: 4px;
+}
+
+.masterbrand .dojoDndAvatarItem {
+	background-color: #f0f;
+}
+
+.masterbrand .dojoDndAvatarCanDrop {
+	background-color: #00f;
+}
+
+
+
+BODY.masterbrand.dojoDndMove .dojoDndAvatarHeader	{
+xbackground-image: url(images/dndNoMove.png);
+xbackground-repeat: no-repeat;
+visibility: hidden;
+}
+
+BODY.masterbrand.dojoDndCopy .dojoDndAvatarHeader	{
+background-image: url(images/dndNoCopy.png);
+background-repeat: no-repeat;
+visibility: hidden;
+}
+
+BODY.masterbrand.dojoDndMove .dojoDndAvatarCanDrop .dojoDndAvatarHeader	{
+background-image: url(images/dndMove.png);
+background-repeat: no-repeat;
+}
+
+BODY.masterbrand.dojoDndCopy .dojoDndAvatarCanDrop .dojoDndAvatarHeader	{
+ background-image: url(images/dndCopy.png);
+ background-repeat: no-repeat;
+}
+
+BODY.masterbrand.dojoDndHandle {cursor: move;}
+BODY.masterbrand.dojoDndIgnore {cursor: default;}
+
+*/
+
+
+/* prevent drops!  state on the tree row */
+.masterbrand.dojoDndMove .dijitTree .dijitTreeNode .dijitTreeRow.NOT_ALLOWED .dijitTreeContent {
+    cursor: not-allowed;
+}
+
+/* NOT ALLOWED TO DROP TreeNode Insertion indicator line */
+.masterbrand.dojoDndMove .dijitTreeNode .dijitTreeRow.dojoDndItemBefore.NOT_ALLOWED .dijitTreeContent {
+	border-top: 2px solid #aaa;
+    cursor: not-allowed;
+}
+
+/* NOT ALLOWED TO DROP TreeNode Insertion after indicator line */
+.masterbrand.dojoDndMove .dijitTreeNode .dijitTreeRow.dojoDndItemAfter.NOT_ALLOWED .dijitTreeContent {
+	border-bottom: 2px solid #aaa;
+    cursor: not-allowed;
+}
+
+/* NOT ALLOWED TO DROP (before,after,over) this TreeNode : change label's color */
+.masterbrand.dojoDndMove .dijitTreeNode .dijitTreeRow.dojoDndItemBefore.NOT_ALLOWED .dijitTreeContent .dijitTreeLabel,
+.masterbrand.dojoDndMove .dijitTreeNode .dijitTreeRow.dojoDndItemOver.NOT_ALLOWED .dijitTreeContent .dijitTreeLabel,
+.masterbrand.dojoDndMove .dijitTreeNode .dijitTreeRow.dojoDndItemAfter.NOT_ALLOWED .dijitTreeContent .dijitTreeLabel {
+    color: #aaa;
+}
+
+
+/* Allowed rule for dragging over a treenode that has children ( is container ) */
+.masterbrand.dojoDndMove .dijitTreeNode .dijitTreeRow.dojoDndItemOver.isTreeNodeContainer .dijitTreeContent .dijitTreeLabel {
+    cursor: move;
+    /*remove the below line to remove the highlighting of the container node during drop*/
+    background-color: #04BFFD;
+    color: #000;
+}
+
+/* Not Allowed rule for dragging over a treenode that has children ( is container ) */
+.masterbrand.dojoDndMove .dijitTreeNode .dijitTreeRow.dojoDndItemOver.NOT_ALLOWED.isTreeNodeContainer .dijitTreeContent .dijitTreeLabel {
+    background-color: #8e8e8e;
+    color: #000;
+}
+
+
+
+/* during the drag, change the anchor's color */
+/*
+.masterbrand.dojoDndMove .treeDojoDndAvatar .dojoDndAvatarItem .dijitTreeRow.dijitTreeNodeHover {
+    color: #8E8E8E;
+}
+
+*/
+

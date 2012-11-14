@@ -1,0 +1,169 @@
+.masterbrand .multicolchkbox {
+			float:left;
+			width:150px;
+			padding:0px;
+			margin:0px 0px 0px 0px;
+			}
+.masterbrand .boxwrapper {
+	clear:left;
+}
+.masterbrand .boxcontainer, .masterbrand .boxerror {
+	margin:10px 0px 0px 15px;
+	clear:left;
+}
+.dj_ie7 .masterbrand .boxcontainer,.dj_ie7 .masterbrand .boxerror ,.dj_ie6 .masterbrand .boxcontainer,.dj_ie6 .masterbrand .boxerror {
+    margin:0px 0px 0px 15px;	
+} 
+.masterbrand .boxnode {
+	margin:0px 0px 1px 0px;
+}
+
+.masterbrand .boxcontainer label,.masterbrand .boxerror label {
+	padding:0px 0px 0px 3px;
+	color:#4D4D4D;
+}
+/* normal checkbox label*/
+.masterbrand .dijitCheckBox + label {
+	color:#222222;
+	font-family: Arial, Helvetica;
+}
+
+/* groupbox checkbox label*/
+/*.masterbrand .fieldsetarea .dijitCheckBox + label {
+	color:#4D4D4D;
+}*/
+
+/* normal checkbox disabled label*/
+.masterbrand .dijitCheckBoxDisabled + label {
+	color:#666666;
+	font-family: Arial, Helvetica;
+}
+
+/* groupbox checkbox disabled label*/
+/*.masterbrand .fieldsetarea .dijitCheckBoxDisabled + label {
+	color:#4D4D4D;
+}*/
+
+
+.masterbrand .boxerror input {
+	background:#ffff99;
+}
+
+.masterbrand .boxwrapper p {
+	margin:2px 0px 6px 0px;
+	padding:0px 0px 0px 15px;
+	display:block;
+	float:left;
+	color:#4D4D4D;
+}
+
+.masterbrand .boxwrapper p.required {
+	margin:4px 0px 11px 0px;
+	padding:0px 0px 0px 15px;
+	display:block;
+	float:left;
+	background: transparent url("../images/required_field.gif") no-repeat left;
+}
+
+.masterbrand .boxwrapper .rightError {
+	color:#e9102a;
+	float:left;
+	display:block;
+	background: transparent url("../images/ContextMessageArrow_LeftT.gif") no-repeat;
+	margin:5px 0px 0px 30px;
+	padding: 0px 0px 0px 15px;
+	width:200px;
+}
+
+.masterbrand .dijitToggleButton .dijitCheckBoxIcon {
+	background-image: url('../images/checkmarkNoBorder.png');
+}
+
+.dj_ie6 .masterbrand .dijitToggleButton .dijitCheckBoxIcon {
+	background-image: url('../images/checkmarkNoBorder.gif');
+}
+
+.masterbrand .dijitCheckBox	{	
+	background: url("../images/checkbox_radio_states.png") 0px -14px no-repeat;	
+	background-repeat: no-repeat;
+	height: 13px;
+	margin: 0px 4px 3px 0;
+	padding: 0;
+	width: 13px;
+    border: 1px transparent solid;
+}
+
+.masterbrand .row-editor .dijitCheckBox	{	
+	margin-top: 4px;
+}
+
+.dj_ie .masterbrand .row-editor .dijitCheckBox	{	
+	margin-top: 6px;
+}
+
+/*** unchecked ****/
+    .masterbrand .dijitToggleButton .dijitCheckBoxIcon {
+    	background-position: 0 -16px;
+    }
+    
+
+    
+    /* mouse states */
+        .masterbrand .dijitCheckBoxHover {
+            background-position: 0 -70px;
+        }
+    
+        /* mouse down */
+        .masterbrand .dijitCheckBoxFocused {
+            background-position: 0 -98px;
+            outline: 1px #00aeef solid;
+        }
+    
+/*** checked ****/
+    .masterbrand .dijitCheckBoxChecked {
+    	background-position: 0 0;
+    }
+    
+    /* mouse states */
+        .masterbrand .dijitCheckBoxCheckedHover {
+            background-position: 0 -56px;
+        }
+    
+        /* mouse down */
+        .masterbrand .dijitCheckBoxCheckedFocused {
+            background-position: 0 -84px;
+            border-color: #00aeef;
+        }
+    
+
+
+/*** new state : partially checked ****/
+    .masterbrand .dijitCheckBox.partialChecked {
+    	background-position: 0 -112px;
+    }
+ 
+        .masterbrand .dijitCheckBoxFocused.partialChecked {
+            border-color: #00aeef;
+        }
+
+
+
+
+
+
+.masterbrand .dijitToggleButtonChecked .dijitCheckBoxIcon {
+	/* checked */
+	background-position: 0px 0px;
+}
+
+
+	/* disabled */
+.masterbrand .dijitCheckBoxDisabled {
+	background-position: 0px -42px;
+}
+
+
+.masterbrand .dijitCheckBoxCheckedDisabled {
+	/* disabled but checked */
+	background-position: 0px -28px;
+}

@@ -34,6 +34,7 @@ public class Application {
 		this.appName = appName;
 	}
 
+	
 	public String getAppDesc() {
 		return appDesc;
 	}
@@ -51,3 +52,5 @@ public class Application {
 	}
 
 }
+
+

@@ -20,7 +20,7 @@ public class QuickLinksAPPDAOImpl  implements
 	private SessionFactory urlsessionFactory;
 	
 	
-	public List findAvailAppListByRole(String roleCd) {
+/*	public List findAvailAppListByRole(String roleCd) {
 		Session session = urlsessionFactory.openSession();
 		session.beginTransaction();
 		
@@ -39,14 +39,14 @@ public class QuickLinksAPPDAOImpl  implements
 		System.out.println("result"+sb.toString());
 		return appList;
 	
-	}
+	}*/
 
 
-	/*public List findAvailAppListByRole(String roleCd) {
+	public List findAvailAppListByRole(String roleCd) {
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT {app.*} ");
-		sql.append("FROM tpt2b_application app, tpt2b_application parent, ");
-		sql.append("tpt2e_app_role approle ");
+		sql.append("FROM S05DTDB.tpt2b_application app, S05DTDB.tpt2b_application parent, ");
+		sql.append("S05DTDB.tpt2e_app_role approle ");
 		sql.append("WHERE app.pt2b_appid = approle.pt2e_appid ");
 		sql.append("AND app.pt2b_seq_no = approle.pt2e_seq_no ");
 		sql.append("AND app.pt2b_appid = parent.pt2b_appid ");
@@ -56,8 +56,30 @@ public class QuickLinksAPPDAOImpl  implements
 		sql.append("AND app.pt2b_active_cd = 'A' ");
 		sql.append("AND parent.pt2b_active_cd = 'A' ");
 		sql.append("ORDER BY parent.pt2b_app_name, app.pt2b_seq_no ");
-		return urlsessionFactory.openSession().createSQLQuery(sql.toString()).addEntity("app","org/aurora/quicklinksservices/beans/App").setString(0, roleCd)
+		List list = urlsessionFactory.openSession().createSQLQuery(sql.toString()).addEntity("app","com.aurora.quicklinksservices.beans.Application").setString(0, "EMP")
 				.list();
+		StringBuffer sb = new StringBuffer();
+		for (int i=0;i<list.size();i++){
+			Application temp = (Application)list.get(i);
+			sb.append(temp.getAppName()+"---->"+temp.getAppDesc()+"<br/>");
+			sb.append(temp.getAppURL()+"----><br/>");
+			
+		}
+		
+		System.out.println("result"+sb.toString());
+		return list;
+		
+		
 	}
-*/
+
+
+	
+
+	@Override
+	public List findUserDetails(String userid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }

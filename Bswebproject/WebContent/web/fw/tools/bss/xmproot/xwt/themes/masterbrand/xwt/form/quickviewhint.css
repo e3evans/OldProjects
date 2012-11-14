@@ -1,0 +1,21 @@
+/*
+ * Copyright (c) 2009, 2010 Cisco Systems, Inc.
+ * All rights reserved.
+ */
+
+.masterbrand .xwtQuickViewHint {
+	float: none;
+}
+
+.masterbrand .xwtQuickViewHintIcon {
+	background:url('../images/quickview/qv_access.png') no-repeat top right;
+	width: 12px;
+	height: 12px;
+	/*float: right;*/
+	display:inline-block;
+	cursor: pointer;
+}
+
+.dj_ie7 .masterbrand .xwtQuickViewHintIcon {
+	margin: 5px 0 3px 5px;
+}

@@ -1,0 +1,38 @@
+/*
+The purpose of this css is to let iconButton has no border sournding icon.
+
+/* FF : remove dashed border  
+.masterbrand .xwt-IconButtonNode BUTTON::-moz-focus-inner
+{
+    /*
+    a11y issue
+    *  /
+    border:none !important;
+    -moz-outline:none !important;
+}
+
+*/
+.masterbrand .xwt-icondropdownbutton  xwt-IconDropDownButtonNode {
+	border-color:white;
+	border-style:none;
+	border-width:0px;
+	padding:0;
+	margin:0;
+}
+.masterbrand  .xwt-icondropdownbutton .xwt-IconDropDownButtonContents{
+	padding:0px;
+	border-color:white;	
+	background-color:transparent;
+	margin:-1px -3px; /* have to set left right margin to -3px and top/bottom -1px. Firefox-3.5   don't know why FF at 3px*/
+	cursor:pointer;   
+}
+
+.xwt-icondropdownbutton .xwtIconText {
+	display:none;
+	width:auto;
+}
+
+.dijit_a11y .xwt-icondropdownbutton .xwtIconText {
+	display:inline-block;	
+}
+ 

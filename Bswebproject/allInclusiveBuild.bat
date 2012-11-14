@@ -1,0 +1,1 @@
+call .\baseBuild.bat complete_build_undeploy_deploy_and_configure_with_browser

@@ -1,0 +1,325 @@
+/* css for slider */
+.masterbrand .xwtHorizontalSlider .dijitRuleLabelContainerH {
+	font-family:Arial, Helvetica !important;
+	font-size: 12px !important;
+	text-align:center !important;
+	color: #222222 !important;
+	display:inline-block !important;	
+	padding-top: 10px; /* as per spec*/
+}
+
+.masterbrand .xwtVerticalSlider .dijitRuleLabelContainerV {	
+	padding-left:7px; /* as per spec*/
+}
+
+.masterbrand .xwtVerticalSlider .dj_ie .dijitRuleLabelContainerV {
+	padding-left:7px;
+}
+
+.masterbrand .xwtVerticalSlider .dijitRuleContainerV {
+	font-family:Arial, Helvetica !important;
+	font-size: 12px !important;
+	text-align:center !important;
+	color:#222222 !important;
+	display:inline-block !important;	
+	padding-right:8px; /* as per spec*/
+}
+
+.masterbrand .xwtVerticalSlider .dijitSliderBarV {
+	width:3px !important;
+	border-color: gray;
+}
+
+.masterbrand .xwtVerticalSlider .dj.ie.dijitSliderBarV {
+	width:5px !important;
+}
+
+.masterbrand .xwtHorizontalSlider .dijitSliderProgressBarH {
+	background: -moz-linear-gradient(top, #FFA83C , #DA7A02);
+}
+
+.masterbrand .xwtVerticalSlider .dijitSliderProgressBarV {
+	background: -moz-linear-gradient(left, #FFA83C , #DA7A02);
+}
+
+.masterbrand .xwtHorizontalSlider .dijitSliderHoverProgressBarH {
+	background: -moz-linear-gradient(top, #FFA83C , #DA7A02);
+}
+
+.masterbrand .xwtVerticalSlider .dijitSliderHoverProgressBarV {
+	background: -moz-linear-gradient(left, #FFA83C , #DA7A02);
+}
+
+.masterbrand .xwtHorizontalSliderFocused  .dijitSliderProgressBarH{
+	background: -moz-linear-gradient(top, #FFA83C , #DA7A02);
+}
+
+
+.masterbrand .xwtVerticalSliderFocused  .dijitSliderProgressBarV {
+	background: -moz-linear-gradient(left, #FFA83C , #DA7A02);
+}
+.masterbrand .xwtVerticalSlider .dijitSliderRemainingBarV {
+	background: transparent url(../images/slider/slider_V_center.png) repeat-y bottom left !important;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+}
+.masterbrand .xwtHorizontalSlider .dijitSliderRemainingBarH {
+	background: transparent url(../images/slider/slider_H_center.png) repeat-x top left !important;
+}
+.masterbrand .xwtHorizontalSlider .dijitSliderBarH {
+	height:3px ;
+	border-color: gray;
+	-moz-border-radius-bottomright: 4px;
+	-moz-border-radius-topright: 4px;
+
+}
+
+.masterbrand .xwtHorizontalSlider .dj.ie.dijitSliderBarH {
+	height:8px !important;	/* as per spec*/	
+}
+
+.masterbrand .xwtHorizontalSlider .dijitSliderImageHandleH {
+	border: none;
+	left: -4px;
+}
+
+.masterbrand .xwtHorizontalSlider .dijitSliderImageHandleH2 {
+	background: -moz-linear-gradient(top, #FFFFFF , #DDDDDD) repeat center center !important;
+	-moz-border-radius: 8px;
+	height:18px;
+	width:5px ;
+	left:-4px !important;
+	top: -7px;	
+	border: 1px solid #6a6a6a;
+	cursor:pointer !important;
+}
+
+.masterbrand .xwtHorizontalSlider .dijitSliderLeftBumper{
+	background: -moz-linear-gradient(top, #FFA83C , #DA7A02) repeat-x center right!important;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-bottomleft: 4px;	
+	width: 3px;
+	height: 3px;
+	border-color: gray;
+}
+
+.masterbrand .xwtHorizontalSlider .dijitSliderRightBumper{
+	background: transparent url(../images/slider/slider_H_right.png) no-repeat top left !important;
+	border: none !important;
+	width: 3px !important;
+	height: 5px !important;
+		
+}
+
+.masterbrand .xwtVerticalSlider .dijitSliderBottomBumper{
+	background: -moz-linear-gradient(left, #FFA83C , #DA7A02) repeat-x top center !important;
+	-moz-border-radius-bottomleft: 4px;
+	-moz-border-radius-bottomright: 4px;	
+	width: 3px;
+	height: 2px;
+	border-color: gray;
+}
+
+.masterbrand .xwtVerticalSlider .dijitSliderTopBumper {
+	background: transparent url(../images/slider/slider_V_top.png) no-repeat bottom center!important;
+	border: none;
+	width: 5px;
+	height: 3px;
+}
+
+.masterbrand .xwtVerticalSlider .dijitSliderImageHandleV {
+	border:0px ;
+	background: -moz-linear-gradient(top, #FFFFFF , #DDDDDD) repeat center center !important;
+	-moz-border-radius: 8px;
+	border: 1px solid #6a6a6a ;
+	height:5px ;
+	width:18px ;
+	top: -3px !important;
+	left:-8px !important;	
+	cursor:pointer !important;
+}
+
+.masterbrand .xwtHorizontalSlider .dijitSliderHoverH {
+	background: -moz-linear-gradient(top, #FFFFFF , #FFFFFF, #FFFFFF , #DDDDDD) repeat center center !important;
+
+}
+
+.masterbrand .xwtHorizontalSlider .dijitSliderHoverH2 {
+  	-moz-border-radius: 8px;
+	border: 1px solid #6a6a6a !important;
+	width:6px;
+	height:16px;
+}
+
+.masterbrand .xwtVerticalSlider .dijitSliderHoverV {
+	background: -moz-linear-gradient(top, #FFFFFF , #FFFFFF, #FFFFFF , #DDDDDD) repeat center center !important;
+  	-moz-border-radius: 8px;
+	border: 1px solid #6a6a6a ;
+	width:18px ;
+	height:5px;
+}
+
+
+.masterbrand .xwtHorizontalSliderFocused  .dijitSliderImageHandleH {
+	border: none;
+}
+
+.masterbrand .xwtHorizontalSliderFocused  .dijitSliderImageHandleH2 {
+	background: -moz-linear-gradient(top, #C2C2C2 , #FFFFFF) repeat center center !important;
+	-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.3);
+  	-moz-border-radius: 8px;
+	border: 1px solid #6a6a6a ;
+  	width:5px ;
+	height:18px ;
+}
+
+
+.masterbrand .xwtVerticalSliderFocused  .dijitSliderImageHandleV {
+	background: -moz-linear-gradient(top, #C2C2C2 , #FFFFFF) repeat center center !important;
+	-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.3);
+  	-moz-border-radius: 8px;
+	border: 1px solid #6a6a6a ;
+	height:5px ;
+	width:18px ;	
+}
+
+.masterbrand .dijitRuleMark{	
+	/*border: none !important; need to change after vertical tick mark provided*/
+}
+
+.masterbrand .xwtHorizontalSlider .dijitRuleMarkH {	
+	background: #989898;
+	height: 7px !important;
+	width:1px !important;	
+	margin-top:6px;	
+	border: none !important;
+	font: 0px !important;
+	margin-left: -1px; /* corrected to address UX review comments */
+}
+
+.dj_ie8 .masterbrand .xwtHorizontalSlider .dijitRuleMarkH {	
+	margin-left: -1px;
+}
+
+.masterbrand .xwtVerticalSlider .dijitRuleMarkV {
+	background: #989898;	
+	width: 7px !important;
+	height: 1px !important;
+	border: none !important;
+	font: 0px !important;
+	/*left:-5px;*/
+	left:0px;	
+}
+
+.masterbrand .xwtVerticalSlider .dj.ie.dijitRuleMarkV {
+	left:-5px;		
+}
+
+.masterbrand .xwtVerticalSlider .dijitRuleLabelV {
+	/*padding-right: 7px; /* as per spec*/
+	padding-right:5px;
+}
+.masterbrand .xwtVerticalSlider .dj.ie.dijitRuleLabelV {
+	padding-right: 10px; /* as per spec*/
+}
+
+
+
+
+.masterbrand .handleDefault {
+	background-image:url(../images/slider/slider_normal.png);
+	height:16px;
+	width:7px;
+}
+
+
+.masterbrand .xwtHorizontalSlider .dijitSliderHoverH .handleDefault {
+	width: 7px;
+	height: 16px;
+	background-image:url(../images/slider/slider_hover.png);
+	cursor:pointer;
+}
+
+
+
+.masterbrand .xwtHorizontalSlider .xwtHorizontalSliderFocused .handleDefault {
+	width: 7px;
+	height: 16px;
+	background-image:url(../images/slider/slider_selected.png);
+}
+
+
+
+.dj_ie8 .masterbrand .dijitSliderBar {
+	background-color: #FFA83C;
+}	
+	
+
+
+.masterbrand .arrowNoDisplay {
+	display: none;
+}
+	
+.dj_ie .masterbrand .xwtHorizontalSlider .dijitSliderImageHandleH2 {
+	width: 7px;
+	height: 20px;
+	background-image:url(../images/slider/slider_ver_normal.png);
+	cursor:pointer;
+	border: none;
+}
+
+
+.dj_ie .masterbrand .xwtHorizontalSlider .dijitSliderHoverH2 {
+	width: 7px;
+	height: 20px;
+	background-image:url(../images/slider/slider_ver_hover.png);
+	cursor:pointer;
+}
+
+	
+.dj_ie .masterbrand .xwtHorizontalSliderFocused  .dijitSliderImageHandleH2 {
+	width: 7px;
+	height: 20px;
+	background-image:url(../images/slider/slider_ver_selected.png);
+	cursor:pointer;
+	border: none;
+}
+
+
+.dj_ie .masterbrand .xwtVerticalSlider .dijitSliderImageHandleV {
+	width: 20px;
+	height: 7px;
+	background-image:url(../images/slider/slider_hor_normal.png);
+	cursor:pointer ;
+	border: none;
+}
+
+
+
+.dj_ie .masterbrand .xwtVerticalSlider .dijitSliderHoverV {
+	width: 20px;
+	height: 7px;
+	background-image:url(../images/slider/slider_hor_hover.png);
+	cursor:pointer;
+}
+
+
+.dj_ie .masterbrand .xwtVerticalSliderFocused  .dijitSliderImageHandleV {
+	width: 20px;
+	height: 7px;
+	background-image:url(../images/slider/slider_hor_selected.png);
+	cursor:pointer;
+	border: none;
+	
+}
+.dj_ie .dijit_a11y .xwtVerticalSliderFocused  .dijitSliderImageHandleV {
+	border:1px solid #6A6A6A;	
+}
+
+.dj_ie .dijit_a11y .xwtVerticalSliderFocused  .dijitSliderImageHandleV {
+	border:1px solid #6A6A6A;	
+}
+
+.dijit_a11y .handleDefault {
+	border:1px solid !important;	
+}

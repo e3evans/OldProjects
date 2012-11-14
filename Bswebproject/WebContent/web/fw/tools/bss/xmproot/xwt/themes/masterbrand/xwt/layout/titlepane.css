@@ -1,0 +1,163 @@
+/*
+* Copyright (c) 2009,2010 Cisco Systems, Inc.
+* All rights reserved. 
+* @author harjeesi 
+* All the CSS elements for title pane go here.
+*/
+
+.masterbrand .gridContainer {
+	xxbackground: none;
+}
+
+.masterbrand .gridContainerZone {
+	xxbackground: transparent;
+	xxpadding: 5px;
+}
+
+.masterbrand .xwtTitlePane {
+	background-color:#FFFFFF;
+	background-image:-moz-linear-gradient(center left , #EAEAE9, rgba(255, 255, 255, 0) 4px);
+   	margin-bottom: 10px;
+   	margin-top: 4px;
+}
+
+.masterbrand .xwtTitlePane:last-child {
+	xxxmargin-bottom: 2px;	
+}
+
+.masterbrand .xwtTitlePane .titlePaneOddLevel {
+	background-color:#FFFFFF;
+	-moz-box-shadow: inset 1px 1px 2px rgba(0,0,0,.12);
+	-webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,.12);
+	box-shadow: inset 1px 1px 2px rgba(0,0,0,.12);
+}
+
+.masterbrand .xwtTitlePane .titlePaneEvenLevel {
+	background-image: -moz-linear-gradient(top, #F9F9F8, #E7EBF0); 
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#F9F9F8), to(#E7EBF0));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F9F9F8', endColorstr='#E7EBF0', gradientType='0');
+}
+
+.masterbrand .xwtTitlePane .xwtTitlePaneBorderBottom {
+	/*border-bottom: 2px solid #597B8B !important;*/
+}
+
+.masterbrand .xwtTitlePane .xwtTitlePaneTitle {
+	min-height: 24px;
+	padding: 5px 8px 0px 8px;
+	border-top: 1px solid #AACCD7;
+	background-image:-moz-linear-gradient(center top , #EAEAE9, rgba(255, 255, 255, 0) 4px);
+}
+
+.masterbrand .xwtTitlePane .xwtTitlePaneTitle-hover  {
+	
+}
+
+.masterbrand .xwtTitlePane .xwtTitlePaneTitle * {
+	vertical-align: middle;
+}
+
+.masterbrand .xwtTitlePane .xwtTitlePaneFocused .xwtTitlePaneTextNode {
+	text-decoration:none;
+}
+
+.masterbrand .xwtTitlePane .xwtArrowNodeInner {
+	display:block;
+	float: left;
+	width: 12px;
+	height: 16px;
+	background: transparent url("../images/titlepane/collapse_8x8.png") no-repeat 0 center;
+	padding-top: 2px;
+}
+
+.masterbrand .xwtTitlePane .xwtArrowNodeInner:HOVER, .masterbrand .xwtTitlePane .xwtTitlePaneTextNode:HOVER {
+	cursor: pointer;
+}
+
+.masterbrand .xwtTitlePane .closed {
+	background: transparent url("../images/titlepane/expand_8x8.png") no-repeat 0 center !important;
+}
+
+.dijit_a11y .xwtTitlePane .xwtArrowNodeInner {
+	display:inline !important;
+	font-family: Arial, Helvetica, monospace;
+	cursor: pointer;
+	padding-bottom:.2em;
+	
+}
+
+.dijit_a11y .xwtTitlePane .xwtArrowNode {
+	display:none;
+}
+
+.masterbrand .xwtTitlePane .xwtTitlePaneContentOuter {
+	padding: 4px 8px 8px;
+}
+.masterbrand .xwtTitlePane .xwtTitlePaneContentInner {
+	xxxpadding:0px 2px 0px 5px;/* need to fix teilepane.js to resize correctly todo harjeei*/
+	display: inline;
+}
+/* force hasLayout to ensure borders etc, show up */
+.dj_ie6 .masterbrand .xwtTitlePane .xwtTitlePaneContentOuter,
+.dj_ie6 .masterbrand .xwtTitlePane .xwtTitlePane .xwtTitlePaneTitle {
+	zoom: 1;
+}
+
+.masterbrand .xwtTitlePane .xwtTitlePaneTextNode {
+	padding: 0px 10px 0px 5px;
+	font: 13px Arial, Helvetica, Helvetica, sans-serif;
+	color: #DA7A02;
+	float: left;
+}
+
+
+.masterbrand .xwtTitlePane .xwtTitlePaneActions {
+	float: right;
+}
+
+.masterbrand .xwtTitlePane .titlePaneActionIcon {
+	width: 16px;
+	height: 16px;
+	margin-left: 4px;
+	/*margin-top: -5px;*/
+	margin-bottom: 3px;
+	background-repeat: no-repeat;
+/*	background-position: center; */
+}
+
+.masterbrand .xwtTitlePane .xwtTitlePaneActions .dijitButtonNode {
+	background:none;
+	border: none;
+	padding:0;
+}
+
+.masterbrand .xwtTitlePane .dijitButton {
+ 	margin: 0;
+}
+.dj_ie8 .masterbrand .xwtTitlePane .dijitButton {
+ 	padding-left: 6px;
+}
+
+
+.masterbrand .xwtTitlePane .evenLevelTitlePane {
+	background : #FFFFFF;
+	margin-bottom: 0px;
+}
+.masterbrand .xwtTitlePane .oddLevelTitlePane {		
+	background-image: -moz-linear-gradient(top, #F9F9F8,#E7EBF0); 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F9F9F8', endColorstr='#E7EBF0');
+	margin-bottom: 0px;
+
+}
+.masterbrand .xwtTitlePane .oddLevelTop {
+	-moz-box-shadow: inset 1px 1px 0px rgba(0,0,0, .12);
+}
+
+/*Rounded corners for inner START*/
+
+.masterbrand .xwtTitlePane table {
+	/*border-spacing: 0;
+	border-collapse: collapse;
+	border: none;
+	width: 100%;*/
+}

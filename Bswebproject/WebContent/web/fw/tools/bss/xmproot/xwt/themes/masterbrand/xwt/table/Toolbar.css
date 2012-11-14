@@ -1,0 +1,1297 @@
+/*
+ * Copyright (c) 2009, 2010, 2011 Cisco Systems, Inc.
+ * All rights reserved.
+ */
+
+.dijitToolbar .dijitButton, .dijitToolbar .dijitDropDownButton { margin: 0px; }
+.dijitToolbar .dijitButton, .dijitToolbar .dijitComboButton { margin: 0px; }
+.dijitToolbar .dijitToggleButtonSelected BUTTON, .dijitToolbar .dijitToggleButtonSelectedHover BUTTON { border-width: 3px; }
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton:hover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton:hover {
+	background: -moz-linear-gradient(top,#ffffff,#DAE0E4);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#DAE0E4));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#DAE0E4') progid:DXImageTransform.Microsoft.DropShadow(color=#00000000, offX=0, offY=0);
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border:1px solid #B2C1CD;
+	color: #222222;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton.dijitComboButtonActive:hover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton.dijitComboButtonActive:hover {
+	background: -moz-linear-gradient(top, #DAE0E4, #ffffff);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DAE0E4), to(#ffffff));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DAE0E4', endColorstr='#ffffff') progid:DXImageTransform.Microsoft.DropShadow(color=#00000000, offX=0, offY=0);
+	-moz-border-radius: 4px;
+	border-radius:4px;
+	-webkit-border-radius: 4px;
+	border:1px solid #B2C1CD;
+	color: #222222;
+}
+
+/* The Ribbon.	Do not touch this */
+.masterbrand .xwtRibbon {
+	position: relative;
+	overflow: hidden;
+	/* the following might need to be adjusted based on the containing toolbar's height */
+	height: 28px;
+	background: none;
+}
+.masterbrand .xwtRibbon .xwtRibbonWrapper {
+	height: 28px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: auto;
+	overflow: visible;
+	white-space: nowrap;
+}
+.masterbrand .xwtRibbon .xwtRibbonOverflowButton {
+	position: absolute;
+	right: 22px !important;
+	/* the following might need to be adjusted based on the containing toolbar's height */
+	width: 30px;
+	height: 26px;
+	margin-top: 1px;
+}
+
+.dj_ie .masterbrand .xwtRibbon .xwtRibbonOverflowButton {
+	margin-top: 0px;
+}
+
+/* Revisit, may not need if we can fix borders elsewhere */
+/*
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonHover { 
+	border: 1px solid transparent;
+	background-color: transparent;
+}
+*/
+
+.masterbrand .xwtRibbon .xwtRibbonOverflowButton .dijitDropDownButton{
+	display: inline-block;
+	/* the following might need to be adjusted based on the containing toolbar's height */
+	width: 30px;
+}
+.masterbrand .xwtRibbon .xwtRibbonOverflowButton .dijitDropDownButton button {
+	display: inline-block;
+	width: 30px;
+	height: 20px;
+}
+
+.masterbrand .xwtRibbon .xwtRibbonOverflowButton .dijitComboButton button {
+	display: inline-block;
+	width: 30px;
+	height: 20px;
+}
+
+.masterbrand .xwtRibbon .xwtRibbonOverflowButton .dijitArrowButtonInner {
+	width: 16px;
+	height: 16px;
+	margin: 0;
+	background-image: url(../images/table/toolbar/contextual/overflow_on.png);
+	background-repeat: no-repeat;
+	background-position: center center !important;
+	margin-top: -2px;
+}
+
+.dj_ie .xwtRibbon .xwtRibbonOverflowButton .dijitArrowButtonInner {
+	margin: 2px 0px 2px 2px;
+}
+
+.masterbrand .xwtRibbon .xwtRibbonOverflowButton .dijitButtonText {
+	display: none;
+}
+
+/* The Global Toolbar */
+.masterbrand .xwtGlobalToolbar {
+	position: relative;
+	width: auto;
+
+	height: 31px;
+
+	xbackground-color: #FFFFFF;
+	border-bottom: 1px #ced4d7 solid;
+	font-size: 13px;
+	overflow: hidden;
+}
+
+.dj_ie7 .masterbrand .xwtGlobalToolbar {
+	width: 100%;
+}
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarTitle {
+	position: absolute;
+	top: 4px;
+	left: 0px;
+
+	color: #000;
+    font-size: 18px;
+}
+
+/*
+.dj_ie .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarTitle {
+	position: absolute;
+	top: 4px;
+	left: 6px;
+}
+*/
+
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions {
+	position: absolute;
+	right: 8px;
+}
+
+.masterbrand .xwtRibbon .dijitToolbar .xwt-TextButton,
+.masterbrand .xwtRibbon .dijitToolbar .dijitButtonDisabled,
+.masterbrand .xwtRibbon .dijitToolbar .defaultButton {
+	margin: 0 5px 0 0 !important;
+	padding: 1px !important;
+}
+.masterbrand .dijitToolbar .dijitButtonDisabled {
+	padding: 1px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToolbarSeparator {
+	background: transparent;
+	margin: 0px 0px 0px 0px;
+	filter: progid:DXImageTransform.Microsoft.DropShadow(color=#00000000, offX=0, offY=0);
+}
+
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonNode button,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonNode button,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonNode button:focus,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonNode button:focus,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonNode button::-moz-focus-inner,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonNode button::-moz-focus-inner,
+.masterbrand .xwtContextualToolbar .xwtFilterStateButton .dijitButtonNode button,
+.masterbrand .xwtContextualToolbar .xwtFilterStateButton .dijitButtonNode button:focus,
+.masterbrand .xwtContextualToolbar .xwtFilterStateButton .dijitButtonNode button::-moz-focus-inner {
+	/* Remove the focus borders as per UX request.  A11Y issue? */
+	-moz-user-select: -moz-none;
+	outline: none;
+	border: 0;
+	margin-bottom: 1px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitButtonNode button {
+	margin-top: 2px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButton .dijitButtonNode button,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButton .dijitButtonNode button {
+	margin-top: 0px;
+}
+
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitButtonNode button {
+	margin-top: 0px;
+	margin-bottom: 1px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitButton,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButton,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButton,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitDropDownButton,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitComboButton,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitToggleButton,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButton,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitButton,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButton, 
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButton,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton {
+	margin: 1px 2px 0 2px;
+	padding-right: 0px;
+	vertical-align: top;
+	border: 1px solid transparent;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton {
+	height: 26px;
+	margin-top: 1px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitButtonContents,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitButtonContents {
+        background-color: transparent;
+	border: 0px;
+}
+
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitButtonNode,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonOpened .dijitButtonNode,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitButtonNode,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonOpened .dijitButtonNode {
+	height: 23px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitButtonContents,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonHover .dijitButtonContents,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitButtonContents,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonHover .dijitButtonContents {
+        padding: 1px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitArrowButton,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitArrowButton {
+        border-left: 1px solid transparent;
+}
+	
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitButton .dijitButtonNode,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButton .dijitButtonNode,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitButtonNode, 
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButton .dijitButtonNode {
+	margin-top: 3px;
+}
+
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitButton .dijitButtonNode,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButton .dijitButtonNode,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitButtonNode,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButton .dijitButtonNode {
+        margin-top: 2px;
+}
+
+
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitDropDownButton,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitComboButton,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButton {
+	margin:0;
+}
+.masterbrand .xwtContextualToolbar .xwtFilterStateButton.dijitButtonHover,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonHover,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButtonHover,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonHover,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonHover {
+	border: 1px solid transparent;
+}
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonNode,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonNode {
+	padding:0 0 0 0;
+	background: none;
+	border: none;
+}
+.dj_ie .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonNode {
+	padding:0 0 0 0;
+}
+
+/* GLOBAL TOOLBAR BUTTON STYLES	 */
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions {
+	font-size: 10px;
+}
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonNode {
+	padding: 0px;
+}
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButton .dijitButtonNode {
+	width: 18px;
+}
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitDropDownButton .dijitButtonNode .dijitArrowButtonInner {
+	vertical-align: bottom;
+	margin-right: 0px;
+}
+.dj_ie .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitDropDownButton .dijitButtonNode,
+.dj_ie .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitDropDownButton .dijitButtonNode button {
+	width: 30px;
+}
+.dj_gecko .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButton .dijitButtonNode .xwtGlobalToolbarIcon { 
+	/* I don't like this, but only way to 'center' the icon better. */
+	margin-left: -1px;
+	margin-top: 1px;
+}
+.dj_ie .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButton .dijitButtonNode button {
+	width: 18px;
+}
+.dj_ie7 .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonNode button {
+	/* I don't like this, but only way to 'center' the icon better. */
+	margin: 0px 0px 0px -6px;
+}
+.dj_ie7 .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonNode .xwtGlobalSettings {
+	/* I don't like this, but only way to 'center' the icon better. */
+	margin: 0px 0px 0px -6px;
+}
+.dj_ie .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitDropDownButton .dijitButtonNode .dijitArrowButtonInner {
+	margin-right: 0px 0px 0px 0px;
+}
+/* End of styles needed to lay out buttons neatly. */
+
+.masterbrand .xwtRibbon .dijitButton,
+.masterbrand .xwtRibbon .dijitToggleButton,
+.masterbrand .xwtRibbon .dijitDropDownButton,
+.masterbrand .xwtRibbon .dijitComboButton,
+.dj_ie .masterbrand .xwtRibbon .dijitButton,
+.dj_ie .masterbrand .xwtRibbon .dijitToggleButton,
+.dj_ie .masterbrand .xwtRibbon .dijitDropDownButton,
+.dj_ie .masterbrand .xwtRibbon .dijitComboButton {
+	margin: 3px 0px 6px 0px;
+	padding: 0px 6px 0px 0px;
+	border: none;
+	border-left: none;
+	border-right: none;
+	background: transparent;
+	zoom:1;
+}
+
+.dj_ie .masterbrand .xwtRibbon .dijitButton,
+.dj_ie .masterbrand .xwtRibbon .dijitDropDownButton,
+.dj_ie .masterbrand .xwtRibbon .dijitComboButton {
+	margin: 2px 0px 0px 0px;
+}
+
+.masterbrand .xwtRibbon .dijitToggleButton,
+.dj_ie .masterbrand .xwtRibbon .dijitToggleButton {
+	margin: 0px 4px 0px 0px;
+	padding: 0;
+	border: 1px solid transparent;
+}
+
+.masterbrand .xwtRibbon .xwtRibbonOverflowButton .dijitDropDownButton {
+	margin: 0;
+}
+/*
+.masterbrand .xwtContextualToolbar .xwtRibbon .combobutton table {
+	background-color: transparent;
+	border: 1px solid transparent;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .combobutton .dijitLeft table {
+	background-color: transparent;
+	border: 1px solid transparent;
+}
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitButtonContents
+{
+	border-left: 1px solid transparent;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitButtonNode
+{
+	border-left: 1px solid transparent;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton .dijitDownArrowButton {
+	border-left: 1px solid transparent;
+}
+*/
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButton {
+  background-color: transparent;
+  border: 1px solid transparent;
+ }
+ 
+
+
+.dj_ie7 .masterbrand .xwtRibbon .dijitToggleButton {
+	vertical-align: top;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonNode,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonNode {
+	background-color: transparent;
+	border: 0px solid transparent;
+}
+
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonNode {
+	height: 18px;
+}
+
+.dj_ie7 .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonNode button {
+	padding-left: 1px;
+}
+.dj_ie7 .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitDropDownButton button.dijitDownArrowButton {
+	padding-left: 7px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonHover, 
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButtonHover,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonHover,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonHover,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonOpenedFocused,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonDownArrowHover,
+.masterbrand .xwtContextualToolbar .xwtFilterStateButton.dijitButtonHover, 
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitDropDownButtonHover,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitComboButtonHover,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitToggleButtonHover,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitToggleButtonCheckedHover,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitToggleButtonChecked,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitToggleButtonOpenedFocused,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitToggleButtonDownArrowHover,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonHover, 
+.dj_ie .masterbrand .xwtContextualToolbar .dijitButtonHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButtonHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonOpenedFocused,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonDownArrowHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonCheckedHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonChecked {
+	background: -moz-linear-gradient(top,#ffffff,#DAE0E4);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#DAE0E4));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#DAE0E4') progid:DXImageTransform.Microsoft.DropShadow(color=#00000000, offX=0, offY=0);
+	-moz-border-radius: 4px;
+	border-radius:4px;
+	-webkit-border-radius: 4px;
+	border:1px solid #B2C1CD;
+	color: #222222;
+}
+
+
+.dj_ie .masterbrand .xwtContextualToolbar .xwtFilterStateButton.dijitButtonHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButtonHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonOpenedFocused,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonDownArrowHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonCheckedHover,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonChecked {
+	background: transparent;
+}
+
+.masterbrand .xwtContextualToolbar .xwtFilterStateButton.dijitButtonHover, 
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonHover,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButtonHover,
+/*.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonHover,*/
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonHover,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonOpenedFocused,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonDownArrowHover, 
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonChecked,
+/*.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButton,*/
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonActive {
+	height: 24px;
+}
+
+/*
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonHover
+{	
+	height: 26px;
+}
+*/
+
+.masterbrand .xwtContextualToolbar .xwtFilterStateButton.dijitButtonHover .dijitButtonNode,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonHover .dijitButtonNode,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButtonHover .dijitButtonNode,
+/*.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonHover .dijitButtonNode,*/
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonHover .dijitButtonNode,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonOpenedFocused .dijitButtonNode{
+	margin-top: 3px;
+}
+
+.dj_ie .masterbrand .xwtContextualToolbar .xwtFilterStateButton.dijitButtonHover .dijitButtonNode,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonHover .dijitButtonNode,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButtonHover .dijitButtonNode,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonHover .dijitButtonNode, 
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonHover .dijitButtonNode,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonOpenedFocused .dijitButtonNode{
+	margin-top: 2px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonActive,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButtonOpened,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonActive,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonActive,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonChecked,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitDropDownButtonOpened,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitComboButtonActive,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitToggleButtonActive,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitToggleButtonChecked,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonActive,
+.dj_ie .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitDropDownButtonOpened,
+.dj_ie .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitComboButtonActive,
+.dj_ie .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitToggleButtonActive,
+.dj_ie .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitToggleButtonChecked,
+.dj_ie .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButtonActive,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonActive,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitDropDownButtonOpened,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonActive,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonActive,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonChecked {
+	background: -moz-linear-gradient(top, #DAE0E4, #ffffff);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DAE0E4), to(#ffffff));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DAE0E4', endColorstr='#ffffff') progid:DXImageTransform.Microsoft.DropShadow(color=#00000000, offX=0, offY=0);
+	-moz-border-radius: 4px;
+	border-radius:4px;
+	-webkit-border-radius: 4px;
+	border:1px solid #B2C1CD;
+	color: #222222;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitButtonActive,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonActive,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButtonChecked{
+	height: 24px;
+}
+
+.masterbrand .xwtContextualToolbar .dijitComboButton .dijitButtonNode,
+.dj_ie .masterbrand .xwtContextualToolbar .dijitComboButton .dijitButtonNode {
+	height: 23px;
+}
+
+.dj_ie7 .masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButton {
+	margin-top: 1px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonHover .dijitButtonNode.dijitDownArrowButton,
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonDownArrowHover .dijitButtonNode.dijitDownArrowButton,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonHover .dijitButtonNode.dijitDownArrowButton, 
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .dijitComboButtonDownArrowHover .dijitButtonNode.dijitDownArrowButton {
+	border-left: 1px solid #B2C1CD;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+}
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButton tbody,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitToggleButton tbody {
+	padding: 0 2px 0 0;
+}
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToggleButton tbody .dijitButtonNode,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitToggleButton tbody .dijitButtonNode {
+	padding: 0;
+}
+
+.masterbrand .xwtContextualToolbar .dijitDisplayNone,
+.masterbrand .xwtGlobalToolbar .dijitDisplayNone {
+	display: none !important;
+}
+
+.masterbrand .xwtContextualToolbar .xwtContextualIcon,
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarIcon {
+	width: 16px;
+	height: 16px;
+	/*margin-left: 4px;*/
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.masterbrand .xwtContextualToolbar .xwtContextualText {
+min-height:16px;
+}
+
+.masterbrand .xwtGlobalToolbar .xwtGlobalRefresh {
+	background-image: url(../images/table/toolbar/global/refresh.png);
+	zoom: 1;
+	background-position: center center; 
+}
+
+.dj_ie .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButton, 
+.dj_ie .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitDropDownButton {
+	margin-left: 3px;
+}
+
+.dj_ie .xwtGlobalToolbar .xwtGlobalRefresh {
+	margin-top: 1px;
+}
+
+.masterbrand .xwtGlobalToolbar .xwtGlobalPrint {
+	background-image: url(../images/table/toolbar/global/printer.png);
+	background-position: center center;
+	zoom: 1;
+}
+
+.dj_ie .xwtGlobalToolbar .xwtGlobalPrint {
+	margin-top: 1px;
+}
+
+.masterbrand .xwtGlobalToolbar .xwtGlobalExport {
+	background-image: url(../images/table/toolbar/global/export.png);
+	background-position: center center;
+	zoom: 1;
+}
+
+.dj_ie .xwtGlobalToolbar .xwtGlobalExport {
+	margin-top: 1px;
+}
+
+.masterbrand .xwtGlobalToolbar .xwtGlobalSettings {
+	background-image: url(../images/table/toolbar/global/gear.png);
+	background-position: center center;
+	zoom: 1;
+}
+
+.dj_ie .xwtGlobalToolbar .xwtGlobalSettings {
+	margin-top: 1px;
+}
+
+	
+.dijit_a11y .xwtGlobalToolbar .xwtGlobalRefresh .dijitButtonText,
+.dijit_a11y .xwtContextualToolbar .dijitDisplayNone, 
+.dijit_a11y .xwtGlobalToolbar .dijitDisplayNone 
+{
+	display:inline !important;
+}
+
+.dijit_a11y .xwtGlobalToolbar .xwtGlobalToolbarActions .dijitButton .dijitButtonNode
+{
+	width:auto;
+}
+
+.dj_gecko .masterbrand .xwtContextualToolbar .xwtContextualIcon,
+.dj_gecko .masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions .xwtGlobalToolbarIcon {
+	margin-left: 0;
+	margin-top: 1px;
+}
+
+.masterbrand .xwtGlobalToolbar .xwtGlobalToolbarActions dijitButtonNode {
+	border: 1px solid transparent;
+}
+
+.dj_ie7 .masterbrand .xwtGlobalToolbarActions .xwtGlobalToolbarIcon,
+.dj_ie7 .masterbrand .xwtContextualToolbarRibbon .xwtContextualIcon {
+	background-position: center center;
+	zoom: 1;
+}
+
+/* The ContextualToolbar */
+.masterbrand .xwtContextualToolbar {
+	position: relative;
+	width: auto;
+	height: 28px;
+	border-bottom: 1px solid #FFFFFF !important;
+	border-top: 1px solid #FFFFFF !important;
+	color: #222222;
+	zoom: 1;
+	background: -moz-linear-gradient(top,#e8eef6,#ffffff);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e8eef6), to(#ffffff));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8eef6', endColorstr='#ffffff') progid:DXImageTransform.Microsoft.DropShadow(color=#00000000, offX=0, offY=0);
+	overflow: hidden;
+}
+
+.masterbrand .xwtFilteringToolbar {
+	background: #D9E5F0;
+	border-bottom: none !important;
+	border-top: 2px solid #B2C1CD !important;
+	color: #373737;
+}
+
+.masterbrand .xwtFilteringToolbar .filter-container {
+	white-space: nowrap;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .dijitToolbarSeparator {
+	margin-top: 1px;
+	height: 27px;
+	width: 1px;
+	padding: 0;
+	border: 0px solid transparent;
+	background-color: #C9CFD3;
+	filter: progid:DXImageTransform.Microsoft.DropShadow(color=#00000000, offX=0, offY=0);
+}
+
+.dj_ie .xwtContextualToolbar .xwtRibbon .dijitToolbarSeparator {
+	background-color: #C9CFD3;
+}
+
+.masterbrand .xwtContextualToolbar .dijitButtonText {
+	/*padding: 3px 0 3px 3px;*/
+	font: 11px Arial, Helvetica;
+	color: #222222;
+}
+
+.dj_ie .masterbrand .xwtContextualToolbar .dijitButtonText {
+	/* This is deliberate to disable 'ClearType' on IE, which makes the text not 'change' when hovering over it.
+	/* It looks a bit more jagged without cleartype, but UX did not like it changing. */
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	-ms-filter: â€u339 progid:DXImageTransform.Microsoft.Alpha(Opacity=100)â€u-3 ;
+}
+
+.masterbrand .xwtContextualToolbar .dijitDisabled .dijitButtonText{
+	color: #7F7F7F;
+}
+
+.masterbrand .xwtContextualToolbar .xwtContextualToolbarRibbonContainer,
+.masterbrand .xwtContextualToolbar .xwtContextualToolbarRibbonContainer .xwtContextualToolbarRibbonContainerTB {
+	padding: 0px;
+	margin: 0px;
+	border-spacing: 0px;
+	border: 0px none transparent;
+	border-collapse: collapse;
+	height: 28px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtContextualToolbarRibbonContainer,
+.masterbrand .xwtContextualToolbar .xwtContextualToolbarRibbonContainer .xwtContextualToolbarRibbonContainerTB,
+.masterbrand .xwtContextualToolbar .xwtContextualToolbarRibbonContainer .xwtContextualToolbarRibbonContainerTB .xwtContextualToolbarRibbonContainerTR,
+.masterbrand .xwtContextualToolbar .xwtContextualToolbarRibbonContainer .xwtContextualToolbarRibbonContainerTB .xwtContextualToolbarRibbonContainerTR .xwtContextualToolbarRibbonContainerTD {
+	width: 100%;
+}
+
+/* Work around IE 7 render issue. */
+.dj_ie7 .masterbrand .xwtContextualToolbar .xwtRibbon {
+	width: 100%;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .xwtRibbonWrapper {
+	top: 0;
+	height: 28px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtQuickFilter {
+	padding-right: 8px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtQuickFilter .xwtQuickFilterLabel {
+	padding-right: 8px;
+	color: #222222;
+	font-family: Arial, Helvetica;
+}
+
+.masterbrand .xwtContextualToolbar .xwtQuickFilter .xwtQuickFilterSelect {
+	width: 177px !important;
+}
+
+.dj_ie .masterbrand .xwtContextualToolbar .xwtQuickFilter .xwtQuickFilterSelect {
+	border-collapse: separate;
+}
+
+.masterbrand .xwtContextualToolbar .xwtQuickFilter .xwtQuickFilterSelect .dijitSelectLabel {
+	width: 147px;
+}
+/*
+.masterbrand .xwtManageFilterDialogContainer .xwtDropDown {
+	width: 177px !important;	
+}
+.masterbrand .xwtManageFilterDialogContainer .xwtDropDown .dijitSelectLabel {
+	width: 147px !important;
+}
+*/
+.masterbrand .xwtTableQuickFilterMenu .dijitSelectSelectedOption * {
+	font-weight: inherit;
+}
+
+/*temp patch*/
+.masterbrand .xwtContextualToolbar .xwtQuickFilter .xwtDropDown tbody tr td,
+.masterbrand .xwtManageFilterDialogContainer .xwtDropDown tbody tr td {
+	width: 100% !important;
+}
+
+.dj_ie .masterbrand .xwtContextualToolbar .xwtQuickFilter .xwtDropDown tbody tr td{
+	width: 90% !important;
+	
+}
+
+.masterbrand .xwtContextualPadding {
+	display: inline-block;
+	width: 6px;
+}
+.masterbrand .xwtContextualEdit { background-image: url(../images/table/toolbar/contextual/edit.png); zoom:1; }
+.masterbrand .xwtContextualDelete { background-image: url(../images/table/toolbar/contextual/delete.png); zoom:1;}
+.masterbrand .xwtContextualMoveTo { background-image: url(../images/table/toolbar/contextual/moveto.png); zoom:1;}
+.masterbrand .xwtContextualMoveDown { background-image: url(../images/table/toolbar/contextual/moveto_down.png); zoom:1;}
+.masterbrand .xwtContextualMoveUp { background-image: url(../images/table/toolbar/contextual/moveto_up.png); zoom:1;}
+.masterbrand .xwtContextualAcknowledge { background-image: url(../images/table/toolbar/contextual/acknowledge.png);}
+.masterbrand .xwtContextualAddRow { background-image: url(../images/table/toolbar/contextual/add_row.png); zoom:1;}
+.masterbrand .xwtContextualFilterExpand { background-image: url(../images/table/toolbar/contextual/Filter_expand_16.png); zoom:1;}
+.masterbrand .xwtContextualFilterCollapse { background-image: url(../images/table/toolbar/contextual/Filter_collapse_16.png); zoom:1;}
+.masterbrand .xwtContextualFilterExpandApplied { background-image: url(../images/table/toolbar/contextual/Filter_expand_applied_16.png); zoom:1;}
+.masterbrand .xwtContextualFilterCollapseApplied { background-image: url(../images/table/toolbar/contextual/Filter_collapse_applied_16.png); zoom:1;}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .xwtTableMoveDownButton,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .xwtTableMoveDownButton {
+	margin: 1px 0px 0px 3px;
+}
+
+.masterbrand .xwtContextualToolbar .xwtRibbon .xwtTableMoveUpButton,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .xwtTableMoveUpButton {
+        margin: 1px 3px 0px 0px;
+}
+
+/* Position the icons more centered. */
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .xwtTableMoveDownButton .dijitButtonNode,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .xwtTableMoveUpButton .dijitButtonNode,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .xwtTableMoveUpButton .dijitButtonNode button,
+.dj_ie .masterbrand .xwtContextualToolbar .xwtRibbon .xwtTableMoveDownButton .dijitButtonNode button {
+	width: 22px;
+}
+
+/* End of move up down icon positioning */
+
+/* FilteringToolbar */
+.masterbrand .xwtFilteringToolbar {
+	height: auto;
+	padding-left: 8px;
+	padding-bottom: 5px;
+}
+
+.masterbrand .xwtFilteringToolbar .filter-table {
+	white-space: nowrap;
+	display: inline-table;
+}
+
+.dj_ie7 .masterbrand .xwtFilteringToolbar .filter-table {
+        display: inline;
+}
+
+.masterbrand .xwtFilteringToolbar {
+	height: auto !important;
+	position: static;
+	overflow: hidden;
+}
+
+.masterbrand .xwtFilteringToolbar .button-cell {
+	width: 200px;
+	padding-left: 5px;
+	vertical-align: bottom;
+}
+.dj_gecko .masterbrand .xwtFilteringToolbar .button-cell {
+	padding-left: 3px;
+}
+.dj_ie .masterbrand .xwtFilteringToolbar .button-cell {
+	padding-left: 1px;
+}
+
+.masterbrand .xwtFilteringToolbar .label-cell,
+.masterbrand .xwtFilteringToolbar .button-cell {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.masterbrand .xwtFilteringToolbar .label-cell {
+	padding-right: 3px;
+	position: relative;
+	top: 7px;
+	vertical-align: top;
+}
+
+.dj_ie7 .masterbrand .xwtFilteringToolbar .label-cell {
+	top: 18px;
+}
+
+.masterbrand .xwtFilteringToolbar .labels {
+	padding-top: 10px;
+}
+.masterbrand .xwtFilteringToolbar .labels .dijitComboBox {
+	margin-left: 0;
+	width: 50px;
+}
+.masterbrand .xwtFilteringToolbar .labels .dijitComboBox .dijitValidationIcon {
+	display: none;
+}
+
+.masterbrand .xwtFilteringToolbar .removeButton,
+.masterbrand .xwtFilteringToolbar .addButton {
+	height: 14px;
+	width: 20px;
+}
+
+.masterbrand .xwtFilteringToolbar .saveButton {
+        height: 18px;
+        width: 18px;
+}
+
+
+/* 2010-09-04 jefhu edit this part for buttons -- start*/
+.dj_ie .masterbrand .xwtFilteringToolbar .removeButton { background: url('../images/table/toolbar/filtering/minus.png') no-repeat center center;}
+.dj_ie .masterbrand .xwtFilteringToolbar .addButton { background: url('../images/table/toolbar/filtering/plus.png') no-repeat center center;}
+.dj_ie .masterbrand .xwtFilteringToolbar .dijitDisabled .removeButton { background: url('../images/table/toolbar/filtering/minusDisabled.png') no-repeat center center;}
+.dj_ie .masterbrand .xwtFilteringToolbar .dijitDisabled .addButton { background: url('../images/table/toolbar/filtering/plusDisabled.png') no-repeat center center;}
+
+.dj_gecko .masterbrand .xwtFilteringToolbar .removeButton { background: url('../images/table/toolbar/filtering/minus.png') no-repeat center right; margin-top: -2px; margin-left: 1px;}
+.dj_gecko .masterbrand .xwtFilteringToolbar .addButton { background: url('../images/table/toolbar/filtering/plus.png') no-repeat center right; margin-top: -2px; margin-left: 1px;}
+.dj_gecko .masterbrand .xwtFilteringToolbar .dijitDisabled .removeButton { background: url('../images/table/toolbar/filtering/minusDisabled.png') no-repeat center right; margin-top: -2px; margin-left: 1px;}
+.dj_gecko .masterbrand .xwtFilteringToolbar .dijitDisabled .addButton { background: url('../images/table/toolbar/filtering/plusDisabled.png') no-repeat center right; margin-top: -2px; margin-left: 1px;}
+
+.masterbrand .xwtFilteringToolbar .removeButton { background: url('../images/table/toolbar/filtering/minus.png') no-repeat center right;}
+.masterbrand .xwtFilteringToolbar .addButton { background: url('../images/table/toolbar/filtering/plus.png') no-repeat center right;}
+.masterbrand .xwtFilteringToolbar .dijitDisabled .removeButton { background: url('../images/table/toolbar/filtering/minusDisabled.png') no-repeat center right;}
+.masterbrand .xwtFilteringToolbar .dijitDisabled .addButton { background: url('../images/table/toolbar/filtering/plusDisabled.png') no-repeat center right;}
+/* 2010-09-04 jefhu edit this part for buttons -- end*/
+
+
+.masterbrand .xwtFilteringToolbar .dijitButton .saveButton { background: transparent url('../images/table/toolbar/filtering/table_f_save.png') no-repeat center top }
+.masterbrand .xwtFilteringToolbar .dijitButton.dijitDisabled .saveButton { background: transparent url('../images/table/toolbar/filtering/table_f_save_disabled.png') no-repeat center top }
+.masterbrand .xwtFilteringToolbar .dijitButton .goButton { background: transparent url('../images/table/toolbar/filtering/search_go.png') no-repeat center center }
+.masterbrand .xwtFilteringToolbar .dijitButton .clearButton { background: transparent url('../images/table/toolbar/filtering/search_clear.png') no-repeat center center }
+
+.dj_ie .masterbrand .xwtFilteringToolbar .removeButton,
+.dj_ie .masterbrand .xwtFilteringToolbar .addButton {
+	margin-left: 10px;
+	margin-top: -1px;
+}
+
+/* CMA Note:
+
+   Using the CSS from the kubrick button.css file with
+   an added class of button-cell to apply default kubrick
+   button style for the Go and Clear Filter Buttons.
+
+   Linking or importing the button.css file for test_Filtering
+   yielded unpleasant results.
+
+   If there's a better way, please feel free to implement it.
+
+ */
+
+/* BEGIN: buttons */
+/* BEGIN: normal states */
+.masterbrand .button-cell .dijitButton,
+.masterbrand .button-cell .dijitDropDownButton,
+.masterbrand .button-cell .dijitComboButton,
+.masterbrand .button-cell .dijitButtonDisabled {
+	margin: 0;
+	padding: 0;
+	border: none !important;
+}
+
+.masterbrand .button-cell .dijitButtonHover,
+.masterbrand .button-cell .dijitDropDownButtonHover,
+.masterbrand .button-cell .dijitComboButtonHover,
+.masterbrand .button-cell .dijitButtonDisabled {
+	/* Have to use !important to over-ride another !important style in more generic toolbar */
+	border: none !important;
+}
+
+/* actual button node, very generic	 - NO MARGINS allowed here */
+.masterbrand .button-cell .dijitButtonNode {
+	border: none;
+	height: 18px;
+	padding: 0 3px 0 0; /* leave 2 px for right edge image */
+	background: url(../images/button/btn_right_new.png) no-repeat top right;
+	text-decoration: none;
+	overflow: hidden;
+	text-align:center;
+	vertical-align:middle;
+}
+.dj_ie .masterbrand .button-cell .dijitButtonNode {
+	margin-right: 3px;
+}
+/* standard button */
+.masterbrand .button-cell .dijitButton .dijitButtonNode BUTTON {
+	background: url(../images/button/btn_left_new.png) no-repeat top left;
+	border: none;
+	height: 18px;
+	/* 1 */
+	padding: 0px 0px 0px 2px; /*  set left padding 2px, to let outline box be symetrical to the right */
+	/*width:100px; *//* set button width here */
+}
+/* FF : remove dashed border  -- actually this destroys keyboard accessibility on second thought */
+.masterbrand .button-cell .dijitButtonNode BUTTON::-moz-focus-inner{
+	/*
+	a11y issue
+	*/
+	border:none !important;
+	-moz-outline:none !important;
+}
+/* primary action state */
+.masterbrand .button-cell .dijitButtonSelected .dijitButtonNode {
+	background-position: 100% -18px;
+ }
+.masterbrand .button-cell .dijitButtonSelected .dijitButtonNode > BUTTON {
+	background-position: 0px -18px;
+ }
+/* list separately, IE6 does not like > descendants */
+.dj_ie6 .masterbrand .button-cell .dijitButtonSelected .dijitButtonNode BUTTON {
+	background-position: 0px -18px;
+ }
+/* remove grey color */
+.masterbrand .button-cell .dijitDisabled .dijitRight .dijitButtonNode {
+	background-color: transparent;
+	background-image: url(../images/button/btn_right_new.gif);
+	background-position: 0px -54px;
+}
+.masterbrand .button-cell .dijitButtonNode .dijitButtonText {
+	color: #404040;
+	line-height: normal;
+	font-size: 11px;
+	font-family: Arial, Helvetica;
+	font-weight: normal;		
+	text-align:center;	
+	/* 2 */
+	padding:0px 3px 2px 4px;
+}
+.dj_ie6 .masterbrand .button-cell .dijitButtonNode .dijitButtonText {
+	line-height: 18px;
+}
+/* BEGIN: hover states */
+.masterbrand .button-cell .dijitButton .dijitButtonNode button:hover,
+.masterbrand .button-cell .dijitButton.dijitButtonHover .dijitButtonNode BUTTON {
+	background-position: 0px -36px;
+}
+.masterbrand .button-cell .dijitButtonHover .dijitButtonNode {
+	background: url(../images/button/btn_right_new.png) no-repeat top right;
+	background-position: 100% -36px !important;
+}
+/* END: hover states */
+/* BEGIN: active states */
+.masterbrand .button-cell .dijitButtonNode button:active,
+.masterbrand .button-cell .dijitButtonActive BUTTON,
+.dj_ie7 .masterbrand .button-cell .dijitButtonActive BUTTON {
+	background-position: 0px -18px;
+	outline: none;
+}
+/* pressed or highlighted */
+.masterbrand .button-cell .dijitButtonActive .dijitButtonNode {
+	background: url(../images/button/btn_right_new.gif) no-repeat top right;
+	background-position: 100% -18px;
+}
+/* when button is focused, for accessibility  -- overwrite any selected states*/
+/* standard button */
+.masterbrand .button-cell .dijitButtonFocused .dijitButtonNode {
+	background-position: 100% -36px !important;
+}
+/* pressed button state - text node */
+.masterbrand .button-cell .dijitActive .dijitButtonText {
+	color: #1fa0d5; !important;
+}
+.dj_ie7 .masterbrand .button-cell .dijitActive .dijitButtonText {
+	margin: 0 0 1px 0px;
+	padding-left: 0 !important;
+	line-height: 17px;
+}
+/* END: active states */
+/* BEGIN: disabled states */
+/* first one gets IE */
+.masterbrand .button-cell .dijitButtonNode button:disabled,
+.masterbrand .button-cell .dijitButtonDisabled button,
+.masterbrand .button-cell .dijitButtonDisabled .dijitButtonNode button:hover {
+	background-position: 0px -72px;
+}
+.masterbrand .button-cell .dijitButtonDisabled .dijitButtonNode {
+	background-position: 100% -72px !important;
+}
+/* get IE to show disabled */
+.dj_ie .masterbrand .button-cell .dijitButtonDisabled .dijitButtonContents {
+	background-position: 0 -72px;
+}
+.masterbrand .button-cell .dijitDisabled .dijitButtonText {
+	color: #8e8e8e;
+}
+/* END: disabled states */
+/* BEGIN: Buttons with no background/border */
+.masterbrand .buttonNoBackground .dijitButtonNode,
+.masterbrand .buttonNoBackground .dijitButtonNode button,
+.masterbrand .buttonNoBackground .dijitButtonHover,
+.masterbrand .buttonNoBackground .dijitButtonHover .dijitButtonNode,
+.masterbrand .buttonNoBackground {
+	margin-left: -2px;	
+	background: none !important;
+	border: 1px solid transparent !important;
+}
+.dj_ie .masterbrand .buttonNoBackground .dijitButtonNode,
+.dj_ie .masterbrand .buttonNoBackground .dijitButtonNode button,
+.dj_ie .masterbrand .buttonNoBackground .dijitButtonHover,
+.dj_ie .masterbrand .buttonNoBackground .dijitButtonHover .dijitButtonNode,
+.dj_ie .masterbrand .buttonNoBackground {
+	margin-left: 0; 
+}
+/* END: dButtons with no background/border */
+/* END: buttons */
+
+.masterbrand .xwtFilterWidget {
+	margin-top: 5px;
+}
+.masterbrand .xwtFilterWidget .column-cell,
+.masterbrand .xwtFilterWidget .operator-cell {
+	padding-right: 0;
+}
+.masterbrand .xwtFilterWidget .criteria-cell {
+	padding-right: 4px;
+}
+.dj_gecko .masterbrand .xwtFilterWidget .criteria-cell {
+	padding-right: 0px;
+}
+.dj_ie .masterbrand .xwtFilterWidget .criteria-cell {
+	padding-right: 1px;
+}
+.masterbrand .xwtFilterWidget .action-cell {
+	margin-left: 0px;
+	vertical-align: bottom;
+}
+.masterbrand .xwtFilterWidget .action-cell .dijitButton {
+	margin: 0;
+	width: 17px;
+}
+.dj_ie .masterbrand .xwtFilterWidget .action-cell .dijitButton {
+	margin: 0 5px 0 0;
+}
+.masterbrand .xwtFilterWidget .action-cell .dijitButtonHover {
+	border: 1px solid transparent;
+}
+.masterbrand .xwtFilterWidget .column-cell .dijitComboBox,
+.masterbrand .xwtFilterWidget .operator-cell .dijitComboBox,
+.masterbrand .xwtFilterWidget .criteria-cell .dijitTextBox {
+	margin: 0 5px 0px 0px;
+	width: 200px;
+}
+.masterbrand .xwtFilterWidget .column-cell .dijitSelect,
+.masterbrand .xwtFilterWidget .operator-cell .dijitSelect {
+	margin: 0 5px 0px 0px;
+}
+.masterbrand .xwtFilterWidget .criteria-cell .dijitTextBox {
+	height: 14px;
+}
+
+.masterbrand .xwtFilteringToolbar .xwtFilterWidget .xwtDropDown .dijitButtonContents {
+	width: 100% !important;
+	padding-top: 0px;
+}
+
+.dj_ie .masterbrand .xwtFilteringToolbar .labels .xwtDropDown .dijitButtonContents {
+	/* Work around IE table bleed issue in the any/all box */
+	width: inherit !important;
+}
+
+.masterbrand .xwtFilterByExample .dijitTextBox .dijitInputField,
+.masterbrand .xwtFilterByExample .dijitTextBox .dijitInputField input {
+	width: auto;
+	color: #838383;
+	height: 16px;
+}
+
+.masterbrand .xwtFilterByExample .dijitTextBox {
+	height: 16px;
+	width: auto;
+	color: #838383;
+	width: auto;
+	margin: 1px 0 5px 0;
+	padding: 1px 5px;
+}
+
+.masterbrand .filter-by-example .table-header {
+	border-bottom: 0;
+}
+.masterbrand .filter-by-example .xwtFilterByExample {
+	border-top: 0;
+}
+
+.masterbrand .xwtByExampleWidget {
+	font-weight: normal !important;
+}
+.masterbrand .xwtByExampleWidget .xwtByExampleWidgetButton {
+	display: none;
+}
+
+.masterbrand .table-column-resizing .xwtByExampleWidget .dijitInputField input {
+	cursor: col-resize !important;
+}
+
+.masterbrand .xwtFilterByExample .filtered .xwtByExampleWidgetButton {
+	display: inline;
+	width: 11px !important;
+	height: 16px;
+	visibility: visible;
+	margin: 0px 0px 0px 3px;
+	background: transparent url('../images/table/toolbar/filtering/search_clear.png') no-repeat center center !important;
+}
+.masterbrand .xwtFilterByExample .table-header .ellipsis {
+	white-space: inherit !important;
+}
+.masterbrand .xwtByExampleWidgetHighlightMatch {
+	font-weight: bold;
+}
+
+.masterbrand .xwtContextualMoveToDropdown {
+	background: #E8ECED url('../images/table/lightBlueGradientBg.png') repeat-x left top;
+	border: 1px solid #8499a2;
+	margin: 4px 8px;
+	padding: 4px;
+	
+	/* CSS3 enabled browsers */
+	-moz-box-shadow: 0 5px 8px #666;
+	-webkit-box-shadow: 0 5px 8px #666;
+}
+.masterbrand .xwtContextualMoveToDropdown .xwtContextualMoveToValue {
+	width: 40px;
+	border: 1px solid #8499a2;
+}
+
+/* BEGIN: menu item icon */
+.masterbrand .dijitCheckedMenuItemIcon {
+	background-image: url('../images/table/toolbar/global/check.png');
+	background-position: -16px 3px;
+}
+
+.dj_ie6 .masterbrand .dijitCheckedMenuItemIcon {
+	background-image: url('../images/table/toolbar/global/check.gif');
+}
+
+.masterbrand .dijitCheckedMenuItemChecked .dijitCheckedMenuItemIcon {
+	background-position: 0 3px;
+}
+
+/* Save Dialog styles */
+
+.masterbrand .xwtSaveFilterDialogLabel {
+	padding-right: 8px;
+	white-space: nowrap;
+}
+
+.dj_ie7 .masterbrand .xwtGlobalToolbar .dijitArrowButtonInner {
+	border-left: 3px solid transparent; 
+}
+
+/*	harjeesi hack to vertically align advanced filter drop down text. Should be fixed in dorpdown.css owned by Dennis
+	Till it gets resolved we need to live with this hack.
+*/
+.masterbrand .xwtContextualToolbar .xwtFilterWidget .xwtDropDown .dijitButtonContents .dijitButtonText {
+	padding-bottom: 0px;
+}
+
+/* Fixes for alignmnt issues in IE7 (and IE8) in the Advanced Filtering toolbar */
+
+.dj_ie .masterbrand .xwtFilteringToolbar .action-cell {
+	width: 50px;
+}
+
+.masterbrand .xwtFilteringToolbar .xwt-TextButton {
+	padding-right: 2px;
+}
+
+.dj_ie .masterbrand .xwtFilteringToolbar .xwt-TextButton {
+        padding-right: 5px;
+}
+
+.dj_ie7 .masterbrand .xwtFilteringToolbar .action-cell {
+	width: 90px;
+}
+
+.dj_ie .masterbrand .xwtFilteringToolbar .button-cell {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.dj_ie7 .masterbrand .xwtFilteringToolbar .button-cell .dijitButton {
+	padding-bottom: 2px;
+}
+
+.dj_ie7 .masterbrand .button-cell .dijitButton .dijitButtonNode BUTTON {
+	height: 19px;
+}
+
+/* End IE7 fixes */
+
+
+/* Global Toolbar Row Count */
+.masterbrand .xwtGlobalToolbarTotalRecords {
+	display: none;
+	height: 22px;
+	vertical-align: middle;
+	font-size: 10px;
+	font-family: Arial, Helvetica;
+}
+.masterbrand .xwtGlobalToolbarTotalRecords .totalCountLabel,
+.masterbrand .xwtGlobalToolbarTotalRecords .selectionCountLabel,
+.masterbrand .xwtGlobalToolbarTotalRecords .countSeparator {
+	height: 22px;
+	padding-right: 4px;
+	padding-left: 4px;
+	vertical-align: middle;
+	display: table-cell;
+}
+.masterbrand .xwtGlobalToolbarTotalRecords .countSeparator {
+	padding: 0px;
+}
+.masterbrand .xwtGlobalToolbarTotalRecords .countSeparatorBorder {
+	vertical-align: middle;
+	border-right: 1px solid #455A73;
+}
+.masterbrand .xwtGlobalToolbarTotalRecords .countSeparatorBorder img {
+	height: 10px;
+	width: 1px;
+	vertical-align: middle;
+}		
+
+/* 
+IE7 doesn't handle display: table-cell or vertical-align right, so we have to move it 
+manually and make it look close to centered.
+*/
+.dj_ie7 .masterbrand .xwtGlobalToolbarTotalRecords {
+	position: relative;
+	top: 5px;
+} 

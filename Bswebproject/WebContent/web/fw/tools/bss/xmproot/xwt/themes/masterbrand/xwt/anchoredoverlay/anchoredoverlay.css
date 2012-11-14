@@ -1,0 +1,427 @@
+/*   
+ *        Copyright (c) 2009 Cisco Systems, Inc.   
+ *        All rights reserved.   
+ *
+ * @author denpark
+ * CSS rules for tokenfield
+ */
+
+.masterbrand .xwtAnchoredOverlay .tokenField{
+	min-width: 88px; /* 100 - 10 (for left/right padding) - 2 (for left/right border) - 8 for width of quickview arrow*/ 
+	/*max-width: 288px;*/ /* 300 - 10 (for left/right padding) - 2 (for left/right border)- 8 for width of quickview arrow*/
+	max-width: 488px; /* 500 - 10 (for left/right padding) - 2 (for left/right border)- 8 for width of quickview arrow*/
+	
+	min-height: 15px; /* 22 - 2 (for top/bottom border)*/
+	max-height: 15px; /* 22 - 2 (for top/bottom border)*/
+	
+	border-top: 1px solid #546e8b;
+	border-left:1px solid #546e8b;
+	border-right:1px solid #546e8b;
+	border-bottom:1px solid #546e8b;
+		
+	/*background: #fafbfc !important;	
+	cursor: default !important;
+	*/  /* removed important 3/11/2010 */
+		background: #fefefe;	
+	cursor: default;
+	text-align: left;
+}
+
+.masterbrand .xwtAnchoredOverlayDisabled.xwtAnchoredOverlay .tokenField{
+	border-color: #D5D5D5 #D5D5D5 #BDBDBD
+}
+
+.dj_ie7 .masterbrand .xwtAnchoredOverlay .tokenField{
+	min-width: 88px; /* 100 - 10 (for left/right padding) - 2 (for left/right border) - 8 for width of quickview arrow*/ 
+	/*max-width: 288px; *//* 300 - 10 (for left/right padding) - 2 (for left/right border)- 8 for width of quickview arrow*/
+	max-width: 488px; /* 500 - 10 (for left/right padding) - 2 (for left/right border)- 8 for width of quickview arrow*/
+	
+	border-top: 1px solid #546e8b;
+	border-left:1px solid #546e8b;
+	border-right:1px solid #546e8b;
+	border-bottom:1px solid #546e8b;
+	
+	padding-top:0px;
+	padding-bottom:0px;
+	padding-left:0px;
+	padding-right:0px;
+	background: #fefefe;	
+	cursor: default;
+	text-align: left;
+	height:15px;
+}
+.dj_ie7 .masterbrand .xwtAnchoredOverlay .tokenFieldDropDown .dijitButtonNode, 
+.dj_ie7 .masterbrand .xwtAnchoredOverlay .tokenFieldDropDown .dijitButtonNode  {	
+	cursor: default;
+	padding-top:0px;
+	padding-bottom:0px;
+	padding-left:5px;
+	padding-right:5px;
+	height:15px;
+	
+	
+}
+.dj_ie7 .masterbrand .xwtAnchoredOverlay .tokenField .dijitDownArrowButton, 
+.dj_ie7 .masterbrand .xwtAnchoredOverlay .tokenField .dijitButtonContents{
+	height:19px;
+}
+.dj_ie7 .masterbrand .xwtAnchoredOverlay .tokenfieldHovering {
+	background: url(../images/anchoredoverlay/rightarrow_icon.png) 100% 2px no-repeat;
+	height:5px;
+	width:5px;	
+	visibility: hidden; 
+	cursor: default;	
+}
+.dj_ie7 .masterbrand .xwtAnchoredOverlay .tokenFieldDropDown .dijitButtonText{
+	margin-top: 1px;
+	margin-bottom:2px;
+	margin-left: 5px;
+	margin-right: 5px;
+	height:16px;
+	font-family: Arial;
+	font-size: 12px;
+	padding-left:5px;		
+}
+.dj_ie7 .masterbrand .xwtAnchoredOverlay .tokenFieldExpand {
+	background: url(../images/anchoredoverlay/plus_icon.png) 100% 0px no-repeat ;
+	height:13px;
+	width:13px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 5px;	
+	/* removed important 3/11/2010 */
+	
+	/*cursor: pointer !important;*/
+	cursor: pointer;
+}
+
+.dj_ie7 .masterbrand .xwtAnchoredOverlay .tokenFieldCollapse {
+	background: url(../images/anchoredoverlay/minus_icon.png) 100% 0px no-repeat;
+	height:13px;
+	width:13px;
+	margin-top: 2px;
+	margin-bottom: 4px;
+	margin-left: -2px;
+	margin-right: 5px;	
+	/* removed important 3/11/2010 */
+	
+	/*cursor: pointer !important;*/
+	cursor: pointer;
+}
+
+/*IE8 Begins*/
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .tokenField{
+	min-width: 88px; /* 100 - 10 (for left/right padding) - 2 (for left/right border) - 8 for width of quickview arrow*/ 
+	/*max-width: 288px; *//* 300 - 10 (for left/right padding) - 2 (for left/right border)- 8 for width of quickview arrow*/
+	max-width: 488px;/* 500 - 10 (for left/right padding) - 2 (for left/right border)- 8 for width of quickview arrow*/
+	/*border-top: 2px solid #819eac;
+	border-left:2px solid #819eac;
+	border-right:2px solid #819eac;
+	border-bottom:2px solid #819eac;
+	*/
+	padding-top:0px;
+	padding-bottom:0px;
+	padding-left:0px;
+	padding-right:0px;
+	background: #fefefe;	
+	cursor: default;
+	text-align: left;
+	height:18px;
+	max-height: 18px;
+	min-height: 18px;
+}
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .tokenFieldDropDown .dijitButtonNode, 
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .tokenFieldDropDown .dijitButtonNode  {	
+	cursor: default;
+	padding-top:0px;
+	padding-bottom:0px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-bottom:4px;
+	
+	
+}
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .tokenField .dijitDownArrowButton, 
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .tokenField .dijitButtonContents{
+	height:18px;
+}
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .tokenfieldHovering {
+	background: url(../images/anchoredoverlay/rightarrow_icon.png) 100% 2px no-repeat;
+	height:5px;
+	width:5px;	
+	visibility: hidden; 
+	cursor: default;
+}
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .tokenFieldDropDown .dijitButtonText{
+	margin-top: 0px;
+	margin-bottom:0px;
+	margin-left: 5px;
+	margin-right: 5px;
+	height:16px;
+	font-family: Arial;
+	font-size: 12px;		
+}
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .tokenFieldExpand {
+	background: url(../images/anchoredoverlay/plus_icon.png) 100% 0px no-repeat ;
+	height:13px;
+	width:13px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 5px;	
+	/* removed important 3/11/2010 */
+	
+	/*cursor: pointer !important;*/
+	cursor: pointer;
+	padding-bottom:2px;
+}
+
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .tokenFieldCollapse {
+	background: url(../images/anchoredoverlay/minus_icon.png) 100% 0px no-repeat;
+	height:13px;
+	width:13px;
+	margin-top: 2px;
+	margin-bottom: 4px;
+	margin-left: -2px;
+	margin-right: 5px;	
+	/* removed important 3/11/2010 */
+	
+	/*cursor: pointer !important;*/
+	cursor: pointer;
+	padding-bottom:2px;
+}
+/*IE8 -Ends*/
+.masterbrand .xwtAnchoredOverlay .dijitButtonNode, 
+.masterbrand .xwtAnchoredOverlay .dijitButtonNode .tokenFieldDropDown {	
+	/*cursor: default !important;
+	*/  /* removed important 3/11/2010 */
+	
+	cursor: default;
+	height:18px;
+}
+
+.masterbrand .xwtAnchoredOverlay .tokenFieldDropDown .dijitButtonText{
+	margin-top: 1px;
+	margin-bottom:1px;
+	margin-left: 2px;
+	margin-right: 0px;
+	font-family: Arial;
+	font-size: 12px;	
+	margin:0px 0px 3px 2px;	
+}
+.dj_ie8  .masterbrand .xwtAnchoredOverlay .tokenFieldDropDown .dijitButtonText{
+	margin-top: 1px;
+	margin-bottom:1px;
+	margin-left: 2px;
+	margin-right: 0px;
+	font-family: Arial;
+	font-size: 12px;
+		
+}
+
+
+.dj_ie7 .masterbrand .xwtAnchoredOverlay .openAbove{
+	/*border-top: none;*/
+	/*border-bottom:2px solid #819eac;*/
+	border-bottom:1px solid #546e8b;
+}
+
+.dj_ie7 .masterbrand .xwtAnchoredOverlay .openBelow{
+	/*border-bottom: none;*/
+	border-top:1px solid #546e8b;
+}
+
+.dj_ie7 .masterbrand .xwtAnchoredOverlay .open{
+	/*border-bottom: none;*/
+}
+
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .openAbove{
+	border-top: 1px solid transparent;
+	/*border-top: none;*/
+	/*border-bottom:2px solid #819eac;*/
+}
+
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .openBelow{
+	/*border-bottom: none;*/
+	/*border-top:2px solid #819eac;*/
+}
+
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .open{
+	/*border-bottom: none;*/
+}
+
+
+.masterbrand .xwtAnchoredOverlay .openAbove{
+	border-top: 1px solid transparent;
+	/*border-bottom:2px solid #819eac;*/
+
+}
+
+.masterbrand .xwtAnchoredOverlay .openBelow{
+	/*border-bottom: none;*/
+	/*border-top:2px solid #819eac;*/
+}
+
+.masterbrand .xwtAnchoredOverlay .open{
+	/*border-bottom: none;*/
+}
+
+.masterbrand .xwtAnchoredOverlay .tokenfieldHovering {
+	background: url(../images/anchoredoverlay/qv_access.png) 100% 0px no-repeat;
+	height:12px;
+	width:12px;	
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 4px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 4px;
+	visibility: hidden;
+	display:inline-block; 
+	
+	/* removed important 3/11/2010 */
+	/*cursor: default !important;*/
+	cursor: default;
+	
+	vertical-align:middle;
+	
+	margin-left: -10px;
+}
+
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .tokenfieldHovering {
+	background: url(../images/anchoredoverlay/qv_access.png) 100% 4px no-repeat;
+	height:8px;
+	width:5px;	
+	padding-top: 0px;		
+	padding-bottom:10px;
+	padding-left:4px;	
+	padding-right: 4px;
+	margin-top: 0px;
+	margin-bottom: 4px;
+	margin-left: 4px;
+	margin-right: 4px;
+	visibility: hidden; 
+	
+	/* removed important 3/11/2010 */
+	/*cursor: default !important;*/
+	cursor: default;
+	
+	vertical-align:bottom;
+}
+.dj_iequirks .masterbrand .xwtAnchoredOverlay .tokenfieldHovering {
+	vertical-align: middle; /* Set this back for what we hack in dijit inline */
+	background: url(../images/anchoredoverlay/qv_access.png) 100% 3px no-repeat;
+	height:8px;
+	width:5px;	
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 4px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 4px;
+	margin-right: 4px;
+	visibility: hidden; 	
+	vertical-align:middle;
+}
+
+.masterbrand .xwtAnchoredOverlay .tokenFieldExpand {
+    background: url("../images/anchoredoverlay/plus_icon.png") no-repeat scroll 100% 0 transparent;
+    cursor: pointer;
+    height: 13px;
+    margin: 0px 5px 2px 0;
+    width: 13px;
+/*	padding-bottom:2px; */
+}
+
+.masterbrand .xwtAnchoredOverlay .tokenFieldCollapse {
+	background: url(../images/anchoredoverlay/minus_icon.png) 100% 0px no-repeat;
+	height:13px;
+	width:13px;
+	margin-top: 2px;
+	margin-bottom: 3px;
+	margin-left: 0px;
+	margin-right: 5px;	
+	/* removed important 3/11/2010 */
+	
+	/*cursor: pointer !important;*/
+	cursor: pointer;
+}
+
+
+
+
+.dj_ie8 .masterbrand .xwtAnchoredOverlay .tokenField .dijitButtonText{
+	margin-top: -1px;
+	margin-bottom:4px;
+	font-family: Arial;
+	font-size: 12px;
+	pading-left:0px;
+	pading-right:0px;		
+}
+
+
+.dj_ie .masterbrand .xwtAnchoredOverlay .tokenFieldExpand {
+	background: url(../images/anchoredoverlay/plus_icon.png) 100% 0px no-repeat;
+	height:13px;
+	width:13px;
+	margin-top: 1px;
+	margin-bottom: 4px;
+	margin-left: -1px;
+	margin-right: 5px;	
+	/* removed important 3/11/2010 */
+	
+	/*cursor: pointer !important;*/
+	cursor: pointer;
+}
+
+.dj_ie .masterbrand .xwtAnchoredOverlay .tokenFieldCollapse {
+	background: url(../images/anchoredoverlay/minus_icon.png) 100% 0px no-repeat;
+	height:13px;
+	width:13px;
+	margin-top: 1px;
+	margin-bottom: 4px;
+	margin-left: -1px;
+	margin-right: 5px;	
+	/* removed important 3/11/2010 */
+	
+	/*cursor: pointer !important;*/
+	cursor: pointer;
+}
+
+
+
+
+.masterbrand .xwtAnchoredOverlay .hiddenRuler {
+	 visibility: hidden; 
+	 white-space: nowrap; 
+}
+
+
+.masterbrand .xwtAnchoredOverlayDisabled .tokenFieldExpand {
+	background:url("../images/anchoredoverlay/plus_icon_disabled.png") no-repeat scroll 100% 0 transparent;
+}
+
+.dj_ie .masterbrand .xwtAnchoredOverlayDisabled .tokenFieldExpand {
+	background:url("../images/anchoredoverlay/plus_icon_disabled.png") no-repeat scroll 100% 0 transparent;
+	padding-bottom: 2px;
+}
+
+
+.masterbrand .xwtAnchoredOverlay .qvanchor {
+	display:inline;
+	float:right;
+	height:10px;
+	margin-left:5px;
+	margin-top:0;
+	position:absolute;
+	width:10px;
+}
+
+.dj_ie .masterbrand .xwtAnchoredOverlay .qvanchor {
+	margin-top: 5px;
+	margin-left: 0px;
+}

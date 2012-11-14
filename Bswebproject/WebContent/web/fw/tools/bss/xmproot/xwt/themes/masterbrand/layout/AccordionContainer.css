@@ -1,0 +1,36 @@
+/* ************************************************** */
+/* Copyright (c) 2009, 2010 Cisco Systems, Inc.       */
+/* All rights reserved.                               */
+/* ************************************************** */
+/* Accordion */
+
+.masterbrand .dijitAccordionContainer-dijitContentPane {
+	background-color: transparent;
+}
+
+.masterbrand .dijitAccordionContainer {
+	border-color: #ccc;
+	background-color: #fff;
+}
+
+/* common */
+
+.masterbrand .dijitAccordionTitle {
+	background:#fafafa url("../images/titleBar.png") repeat-x bottom left;
+	border-top: 1px solid #bfbfbf;
+	padding: 4px 4px 4px 8px;
+	cursor:pointer;
+}
+
+.masterbrand .dijitAccordionTitle-hover  {
+	background: #f8fafd url("../images/accordionItemHover.gif") bottom repeat-x;
+}
+
+.masterbrand .dijitAccordionTitle-selected  {
+	background: #f9f9f9 url("../images/accordionItemActive.gif") bottom repeat-x;
+	font-weight: bold;
+	border-top: 1px solid #aaaaaa;
+	border-bottom: 1px solid #bfbfbf;
+	padding: 4px 4px 4px 8px;
+	cursor: default;
+}

@@ -10,9 +10,7 @@ public class AppKey
     implements Serializable
     {
 
-    /**
-	 * 
-	 */
+    
 	private static final long serialVersionUID = -3738158384549499012L;
 	
 	@Column(name="PT2B_APPID")
@@ -75,3 +73,6 @@ public class AppKey
         this.seqNo = seqNo;
     }
 }
+
+
+

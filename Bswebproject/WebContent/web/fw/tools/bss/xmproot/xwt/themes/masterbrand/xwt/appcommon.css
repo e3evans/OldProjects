@@ -1,0 +1,14 @@
+/*
+
+This files contains css styles that are not used by XWT but are helpful to style
+certain DOM elements for application. These are cases where we do not have a widget
+in XWT
+*/
+
+/* To style an anchor tag as a form field (read-only*/
+.masterbrand .xwtAnchorDetail {
+	padding: 2px 3px;
+	margin: 0 8px;
+	color: #38ACEC !important;
+	font-weight: bold;
+}

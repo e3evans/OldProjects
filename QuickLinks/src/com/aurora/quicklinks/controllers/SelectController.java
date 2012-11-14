@@ -36,10 +36,10 @@ public class SelectController {
 		return urlService;
 	}
 	
-	@ModelAttribute(value="urlList")
+	/*@ModelAttribute(value="urlList")
 	public List<UrlBean> getUrls() {
 		return urlService.listUrlBean("test");
-	}
+	}*/
 	
 	
 
@@ -51,6 +51,7 @@ public class SelectController {
 		System.out.println("Entering SelectController.showIndex11()");
 		//request.setAttribute("urlList", urlService.listUrlBean("test"));
 		System.out.println("Exiting SelectController.showIndex2222()");
+		request.getUserPrincipal();
 		return "list";
 	}
 	

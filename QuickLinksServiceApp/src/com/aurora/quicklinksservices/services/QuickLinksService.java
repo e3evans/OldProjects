@@ -5,5 +5,6 @@ import java.util.List;
 public interface QuickLinksService {
 	
 	public List retrieveAvailAppListByRole(String roleCd);
+	public List retrieveUserDetails(String userid);
 
 }

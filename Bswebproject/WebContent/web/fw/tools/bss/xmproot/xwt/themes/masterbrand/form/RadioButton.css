@@ -1,0 +1,109 @@
+.masterbrand .dijitToggleButton .dijitRadio,
+.masterbrand .dijitToggleButton .dijitRadioIcon {
+	background-image: url('../images/checkmarkNoBorder.png');
+}
+
+.masterbrand .dijitRadio,
+.masterbrand .dijitRadioIcon {		/* inside a toggle button */
+	background: url("../images/checkbox_radio_states.png") -14px -13px no-repeat;
+	width: 13px;
+	height: 13px;
+	margin: 0 4px 3px 0;
+	padding: 0;
+    border: 1px transparent solid;
+}
+
+.masterbrand .row-editor .dijitRadio,
+.masterbrand .row-editor .dijitRadioIcon	{		/* inside a toggle button */
+	margin-top: 4px;
+}
+
+.dj_ie .masterbrand .row-editor .dijitRadio,
+.dj_ie .masterbrand .row-editor .dijitRadioIcon	{		/* inside a toggle button */
+	margin-top: 6px;
+}
+
+
+.masterbrand .dijitRadio,
+.masterbrand .dijitToggleButton .dijitRadioIcon {
+	/* unselected */
+	background-position: -14px -14px;
+}
+
+
+/* unselected hover */
+.masterbrand .dijitRadio:hover,
+.masterbrand .dijitToggleButton .dijitRadioIcon:hover {
+	background-position: -14px -70px;
+}
+
+/* unselected active */
+.masterbrand .dijitRadio:active,
+.masterbrand .dijitToggleButton .dijitRadioIcon:active {
+	background-position: -14px -98px;
+}
+
+
+
+
+
+.masterbrand .dijitRadio + label {
+	/* normal radiobutton label*/
+	color:#222222;
+	outline:0 none;
+}
+
+.masterbrand .dijitRadioDisabled + label {
+	/* normal radiobutton disabled label*/
+	color:#666666;
+}
+
+/*
+.masterbrand .fieldsetarea .dijitRadio + label {
+	color:#4D4D4D;
+}*/
+
+/*
+.masterbrand .fieldsetarea .dijitRadioDisabled + label {
+	color:#4D4D4D;
+}
+*/
+
+.masterbrand .dijitRadioChecked,
+.masterbrand .dijitToggleButtonChecked .dijitRadioIcon {
+	/* selected.  Since clicking a selected radio button doesn't change anything, there's
+	 * no hover effect on selected radio buttons.
+	 */
+	background-position: -14px 0px;
+}
+
+
+.masterbrand .dijitRadioChecked:hover,
+.masterbrand .dijitToggleButtonChecked .dijitRadioIcon:hover {
+	background-position: -14px -56px;
+}
+
+.masterbrand .dijitRadioChecked:active,
+.masterbrand .dijitToggleButtonChecked .dijitRadioIcon:active {
+	background-position: -14px -84px;
+}
+
+
+
+/* define disable */
+
+.masterbrand .dijitRadioDisabled,
+.masterbrand .dijitRadioDisabled:hover {
+	/* unselected but disabled */
+	background-position: -14px -42px;
+}
+
+
+.masterbrand .dijitRadioCheckedDisabled,
+.masterbrand .dijitRadioCheckedDisabled:hover {
+	/* selected but disabled */
+	background-position: -14px -28px;
+}
+
+
+

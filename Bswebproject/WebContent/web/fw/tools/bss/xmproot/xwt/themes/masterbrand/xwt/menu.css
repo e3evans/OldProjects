@@ -1,0 +1,150 @@
+/*   
+ *        Copyright (c) 2009, 2010 Cisco Systems, Inc.   
+ *        All rights reserved.   
+ *
+ * @author nbhattac
+ * CSS rules for drop down menu button
+ */
+
+.masterbrand .dijitMenuItemSelected,
+.masterbrand .dijitMenuPassive .dijitMenuItemHover {
+	color: #333;
+}
+
+/* combobox will make a absolutely position menu drop down */
+.masterbrand .dijitMenu .dijitMenuItemSelected,
+.masterbrand .dijitMenu .dijitMenuItemHover {
+	color: #fff;
+    background: -moz-linear-gradient(top, #00aeef,#0085cc);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#00aeef), to(#0085cc));
+}
+
+
+.dj_ie .masterbrand .dijitMenu .dijitMenuItemSelected,
+.dj_ie .masterbrand .dijitMenu .dijitMenuItemHover {
+	color: #fff;
+    zoom: 1;
+    background-color: transparent;
+	background: url("images/menubutton/menubutton_menuitem_highlight.png") repeat-x;
+}
+
+.masterbrand .dijitMenuItem {
+	text-align: left;
+	color: #333;
+
+}
+.masterbrand .dijitMenuItemLabel {
+	padding-left:3px;
+}
+
+.masterbrand .multiColumnItem{
+	line-height:18px;
+	border-right:1px solid #7EABCD;
+	padding:0px 5px;
+}
+
+.masterbrand .multiColumnItemLast{
+	line-height:18px;
+	padding:0px 5px;
+}
+
+.dj_ie .masterbrand .dijitMenuItem {
+	/*padding: 1.5px 7px 1.5px 5px; psesumic*/
+	text-align: left;
+	color: #222222;
+}
+
+.masterbrand .dijitMenuTable {
+	border-collapse:separate;
+	border-spacing: 0;
+}
+
+/* general popup menu */
+.masterbrand .dijitMenu {
+	box-shadow: 0px 2px 1px rgba(0,0,0,.30);
+	-moz-box-shadow: 0px 1px 3px 1px rgba(0,0,0,.30);
+	-webkit-box-shadow: 0px 1px 3px 1px rgba(0,0,0,.30);
+
+	background: #fff none;
+	border: 1px #ced4d7 solid;
+	padding: 0px 0px 0px 0px;  /* menu item has no gap to top */
+}
+
+.dj_ie .masterbrand .dijitMenu {
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#12000000', Direction=130, Strength=1.5);
+}
+
+/*
+.masterbrand .dijitMenu tr:first-child td{
+	padding-top: 2px;
+}
+*/
+.masterbrand .dijitComboBoxHighlightMatch {
+	font-weight: bold;
+	background:transparent!important;
+}
+
+/* psesumic
+.masterbrand .dijitMenuSeparator td {
+	margin: 0;
+	padding: 0;
+	height: 1px;
+}
+
+.masterbrand .dijitMenuSeparator td div{
+	display: none;
+}
+
+.masterbrand .dijitMenuSeparator td div.dijitMenuSeparatorTop{
+	height: 1px;
+	display: block;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	padding: 1;
+	border: 0px;
+}
+*/
+.masterbrand .dijitMenuItemIcon {
+  margin-left:5px;
+  margin-right:1px;
+  margin-bottom:1px;
+  margin-top:1px;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 16px;
+}
+
+/* Do not reserve an empty space when no icon is present */
+.masterbrand img[class="dijitMenuItemIcon"] {
+	width: 0px;	
+	margin-left: 0px;
+}
+
+.masterbrand .dijitMenuExpand {
+	width: 7px;
+	height: 7px;
+	background-position: -14px 0px;
+	font-size: 1px;
+	margin: 0px 4px 1px 8px;
+}
+
+/* do not reserve space for the dijitMenuExpand arrow if its wrapper is hidden*/
+div[style="visibility: hidden;"] > img[class="dijitMenuExpand"] {
+	width: 0px;	
+	margin-left: 0px;
+	margin-right: 5px;
+}
+
+/*--- overridng the hover style for menuitem--
+ * .masterbrand .dijitMenuItemSelected .dijitMenuExpand,
+.masterbrand .dijitMenuItemHover .dijitMenuExpand {
+	background-repeat: no-repeat;
+	background-position: -70px 0px;
+	margin: 1px 1px 0px 12px;
+}*/
+
+.dj_ie .masterbrand .dijitMenuSeparatorTop{
+	margin-bottom: 0px;
+}

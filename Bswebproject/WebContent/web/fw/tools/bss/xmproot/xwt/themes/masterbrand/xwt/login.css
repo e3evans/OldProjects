@@ -1,0 +1,331 @@
+/* ************************************************** */
+/* Copyright (c) 2009, 2010 Cisco Systems, Inc.       */
+/* All rights reserved.                               */
+/* ************************************************** */ 
+/* 
+* @author varusing
+* @author harjeesi
+* @author denpark
+* All the CSS elements for Login page goes here.
+*/
+.masterbrand .loginPage {
+	position: absolute;
+	width: 644px;
+}
+
+.masterbrand .loginPage .loginBackTop {
+	background: url('images/login/img/login_top.png') no-repeat;
+	height: 374px;
+	padding-left: 0px;
+	width:676px;
+}
+
+.masterbrand .loginPage .loginBackBottom {
+	width:662px;
+}
+
+.masterbrand .loginPage .productInfo {
+	position: relative;
+	top: 96px;
+	height: 65px;
+	left:247px;
+	margin-left:7px;
+	padding-right:0;
+	width:390px;
+}
+
+.masterbrand .loginPage .productLogoContainer {
+	background:url("images/login/img/login_producticon.png") no-repeat scroll center top transparent;
+	display:block;
+	float:left;
+	height:63px;
+	margin-left:0;
+	padding-left:0;
+	padding-right:15px;
+	width:40px;
+}
+
+.masterbrand .loginPage .productDesc {
+	float: left;
+	margin-top: -2px;
+}
+
+.masterbrand .loginPage .productFamily {
+	font: Arial, Helvetica;
+	font-size: 14px;
+	color: #565656;
+	font-style: normal;
+}
+
+.masterbrand .loginPage .productName {
+	font: Arial, Helvetica;
+	font-size: 22px;
+	color: #455A73;
+	font-style: normal;
+	margin-top: 3px;
+	font-weight:normal;
+}
+
+.masterbrand .loginPage .productVersion {
+	font: Arial, Helvetica;
+	font-size: 11px;
+	color: #565656;
+	font-weight: bold;
+	margin-top: 3px;
+}
+
+.masterbrand .loginPage .userFormContainer {
+	position: relative;
+	padding-left:300px;
+	top: 115px;
+}
+
+.masterbrand .loginPage .userForm {
+	font-family: Arial, Helvetica;
+	font-size: 11px;
+	font-style: normal;
+	color: #222222;
+}
+
+.masterbrand .loginPage .showMessageBox {
+	display: 'block' !important;
+}
+
+.masterbrand .loginPage .userForm input {
+	color: #000000;
+}
+
+.masterbrand .loginPage .userForm td {
+	padding-top: 3px;
+}
+
+.masterbrand .loginPage .userFormLabel{
+	padding-top: 3px;
+	padding-left: 29px;
+	padding-right: 1px;
+	text-align: right;
+}
+
+.masterbrand .loginPage .rememberMe .blackText {
+	color:#222222;
+	font-family:Arial,Helvetica;
+	font-size:11px;
+	font-style:normal;
+	margin-left:4px;
+}
+
+.masterbrand .loginPage .userForm .rememberMe {
+	padding-top: 5px;
+}
+
+.masterbrand .loginPage .rememberMe span {
+	margin-top: -2px;
+}
+
+.masterbrand .loginPage .problemsLoggingIn {
+	margin-left:22px;
+}
+
+.masterbrand .loginPage .problemsLoggingIn a {
+	color:#0088C2;
+	font-family:Arial,Helvetica;
+	font-size:11px;
+	font-style:normal;
+	text-decoration:none;
+}
+
+.masterbrand .loginPage .problemsLoggingIn a:HOVER {
+	text-decoration: underline;
+}
+
+.masterbrand .loginPage .copyright {
+	font-size: 9px;
+	color: #303030;
+	padding: 0 30px;
+	width:80%;
+	display: inline-block;
+}
+
+.masterbrand .loginPage .customContent {
+	width: 662px;
+}
+.masterbrand .loginPage .copyrightSpacer{
+	
+}
+
+.masterbrand .loginPage .bottomContent{
+
+}
+
+.masterbrand .loginPage .copyrightLogo {
+	vertical-align: bottom;	
+	background: url('images/cisco-logo.png') no-repeat;
+	width: 49px;
+    margin-right: 21px;
+    margin-top: -10px;
+	height: 39px;
+	display: inline;
+	float: right;
+}
+
+.masterbrand .loginPage .copyrightLogo img {
+	display: none;
+}	
+
+.masterbrand .loginPage .loginBackBottomContainer {
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+
+.masterbrand .loginPage .loginBackBottomContainer .top-center {
+	background: url('images/login/img/blue_spacer.png') repeat-y;
+}
+
+.masterbrand .loginPage .loginMiddle {
+	background: url('images/login/img/blue_spacer.png') repeat-y;
+	width: 664px;
+}
+
+.masterbrand .loginPage .loginMiddleCopyright {
+	padding-top: 10px;
+}
+
+.masterbrand .loginPage .loginMiddleInformation {
+    font-size: 9px;
+    margin: 0 30px;
+    max-height: 55px;
+    overflow: auto;
+    width: 604px;
+    border: 1px solid #CCCCCC;
+}
+
+.masterbrand .loginPage .loginMiddleInformationContainer {
+	padding: 0px 5px;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+
+.masterbrand .loginPage .middleContent {
+	padding:0 20px 10px 297px;
+	position:relative;
+	top:-40px;
+}
+
+.masterbrand .loginPage .loginBackBottomContainer .bottom-center {
+	background: transparent url(images/login/img/login_bot.png) no-repeat;
+	height: 20px;
+}
+
+.masterbrand .loginPage .messageBox {
+	left: 120px;
+	position: absolute;
+	top: 30px;
+	width: 404px;
+	z-index: 11;
+	font-size: 11px;
+	font-style: bold;
+	color: #FFFFFF;
+	display: none;
+	padding: 5px 10px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-box-shadow:rgba(57,57,57,.48) 2px 2px 2px;
+	box-shadow: 3px 3px 3px rgba(57,57,57,.48);
+	-webkit-box-shadow: 2px 2px 2px rgba(57,57,57,.48);
+	background-color: #525252;
+	border: solid 1px #FFFFFF;
+	opacity: 0.9;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+}
+
+.masterbrand .loginPage .redText {
+	color: #ca041d;
+}
+.masterbrand .loginPage .messageBoxContent {
+	xxxbackground: transparent url("images/login/login_statusbox_center.png")  repeat-y scroll 0 0;
+	padding-left: 0px;
+}
+
+.masterbrand .loginPage .messageBoxTop {
+	display: none;
+	background: transparent url("images/login/login_statusbox_top.png")  no-repeat scroll 0 0;
+	width: 404px;
+	height: 4px;
+}
+
+.masterbrand .loginPage .messageBoxBottom {
+	display: none;
+	background: transparent url("images/login/login_statusbox_bot.png")  no-repeat scroll 0 0;
+	width: 404px;
+	height: 5px;
+}
+/*
+ .dj_ie .messageBox {
+ 	filter:alpha(opacity=80);
+ 	background:   rgb(213,223,227);
+ }
+*/
+.underlay{
+	/*width:100%;
+	height:100%;
+	background-color:#FFFFFF;
+	opacity:0.8;
+	filter:alpha(opacity=50);
+	*/
+}
+
+.masterbrand .loginPage .xmp-wap-TextButtonNode {
+	margin-top:5px;
+}
+
+.masterbrand .loginPage .problemElementFocused{
+	outline-style:dotted;
+	outline-width:1px;
+}
+
+#loadingIndicator {
+	float: left;
+}
+.masterbrand .loginPage .loadingIndicator {
+	background: transparent url('images/misc/progress_indicator_16_gray_antialiased_lightgray.gif') no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-left:10px;
+}
+.masterbrand .loginPage .loginButton {
+	float: left;
+	padding-left: 5px;
+}
+.masterbrand .loginPage .problem{
+	padding-top:0px;
+	padding-left:8px;
+
+}
+
+/* Icon for message box */
+.masterbrand .loginPage .xwtLoginMBIcon {
+	background-image: url('images/login/login_mbox_status_icon.png');
+    background-repeat: no-repeat;
+	height: 32px;
+	width: 32px;
+}
+
+.masterbrand .loginPage .customContent {
+	padding-right: 25px;
+}
+
+.masterbrand .loginPage .ciscoPrime {
+	background: url('images/cisco-prime.png') no-repeat !important;
+}
+
+.dj_chrome .masterbrand .loginPage .copyrightLogo {
+	vertical-align: bottom;	
+	background: url('images/cisco-logo.png') no-repeat;
+	width: 49px;
+    margin-right: 21px;
+    margin-top: -30px;
+	height: 39px;
+	display: inline;
+	float: right;
+}

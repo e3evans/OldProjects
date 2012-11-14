@@ -45,6 +45,25 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 		appResponse.setApplicationList(list);
 		return appResponse;
 	}
+	
+	
+	
+	@GET
+	@Path("/userresults")
+	public ApplicationResponse getUserDetails() {
+		System.out.println("getAppList---->");
+		
+		System.out.println("list--->");
+		ApplicationResponse appResponse = new ApplicationResponse();
+		List<Application> list = quickLinksService.retrieveAvailAppListByRole("test");
+		/*Application app = new Application();
+		app.setAppURL("testurl");
+		app.setAppName("testtt");
+		app.setAppDesc("descrption");
+		list.add(app);*/
+		appResponse.setApplicationList(list);
+		return appResponse;
+	}
 
 	
 }

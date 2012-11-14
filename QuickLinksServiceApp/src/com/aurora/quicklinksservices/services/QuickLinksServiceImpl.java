@@ -22,5 +22,10 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
 		System.out.println("retrieveAvailAppListByRole");
 		return quickLinksAPPDAO.findAvailAppListByRole(roleCd);
 	}
-
+	@Override
+	public List retrieveUserDetails(String userid) {
+		// TODO Auto-generated method stub
+		return quickLinksAPPDAO.findUserDetails(userid);
+	}
+	
 }

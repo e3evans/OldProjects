@@ -1,0 +1,207 @@
+.masterbrand .xwtCalendar.dijitCalendarContainer {
+	border: 1px solid #68E5FB;		
+	width: auto;
+	background-color: #FFFFFF;
+	margin-top:2px;
+}
+.masterbrand .xwtCalendar .dijitTextBox{
+	margin-bottom:2px;
+}
+.masterbrand .xwtCalendar .dijitCalendarMonthContainer {
+	height: 29px;
+	padding-left: 6px;
+	padding-right:6px;	
+}
+
+.masterbrand .xwtCalendar tbody .dijitCalendarBodyContainer {
+	border-bottom:1px solid #EEEEEE;
+	margin-top: 8px;
+	margin-bottom: 15px;
+	margin-left: 15px;
+	margin-right: 15px;
+
+}
+
+.masterbrand .xwtCalendar .leftSpacer {
+	width: 15px;
+}
+
+.masterbrand .xwtCalendar .rightSpacer {
+	width: 15px;
+}
+
+.masterbrand .xwtCalendar .dijitCalendarMonthContainer th {	
+		background: #A2B9C9;
+}
+
+.masterbrand .xwtCalendar .dijitCalendarDayLabelTemplate {	
+	background:#FFFFFF;
+	font-weight: bold;
+	padding-top: 13px;
+	padding-bottom: 8px;
+	color: #000000;
+	text-align:center;
+	font-size: 11px;
+	border-top: 0px;
+	font-family: Arial, Helvetica;
+}
+
+
+.masterbrand .xwtCalendar .dijitCalendarDateTemplate {
+	font-family: Arial, Helvetica; 
+	border-color:white;
+	border-style:solid;
+	border-width:1.5px 2.5px;
+	font-size:11px;
+	font-weight:normal;
+	padding:3px;
+	text-align:right;
+	letter-spacing: 0.5px;
+	
+}
+
+.dj_ie .masterbrand .xwtCalendar .dijitCalendarDateTemplate {
+	font-weight: normal;
+	font-family: Arial, Helvetica;
+	padding:3px;
+}
+
+.masterbrand .xwtCalendar .dijitCalendarPreviousMonth,
+.masterbrand .xwtCalendar .dijitCalendarNextMonth 		{	
+	background-color: #FFFFFF !important;
+	color: #8499A2;
+}
+
+
+.masterbrand .xwtCalendar .dijitCalendarCurrentDate {	
+	text-decoration: none;
+	font-weight: normal;
+	border-style: solid;
+	border-color: #46d1f4;
+	border-width: thin;
+	
+}
+
+.masterbrand .xwtCalendar .dijitCalendarDisabledDate {
+	text-decoration: none;
+	background-color: #e4e4e4 !important;
+	color: #8499A2 !important;
+}
+
+.dj_ie6 .masterbrand .xwtCalendar .dijitCalendarCurrentDate{	
+	border-width: 1px;
+}
+.masterbrand .xwtCalendar .dijitCalendarYearContainer {	
+	background: #D9E3E9 !important;
+	border-top:1px solid #ccc;
+	margin: 15px;	
+}
+.masterbrand .xwtCalendar .dijitCalendarWeekTemplate{
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.masterbrand .xwtCalendar .datePickerAdjacentToTextBox {
+	display:inline;
+	margin-left:-15px;
+	width:14px;
+	margin-bottom: -1px;
+}
+/*
+.masterbrand .xwtCalendar .dijitInputField{
+	height: 15px;
+}*/
+	
+.masterbrand .xwtCalendar .dijitCalendarHoveredDate {
+	background-color: #CCD3A9 !important;
+	color: #000000 !important;
+	font-style: normal !important;
+	font-size: 11px !important;				
+}
+
+.masterbrand .xwtCalendar .dijitCalendarSelectedDate {	
+	background-color: #CCD3A9 !important;
+	color: #000000 !important;
+	/*border-style: solid;
+	border-color: #0088C2;
+	border-width: thin;*/
+}
+
+.masterbrand .xwtCalendar .weekSpacer{
+	colspan: 1;
+	rowspan: 1;
+	min-width:15px;
+	max-width:15px;
+	background-color:#FFFFFF;
+}
+.masterbrand .xwtCalendar .lastWeekSpacer{
+	background-color:#FFFFFF;
+	height : 15px;
+	colspan: 9;
+}
+
+
+
+.masterbrand .xwtCalendar .dijitCalendarDateLabel{
+	padding: 0px;
+	text-align: center;
+}
+
+.masterbrand .xwtCalendar .dijitCalendarMonthLabel.dijitComboBox{
+	/*max-width:47px;*/
+	width: 3.8em;
+	font-weight:normal;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 1px;
+	margin-bottom:0px;
+	background: white;
+}
+
+.masterbrand .xwtCalendar .dijitCalendarCurrentYear.dijitComboBox{
+	/*max-width:53px;*/
+	width: 4.375em;
+	font-weight:normal;
+	margin-top: 0px;
+	margin-left: 1px;
+	margin-right: 0px;
+	margin-bottom:0px;
+	background: white;
+}
+
+.masterbrand .xwtCalendar .dijitCalendarIncrementControl {	
+	vertical-align: middle;
+	top: 10px;
+	height: 9px;
+	width: 8px;
+	/*background: url(images/calendar/month_arrow_right.png) 100% no-repeat;	*/
+	background:none;
+	
+}
+
+.masterbrand .xwtCalendar .dijitCalendarDecrementControl {	
+	vertical-align: middle;
+	top: 10px;
+	height: 9px;
+	width: 8px;
+	/*background: url(images/calendar/month_arrow_left.png) no-repeat scroll 100% 50%;*/
+	/*background: url(images/calendar/month_arrow_left.png) 100% no-repeat;*/
+	background:none;
+	
+}
+
+
+.masterbrand .xwtCalendar .dijitCalendarDecrease{
+	padding-left:6px;
+	padding-top:6px;
+}
+
+.masterbrand .xwtCalendar .dijitCalendarIncrease{
+	padding-right:6px;
+	padding-top:6px;
+}
+.masterbrand .xwtCalendar .dijitPopup{
+	background-color:#FFFFFF;
+}

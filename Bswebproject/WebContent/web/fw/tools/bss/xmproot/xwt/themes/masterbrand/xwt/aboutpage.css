@@ -1,0 +1,180 @@
+/* ************************************************** */
+/* Copyright (c) 2009, 2010 Cisco Systems, Inc.       */
+/* All rights reserved.                               */
+/* ************************************************** */ 
+/* 
+* @author harjeesi
+* All the CSS elements for AboutPage go here.
+*/
+.masterbrand .xwtAboutPage {
+	position: absolute;
+	z-index: 9999;
+}
+
+.masterbrand .xwtAboutPage .aboutBackTop {
+	background: url("images/login/img/login_top.png") no-repeat scroll 0 0 transparent;
+	width: 662px;
+	height: 343px;
+}
+
+.masterbrand .xwtAboutPage .aboutBackBottom {
+	width: 662px;
+}
+
+.masterbrand .xwtAboutPage .aboutBackBottomContainer {
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+
+.masterbrand .xwtAboutPage .aboutBackBottomContainer .topCenter {
+	background: url("images/login/img/blue_spacer.png") repeat-y scroll 0 0 transparent;
+	width: 676px;
+}
+
+.masterbrand .xwtAboutPage .aboutBackBottomContainer .bottom .bottomCenter {
+	background: url("images/login/img/login_bot.png") no-repeat scroll 0 0 transparent;
+	height: 20px;
+	width:676px;
+}
+
+
+.masterbrand .xwtAboutPage .copyright {
+	color:#303030;
+	display:inline;
+	float:left;
+	font-size:9px;
+	font-style:normal;	
+	padding-left:307px;
+	vertical-align:bottom;
+	width:251px;
+}
+
+.masterbrand .xwtAboutPage .copyrightLogo {
+	background:url("images/cisco-logo.png") no-repeat transparent;
+	float:left;
+    height: 39px;
+    margin-left: 20px;
+    margin-right: 26px;
+    vertical-align: bottom;
+    width: 49px;
+}
+ 
+.masterbrand .xwtAboutPage .productInfo {
+	color: #565656;
+	height:65px;
+	margin-left:170px;
+	padding-right:0;
+	position:relative;
+	top:61px;
+	display:inline-block;
+}
+
+.dj_ie .masterbrand .xwtAboutPage .productInfo {
+	color: #565656;
+	height:65px;
+	margin-left:170px;
+	padding-right:0;
+	position:relative;
+	top:93px;
+	display:inline-block;
+}
+.masterbrand .xwtAboutPage .productDesc {
+	margin-left: 74px;
+	padding-left: 61px;
+	color: #565656;
+}
+
+.masterbrand .xwtAboutPage .productInfo .productInfoItem {
+	margin-bottom: 10px;
+	font-size:11px;
+	font-weight:normal;
+	font-family:Arial, Helvetica;
+}
+
+.masterbrand .xwtAboutPage .productInfo .productFamily {
+	font-size:14px;
+}
+
+.masterbrand .xwtAboutPage .productInfo .applicationName {
+	font-size: 22px;
+	color: #455A73;
+}
+.masterbrand .xwtAboutPage .productInfo .applicationSubTitle {
+	font-size: 14px;
+}
+.masterbrand .xwtAboutPage .productInfo .productVersion {
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.masterbrand .xwtAboutPage .aboutLinks {
+	margin-left: 44px;
+	padding-left: 92px;
+	padding-top:6px;
+	display:inline-block;
+}
+
+.masterbrand .xwtAboutPage .additionalInfoContainer {
+	width:auto;
+	height:auto;
+	padding-left: 135px;
+	padding-top: 30px;
+}
+
+.masterbrand .xwtAboutPage .additionalInfoContainer .keyClass,
+.masterbrand .xwtAboutPage .additionalInfoContainer .valueClass {
+	width: 50%;
+	font-size: 11px;
+}
+
+.masterbrand .xwtAboutPage .additionalInfoContainer .keyClass{
+	text-align:right;
+}
+
+.masterbrand .xwtAboutPage .additionalInfoContainer .valueClass{
+	text-align: left;
+	padding-left: 10px;
+	font-weight: bold;
+}
+
+.masterbrand .xwtAboutPage .productInfo .optionalLink {
+	display: block;
+	margin-bottom: 5px;
+	color: #0088C2;
+	text-decoration: none;
+	font-family: Arial, Helvetica;
+	font-size: 11px;
+}
+
+.masterbrand .xwtAboutPage .productInfo .optionalLink:HOVER {
+	text-decoration: underline;
+}
+
+.masterbrand .xwtAboutPage .productLogo {
+	background:url("images/login/img/login_producticon.png") no-repeat scroll 0 5px transparent;
+}
+
+.xwtAboutPageShow {
+}
+
+.masterbrand .xwtAboutPageHide {
+	display: none;
+}
+
+.masterbrand .xwtAboutPage .closeButton {
+	float: right;
+	margin: 10px 3px 0 0;
+}
+
+.masterbrand .xwtAboutPage .closeButton .closeAboutPage {
+	background: url("images/aboutbox/aboutbox_close.png") no-repeat scroll center center transparent;
+	padding: 8px;
+}
+
+.masterbrand .xwtAboutPage .ciscoPrime {
+	background: url('images/cisco-prime.png') no-repeat !important;
+}
+
+.masterbrand.dijit_a11y .xwtAboutPage {
+	background-color: black !important;
+}

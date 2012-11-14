@@ -7,8 +7,8 @@ import com.aurora.quicklinks.beans.UrlBean;
 
 public interface UrlService {
 	
-	public void updateUrl(List<UrlBean> listBean);
-	public List<UrlBean> listUrlBean(String userid);
-	public List<CompleteURLBean> listCopmpleteUrlBean();
+	//public void updateUrl(List<UrlBean> listBean);
+	//public List<UrlBean> listUrlBean(String userid);
+	public void listCopmpleteUrlBean();
 
 }

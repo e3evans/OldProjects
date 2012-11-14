@@ -1,0 +1,179 @@
+/*   
+ *        Copyright (c) 2009 Cisco Systems, Inc.   
+ *        All rights reserved.   
+ *
+ * @author denpark
+ * CSS rules for datefield
+ */
+
+/*
+.dateField {
+	padding-bottom: 5px;
+}
+.dateFieldDateText {
+	margin-right: 8px;
+	text-align: right;	
+}
+.masterbrand .dateFieldMonth.dijitComboBox {
+	margin-right: 5px;
+	margin-left: 0px;		
+	max-width:50px;
+	white-space:nowrap;
+	overflow:visible;
+}
+.masterbrand .dateFieldDay.dijitComboBox {
+	margin-right: 5px;
+	margin-left: 0px;	
+	max-width:40px;	
+	white-space:nowrap;
+	overflow:visible;
+}
+
+.masterbrand .dateFieldYear.dijitComboBox {
+	margin-right: 5px;
+	margin-left: 0px;
+	max-width:53px;	
+	white-space:nowrap;
+	overflow:visible;
+}
+
+.dj_ie .masterbrand .dijitComboBox .dijitInputField {
+		padding-bottom: -2px;
+		padding-top: 4px !important;
+		overflow:visible;
+}*/
+
+.masterbrand .xwtDateField {
+	padding-bottom: 5px;
+}
+.masterbrand .row-table .xwtDateField {
+	padding-bottom: 0px;
+}
+.masterbrand .xwtDateFieldDateText {
+	margin-right: 8px;
+	text-align: right;	
+	vertical-align:middle;
+	font-family:Arial, Helvetica;	
+}
+.masterbrand .xwtDateField .xwtDateFieldMonth {
+	margin-right: 5px;
+	margin-left: 0px;		
+	max-width:50px;
+	white-space:nowrap;
+	overflow:visible;
+}
+.masterbrand .xwtDateField .xwtDateFieldDay {
+	margin-right: 5px;
+	margin-left: 0px;	
+	max-width:40px;	
+	white-space:nowrap;
+	overflow:visible;
+}
+
+.masterbrand .xwtDateField .xwtDateFieldYear {
+	margin-right: 5px;
+	margin-left: 0px;
+	max-width:53px;	
+	white-space:nowrap;
+	overflow:visible;
+}
+.dj_iequirks .masterbrand .xwtDateField .xwtDateFieldMonth {
+	margin-right: 5px;
+	margin-left: 0px;		
+	width:50px;
+	white-space:nowrap;
+	overflow:visible;
+}
+.dj_iequirks .masterbrand .xwtDateField .xwtDateFieldDay {
+	margin-right: 5px;
+	margin-left: 0px;	
+	width:40px;	
+	white-space:nowrap;
+	overflow:visible;
+}
+
+.dj_iequirks .masterbrand .xwtDateField .xwtDateFieldYear {
+	margin-right: 5px;
+	margin-left: 0px;
+	width:53px;	
+	white-space:nowrap;
+	overflow:visible;
+}
+
+/*.dj_ie .masterbrand .dijitComboBox .dijitInputField {
+		padding-bottom: -2px;
+		padding-top: 4px !important;
+		overflow:visible;
+}*/
+
+/*for notificaiton */
+.masterbrand .xwtDateField .dijitValidationIcon{
+	position:relative;
+	display:inline-block;
+	right:0px;
+	float:none;
+	visibility:visible;
+	margin-bottom:-4px;
+}
+
+.masterbrand .xwtDateField .xwtDateFieldYear .dijitValidationIcon,
+.masterbrand .xwtDateField .xwtDateFieldDay .dijitValidationIcon, 
+.masterbrand .xwtDateField .xwtDateFieldMonth .dijitValidationIcon{
+	position: absolute;
+	/*right: 0px;*/
+	height: 0px !important;
+	width: 0px !important;
+}
+
+.masterbrand .xwtDateFieldErrorIconNodeHide{
+		display:none;
+}
+
+
+/* This is critical to make IE UI work*/
+.dj_ie .notification .xwtDateField  .dijitValidationIcon {
+	float:none;
+}
+
+
+
+.dj_ie7 .masterbrand .xwtDateField .dijitValidationIcon{
+	position: absolute;
+	display:inline-block;
+	left:258px;
+	float:none;
+	visibility:visible;
+	margin-bottom:-4px;
+}
+
+.dj_ie .masterbrand .xwtDateField .dijitValidationIcon {
+	right:0px;
+	margin-left:1px;
+}
+
+.dijit_a11y .xwtDateField .xwtDateFieldMonth .dijitValidationIconText {
+	display:none !important;
+}
+.dijit_a11y .xwtDateField .xwtDateFieldDay .dijitValidationIconText {
+	display:none !important;
+}
+.dijit_a11y .xwtDateField .xwtDateFieldYear .dijitValidationIconText {
+	display:none !important;
+}
+.xwtDateField .xwtValidationIconTextShow {
+	display:none;
+}
+.xwtDateField .xwtValidationIconTextHide {
+	display:none !important;
+}
+.dijit_a11y .xwtDateField .xwtValidationIconTextShow {
+	position:relative !important;
+	display:inline-block !important;
+	right:0px !important;
+	float:none !important;
+	visibility:visible !important;
+	margin-bottom:-4px !important;
+}
+.dijit_a11y .xwtDateField .xwtValidationIconTextHide {
+	display:none !important;
+}

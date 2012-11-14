@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cep:request xmlns:cep="http://www.cisco.com/CEP" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="http://www.cisco.com/CEP deploy.xsd ">
+  <cep:portlets>
+    <cep:portlet action="update" filename="BSSPortlet.war" wsrpProducer="true">    
+    </cep:portlet>
+  </cep:portlets>
+</cep:request>

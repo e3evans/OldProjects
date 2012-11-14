@@ -1,0 +1,8 @@
+/* import the notification css.  
+ * Later, should create a xwt/notification folder and but all noti*.css there 
+ * don't change the follow import order !
+ * */
+@import url("alert.css");
+@import url("errorMessage.css");
+@import url("toaster.css");
+@import url("notification.css");

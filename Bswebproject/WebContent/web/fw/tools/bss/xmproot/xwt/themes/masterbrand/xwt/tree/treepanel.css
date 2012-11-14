@@ -1,0 +1,561 @@
+/*
+ * Copyright (c) 2009 Cisco Systems, Inc.
+ * All rights reserved.
+ */
+              
+
+.masterbrand .xwtTreeContainerPanel .dijitToolbar {
+    height: 28px;
+}
+.masterbrand .xwtTreeContainerPanel .dijitButtonHover {
+    border: 0px;
+    background: none;
+    background-color: transparent;
+}
+
+.dj_ie .masterbrand .xwtTreeContainerPanel .dijitButtonHover {
+    border: 0px;
+    background: none;
+    background-color: transparent;
+}
+.masterbrand .xwtTreeContainerPanel .dijitButtonExpand,
+.masterbrand .xwtTreeContainerPanel .dijitButtonCollapse {
+    padding: 0px;
+}
+.masterbrand .xwtTreeContainerPanel .dijitToolbar .dijitButton {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+.masterbrand .xwtTreeContainerPanel .dijitRight .xwt-IconDropDownButtonContents {
+    margin: 0px 5px 0px 0px;
+}
+
+.masterbrand .treetoolSearch {	
+	background-image:url(../images/tree/toolbar/zoom_normal-24.png);		
+	background-repeat: no-repeat; 
+	background-position: center center;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0;
+	padding:0;
+}
+
+.masterbrand .treetoolSearchPressed {	
+	background-image:url(../images/tree/toolbar/zoom_pressed-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0;
+	padding:0;
+}
+
+.masterbrand .treetoolSearchHover {	
+	background-image:url(../images/tree/toolbar/zoom_hover-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0;
+	padding:0;
+}
+
+.masterbrand .treetoolFilter {	
+	background-image:url(../images/tree/toolbar/filter_normal-24.png);	
+	background-repeat: no-repeat; 
+	background-position: center center;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0;
+	padding:0;
+	
+}
+
+.masterbrand .treetoolFilterPressed {	
+	background-image:url(../images/tree/toolbar/filter_pressed-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0;
+	padding:0;
+}
+
+.masterbrand .treetoolFilterHover {	
+	background-image:url(../images/tree/toolbar/filter_hover-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0;
+	padding:0;
+}
+
+.masterbrand .xwt-IconButtonContents {
+    border: 0px;
+    margin: 0px;
+}
+
+.masterbrand .treetoolExpand {	
+	background-image:url(../images/tree/toolbar/expand_normal-24.png);	
+	background-repeat: no-repeat; 
+	background-position: center center;
+	background-color: transparent;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0px;
+	border:0px;
+	padding:0px 0px 0px 3px;
+	
+}
+
+.masterbrand .treetoolExpandPressed {	
+	background-image:url(../images/tree/toolbar/expand_pressed-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	background-color: transparent;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0px;
+	border:0px;
+	padding:0px 0px 0px 3px;
+}
+
+.masterbrand .treetoolExpandHover {	
+	background-image:url(../images/tree/toolbar/expand_hover-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	background-color: transparent;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0px;
+	border:0px;
+	padding:0px 0px 0px 3px;
+}
+
+.masterbrand .treetoolCollapse {	
+	background-image:url(../images/tree/toolbar/collapse_normal-24.png);	
+	background-repeat: no-repeat; 
+	background-position: center center;
+	background-color: transparent;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0px;
+	border:0px;
+	padding:0px 0px 0px 3px;	
+}
+
+.masterbrand .treetoolCollapsePressed {	
+	background-image:url(../images/tree/toolbar/collapse_pressed-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	background-color: transparent;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0px;
+	border:0px;
+	padding:0px 0px 0px 3px;
+}
+
+.masterbrand .treetoolCollapseHover {	
+	background-image:url(../images/tree/toolbar/collapse_hover-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	background-color: transparent;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0px;
+	border:0px;
+	padding:0px 0px 0px 3px;
+}
+
+.masterbrand .treetoolToggle {	
+	background-image:url(../images/tree/toolbar/toggle_task_normal-24.png);	
+	background-repeat: no-repeat; 
+	background-position: center center;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0;
+	padding:0;
+	
+}
+
+.masterbrand .treetoolTogglePressed {	
+	background-image:url(../images/tree/toolbar/toggle_task_pressed-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0;
+	padding:0;
+}
+
+.masterbrand .treetoolToggleHover {	
+	background-image:url(../images/tree/toolbar/toggle_task_hover-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	height:24px;
+	text-align:center;
+	width:24px;
+	margin:0;
+	padding:0;
+}
+
+
+/*.masterbrand .toolleft .dijitToolbar .treeSettings.dijitDropDownButtonHover .dijitButtonNode button
+{
+	background:url(../images/tree/hover.png) no-repeat;
+	height:24px;
+	width:24px;
+}
+
+.masterbrand .toolleft .dijitToolbar .treeSettings.dijitDropDownButton .dijitButtonNode
+{
+	margin:0px;
+}
+
+ 
+	
+.masterbrand .toolleft .dijitToolbar .treeSettings.dijitDropDownButtonOpenend .dijitButtonNode
+{		
+	background-image:url(../images/tree/pressed.png);	
+} 
+
+.masterbrand .toolleft .dijitToolbar .treeSettings.dijitDropDownButtonHover
+{
+	background:url(../images/tree/hover.png) no-repeat;
+	height:24px;
+	width:24px;
+}*/
+	
+.masterbrand .treetoolSettings {		
+	background-image:url(../images/tree/toolbar/setting_normal-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;	
+	height:24px;
+	text-align:center;
+	width:29px;
+	margin:0px;
+    border: 0px;
+	padding:0px 0px 0px 0px;
+	} 
+.dj_ie .masterbrand .treetoolSettings {		
+	background-image:url(../images/tree/toolbar/setting_normal-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;	
+	height:24px;
+	text-align:center;
+	width:29px;
+	margin:0px;
+    border: 0px;
+	padding:0px 4px 0px 0px;
+	}
+.masterbrand .treetoolSettingsPressed {	
+	background-image:url(../images/tree/toolbar/setting_pressed-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	height:24px;
+	text-align:center;
+	width:29px;
+	margin:0px;
+    border: 0px;
+	padding:0px 0px 0px 0px;
+}
+.dj_ie .masterbrand .treetoolSettingsPressed {	
+	background-image:url(../images/tree/toolbar/setting_pressed-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	height:24px;
+	text-align:center;
+	width:29px;
+	margin:0px;
+    border: 0px;
+	padding:0px 4px 0px 0px;
+}
+.masterbrand .treetoolSettingsHover {	
+	background-image:url(../images/tree/toolbar/setting_hover-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	height:24px;
+	text-align:center;
+	width:29px;
+	margin:0px;
+    border: 0px;
+	padding:0px 0px 0px 0px;
+}
+.dj_ie .masterbrand .treetoolSettingsHover {	
+	background-image:url(../images/tree/toolbar/setting_hover-24.png);
+	background-repeat: no-repeat; 
+	background-position: center center;
+	height:24px;
+	text-align:center;
+	width:29px;
+	margin:0px;
+    border: 0px;
+	padding:0px 4px 0px 0px;
+}
+
+.masterbrand .toolleft .dijitToolbar {
+	background:#EEEDED url(../images/titleBar.png) repeat-x scroll left top;
+	border:1px solid #D1D6DA;
+	padding: 0px; 
+}
+
+.masterbrand .searchbar .xwtFilterToolbar {
+	background:#93B3C8  no-repeat;
+	border:1px solid #93B3C8;
+	padding: 0px; 
+}
+
+/* start - hover and focus, pressed*/
+.masterbrand .toolleft .dijitToolbar .dijitButtonChecked {
+	background-color:transparent;
+	border:none;
+	padding: 1px;	
+}
+
+.masterbrand .toolleft .dijitToolbar .dijitButtonCheckedHover
+ {
+	background-color:transparent;
+	border:none;
+	padding: 1px;	
+}
+
+.masterbrand .toolleft .dijitToolbar .dijitButtonHover {
+	/* TODO: change this from Hover to Selected so that button is still highlighted while drop down is being used */
+	background-color:transparent;
+	border:none;
+	padding: 1px;	
+}
+
+.masterbrand .toolleft .dijitToolbar label {	
+	padding:0px;
+}
+
+
+/* end hover and focus, press */
+
+
+/*
+.masterbrand .dijitTreeExpandoClosed {
+	background-image:url(../images/tree/drawerTriangleCollapsedT.gif);
+}
+*/
+
+.masterbrand .dijitLeaf {
+	background:none;
+}
+
+.masterbrand .mainTreePanel {
+	opacity: 1;
+	overflow:hidden;
+	margin: 0 auto; 
+	width: 243px;
+}
+
+.masterbrand .menuPanel {
+	overflow:hidden;
+	min-width:227px;
+	height:29px; 
+}
+
+.masterbrand .treeScrollPanel.dijitContentPane {
+	overflow-x: auto;
+    padding-right: 1px;
+    display: block;
+    position:relative;        
+    overflow-y: auto;
+    
+}
+
+.masterbrand .treeScrollPanel {
+ 	min-width:227px;
+ }
+
+
+.masterbrand .dijitTreeExpandoLeaf {
+	background-image: none;
+}
+
+.masterbrand .dijitTreeIsLast {
+    background: none;
+}
+
+.masterbrand .dijitTreeNode {
+    background-image : none;
+    position: relative;
+}
+
+
+/* By default, there is no icon in the tree. To add an icon to the tree, specify a getIconClass with something like the following:
+.showIcon {
+    width: 16px !important;
+    height: 16px !important;
+    background: url("samples/images/plus.gif") left no-repeat;
+}
+*/
+ 
+ .masterbrand .dijitTreeIcon {
+	position: relative;
+	margin-left: 4px;
+}
+
+ .masterbrand .dijitTreeContent {
+	margin-left:-5px;
+ }
+
+/* Do not add padding if no icon is present*/
+.masterbrand img[class="dijitTreeIcon dijitFolderOpened"], .masterbrand img[class="dijitTreeIcon dijitFolderClosed"],
+.masterbrand img[class="dijitTreeIcon dijitLeaf"] {
+	padding-right: 0px;	
+	margin-right: 0px;
+	margin-left: -1px;
+}
+
+.masterbrand .dijitTree.dijitTreeContainer {
+	/*position: absolute;
+	width: auto !important; */
+}
+
+.masterbrand .dijitTreeIcon span {
+	width: 8px;
+	height: 8px;
+	display: block;
+	position: absolute;
+	top: 4px;
+	left: -2px;	
+	z-index: 10;
+}
+.masterbrand .dijitTreeIcon a {
+	text-decoration: none;
+}	
+.masterbrand .treeSettings .dijitArrowButtonInner {		
+		/*margin:5px 0px 0 -2px;*/
+		margin:0px;
+		border:0px;
+		height:0px;
+		width:0px;
+				
+	}
+	
+.masterbrand  .dijitToolbar .xwt-icondropdownbutton.treeSettings.dijitDropDownButton.dijitDropDownButtonHover{
+	background-color:transparent;
+	border:none;
+	padding:1px;	
+}
+
+.masterbrand .treeSettings .dijitArrowButtonInner {		
+		/*margin:5px 0px 0 -2px;*/
+		margin:0px;
+		border:0px;
+		height:0px;
+		width:0px;
+				
+	} 
+
+.masterbrand .xwt-iconbutton-imagebackgroundHover {	
+	background: url(../images/tree/hover.png);
+	width: 24px  !important;
+	height: 24px  !important;	
+	border: none;
+}
+
+.masterbrand .xwt-iconbutton-imagebackgroundPressed {	
+	background: url(../images/tree/pressed.png);
+	width: 24px; !important;
+	height: 24px; !important;		
+	border: none;
+}
+
+/* dnd css changes */
+
+.masterbrand .treeDojoDndAvatar .dojoDndAvatarItem .dijitTreeRow .dijitTreeContent .dijitTreeIcon {
+    display:none;
+    background-image: none;
+}
+
+.masterbrand .treeDojoDndAvatar.showIcons .dojoDndAvatarItem .dijitTreeRow .dijitTreeContent .dijitTreeIcon {
+    display:inline;
+}
+
+/* white space created for item not having a checkbox */
+.masterbrand .dijitTreeNode .itemUnselectable {
+    display: inline-block;
+    width: 13px;
+    margin: 0 4px 4px 8px;
+}
+
+.dj_ie6 .masterbrand .dijitTreeNode .itemUnselectable {
+    display: inline;
+}
+
+
+/* spacing for the multiselect checkbox */
+.masterbrand .dijitTreeNode .dijitTreeContent .dijitCheckBox { 
+    margin-left:5px;
+	margin-right:0px;
+    margin-top:0px;
+    margin-bottom:2px;
+    padding-bottom:0px;
+}
+
+/* spacing for the single radio */
+.masterbrand .dijitTreeNode .dijitTreeContent .dijitRadio { 
+    margin-left:-2px;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+.masterbrand .dijitTreeIcon.dijitFolderOpened,
+.masterbrand .dijitTreeIcon.dijitFolderClosed {
+	margin-left: 1px;
+}
+
+.masterbrand .dijitTreeRow{
+	padding-top:3px;
+	padding-bottom:3px;
+}
+
+.masterbrand .xwtTreeDefaultNode {
+    width: 16px !important;
+    height: 16px !important;
+    background: url('../images/tree/Generic_tree_icon.png') no-repeat;
+}
+
+.masterbrand .xwtTreeDefaultLeaf {
+    width: 12px !important;
+    height: 16px !important;
+    background: url('../images/tree/Generic_tree_icon_leaf.png') no-repeat;
+}
+
+.dijit_a11y .treetoolExpand, 
+.dijit_a11y .treetoolExpandPressed,
+.dijit_a11y .treetoolExpandHover,
+.dijit_a11y .treetoolCollapse, 
+.dijit_a11y .treetoolCollapsePressed,
+.dijit_a11y .treetoolCollapseHover {	
+	height:auto;	
+	width:auto;
+	padding:0px;
+}
+.dijit_a11y .treetoolSettings, 
+.dijit_a11y .treetoolSettingsPressed,
+.dijit_a11y .treetoolSettingsHover {	
+	height:auto;	
+	width:auto;
+	padding:0px;
+}
