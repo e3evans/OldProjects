@@ -1,8 +1,12 @@
 package com.aurora.hibernate.poll.beans;
 
-import org.hibernate.annotations.Type;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * Title:        PollOption
@@ -28,7 +32,7 @@ public class PollOption implements java.io.Serializable {
     private String answer;
     @Column(name = "PT28_POLL_ANSWER_COUNT")
     private Integer count;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PT28_POLL_DATE", insertable = false, updatable = false)
     private Poll poll;
 

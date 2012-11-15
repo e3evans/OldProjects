@@ -1,11 +1,17 @@
 package com.aurora.hibernate.poll.beans;
 
-import org.hibernate.annotations.Type;
-
-import javax.persistence.*;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Title:        Poll
@@ -33,7 +39,7 @@ public class Poll implements java.io.Serializable {
     @Column(name = "PT27_CORRECT_POLL_ANSWER")
     private String answer;
 
-	@OneToMany(mappedBy = "poll", cascade = CascadeType.ALL, fetch = FetchType.LAZY)    
+	@OneToMany(mappedBy = "poll", cascade = CascadeType.ALL, fetch = FetchType.EAGER)    
     private List<PollOption> pollOptions;
 
     public Poll() {
