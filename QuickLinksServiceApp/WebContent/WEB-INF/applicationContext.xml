@@ -45,6 +45,7 @@
 			<list>
 			<value>com.aurora.quicklinksservices.beans.AppKey</value>
 			<value>com.aurora.quicklinksservices.beans.Application</value>
+			<value>com.aurora.quicklinksservices.beans.User</value>
 			</list>
 		</property>
 

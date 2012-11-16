@@ -19,6 +19,7 @@ public class QuickLinksEndpointConfig extends Application {
 	public Set<Object> getSingletons() {
 		HashSet<Object> singletons = new HashSet<Object>();
 		singletons.add(new JacksonJaxbJsonProvider());
+		
 		return singletons;
 	}
 }

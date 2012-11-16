@@ -1,11 +1,8 @@
 package com.aurora.quicklinksservices.rest;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.ws.rs.Consumes;
+import java.util.List;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -15,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.aurora.quicklinksservices.beans.Application;
+import com.aurora.quicklinksservices.beans.User;
 import com.aurora.quicklinksservices.services.QuickLinksService;
 
 @Path("/test")
@@ -37,11 +35,6 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 		System.out.println("list--->");
 		ApplicationResponse appResponse = new ApplicationResponse();
 		List<Application> list = quickLinksService.retrieveAvailAppListByRole("test");
-		/*Application app = new Application();
-		app.setAppURL("testurl");
-		app.setAppName("testtt");
-		app.setAppDesc("descrption");
-		list.add(app);*/
 		appResponse.setApplicationList(list);
 		return appResponse;
 	}
@@ -51,17 +44,11 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 	@GET
 	@Path("/userresults")
 	public ApplicationResponse getUserDetails() {
-		System.out.println("getAppList---->");
 		
-		System.out.println("list--->");
+		System.out.println("printing user name *****************");
 		ApplicationResponse appResponse = new ApplicationResponse();
-		List<Application> list = quickLinksService.retrieveAvailAppListByRole("test");
-		/*Application app = new Application();
-		app.setAppURL("testurl");
-		app.setAppName("testtt");
-		app.setAppDesc("descrption");
-		list.add(app);*/
-		appResponse.setApplicationList(list);
+		List<User> list = quickLinksService.retrieveUserDetails("test");
+		appResponse.setUserList(list);
 		return appResponse;
 	}
 

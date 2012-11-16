@@ -44,7 +44,7 @@ function submitURLForm(formName){
 </head>
 
 <h3>URL</h3>
-Now is the time for all good men to come to the aid of their country.
+Available List
 
 <table border="1" cellpadding="4">
 	<tr>

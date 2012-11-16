@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.aurora.quicklinksservices.beans.Application;
+import com.aurora.quicklinksservices.beans.User;
 
 @Repository
 public class QuickLinksAPPDAOImpl  implements
@@ -56,7 +57,8 @@ public class QuickLinksAPPDAOImpl  implements
 		sql.append("AND app.pt2b_active_cd = 'A' ");
 		sql.append("AND parent.pt2b_active_cd = 'A' ");
 		sql.append("ORDER BY parent.pt2b_app_name, app.pt2b_seq_no ");
-		List list = urlsessionFactory.openSession().createSQLQuery(sql.toString()).addEntity("app","com.aurora.quicklinksservices.beans.Application").setString(0, "EMP")
+		Session session = urlsessionFactory.openSession();
+		List list = session.createSQLQuery(sql.toString()).addEntity("app","com.aurora.quicklinksservices.beans.Application").setString(0, "EMP")
 				.list();
 		StringBuffer sb = new StringBuffer();
 		for (int i=0;i<list.size();i++){
@@ -65,20 +67,36 @@ public class QuickLinksAPPDAOImpl  implements
 			sb.append(temp.getAppURL()+"----><br/>");
 			
 		}
-		
+		session.close();
 		System.out.println("result"+sb.toString());
 		return list;
 		
 		
 	}
 
-
+	
 	
 
 	@Override
 	public List findUserDetails(String userid) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		Session session = urlsessionFactory.openSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from com.aurora.quicklinksservices.beans.User");
+		List list = query.list();
+		System.out.println("TEST -- > "+list.size());
+		List<User> appList = new ArrayList<User>();
+		StringBuffer sb = new StringBuffer();
+		for (int i=0;i<list.size();i++){
+			User temp = (User)list.get(i);
+			sb.append(temp.getFirstName()+"---->"+temp.getLastName()+"<br/>");
+			sb.append(temp.getPortalID()+"----><br/>");
+			appList.add(temp);
+		}
+		session.close();
+		System.out.println("result"+sb.toString());
+		return appList;
 	}
 
 	
