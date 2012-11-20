@@ -10,14 +10,12 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-	@Column(name = "PT2A_USERID")
+	@Column(name = "PT2A_USERID",insertable = false, updatable = false)
 	private Long userID;
 	@Column(name = "PT2A_PORTAL_ID")
 	private String portalID;
 	@Column(name = "PT2A_LAST_NAME")
 	private String lastName;
-	@Column(name = "PT2A_FIRST_NAME")
-	private String firstName;
 	public Long getUserID() {
 		return userID;
 	}
@@ -33,6 +31,8 @@ public class User {
 	public String getLastName() {
 		return lastName;
 	}
+	@Column(name = "PT2A_FIRST_NAME")
+	private String firstName;
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}

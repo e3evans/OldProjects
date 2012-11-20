@@ -35,7 +35,21 @@ div {
 }
 </style>
 
-<script type="text/javascript">
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
 function submitURLForm(formName){
 	document.getElementById(formName).submit();
 }
@@ -44,7 +58,7 @@ function submitURLForm(formName){
 </head>
 
 <h3>URL</h3>
-Available List
+Available application list
 
 <table border="1" cellpadding="4">
 	<tr>

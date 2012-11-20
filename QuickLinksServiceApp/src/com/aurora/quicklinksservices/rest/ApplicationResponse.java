@@ -11,14 +11,14 @@ public class ApplicationResponse {
 	
 	private static final long serialVersionUID = -4358317667109242403L;
 
-	private Collection<Application> applicationList;
+	private Collection<App> applicationList;
 	private Collection<User> userList;
 
-	public Collection<Application> getApplicationList() {
+	public Collection<App> getApplicationList() {
 		return applicationList;
 	}
 
-	public void setApplicationList(Collection<Application> applicationList) {
+	public void setApplicationList(Collection<App> applicationList) {
 		this.applicationList = applicationList;
 	}
 

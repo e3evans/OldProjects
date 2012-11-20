@@ -36,25 +36,21 @@ public class UrlController {
 		return urlService;
 	}
 
-	/*@ModelAttribute("urlFormBean")
+	@ModelAttribute("urlFormBean")
 	public UrlFormBean getCommandObject() {
 		System.out.println("Creating urlFormBean command object");
 		UrlFormBean urlFormBean = new UrlFormBean();
-		//urlFormBean.setListUrlBean(urlService.listCopmpleteUrlBean());
-		String response= urlService.listCopmpleteUrlBean();
-		System.out.println(response);
+		urlFormBean.setListUrlBean(urlService.listCopmpleteUrlBean());
 		return urlFormBean;
-	}*/
+	}
 
 	@RenderMapping(params = "action=editUrl")
 	public String showQuickLinkForm(RenderResponse response) {
-		urlService.listCopmpleteUrlBean();
-		
-		System.out.println("called");
+		System.out.println("Creating urlFormBean command object");
 		return "urledit";
 	}
 
-	/*@ActionMapping(params = "action=updateUrl")
+	@ActionMapping(params = "action=updateUrl")
 	public void updateUrl(@ModelAttribute UrlFormBean urlFormBean,
 			BindingResult bindingResult, ActionResponse response,
 			SessionStatus sessionStatus) {
@@ -79,6 +75,6 @@ public class UrlController {
 		response.setRenderParameter("action", "list");
 		sessionStatus.setComplete();
 
-	}*/
+	}
 
 }

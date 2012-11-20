@@ -28,4 +28,8 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
 		return quickLinksAPPDAO.findUserDetails(userid);
 	}
 	
+	
+	public List findUserAppsByUser(Long userid){
+		return quickLinksAPPDAO.findUserAppsByUser(userid);
+	}
 }

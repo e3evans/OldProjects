@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 //            AppKey
 @Entity
 @Table(name = "S05DTDB.TPT2B_APPLICATION")
-public class Application
+public class App
     implements Serializable
 {
 
@@ -86,7 +86,7 @@ public class Application
     private String windowHeight;
     private Integer userCount;
 
-    public Application()
+    public App()
     {
     }
     
@@ -172,7 +172,7 @@ public class Application
         }
         return encoded;*/
     
-    @Column(name = "PT2B_APP_DESC", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_APP_DESC",  updatable = true)
     public String getAppDesc()
     {
         return appDesc;
@@ -182,7 +182,7 @@ public class Application
     {
         this.appDesc = appDesc;
     }
-    @Column(name = "PT2B_APP_COMMENTS", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_APP_COMMENTS",  updatable = true)
     public String getComments()
     {
         return comments;
@@ -192,7 +192,7 @@ public class Application
     {
         this.comments = comments;
     }
-    @Column(name = "PT2B_APP_URL", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_APP_URL",  updatable = true)
     public String getAppURL()
     {
         return appURL;
@@ -202,7 +202,7 @@ public class Application
     {
         this.appURL = appURL;
     }
-    @Column(name = "PT2B_APP_URL_RP", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_APP_URL_RP",  updatable = true)
     public String getAppURLproxy()
     {
         return appURLproxy;
@@ -212,7 +212,7 @@ public class Application
     {
         this.appURLproxy = appURLproxy;
     }
-    @Column(name = "PT2B_DFT_HM_URL", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_DFT_HM_URL",  updatable = true)
     public String getHomeURL()
     {
         return homeURL;
@@ -222,7 +222,7 @@ public class Application
     {
         this.homeURL = homeURL;
     }
-    @Column(name = "PT2B_DFT_HM_URL_RP", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_DFT_HM_URL_RP",  updatable = true)
     public String getHomeURLproxy()
     {
         return homeURLproxy;
@@ -232,7 +232,7 @@ public class Application
     {
         this.homeURLproxy = homeURLproxy;
     }
-    @Column(name = "PT2B_HELP_URL", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_HELP_URL",  updatable = true)
     public String getHelpURL()
     {
         return helpURL;
@@ -242,7 +242,7 @@ public class Application
     {
         this.helpURL = helpURL;
     }
-    @Column(name = "PT2B_HELP_URL_RP", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_HELP_URL_RP",  updatable = true)
     public String getHelpURLproxy()
     {
         return helpURLproxy;
@@ -252,7 +252,7 @@ public class Application
     {
         this.helpURLproxy = helpURLproxy;
     }
-    @Column(name = "PT2B_SRCH_URL", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_SRCH_URL",  updatable = true)
     public String getSearchURL()
     {
         return searchURL;
@@ -262,7 +262,7 @@ public class Application
     {
         this.searchURL = searchURL;
     }
-    @Column(name = "PT2B_SRCH_URL_RP", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_SRCH_URL_RP",  updatable = true)
     public String getSearchURLproxy()
     {
         return searchURLproxy;
@@ -272,7 +272,7 @@ public class Application
     {
         this.searchURLproxy = searchURLproxy;
     }
-    @Column(name = "PT2B_FDBK_URL", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_FDBK_URL",  updatable = true)
     public String getFeedbackURL()
     {
         return feedbackURL;
@@ -282,7 +282,7 @@ public class Application
     {
         this.feedbackURL = feedbackURL;
     }
-    @Column(name = "PT2B_FDBK_URL_RP", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_FDBK_URL_RP",  updatable = true)
     public String getFeedbackURLproxy()
     {
         return feedbackURLproxy;
@@ -292,7 +292,7 @@ public class Application
     {
         this.feedbackURLproxy = feedbackURLproxy;
     }
-    @Column(name = "PT2B_FDBK_EMAIL", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_FDBK_EMAIL",  updatable = true)
     public String getFeedbackEmail()
     {
         return feedbackEmail;
@@ -302,7 +302,7 @@ public class Application
     {
         this.feedbackEmail = feedbackEmail;
     }
-    @Column(name = "PT2B_ADMIN_URL", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_ADMIN_URL",  updatable = true)
     public String getAdminURL()
     {
         return adminURL;
@@ -312,7 +312,7 @@ public class Application
     {
         this.adminURL = adminURL;
     }
-    @Column(name = "PT2B_ADMIN_URL_RP", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_ADMIN_URL_RP",  updatable = true)
     public String getAdminURLproxy()
     {
         return adminURLproxy;
@@ -322,7 +322,7 @@ public class Application
     {
         this.adminURLproxy = adminURLproxy;
     }
-    @Column(name = "PT2B_RGSTR_URL", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_RGSTR_URL",  updatable = true)
     public String getRegstrURL()
     {
         return regstrURL;
@@ -332,7 +332,7 @@ public class Application
     {
         this.regstrURL = regstrURL;
     }
-    @Column(name = "PT2B_RGSTR_URL_RP", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_RGSTR_URL_RP",  updatable = true)
     public String getRegstrURLproxy()
     {
         return regstrURLproxy;
@@ -342,7 +342,7 @@ public class Application
     {
         this.regstrURLproxy = regstrURLproxy;
     }
-    @Column(name = "PT2B_TARGET_FRAME", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_TARGET_FRAME",  updatable = true)
     public String getTargetFrame()
     {
         return targetFrame;
@@ -352,7 +352,7 @@ public class Application
     {
         this.targetFrame = targetFrame;
     }
-    @Column(name = "PT2B_TIMEOUT_MINS", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_TIMEOUT_MINS",  updatable = true)
     public String getTimeoutMinutes()
     {
         return timeoutMinutes;
@@ -362,7 +362,7 @@ public class Application
     {
         this.timeoutMinutes = timeoutMinutes;
     }
-    @Column(name = "PT2B_ACTIVE_CD", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_ACTIVE_CD",  updatable = true)
     public String getActiveCd()
     {
         return activeCd;
@@ -377,7 +377,7 @@ public class Application
     {
         return activeCd.equalsIgnoreCase("A");
     }*/
-    @Column(name = "PT2B_ACCESS_TYPE", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_ACCESS_TYPE",  updatable = true)
     public String getAccessType()
     {
         return accessType;
@@ -387,7 +387,7 @@ public class Application
     {
         this.accessType = accessType;
     }
-    @Column(name = "PT2B_EXPLODE_ACCESS", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_EXPLODE_ACCESS",  updatable = true)
     public String getExplodeAccDet()
     {
         return explodeAccDet;
@@ -397,7 +397,7 @@ public class Application
     {
         this.explodeAccDet = explodeAccDet;
     }
-    @Column(name = "PT2B_DFLT_APP_BAR", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_DFLT_APP_BAR",  updatable = true)
     public String getDefAppBar()
     {
         return defAppBar;
@@ -412,7 +412,7 @@ public class Application
     {
         return !defAppBar.equals("N");
     }
-    @Column(name = "PT2B_APP_BAR_COLOR", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_APP_BAR_COLOR",  updatable = true)
     public String getDefAppBarColor()
     {
         return defAppBarColor;
@@ -422,7 +422,7 @@ public class Application
     {
         this.defAppBarColor = defAppBarColor;
     }
-    @Column(name = "PT2B_DIS_ZERO_APPL", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_DIS_ZERO_APPL",  updatable = true)
     public String getDispZeroApp()
     {
         return dispZeroApp;
@@ -432,7 +432,7 @@ public class Application
     {
         this.dispZeroApp = dispZeroApp;
     }
-    @Column(name = "PT2B_DIS_USER_FLDS", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_DIS_USER_FLDS",  updatable = true)
     public String getDispUserFields()
     {
         return dispUserFields;
@@ -442,7 +442,7 @@ public class Application
     {
         this.dispUserFields = dispUserFields;
     }
-    @Column(name = "PT2B_DIS_DGTL_AGREE", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_DIS_DGTL_AGREE",  updatable = true)
     public String getDigitalAgree()
     {
         return digitalAgree;
@@ -452,7 +452,7 @@ public class Application
     {
         this.digitalAgree = digitalAgree;
     }
-    @Column(name = "PT2B_NON_EMP_ACCESS", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_NON_EMP_ACCESS",  updatable = true)
     public String getNonEmpAccess()
     {
         return nonEmpAccess;
@@ -462,7 +462,7 @@ public class Application
     {
         this.nonEmpAccess = nonEmpAccess;
     }
-    @Column(name = "PT2B_INT_EXT_ACCESS", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_INT_EXT_ACCESS",  updatable = true)
     public String getIntExtAccessInd()
     {
         return intExtAccessInd;
@@ -472,7 +472,7 @@ public class Application
     {
         this.intExtAccessInd = intExtAccessInd;
     }
-    @Column(name = "PT2B_HTTP_TYPE_ACC", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_HTTP_TYPE_ACC",  updatable = true)
     public String getHttpTypeAccessInd()
     {
         return httpTypeAccessInd;
@@ -482,7 +482,7 @@ public class Application
     {
         this.httpTypeAccessInd = httpTypeAccessInd;
     }
-    @Column(name = "PT2B_LOGIN_ACC", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_LOGIN_ACC",  updatable = true)
     public String getLoggedInAccess()
     {
         return loggedInAccess;
@@ -492,7 +492,7 @@ public class Application
     {
         this.loggedInAccess = loggedInAccess;
     }
-    @Column(name = "PT2B_NO_LOGIN_ACC", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_NO_LOGIN_ACC",  updatable = true)
     public String getNotLoggedInAccess()
     {
         return notLoggedInAccess;
@@ -502,7 +502,7 @@ public class Application
     {
         this.notLoggedInAccess = notLoggedInAccess;
     }
-    @Column(name = "PT2B_ALLOW_DELEGATE", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_ALLOW_DELEGATE",  updatable = true)
     public String getAllowDelegate()
     {
         return allowDelegate;
@@ -512,7 +512,7 @@ public class Application
     {
         this.allowDelegate = allowDelegate;
     }
-    @Column(name = "PT2B_CHAMP_EMP_NO", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_CHAMP_EMP_NO",  updatable = true)
     public String getChampionEmpNo()
     {
         return championEmpNo;
@@ -522,7 +522,7 @@ public class Application
     {
         this.championEmpNo = championEmpNo;
     }
-    @Column(name = "PT2B_AUTHOR_EMP_NO", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_AUTHOR_EMP_NO",  updatable = true)
     public String getAuthorEmpNo()
     {
         return authorEmpNo;
@@ -532,7 +532,7 @@ public class Application
     {
         this.authorEmpNo = authorEmpNo;
     }
-    @Column(name = "PT2B_SPPRT_EMP_NO", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_SPPRT_EMP_NO",  updatable = true)
     public String getSupportEmpNo()
     {
         return supportEmpNo;
@@ -542,7 +542,7 @@ public class Application
     {
         this.supportEmpNo = supportEmpNo;
     }
-    @Column(name = "PT2B_SPPRT_COMMENT", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_SPPRT_COMMENT",  updatable = true)
     public String getSupportComment()
     {
         return supportComment;
@@ -552,7 +552,7 @@ public class Application
     {
         this.supportComment = supportComment;
     }
-    @Column(name = "PT2B_APPL_ADD_DT", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_APPL_ADD_DT",  updatable = true)
     public Date getAppAddDate()
     {
         return appAddDate;
@@ -562,7 +562,7 @@ public class Application
     {
         this.appAddDate = appAddDate;
     }
-    @Column(name = "PT2B_TRACK_USAGE", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_TRACK_USAGE",  updatable = true)
     public String getTrackUsage()
     {
         return trackUsage;
@@ -572,7 +572,7 @@ public class Application
     {
         this.trackUsage = trackUsage;
     }
-    @Column(name = "PT2B_AUTO_REG", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_AUTO_REG",  updatable = true)
     public String getAutoRegister()
     {
         return autoRegister;
@@ -583,7 +583,7 @@ public class Application
         this.autoRegister = autoRegister;
     }
    // @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "PT2B_ALERT_TMSP", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_ALERT_TMSP",  updatable = true)
     public Timestamp getAlertTmsp()
     {
         return alertTmsp;
@@ -593,7 +593,7 @@ public class Application
     {
         this.alertTmsp = alertTmsp;
     }
-    @Column(name = "PT2B_SHORT_NAME", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_SHORT_NAME",  updatable = true)
     public String getShortName()
     {
         return shortName;
@@ -603,7 +603,7 @@ public class Application
     {
         this.shortName = shortName;
     }
-    @Column(name = "PT2B_DISP_TOPBAR", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_DISP_TOPBAR",  updatable = true)
     public String getDisplayTopBar()
     {
         return displayTopBar;
@@ -618,7 +618,7 @@ public class Application
     {
         return !displayTopBar.equals("N");
     }
-    @Column(name = "PT2B_DISP_LEFTNAV", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_DISP_LEFTNAV",  updatable = true)
     public String getDisplayLeftNav()
     {
         return displayLeftNav;
@@ -633,7 +633,7 @@ public class Application
     {
         return !displayLeftNav.equals("N");
     }
-    @Column(name = "PT2B_WINDOW_WIDTH", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_WINDOW_WIDTH",  updatable = true)
     public String getWindowWidth()
     {
         return windowWidth;
@@ -643,7 +643,7 @@ public class Application
     {
         this.windowWidth = windowWidth;
     }
-    @Column(name = "PT2B_WINDOW_HEIGHT", nullable = false,insertable = true, updatable = true)
+    @Column(name = "PT2B_WINDOW_HEIGHT",  updatable = true)
     public String getWindowHeight()
     {
         return windowHeight;
@@ -664,4 +664,3 @@ public class Application
         this.userCount = userCount;
     }*/
 }
-
