@@ -5,9 +5,55 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	<context:component-scan base-package="com.aurora.quicklinks.beans" />
-	<context:component-scan base-package="com.aurora.quicklinks.services" />
-	<context:component-scan base-package="com.aurora.quicklinks.controllers" />
+	<context:component-scan base-package="com.aurora.quicklinks.dao" />
+	<context:component-scan base-package="com.aurora.quicklinks.delegates" />
+    <context:component-scan base-package="com.aurora.quicklinks.services" />
+    <context:component-scan base-package="com.aurora.quicklinks.controllers" />
 	<context:component-scan base-package="com.aurora.quicklinks.rest" />
+	
+	<bean id="dataSource" 
+         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	<property name="url" value="jdbc:mysql://localhost:3306/urlportal" />
+	<property name="username" value="root" />
+	<property name="password" value="root" />
+</bean>
+	
+<!--Declaring Hibernate Session Factory	-->
+<bean id="urlsessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />		
+		 <property name="packagesToScan">
+			<list>
+				
+				<value>com.aurora.quicklinks.beans</value>
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.MySQLDialect
+				connection.provider_class=org.hibernate.connection.C3P0ConnectionProvider
+				c3p0.acquire_increment=1
+				c3p0.idle_test_period=100
+				c3p0.min_size=5
+				c3p0.max_size=20
+				c3p0.timeout=300
+				show_sql=true
+				c3p0.max_statements=50
+				current_session_context_class=thread
+				configurationClass=org.hibernate.cfg.AnnotationConfiguration
+				connection.SetBigStringTryClob=true
+			</value>			                
+		</property>
+	</bean>	
+	
+	<!--Declaring Hibernate Template which refer Hibernate Session Factory	-->
+	<bean id="urlTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="urlsessionFactory" />
+		</property>
+	</bean>
 	
 	
 	
@@ -30,11 +76,7 @@
 		<property name="suffix">
 			<value>.jsp</value>
 		</property>
-	</bean>        
-
-	
-	
-	
+	</bean> 
 	
 	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
 		<property name="messageConverters">
@@ -43,5 +85,6 @@
 					class="org.springframework.http.converter.StringHttpMessageConverter" />
 			</list>
 		</property>
-	</bean>
-</beans>
+	</bean>       
+
+	</beans>

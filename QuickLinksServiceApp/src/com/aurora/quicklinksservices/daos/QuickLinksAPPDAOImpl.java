@@ -6,12 +6,15 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Expression;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Repository;
 
-import com.aurora.quicklinksservices.beans.Application;
+import com.aurora.quicklinksservices.beans.App;
 import com.aurora.quicklinksservices.beans.User;
+import com.aurora.quicklinksservices.beans.UserApp;
+import com.aurora.quicklinksservices.beans.UserAppResponseBean;
 
 @Repository
 public class QuickLinksAPPDAOImpl  implements
@@ -42,7 +45,9 @@ public class QuickLinksAPPDAOImpl  implements
 	
 	}*/
 
-
+/* getting Available quicklinks list based on user role*/
+	
+	
 	public List findAvailAppListByRole(String roleCd) {
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT {app.*} ");
@@ -58,11 +63,11 @@ public class QuickLinksAPPDAOImpl  implements
 		sql.append("AND parent.pt2b_active_cd = 'A' ");
 		sql.append("ORDER BY parent.pt2b_app_name, app.pt2b_seq_no ");
 		Session session = urlsessionFactory.openSession();
-		List list = session.createSQLQuery(sql.toString()).addEntity("app","com.aurora.quicklinksservices.beans.Application").setString(0, "EMP")
+		List list = session.createSQLQuery(sql.toString()).addEntity("app","com.aurora.quicklinksservices.beans.App").setString(0, "EMP")
 				.list();
 		StringBuffer sb = new StringBuffer();
 		for (int i=0;i<list.size();i++){
-			Application temp = (Application)list.get(i);
+			App temp = (App)list.get(i);
 			sb.append(temp.getAppName()+"---->"+temp.getAppDesc()+"<br/>");
 			sb.append(temp.getAppURL()+"----><br/>");
 			
@@ -75,7 +80,7 @@ public class QuickLinksAPPDAOImpl  implements
 	}
 
 	
-	
+/* Service for getting user details */	
 
 	@Override
 	public List findUserDetails(String userid) {
@@ -98,6 +103,37 @@ public class QuickLinksAPPDAOImpl  implements
 		System.out.println("result"+sb.toString());
 		return appList;
 	}
+	
+	/* Service for getting user saved quick links*/
+	
+	public List findUserAppsByUser(Long userid)
+	  {
+		userid = 43l;
+		Session session = urlsessionFactory.openSession();
+		session.beginTransaction();
+		UserAppResponseBean bean =null;
+		List<UserAppResponseBean> listUserAppBean = new ArrayList<UserAppResponseBean>();
+		List list = session.createCriteria(UserApp.class).add(Expression.eq("userAppKey.userId", userid)).add(Expression.eq("activeCd", "A")).list();
+		
+		System.out.println("findUserAppsByUsers -- > "+list);
+		StringBuffer sb = new StringBuffer();
+		for (int i=0;i<list.size();i++){
+			bean =  new UserAppResponseBean(); 
+			UserApp temp = (UserApp)list.get(i);
+			sb.append(temp.getCreated()+"----application---->"+temp.getApplication()+"<br/>");
+			bean.setAppName(temp.getApplication().getAppName());
+			bean.setAppUrl(temp.getApplication().getAppURL());
+			bean.setUserId(userid+"");
+			listUserAppBean.add(bean);
+			//appList.add(temp);
+		}
+		System.out.println("result"+sb.toString());
+		return listUserAppBean;
+	  
+	  
+	  }
+
+	
 
 	
 }

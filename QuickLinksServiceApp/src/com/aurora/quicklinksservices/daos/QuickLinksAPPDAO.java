@@ -6,4 +6,5 @@ public interface QuickLinksAPPDAO {
 
 	public List findAvailAppListByRole(String roleCd);
 	public List findUserDetails(String userid);
+	public List findUserAppsByUser(Long userid);
 }

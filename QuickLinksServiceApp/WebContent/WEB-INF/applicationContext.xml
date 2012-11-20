@@ -44,8 +44,11 @@
 		<property name="annotatedClasses">
 			<list>
 			<value>com.aurora.quicklinksservices.beans.AppKey</value>
-			<value>com.aurora.quicklinksservices.beans.Application</value>
+			<value>com.aurora.quicklinksservices.beans.App</value>
 			<value>com.aurora.quicklinksservices.beans.User</value>
+			<value>com.aurora.quicklinksservices.beans.UserApp</value>
+			<value>com.aurora.quicklinksservices.beans.UserAppKey</value>
+			<value>com.aurora.quicklinksservices.beans.Application</value>
 			</list>
 		</property>
 
