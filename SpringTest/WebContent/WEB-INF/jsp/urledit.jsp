@@ -44,7 +44,6 @@ function submitURLForm(formName){
 </head>
 
 <h3>URL</h3>
-Available List
 
 <table border="1" cellpadding="4">
 	<tr>
@@ -75,7 +74,7 @@ Available List
    <c:forEach items="${urlFormBean.listUrlBean}" var="urlLst" varStatus="row">
       <tr>
       
-      	<td><form:checkbox  path="listUrlBean[${row.index}].id" id="listUrlBean[${row.index}].id" value="${urlLst.id}" />
+      	<td><form:checkbox path="listUrlBean[${row.index}].id" checked="" value="${urlLst.id}" />
 										 <c:out value="${urlLst.id}"/></td>
       	<td><form:hidden path="listUrlBean[${row.index}].url" value="${urlLst.url}" />
       	<c:out value="${urlLst.url}"/></td>
