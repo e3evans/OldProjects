@@ -1,0 +1,113 @@
+/* ************************************************** */
+/* Copyright (c) 2009, 2010 Cisco Systems, Inc.       */
+/* All rights reserved.                               */
+/* ************************************************** */
+/* BorderContainer */
+
+.masterbrand .dijitBorderContainer {
+    background-color: transparent;
+	padding: 5px;
+}
+
+.masterbrand .dijitSplitContainer-child,
+.masterbrand .dijitBorderContainer-child {
+	/* By default put borders on all children of BorderContainer,
+	 *  to give illusion of borders on the splitters themselves.
+	 * REBOOT: Removed
+	 */
+}
+
+.masterbrand .dijitBorderContainer-dijitTabContainerTop,
+.masterbrand .dijitBorderContainer-dijitTabContainerBottom,
+.masterbrand .dijitBorderContainer-dijitTabContainerLeft,
+.masterbrand .dijitBorderContainer-dijitTabContainerRight {
+	/* except that TabContainer defines borders on it's sub-nodes (tablist and dijitTabPaneWrapper),
+	 * so override rule setting border on domNode
+	 */
+	 border: none;
+}
+
+.masterbrand .dijitBorderContainer-dijitBorderContainer {
+	/* also, make nested BorderContainers look like a single big widget with lots of splitters */
+	border: none;
+	padding: 0px;
+}
+
+.masterbrand .dijitSplitterH,
+.masterbrand .dijitGutterH {
+    margin-top:4px;
+    margin-bottom:4px;
+    background-color: transparent;
+	border:0;
+    height: 5px;
+}
+
+/* horiz */
+.masterbrand .dijitSplitterH .dijitSplitterThumb {
+    background:  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAACCAMAAACJ8cf9AAAADFBMVEWMk6re4OdNVGb///9XH8GdAAAABHRSTlP///8AQCqp9AAAABZJREFUCNdjYGBiZmZGJhgYGYA0MgEABOoAQ/5wyX8AAAAASUVORK5CYII=) no-repeat 0 0;
+	height:2px;
+	width:19px;
+	top:2px;
+    margin-top: 0px;
+    padding:0;
+    opacity: 0.6;
+}
+
+/* ie7 need png */
+.dj_ie7 .masterbrand .dijitSplitterH .dijitSplitterThumb {
+    background: url("../xwt/images/layout/handleHoriz.png") no-repeat scroll 0 0 transparent;
+}
+
+.masterbrand .dijitSplitterV,
+.masterbrand .dijitGutterV {
+    margin-left:4px;
+    margin-right:4px;
+    background-color: transparent;
+}
+
+.masterbrand .dijitSplitterV {
+    width: 5px;
+}
+
+.masterbrand .dijitSplitterV .dijitSplitterThumb {
+	left:1px;
+
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAARCAMAAADAKo0jAAAADFBMVEWMk6re4OdNVGb///9XH8GdAAAABHRSTlP///8AQCqp9AAAABRJREFUCNdjYGJgYGBkYGaGIiK4AAbOAENGj4FOAAAAAElFTkSuQmCC) no-repeat scroll 0 0 transparent;
+    xbackground: url("../xwt/images/layout/handleVert.png") no-repeat scroll 0 0 transparent;
+
+    height: 19px;
+    width: 2px;
+    opacity: 0.6;
+    margin:0;
+    padding:0;
+}
+
+.dj_ie7 .masterbrand .dijitSplitterV .dijitSplitterThumb {
+    background: url("../xwt/images/layout/handleVert.png") no-repeat scroll 0 0 transparent;
+}
+
+
+/* active splitter */
+.masterbrand .dijitSplitter:hover {
+
+    opacity: 1.0;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    background-color: #04bffd;
+    -webkit-transition:background-color 0.2s ease-in;  
+}
+
+
+
+/* active splitter */
+.masterbrand .dijitSplitterActive {
+	font-size: 1px;
+	background-image: none;
+	filter: Alpha(Opacity=90);
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    /* important to take care of hovering and active */
+    background-color: #04bffd;
+    opacity: 0.9 !important;
+}
+

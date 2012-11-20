@@ -1,0 +1,242 @@
+/*
+* Copyright (c) 2009,2010 Cisco Systems, Inc.
+* All rights reserved. 
+* @author denpark 
+* All the CSS elements for tabs go here.
+*/
+/* BEGIN: content area tabs */
+
+.masterbrand .dijitTabListContainer-top .dijitTab{
+	margin-left: 8px; 	
+}
+
+.masterbrand .dijitTabListContainer-top{
+	margin-left: -10px;
+}
+
+/* disable dotted-line outline box on text when mouse press on tab */
+.masterbrand .dijitTab :focus { -moz-outline-style: none;}
+
+/* Selectors to use for all content tabs */
+.masterbrand .dijitTabContainerTop-tabs { 
+	border-bottom:0px solid #ffffff;
+}
+
+.masterbrand .dijitTabContainerTop-tabs  .dijitTab {
+	float: left;
+	font-family: Arial, Helvetica;
+	background: none;
+}
+
+.masterbrand .dijitTabListContainer-top .dijitTab .tabLabel {
+	vertical-align:0;
+	color: #474747;
+
+}
+
+.masterbrand  .dijitTabListContainer-top .dijitTabContent {
+    background: none;
+    padding: 0px;    /*text padding space   edget images is 3px widget. Spec wants 8px.therefore left-right 5px here*/
+	outline: 0;
+}
+
+.masterbrand .dijitTabListContainer-top .dijitTabInnerDiv {
+	margin-left: 0px;  /*space between inter-tab  [tab1]__GAP__[tab2] */
+	padding: 1px 0 0; 
+	overflow: hidden;
+	float: left;
+}
+
+.dj_ie6 .masterbrand .dijitTabInnerDiv {
+	margin-left: 1px;
+}
+
+
+.masterbrand .dijitTabContainerTop-dijitContentPane{
+	margin-top: 6px;
+}
+
+.masterbrand .dijitTabContainer .dijitTabContainerTop-tabs .dijitTab {
+	-moz-border-radius:3px 3px 3px 3px;
+	border:1px solid transparent;
+	background-color:#FFFFFF;
+	height:19px;
+	margin:0 5px 0 0;
+	padding:0 14px 0 9px;
+}
+
+
+.masterbrand .dijitTabContainer .dijitTabContainerTop-tabs {
+	height:21px;
+	margin:10px 0 2px;
+}
+
+.masterbrand .dijitTabContainer .dijitTabContainerTop-tabs .dijitTabHover {
+	/*background: #FFFFFF;
+	border: 1px solid #7D888Bt;
+	-moz-border-radius:3px 3px 3px 3px;
+	color:#474747;
+	height:19px;
+	-moz-box-shadow:0px 2px 2px rgba(127, 127, 127, 0.27) inset;
+	*/
+	font-family:Arial, Helvetica;
+font-size:12px;
+color: #474747;
+text-align: center;
+font-weight: normal;
+background-color: #ffffff;
+text-decoration: none;
+-webkit-border-radius: 3px; width: auto; -moz-border-radius: 3px;  -khtml-border-radius: 3px;  border-radius: 3px;
+border: 1px solid #7d888b;
+}
+
+.masterbrand .dijitTabContainer .dijitTabContainerTop-tabs .dijitTabChecked {
+	-moz-box-shadow:0px 2px 2px rgba(0, 0, 0, 0.27) inset;
+	background:none repeat scroll 0 0 #94A7AC;	
+	border:none;
+	color:#FFFFFF;
+	height: 21px;
+	outline: 0;
+}
+
+.masterbrand .dijitTabContainer .dijitTabContainerTop-tabs .dijitTab.dijitTabChecked .tabLabel {	
+	color: #FFFFFF;
+}
+
+/*************
+ * 
+ * IE 8 
+ * 
+ */
+
+ 
+ 
+/* BEGIN: content area tabs */
+
+.dj_ie .masterbrand .dijitTabContainerTop-tabs{
+	height:21px;
+	margin:0px 0px 2px 2px; /*margin left 8 __|----|----| */
+	padding-bottom:0px;
+	border-color:#cccccc;	
+}
+
+.dj_ie .masterbrand .dijitTabListContainer-top{
+	margin-top: 7px;
+}
+
+
+.dj_ie .masterbrand .dijitTabContainerTop-tabs .dijitTab {
+	background-position: 0 0;
+	height:21px;
+    float: left;
+	color:#000000;
+	font-weight:normal;
+	font-family: Arial, Helvetica;
+	font-size: 12px;
+	margin: 0px 2px 0px 2px;
+	border: none !important;
+	padding-right: 0px; 
+}
+
+.dj_ie .masterbrand .dijitTabListContainer-top .dijitTabContent {
+    padding: 3px 5px 0px 0px;    /*text padding space   edget images is 3px widget. Spec wants 8px.therefore left-right 5px here*/
+	margin-right: 8px;
+}
+
+.dj_ie .masterbrand .dijitTabListContainer-top .dijitTabInnerDiv {
+	margin-left: 0px;  /*space between inter-tab  [tab1]__GAP__[tab2] */
+	padding: 0px 3px 0px 2px;  /* tab padding. edget image is 3px widget set 3px LR to fill the gap */ 
+	overflow: hidden;
+	float: left;
+	height: 21px;
+	border:none !important; 
+}
+
+.dj_ie .masterbrand .dijitTabPaneWrapper,
+.dj_ie .masterbrand .dijitTabContainerTop-dijitContentPane,
+.dj_ie .masterbrand .dijitTabContainerLeft-dijitContentPane,
+.dj_ie .masterbrand .dijitTabContainerBottom-dijitContentPane,
+.dj_ie .masterbrand .dijitTabContainerRight-dijitContentPane,
+.dj_ie .masterbrand .dijitAccordionContainer-dijitContentPane {
+	/*background: transparent url(../images/tab/bg_40.png) !important;*/
+	/*background: transparent url(../images/tab/tab_sprites_center_ie.png) repeat x;*/ 
+	/*border: none !important;*/
+	/*border-color: #0a638f;*/
+	/*border-top: 3px solid white*/
+}
+ 
+
+
+.dj_iequirks .masterbrand .dijitTabPaneWrapper, 
+.dj_iequirks .dj_ie .masterbrand .dijitTabContainerTop-dijitContentPane {
+	background: none;
+}
+
+.dj_iequirks .masterbrand .dijitTabListContainer-top .dijitDialog {
+	background-color: transparent;
+	border: none;
+}
+
+.dj_iequirks .masterbrand .dijitTabListContainer-top .dijitTabListContainer-top div {
+	display: inline;
+}
+
+
+.dj_ie .masterbrand .dijitTabListContainer-top .dijitTabHover {
+	background-color: transparent;
+	/*background: transparent url(../images/tab/tab_hover_left_ie.png) no-repeat top left !important;*/
+	background: transparent url(../images/tab/tab_hover_left_new.png) no-repeat top left !important;
+	/*background-position:  0 -42px;*/	
+	color:#636363;
+}
+
+.dj_ie .masterbrand .dijitTabListContainer-top .dijitTabHover .dijitTabInnerDiv {
+	/*background: transparent url(../images/tab/tab_hover_right_ie.png) no-repeat top right !important;*/
+	background: transparent url(../images/tab/tab_hover_right_new.png) no-repeat top right !important;
+	/*background-position:  100% -42px;*/		
+}
+
+.dj_ie .masterbrand .dijitTabListContainer-top .dijitTabHover .dijitTabContent {
+    /*background: transparent url("../images/tab/tab_hover_cent_ie.png") repeat-x !important;*/
+	background: transparent url("../images/tab/tab_hover_center_new.png") repeat-x !important;
+/*	background-position:  100% -42px;*/
+}
+
+.dj_ie .masterbrand .dijitTabListContainer-top .dijitTabChecked {
+	/*background: transparent  url(../images/tab/tab_selected_left_ie.png) no-repeat top left !important;*/
+	background: transparent  url(../images/tab/tab_selected_left_new.png) no-repeat top left !important;
+	/*background-position:  0 -21px;*/
+	/*border-color: #6791aa; */
+	color:#FFFFFF !important;
+	font-weight:normal;
+	font-family: Arial, Helvetica;
+	font-size: 12px;
+}
+
+/* dojo 1.4 fix */
+.dj_ie .masterbrand .dijitTabListContainer-top .dijitTabContainer .dijitTabCheckedHover {
+	background: transparent  url(../images/tab/tab_selected_left_new.png) no-repeat top left !important;
+	/*background: transparent  url(../images/tab/tab_selected_left_ie.png) no-repeat top left !important;*/
+	/*background-position:  0 -21px;*/
+}
+
+.dj_ie .masterbrand .dijitTabListContainer-top .dijitTabCheckedHover {	
+	background: transparent  url(../images/tab/tab_selected_left_new.png) no-repeat top left !important;
+	/*background: transparent  url(../images/tab/tab_selected_left_ie.png) no-repeat top left !important;*/
+	/*background-position:  0 -21px;*/
+	/*color:#000000;*/
+}
+/* dojo 1.4 fix*/
+
+.dj_ie .masterbrand .dijitTabListContainer-top .dijitTabChecked .dijitTabInnerDiv {
+	background: transparent url(../images/tab/tab_selected_right_new.png) no-repeat top right !important;
+	/*background: transparent url(../images/tab/tab_selected_right_ie.png) no-repeat top right !important;*/
+	/*background-position:  100% -21px;*/	
+	
+}
+.dj_ie .masterbrand .dijitTabListContainer-top .dijitTabChecked .dijitTabContent {
+	background: transparent url(../images/tab/tab_selected_center_new.png) repeat-x !important;
+    /*background: transparent url(../images/tab/tab_selected_cent_ie.png) repeat-x !important;*/
+	/*background-position:  100% -21px;*/
+}
+/* END: content area tabs */

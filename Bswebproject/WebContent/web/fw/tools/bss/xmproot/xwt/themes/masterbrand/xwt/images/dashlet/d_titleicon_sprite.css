@@ -1,0 +1,36 @@
+
+.max-normal, .edit-hover, .collaps-normal, .close-selected, .help-hover, 
+.collaps-selected, .edit-selected, .close-hover, .detach-normal, .help-selected, 
+.close-normal, .refresh-hover, .min-hover, .detach-selected, .collaps-hover, 
+.min-selected, .expand-hover, .min-normal, .edit-normal, .expand-selected, 
+.refresh-normal, .help-normal, .refresh-selected, .max-selected, .max-hover, 
+.expand-normal, .detach-hover
+{ background: url('tmp.png') no-repeat; }
+
+.max-normal { background-position: -3px -0px; }
+.edit-hover { background-position: -3px -20px; }
+.collaps-normal { background-position: -3px -40px; }
+.close-selected { background-position: -3px -60px; }
+.help-hover { background-position: -3px -80px; }
+.collaps-selected { background-position: -3px -100px; }
+.edit-selected { background-position: -3px -120px; }
+.close-hover { background-position: -3px -140px; }
+.detach-normal { background-position: -3px -160px; }
+.help-selected { background-position: -3px -180px; }
+.close-normal { background-position: -3px -200px; }
+.refresh-hover { background-position: -3px -220px; }
+.min-hover { background-position: -3px -240px; }
+.detach-selected { background-position: -3px -260px; }
+.collaps-hover { background-position: -3px -280px; }
+.min-selected { background-position: -3px -300px; }
+.expand-hover { background-position: -3px -320px; }
+.min-normal { background-position: -3px -340px; }
+.edit-normal { background-position: -3px -360px; }
+.expand-selected { background-position: -3px -380px; }
+.refresh-normal { background-position: -3px -400px; }
+.help-normal { background-position: -3px -420px; }
+.refresh-selected { background-position: -3px -440px; }
+.max-selected { background-position: -3px -460px; }
+.max-hover { background-position: -3px -480px; }
+.expand-normal { background-position: -3px -500px; }
+.detach-hover { background-position: -3px -520px; }

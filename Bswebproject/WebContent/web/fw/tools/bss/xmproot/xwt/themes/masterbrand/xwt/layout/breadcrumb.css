@@ -1,0 +1,92 @@
+/*   
+ *        Copyright (c) 2009, 2010 Cisco Systems, Inc.   
+ *        All rights reserved.   
+ *
+ * @author denpark
+ * CSS rules for breadcrumb
+ */
+
+.masterbrand .xwtBreadcrumb {      
+      margin: 5px 0 5px 20px;
+      font-size:10px;
+      font-family: Arial, Helvetica;
+      color:#3C3C3C;
+	  padding-left: 17px;
+}
+
+.masterbrand .xwtBreadcrumb a {
+      color: #3C3C3C;
+      font-size:10px;
+      text-decoration: none;
+	  padding-top:5px;
+	  padding-bottom:5px;
+}
+
+.masterbrand .xwtBreadcrumb.nested {      
+      color:#0088C2;
+}
+
+.masterbrand .xwtBreadcrumb.nested a {
+      color: #0088C2;
+}
+
+/*
+.dj_ie8 .masterbrand .xwtBreadcrumb a {
+	padding-right: 5px;	
+}*/
+
+
+.masterbrand .xwtBreadcrumb *:last-child {
+	  font-weight: bold;
+}
+
+.masterbrand .xwtBreadcrumb a:hover {
+      text-decoration: underline;
+	  padding-top:5px;
+	  padding-bottom:5px;
+}
+
+.dj_ie8 .masterbrand .xwtBreadcrumb a:hover {
+	padding-right: 5px;	
+}
+
+
+.masterbrand .xwtBreadcrumbSeparator {
+      color: #3C3C3C;
+}
+
+.masterbrand .xwtBreadcrumb.nested .xwtBreadcrumbSeparator{
+	   color: #0088C2;
+}
+
+
+.masterbrand .xwtBreadcrumbText {
+      color: #3C3C3C;
+      font-family: Arial, Helvetica;
+      font-size:10px;
+	  padding-top:5px;
+	  padding-bottom:5px;  
+}
+
+.masterbrand .xwtBreadcrumb.nested .xwtBreadcrumbText{
+	color: #0088C2;
+}
+
+.dj_ie8 .masterbrand .xwtBreadcrumbText {
+	padding-right: 5px;	
+}
+
+.masterbrand .xwtEllipses {
+      color: #3C3C3C;
+      cursor: pointer;
+}
+
+.masterbrand .xwtBreadcrumb.nested .xwtEllipses{
+	   color: #0088C2;
+}
+
+.dj_ie8 .masterbrand .xwtEllipses {
+		padding-right: 3px;
+	
+}
+

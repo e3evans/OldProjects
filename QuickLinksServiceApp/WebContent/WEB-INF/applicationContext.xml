@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/PTLDB2Z" />
+	</bean>
+	<!--  
+	<bean id="urlsessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />		
+		 <property name="packagesToScan">
+			<list>
+			<value>com.aurora.quicklinksservices.beans</value>
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.DB2390Dialect
+				connection.provider_class=org.hibernate.connection.C3P0ConnectionProvider
+				c3p0.acquire_increment=1
+				c3p0.idle_test_period=100
+				c3p0.min_size=5
+				c3p0.max_size=20
+				c3p0.timeout=300
+				show_sql=true
+				c3p0.max_statements=50
+				current_session_context_class=thread
+				configurationClass=org.hibernate.cfg.AnnotationConfiguration
+				connection.SetBigStringTryClob=true
+			</value>			                
+		</property>
+	</bean>-->
+	
+<!--Declaring Hibernate Session Factory	-->
+<bean id="urlsessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />		
+		
+		<property name="annotatedClasses">
+			<list>
+			<value>com.aurora.quicklinksservices.beans.AppKey</value>
+			<value>com.aurora.quicklinksservices.beans.Application</value>
+			<value>com.aurora.quicklinksservices.beans.User</value>
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.DB2390Dialect
+				connection.provider_class=org.hibernate.connection.C3P0ConnectionProvider
+				c3p0.acquire_increment=1
+				c3p0.idle_test_period=100
+				c3p0.min_size=5
+				c3p0.max_size=20
+				c3p0.timeout=300
+				show_sql=true
+				c3p0.max_statements=50
+				current_session_context_class=thread
+				configurationClass=org.hibernate.cfg.AnnotationConfiguration
+				connection.SetBigStringTryClob=true
+			</value>			                
+		</property>
+	</bean>
+	
+	<!--Declaring Hibernate Template which refer Hibernate Session Factory	-->
+	<!--bean id="urlTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="urlsessionFactory" />
+		</property>
+	</bean-->
+	<context:annotation-config />
+	<context:component-scan base-package="com.aurora.quicklinksservices.beans" />
+	<context:component-scan base-package="com.aurora.quicklinksservices.daos" />
+	
+	
+		<context:component-scan base-package="com.aurora.quicklinksservices.services" />
+	<context:component-scan base-package="com.aurora.quicklinksservices.rest" />
+	
+	
+	
+	
+	   
+
+	</beans>

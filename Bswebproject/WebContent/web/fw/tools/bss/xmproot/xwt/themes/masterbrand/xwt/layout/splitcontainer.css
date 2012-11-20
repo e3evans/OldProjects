@@ -1,0 +1,79 @@
+/* ************************************************** */
+/* Copyright (c) 2009,2010 Cisco Systems, Inc.             */
+/* All rights reserved.                               */
+/* ************************************************** */
+
+.masterbrand .splitContainer{
+	width: 100%; 
+	height: 100%;
+}
+.masterbrand  .splitContainer .dijitSplitter {
+	xxxborder-color: transparent !important;
+}
+
+.masterbrand  .splitContainer .dijitSplitterV {
+	background: -moz-linear-gradient(left center , #EFF1F3, #B8C3CC);
+	border-left: 1px solid #B8C3CC;
+	width:12px;
+	background:#EFF1F3;
+	background-image: -moz-linear-gradient(left center , #EFF1F3, #B8C3CC); 
+	background-image: -webkit-gradient(linear, left center, right center, from(#EFF1F3), to(#B8C3CC));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EFF1F3', endColorstr='#B8C3CC', gradientType='1');
+}
+
+.masterbrand  .splitContainer .dijitSplitterH {
+	border-top: 1px solid #B8C3CC;
+	height: 12px;
+	background-image: -moz-linear-gradient(top center , #EFF1F3, #B8C3CC); 
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#EFF1F3), to(#B8C3CC));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EFF1F3', endColorstr='#B8C3CC', gradientType='0');
+}
+
+.masterbrand  .splitContainer .dijitSplitterV:hover,
+.masterbrand  .splitContainer .dijitSplitterActive,
+.masterbrand  .splitContainer .dijitSplitterH:hover, 
+.masterbrand  .splitContainer .dijitSplitterActive {
+	background-color:transparent ;
+	background-image: none;
+}
+
+
+.masterbrand  .splitContainer .dijitSplitterV .dijitSplitterThumb {
+	background: url(../images/layout/splitter_vert.png) no-repeat;
+	left:4px;
+	height:45px;
+	width:5px;
+	top:48%;
+}
+
+.masterbrand  .splitContainer .dijitSplitterH .dijitSplitterThumb {
+	background: url(../images/layout/splitter_horiz.png) no-repeat;
+	height:5px;
+	width:45px;
+	left:48%;
+	top: 4px;
+	position:absolute;
+}
+.masterbrand .splitContainer .dijitSplitterH:hover{
+	cursor: url(../images/layout/gripperHoriz.png) 0 8, ns-resize;
+	border-bottom: 1px solid #B8C3CC;
+	background-image: -moz-linear-gradient(top center , #B8C3CC, #EFF1F3); 
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#B8C3CC), to(#EFF1F3));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#B8C3CC', endColorstr='#EFF1F3', gradientType='0');
+}
+.masterbrand  .splitContainer .dijitSplitterHActive{
+	cursor: url(../images/layout/gripperHoriz.png) 0 8, ns-resize;
+	background: #C6D5DB !important;
+}
+.masterbrand .splitContainer .dijitSplitterV:hover{
+	cursor: url(../images/layout/gripperVert.png) 8 0, ew-resize;
+	border-right: 1px solid #B8C3CC;
+	background-image: -moz-linear-gradient(left center , #B8C3CC, #EFF1F3); 
+	background-image: -webkit-gradient(linear, left center, right center, from(#B8C3CC), to(#EFF1F3));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#B8C3CC', endColorstr='#EFF1F3', gradientType='1');
+}
+
+.masterbrand  .splitContainer .dijitSplitterVActive{
+	cursor: url(../images/layout/gripperVert.png) 8 0, ew-resize;
+	background: #C6D5DB !important;
+}

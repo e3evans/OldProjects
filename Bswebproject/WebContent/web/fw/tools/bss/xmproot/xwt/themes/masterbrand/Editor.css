@@ -1,0 +1,69 @@
+.dijitIEFixedToolbar {
+	position:absolute;
+	/* top:0; */
+	top: expression(eval((document.documentElement||document.body).scrollTop));
+}
+
+.masterbrand .dijitToolbar .dijitToolbarSeparator {
+	background: url('images/editor.gif');
+}
+
+.masterbrand .dijitEditorIcon {
+	background-image: url('images/editor.gif'); /* editor icons sprite image */
+	background-repeat: no-repeat;
+	width: 18px;
+	height: 18px;
+	text-align: center;
+}
+.masterbrand .dijitDisabled .dijitEditorIcon {
+	/*background-image: url('images/editorDisabled.gif');*/ /* editor icons sprite image */
+}
+
+.masterbrand .dijitEditorIconSep { background-position: 0px; }
+.masterbrand .dijitEditorIconBackColor { background-position: -18px; }
+.masterbrand .dijitEditorIconBold { background-position: -36px; }
+.masterbrand .dijitEditorIconCancel { background-position: -54px; }
+.masterbrand .dijitEditorIconCopy { background-position: -72px; }
+.masterbrand .dijitEditorIconCreateLink { background-position: -90px; }
+.masterbrand .dijitEditorIconCut { background-position: -108px; }
+.masterbrand .dijitEditorIconDelete { background-position: -126px; }
+.masterbrand .dijitEditorIconForeColor { background-position: -144px; }
+.masterbrand .dijitEditorIconHiliteColor { background-position: -162px; }
+.masterbrand .dijitEditorIconIndent { background-position: -180px; }
+.masterbrand .dijitEditorIconInsertHorizontalRule { background-position: -198px; }
+.masterbrand .dijitEditorIconInsertImage { background-position: -216px; }
+.masterbrand .dijitEditorIconInsertOrderedList { background-position: -234px; }
+.masterbrand .dijitEditorIconInsertTable { background-position: -252px; }
+.masterbrand .dijitEditorIconInsertUnorderedList { background-position: -270px; }
+.masterbrand .dijitEditorIconItalic { background-position: -288px; }
+.masterbrand .dijitEditorIconJustifyCenter { background-position: -306px; }
+.masterbrand .dijitEditorIconJustifyFull { background-position: -324px; }
+.masterbrand .dijitEditorIconJustifyLeft { background-position: -342px; }
+.masterbrand .dijitEditorIconJustifyRight { background-position: -360px; }
+.masterbrand .dijitEditorIconLeftToRight { background-position: -378px; }
+.masterbrand .dijitEditorIconListBulletIndent { background-position: -396px; }
+.masterbrand .dijitEditorIconListBulletOutdent { background-position: -414px; }
+.masterbrand .dijitEditorIconListNumIndent { background-position: -432px; }
+.masterbrand .dijitEditorIconListNumOutdent { background-position: -450px; }
+.masterbrand .dijitEditorIconOutdent { background-position: -468px; }
+.masterbrand .dijitEditorIconPaste { background-position: -486px; }
+.masterbrand .dijitEditorIconRedo { background-position: -504px; }
+.masterbrand .dijitEditorIconRemoveFormat { background-position: -522px; }
+.masterbrand .dijitEditorIconRightToLeft { background-position: -540px; }
+.masterbrand .dijitEditorIconSave { background-position: -558px; }
+.masterbrand .dijitEditorIconSpace { background-position: -576px; }
+.masterbrand .dijitEditorIconStrikethrough { background-position: -594px; }
+.masterbrand .dijitEditorIconSubscript { background-position: -612px; }
+.masterbrand .dijitEditorIconSuperscript { background-position: -630px; }
+.masterbrand .dijitEditorIconUnderline { background-position: -648px; }
+.masterbrand .dijitEditorIconUndo { background-position: -666px; }
+.masterbrand .dijitEditorIconWikiword { background-position: -684px; }
+.masterbrand .dijitEditorIconToggleDir { background-position: -540px; /* padding: 0; margin: 0; color:#555555;
+									font-family:verdana,Arial, Helvetica,sans-serif; font-weight: 800; font-size: 70%; */}
+.masterbrand .dijitEditorIconTabIndent { background-position: -702px; }
+.masterbrand .dijitEditorIconSelectAll { background-position: -720px; }
+.masterbrand .dijitEditorIconUnlink { background-position: -738px; }
+.masterbrand .dijitEditorIconFullScreen { background-position: -756px; }
+.masterbrand .dijitEditorIconViewSource { background-position: -774px; }
+.masterbrand .dijitEditorIconPrint { background-position: -792px; }
+.masterbrand .dijitEditorIconNewPage { background-position: -810px; }

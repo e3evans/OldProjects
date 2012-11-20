@@ -1,0 +1,1235 @@
+.kubrickder .dojoxGrid {
+    /* relative needed? */
+	position: relative;
+	background-color: #e9e9e9;
+	-moz-outline-style: none;
+	outline: none;
+	overflow: hidden;
+}
+
+.kubrick .dojoxGrid table {
+	padding: 0;
+}
+
+.kubrick .dojoxGrid td {
+	outline: none;
+	-moz-outline-style: none;
+}
+.kubrick .dojoxGrid-master-header {
+	position: relative;
+}
+.kubrick .dojoxGrid-master-view  {
+	position: relative;
+}
+.kubrick .dojoxGrid-view {
+	position: absolute;
+	overflow: hidden;
+}
+.kubrick .dojoxGrid-header {
+	position: absolute;
+	overflow: hidden;
+}
+.kubrick .dojoxGrid-header {
+	background-color:  #e9e9e9;
+}
+.kubrick .dojoxGrid-header table {
+	text-align: center;
+}
+
+.kubrick .gridHeaderTitleLayout {
+	color:#000;
+	font-family:Arial, Helvetica;
+	font-size:12px;
+	font-weight:bold;
+	line-height:16px;
+
+    padding-left: 5px;
+    padding-right: 8px;
+
+	vertical-align:middle;
+    width: 100%;
+}
+
+
+
+
+/* header row TH columns */
+
+/* ie6 test non resizable */
+.dj_ie6 .kubrick .dojoxGridHeader .dojoxGridRowTable TH.dojoxGridCell.dojoDndItem {
+
+}
+
+/* ie6 resizable column */
+.dj_ie6.kubrick .dojoxGridHeader .dojoxGridRowTable TH.dojoxGridCell.dojoDndItem {
+
+}
+
+/* resizable column */
+.kubrick .dojoxGridHeader .dojoxGridRowTable .dojoxGridCell.dojoDndItem {
+
+}
+
+
+.kubrick .gridHeaderRowsPerPageSelectorLayout .rowPerPageSelectorItemCountsPhrase {
+    font-style: italic;
+     }
+
+
+
+.kubrick  .gridHeaderRowsPerPageSelectorLayout {
+    white-space:nowrap;
+    }
+
+/* size of select list */
+
+.kubrick .gridHeaderRowsPerPageSelectorLayout .dijitComboBox {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 0;
+    width:4.5em !important;
+
+    }
+
+/* rowsPerPage INPUT */
+.kubrick .gridHeaderRowsPerPageSelectorLayout INPUT  {
+    margin:0px;
+    padding-top:4px;
+    padding-left:2px;
+    height:13px;
+    line-height:12px;
+    /* prevent wrapping to next line */
+    width:2em !important;
+    }
+
+
+.dj_ie6 .kubrick .gridHeaderRowsPerPageSelectorLayout INPUT  {
+    line-height:auto;
+    }
+
+
+/* push the text up a little higher for FF */
+.dj_gecko .kubrick .gridHeaderRowsPerPageSelectorLayout INPUT  {
+    padding-left: 0px;
+    margin-top: -3px !important;
+    height:auto;
+    }
+
+
+/* remove to make more room for the values in the select list */
+.kubrick  .gridHeaderRowsPerPageSelectorLayout .dijitComboBox .dijitValidationIcon{
+    display:none;
+}
+
+
+
+.kubrick .dijitButtonDisabled .dijitButtonNode,
+.kubrick .dijitDropDownButtonDisabled .dijitButtonNode,
+.kubrick .dijitComboButtonDisabled .dijitDownArrowButton,
+.kubrick .dijitDownArrowDisabled .dijitDownArrowButton {
+	background-position: 100% -63px;
+}
+
+
+
+
+/* fix pesky background color */
+/*
+.kubrick .paginatedGrid_buttonControlContainer .dijitDisabled .dijitRight .dijitButtonNode {
+    background-color: transparent;
+	background-position: 100% -63px;
+}
+*/
+
+
+.kubrick .gridHeaderRowsPerPageSelectorLayout SPAN {
+    display: inline-block;
+}
+
+
+.kubrick .gridHeaderContainer {
+	background-color:#A2B9C9;
+    width:100%;
+}
+
+
+.kubrick .gridPagingShowingText {
+	color:#000000;
+	font-family:Arial, Helvetica;
+	font-style:italic;
+}
+
+.kubrick .gridPagingRowsPer {
+	color:#000000;
+	font-family:Arial, Helvetica;
+}
+
+.kubrick .gridPagingButton {
+	padding-left:0;
+	padding-right:0;
+}
+
+/* alignment of the pagination controls page select list */
+.kubrick .dojoxGridHeader .paginatedGrid_buttonControlContainer .dijitComboBox {
+		margin-left:0px !important;
+        padding:0px !important;
+		margin:0px !important;
+        width:100%;
+		margin-top:2px !important;
+        height:20px;
+	}
+
+/* alignment of the pagination page select list  down-arrowbutton */
+.kubrick .dojoxGridHeader .paginatedGrid_buttonControlContainer .dijitComboBox .dijitDownArrowButton {
+    vertical-align:middle;
+    height: 18px;
+    padding:0;
+    padding-top:2px !important;
+    margin:0;
+}
+
+/* container for input */
+
+
+/* footer container */
+
+/* pagination controls, for example, are contained in the footer */
+.kubrick .dojoxGridFooter {
+	background-color:#D9E3E9;
+	border-top:1px solid #8499A2;
+	width:100%;
+}
+
+/* TD container for the page count dijit */
+.kubrick .dojoxGridFooter .paginatedGrid_buttonControlContainer .paginatedGrid_pageCountLayoutContainer {
+	padding-left:3px;
+	padding-right:5px;
+    padding-top:4px !important;
+    white-space: nowrap;
+}
+
+/* text inside page count */
+.kubrick .dojoxGridFooter .paginatedGrid_buttonControlContainer .paginatedGrid_pageCountLayoutContainer > SPAN {
+    display:inline-block;
+    height:21px;
+    }
+
+
+/* remove to make more room for the values in the select list */
+.kubrick .dojoxGridFooter .paginatedGrid_pageCountLayoutContainer .dijitTextBox  .dijitValidationIcon{
+    display:none;
+}
+
+
+/* textbox for page number */
+.kubrick .dojoxGridFooter .paginatedGrid_buttonControlContainer .paginatedGrid_currentPageInput {
+    width: 40px;
+}
+
+
+/* contains the INPUT field */
+.kubrick .dojoxGridFooter .paginatedGrid_pageCountLayoutContainer .dijitTextBox  .dijitInputField{
+    margin-right:1px;
+}
+
+/* IE fixes */
+.dj_ie .kubrick .dojoxGridFooter .paginatedGrid_pageCountLayoutContainer .dijitTextBox  .dijitInputField  {
+    margin-top:2px;
+    margin-right:3px;
+}
+
+
+/* real text INPUT */
+.kubrick .dojoxGridFooter .paginatedGrid_pageCountLayoutContainer .dijitTextBox  .dijitInputField > INPUT {
+    text-align:right !important;
+    height:18px;
+    }
+
+
+/* dijit for page pull down select */
+.kubrick .dojoxGridHeader .gridHeaderRowsPerPageSelectorLayout .dijitInputField {
+    height:12px;
+ }
+
+
+
+.kubrick .dojoxGridHeader .paginatedGrid_buttonControlContainer .paginatedGrid_currentPageInput INPUT.dijitReset {
+   padding-top:3px !important;
+    padding-bottom:2px !important;
+    margin:0;
+    height:16px !important;
+}
+
+
+/* contains the table */
+TABLE.paginatedGrid_footerLayout {
+    border-collapse:collapse;
+          }
+
+TABLE.paginatedGrid_footerLayout TD.footerLayout {
+    padding-top:2px !important;
+}
+
+/* pagination buttons */
+
+/* get the icon to be aligned to top, not middle */
+.kubrick .dojoxGridHeader .paginatedGrid_buttonControlContainer .dijitButtonContents {
+    vertical-align: top;
+    padding: 0px !important;
+    margin: 0px !important;
+    outline: none;
+}
+
+
+
+.kubrick TABLE.paginatedGrid_buttonControlContainer {
+	border-collapse:collapse;
+    padding: 0px;
+    height:25px;
+}
+
+.kubrick .paginatedGrid_buttonControlContainer >TBODY > TR {
+}
+
+
+/* IE6 rule, needs to be separate, 4px of spacing */
+.dj_ie6 .kubrick .paginatedGrid_buttonControlContainer TBODY TR TD {
+    padding-top:2px;
+    margin-top:5px !important;
+    vertical-align:center;
+   }
+
+.kubrick .paginatedGrid_buttonControlContainer > TBODY > TR > TD {
+    vertical-align:center;
+    padding-top:2px;
+    padding-bottom:2px;
+    margin-top:5px !important;
+    padding-right: 4px;
+   }
+
+/* remove padding on icon only buttons, fixed width pagination buttons */
+.kubrick .paginatedGrid_buttonControlContainer .dijitButtonContents .dijitButtonText {
+    padding: 0;
+    width: 17px;
+ }
+
+/* ie6 alignment exception */
+.dj_ie6 .paginatedGrid_buttonControlContainer .dijitButtonContents .dijitButtonText {
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-top: 2px;
+    margin-bottom: -1px;
+    }
+
+
+.kubrick .paginatedGrid_pageCountContainer {
+    display:inline-block;
+    padding:0;
+    margin:0;
+}
+
+/* precise positioning of icon */
+.kubrick .paginatedGrid_buttonControlContainer .paginatedGridButton {
+    vertical-align: middle;
+	padding-left: 0px;
+    margin:0;
+    padding:0;
+    padding-top:1px;
+    height: 12px;
+    border: 0;
+    margin-left:2px;
+    }
+
+.kubrick .paginatedGrid_buttonControlContainer TD .dijitButtonNode button {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 23px;
+}
+
+
+.kubrick .paginatedGridButton.paginatedGrid_firstButtonImage {
+    background: url("images/First.gif") left no-repeat;
+    }
+
+.kubrick .paginatedGridButton.paginatedGrid_lastButtonImage {
+    background: url("images/Last.gif") left no-repeat;
+    }
+
+.kubrick .paginatedGridButton.paginatedGrid_previousButtonImage {
+    background: url("images/Previous.gif") left no-repeat;
+    }
+
+.kubrick .paginatedGridButton.paginatedGrid_nextButtonImage {
+    background: url("images/Next.gif") left no-repeat;
+    }
+
+/* disabled state */
+
+.kubrick .paginatedGridButton.paginatedGrid_firstButtonImageDisabled {
+    background: url("images/First-D.gif") left no-repeat;
+    }
+
+.kubrick .paginatedGridButton.paginatedGrid_lastButtonImageDisabled {
+    background: url("images/Last-D.gif") left no-repeat;
+    }
+
+.kubrick .paginatedGridButton.paginatedGrid_previousButtonImageDisabled {
+    background: url("images/Previous-D.gif") left no-repeat;
+    }
+
+.kubrick .paginatedGridButton.paginatedGrid_nextButtonImageDisabled {
+    background: url("images/Next-D.gif") left no-repeat;
+    }
+
+
+
+dojoxGrid-sort-up {
+	background: url(images.kubrick/arrowUp.png) right no-repeat;
+	padding-left: 0px;
+	margin-left: 0px;
+}
+
+
+.kubrick .dojoxGrid-header .dojoxGrid-cell-content {
+	text-align: center;
+}
+.kubrick .dojoxGrid-header .dojoxGrid-cell { 
+	border: 1px solid transparent;
+	
+	border-color: white #ACA899 #919191 white;
+	background: url(images.kubrick/tabEnabled.png) #e9e9e9 repeat-x top;
+	padding-bottom: 2px;
+	color: #000 !important;
+}
+/*
+.kubrick .dojoxGrid-header .dojoxGrid-cell-over {
+	background: url(images.kubrick/tabHover.png) #e9e9e9 repeat-x top;
+	color: #000 !important;
+}*/
+.kubrick .dojoxGrid-sort-down {
+	background: url(images.kubrick/arrowDown.png) right no-repeat;
+	padding-left: 0px;
+	margin-left: 0px;
+}
+.kubrick .dojoxGrid-sort-up {
+	background: url(images.kubrick/arrowUp.png) right no-repeat;
+	padding-left: 0px;
+	margin-left: 0px;
+}
+.kubrick .gridArrowButtonChar {
+	display:none !important;
+}
+.dijit_a11y .gridArrowButtonChar {
+	display:inline !important;
+}
+.kubrick .dojoxGrid-scrollbox {
+	position: relative;
+	overflow: scroll;
+	background-color: #fefefe;
+	width: 100%;
+}
+.kubrick .dojoxGrid-content {
+	position: relative;
+	overflow: hidden;
+	 -moz-outline-style: none;
+	outline: none;
+}
+.kubrick .dojoxGrid-rowbar { 
+	border: none;
+	
+	background: url(images.kubrick/tabEnabled_rotated.png) #e9e9e9 repeat-y right;
+	border-right: 1px solid #cccccc;
+	padding: 0px;
+}
+.kubrick .dojoxGrid-rowbar-inner {
+	border: none;
+	border-bottom: 1px solid #cccccc;
+}
+/*
+.kubrick .dojoxGrid-rowbar-over {
+	background: url(images.kubrick/tabHover_rotated.png) #e9e9e9 repeat-y right;
+}*/
+.kubrick .dojoxGrid-rowbar-selected {
+	background-color: #D9E8F9;
+	background-image: none;
+	background: url(images.kubrick/tabDisabled.png) #dddddd repeat-x top;
+	border-right: 1px solid #cccccc;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.kubrick .dojoxGrid-row {
+	position: relative;
+	width: 9000em;
+}
+.kubrick .dojoxGrid-row {
+	border: none;
+	border-left: none;
+	border-right: none;
+	background-color: white;
+	border-top: none;
+}
+.kubrick .dojoxGrid-row-over {
+	border-top-color: #cccccc;
+	border-bottom-color: #cccccc;
+}
+
+.kubrick .dojoxGrid-row-over .dojoxGrid-cell {
+	background-color: #60a1ea !important; 
+	color:#fff;
+	
+}
+.kubrick .dojoxGrid-row-odd {
+	background-color: #f2f5f9;
+	
+}
+.kubrick .dojoxGrid-row-selected {
+	background-color: #aec7e3;
+}
+
+.kubrick .dojoxGrid-row-table {
+	table-layout: fixed;
+	width: 0;
+	border-collapse: collapse;
+}
+.kubrick .dojoxGrid-invisible {
+	visibility: hidden;
+}		
+
+.kubrick .dojoxGrid-invisible td, .dojoxGrid-header .dojoxGrid-invisible td {
+	border-top-width: 0;
+	border-bottom-width: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	height: 0;
+	overflow: hidden;
+}
+.kubrick .dojoxGrid-cell {
+	border: 1px dotted #D5CDB5;
+	padding: 3px 3px 3px 3px;
+	text-align: left;
+	overflow: hidden;
+}
+.dj_ie6 .kubrick .dojoxGrid-cell {
+	border: 1px solid white;
+	border-right: 1px solid #D5CDB5;
+}
+.kubrick .dojoxGrid-cell-focus {
+	border: 1px dotted #a6a6a6;
+}
+.kubrick .dojoxGrid-cell-over {
+	border: 1px dotted #a6a6a6;
+}
+.kubrick .dojoxGrid-cell-focus.dojoxGrid-cell-over {
+	border: 1px dotted #595959;
+}
+.kubrick .dojoxGrid-cell-clip {
+	width: 100%;
+	overflow: hidden;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+}
+
+.kubrick .dojoxGrid-row-editing td {
+	
+	background-color: #60a1ea; 
+	
+}
+.kubrick .dojoxGrid-row-inserting td {
+	background-color: #F4FFF4;
+}
+.kubrick .dojoxGrid-row-inflight td {
+	background-color: #F2F7B7;
+}
+.kubrick .dojoxGrid-row-error td {
+	background-color: #F8B8B6;
+}
+.kubrick .dojoxGrid-input,
+.kubrick .dojoxGrid-select,
+.kubrick .dojoxGrid-textarea {
+	margin: 0;
+	padding: 0px;
+	border-style: none;
+	width: 100%;
+	font-size: 100%;
+	font-family: inherit;
+}
+.dojoxGrid-hidden-focus {
+	position: absolute;
+	left: -1000px;
+	top: -1000px;
+	height: 0px;
+	width: 0px;
+}
+.dijit_a11y .dojoxGrid-rowbar-selected { 
+	border-top: 1px solid white;
+	border-bottom: 1px dashed black;
+	border-top: 0;
+	background: none;
+}
+.dijit_a11y .dojoxGrid-rowbar-selected .dojoxGrid-rowbar-inner {
+	border: 0;
+	border-top: 1px solid white;
+}
+.dijit_a11y .dojoxGrid-row-selected {
+	border-bottom: 1px dashed black;
+}
+
+
+.kubrick .dojoxGrid-header .dojoxGrid-cell { 
+	background: #d9e3e9;
+	border: 1px solid #A2B9C9 !important;
+	padding-bottom: 2px;
+	color: #000 !important;
+}
+
+.dj_ie6 .kubrick .dojoxGrid-cell {
+	border: none;
+}
+
+.kubrick .dojoxGrid-cell {
+	border: none;
+}
+
+.kubrick .dojoxGrid-sort-down {
+	background: url(images/sort_arrow_down.png) right no-repeat;
+	padding-left: 0px;
+	margin: 0px 8px 0px 0px;
+}
+
+.kubrick .dojoxGrid-sort-up {
+	background: url(images/sort_arrow_up.png) right no-repeat;
+	padding-left: 0px;
+	margin: 0px 8px 0px 0px;
+}
+
+.kubrick .dojoxGrid-rowbar { 
+	border: none;
+	background-color: #F8F8F8;
+	padding: 0px;
+}
+
+/*
+.kubrick .dojoxGrid-rowbar-over {
+	background: url(images/tabHover_rotated.png) #e9e9e9 repeat-y right;
+}*/
+
+/*
+vijagraw: address row over behavior in spec.
+
+.kubrick .dojoxGrid-row-over .dojoxGrid-cell {
+	background-color: #fff;
+	color: #000;
+	filter:alpha(opacity=40);
+	-moz-opacity:.40;
+	opacity:.40;
+}*/
+
+.kubrick .dojoxGrid-row-over .dojoxGrid-cell {
+	background-color: #fff;
+	color: #000;
+}
+
+.kubrick .dojoxGrid-row-odd {
+	background-color: #ebebeb;
+}
+
+.kubrick .dojoxGrid-row-selected {
+	background: #add050 url(images/accordionGreen.png) bottom left repeat-x;
+	color: #fff;
+}
+
+.kubrick .dojoxGrid-cell {
+	padding: 3px;
+	xtext-align: left;
+	overflow: hidden;
+}
+
+/* END: for grid*/
+/* BEGIN: for grid_colspan*/
+.kubrick .dojoxGrid {
+	font-family: Arial, Helvetica;
+	-moz-outline-style: none;
+	margin: 0;
+	padding: 0;
+/*	border-bottom: 1px solid #A2B9C9;*/
+}
+
+
+
+/* the div container node of the header cells */
+.kubrick .dojoxGridHeader { 
+    background: ;
+	width:100%;
+}
+
+
+.kubrick .dojoxGridHeader .dojoxGridRowTable { 
+	border-bottom: 1px solid #8499a2 !important;
+  }
+
+
+/* remove dashed focus border on cell */
+.kubrick .dojoxGridHeader .dojoxGridRowTable .dojoxGridCell.dojoxGridCellFocus {
+    padding-bottom:0px !important;
+	border-top: none !important;
+    }
+
+/* sort icon */
+.kubrick .dojoxGridHeader .dojoxGridRowTable .dojoxGridCell .dojoxGridSortNode .dojoxGridArrowButtonNode {
+    width:8px;
+    height:8px;
+    font-size:4px;
+    line-height:4px;
+    background: url(images/table_sort_sprite.png);
+    margin:0;
+    margin-top:4px;
+    margin-left:8px;
+}
+
+/* up */
+.kubrick .dojoxGridHeader .dojoxGridRowTable .dojoxGridCell .dojoxGridSortNode.dojoxGridSortUp .dojoxGridArrowButtonNode {
+    background-position: 0px -16px;
+}
+
+.kubrick .dojoxGridHeader .dojoxGridRowTable .dojoxGridCell .dojoxGridSortNode.dojoxGridSortUp .dojoxGridArrowButtonNode:hover {
+    opacity:0.67;
+    background-position: 0px -24px;
+    cursor:pointer;
+}
+
+/* down */
+.kubrick .dojoxGridHeader .dojoxGridRowTable .dojoxGridCell .dojoxGridSortNode.dojoxGridSortDown .dojoxGridArrowButtonNode {
+    background-position: 0px 0px;
+}
+.kubrick .dojoxGridHeader .dojoxGridRowTable .dojoxGridCell .dojoxGridSortNode.dojoxGridSortDown .dojoxGridArrowButtonNode:hover {
+    opacity:0.67;
+    background-position: 0px -8px;
+    cursor:pointer;
+}
+
+
+
+/* grid table header cell */
+.dj_ie6 .kubrick .dojoxGridHeader .dojoxGridCell,
+.kubrick .dojoxGridHeader .dojoxGridCell { 
+	background: none;
+	background-color: #d9e3e9;	
+
+	border-top: 1px solid #8499a2;
+    /* the real bottom border is in grid header */
+	border-bottom: none;
+
+	padding-bottom: 2px;
+    font-weight: normal;
+    padding: 2px 8px;
+	color: #000;
+    font-size:12px;
+    line-height: 16px;
+}
+
+
+/* grid table header drag column = before mouseover state */
+.kubrick .dojoxGridHeader TH.dojoxGridCell.dojoDndItem, 
+.kubrick .dojoxGridHeader TH.dojoxGridCell {
+    border-right: 1px #fff solid !important;
+    border-left: 1px #a2b9c9 solid !important;
+}
+
+/* ie7 will collapse the borders into a single border.. thus I make 2 pixel wide divider */
+.dj_ie .kubrick .dojoxGridHeader TH.dojoxGridCell.dojoDndItem, 
+.dj_ie .kubrick .dojoxGridHeader TH.dojoxGridCell { 
+    border-left: none;
+    border-right: 2px #a2b9c9 solid !important;
+}
+
+
+
+
+.kubrick .dojoxGridContent {
+	position: relative;
+	overflow: hidden;
+}
+
+/* 2010 - not sure why CUES is overriding this (it is already moved off screen by their style - but it breaks IE when selecting a row */
+/*
+.dojoxGridHiddenFocus {
+	display: none;
+}
+*/
+
+/*
+20090715 - this messes up scrollable big trees..truncates - likely the padding effect causes miscalculation
+	padding: 3px;
+*/
+
+.kubrick .dojoxGridRow {
+	background-color: #ebeff3;
+	border: none;
+}
+
+.kubrick .dojoxGridRowOdd {
+	background-color: #f5f9fe;
+}
+
+
+
+
+
+/*
+.kubrick .dojoxGridRowOver .dojoxGridCell {
+	background-color: #fff;
+	color: #000;
+	filter: alpha(opacity=40);
+	-moz-opacity: .40;
+	opacity: .40;
+	border: none;
+}
+*/
+
+
+/* IE6 patch on cell over cells lose the dashed line */
+.dj_ie6 .kubrick .dojoxGridCell .dojoxGridCellOver {
+    border:none !important;
+}
+
+.dj_ie6 .kubrick .dojoxGridCellOver {
+    border:none !important;
+}
+
+/* tundra made color important */
+.kubrick .dojoxGridRowSelected {
+	background: #add050 url(images/accordionGreen.png) bottom left repeat-x;
+    background-color: #add050 !important;
+	border: none !important;
+}
+
+/* the cells of a selected row and focused */
+.kubrick .dojoxGridRowSelected .dojoxGridCell,
+.kubrick .dojoxGridRowSelected .dojoxGridCell.dojoxGridCellFocus {
+	color: #fff;
+	border: none !important;
+}
+
+
+/* 20091016 - hyperlinks could be white, if row is selected */
+.kubrick .dojoxGridRowSelected .dojoxGridCell A {
+	color : #FFF;
+}
+
+
+/* cell of a row is being edited */
+/* 20090817 - remove that tundra blue shade */
+.kubrick .dojoxGridRow.dojoxGridRowEditing .dojoxGridCell {
+    background-color: transparent;
+}
+
+
+
+/* hover over row styling */
+.kubrick .dojoxGridRowOver {
+    background-color: #b2f0fc;
+	background-image: none;
+	color: inherit;
+}
+
+.kubrick .dojoxGridRowOver .dojoxGridCell {
+    /* UNDO base tundra style */
+    background-color: transparent !important;
+    /* leave color as the default */
+    color: inherit;
+    }
+
+/* IE6 did not listen to the inherit, forcing black */
+.dj_ie6 .kubrick .dojoxGridRowOver .dojoxGridCell {
+    color: #000;
+   }
+
+
+
+/* hover over a row that is selected */
+.kubrick .dojoxGridRowSelected.dojoxGridRowOver {
+	/*
+    background-color: #b0e0a6 !important;
+	color:#fff;
+	*/
+	}
+
+
+
+
+/* grid data item cell */
+/*
+.dj_ie6 .kubrick .dojoxGridCell,
+*/
+.kubrick .dojoxGridContent .dojoxGridRow .dojoxGridCell {
+	padding-bottom: 2px;
+    font-weight: normal;
+    padding: 2px 8px;
+    font-size:12px;
+    line-height: 16px;
+    /* use important to force it */
+	xborder: none !important;
+	border: none;
+	border-width:0px;
+    outline: none;
+
+    /* 20090810 - matander - padding for FF  gets perfect alignment with header cells */
+    padding-left:9px;
+    padding-right:9px;
+
+}
+
+
+/* IE6 really needs a 1 pixel border, Cannot get transparency to work properly in the cell, so chose a background color */
+    .dj_ie6 .kubrick .dojoxGridContent .dojoxGridCell {
+        padding-right: 8px;
+    }
+
+    .dj_ie6 .kubrick .dojoxGridContent .dojoxGridRowOdd .dojoxGridCell {
+    }
+
+
+
+.kubrick .dojoxGrid td.invisible {
+	line-height: 0 !important;
+	border-top-width: 0px !important;
+	border-bottom-width: 0px !important;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+
+/* END: for grid_colspan.html */
+
+/* 20090622 - matander - datetext fix */
+.kubrick .dojoxGrid .dojoxGridCell .dijitDateTextBox {
+    color: #000;
+}
+.ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-webkit-text-overflow: ellipsis;
+}
+
+
+
+
+/* CUES data grid wrapper */
+.cuesDataGridComponent {
+border: 1px solid #8499A2;
+}
+
+
+
+/* highlighted column  - default state */
+.kubrick .dojoxGrid  .dojoxGridExpandoRow TD.dojoxGridCell.highlightedColumnDefault,
+.kubrick .dojoxGrid  .dojoxGridRowOdd TD.dojoxGridCell.highlightedColumnDefault {
+		background-color: #cedae3; 
+		
+} 
+
+.kubrick .dojoxGrid  .dojoxGridRowEven TD.dojoxGridCell.highlightedColumnDefault { 
+		background-color: #d4e0e9;
+} 
+
+
+
+/* gridFactory enhancements ----- 20090820 - matander */
+
+.compositeGrid .gridCaption {
+width: 100%;
+}
+
+.compositeGrid .gridCaption .gridCaptionLeft {
+text-align:left;
+}
+
+.compositeGrid .gridCaption .gridCaptionRight {
+text-align:right;
+}
+
+
+/* title */
+.compositeGrid .gridHeaderTitle .headerTitleText {
+	color:#000;
+	font-family:Arial, Helvetica;
+	font-size:12px;
+	font-weight:bold;
+	line-height:16px;
+
+    padding-left: 5px;
+    padding-right: 8px;
+
+	vertical-align:middle;
+    width: 100%;
+}
+
+/* title icon */
+.compositeGrid .gridHeaderTitle .gridTitleIconWrapper {
+		float:left;	
+    padding-left:5px;
+    padding-right:0px;
+}
+
+.compositeGrid .gridHeaderTitle .gridTitleIconWrapper .gridTitleIcon {
+    width:16px;
+    height:16px;
+}
+
+
+/* composite grid pagination */
+.compositeGrid TABLE.rowsPerPageSelectorContainer {
+border-collapse:collapse;
+
+}
+
+
+.compositeGrid .dojoxGridFooter {
+position:static;
+	padding: 0px; 
+    text-indent: 0px; 
+    }
+
+.compositeGrid .dojoxGridFooter TABLE.gridFooterLayoutTable {
+}
+
+
+
+
+
+/* column formats based on data type */
+
+
+/* Cells */
+
+	/* string */
+.kubrick .dojoxGrid .dojoxGridRow .dojoxGridRowTable TD.dojoxGridCell.dataType_alpha,
+.kubrick .dojoxGrid .dojoxGridRow .dojoxGridRowTable TD.dojoxGridCell.dataType_alphanumeric,
+.kubrick .dojoxGrid .dojoxGridRow .dojoxGridRowTable TD.dojoxGridCell.dataType_string { 
+		text-align:left;
+} 
+
+	/*  numeric */
+.kubrick .dojoxGrid .dojoxGridRow .dojoxGridRowTable TD.dojoxGridCell.dataType_numeric { 
+		text-align: right;
+} 
+
+	/*  boolean */
+.kubrick .dojoxGrid .dojoxGridRow .dojoxGridRowTable TD.dojoxGridCell.dataType_boolean { 
+		text-align: center;
+}
+
+	/*  date */
+.kubrick .dojoxGrid .dojoxGridRow .dojoxGridRowTable TD.dojoxGridCell.dataType_date { 
+		text-align: right;
+}
+
+	/*  currency */
+.kubrick .dojoxGrid .dojoxGridRow .dojoxGridRowTable TD.dojoxGridCell.dataType_currency { 
+		text-align: right;
+}
+
+
+	/*  image */
+.kubrick .dojoxGrid .dojoxGridRow .dojoxGridRowTable TD.dojoxGridCell.dataType_image { 
+		text-align: center;
+}
+
+	/*  header */
+.kubrick .dojoxGrid .dojoxGridRow .dojoxGridRowTable TD.dojoxGridCell.dataType_header { 
+		text-align: center;
+}
+
+
+/* Headers by dataType */
+
+	/* string */
+.kubrick .dojoxGrid .dojoxGridHeader .dojoxGridRowTable TH.dojoxGridCell.dataType_alpha,
+.kubrick .dojoxGrid .dojoxGridHeader .dojoxGridRowTable TH.dojoxGridCell.dataType_alphanumeric,
+.kubrick .dojoxGrid .dojoxGridHeader .dojoxGridRowTable TH.dojoxGridCell.dataType_string { 
+		text-align:left;
+} 
+
+
+	/*  numeric */
+.kubrick .dojoxGrid .dojoxGridHeader .dojoxGridRowTable TH.dojoxGridCell.dataType_numeric { 
+		text-align: right;
+} 
+
+	/*  boolean */
+.kubrick .dojoxGrid .dojoxGridHeader .dojoxGridRowTable TH.dojoxGridCell.dataType_boolean { 
+		text-align: center;
+}
+
+	/*  date */
+.kubrick .dojoxGrid .dojoxGridHeader .dojoxGridRowTable TH.dojoxGridCell.dataType_date { 
+		text-align: right;
+}
+
+	/*  currency */
+.kubrick .dojoxGrid .dojoxGridHeader .dojoxGridRowTable TH.dojoxGridCell.dataType_currency { 
+		text-align: right;
+}
+
+
+	/*  image */
+.kubrick .dojoxGrid .dojoxGridHeader .dojoxGridRowTable TH.dojoxGridCell.dataType_image { 
+		text-align: center;
+}
+
+	/*  header */
+.kubrick .dojoxGrid .dojoxGridHeader .dojoxGridRowTable TH.dojoxGridCell.dataType_header { 
+		text-align: center;
+}
+
+
+
+
+
+/* == Composite Grid : Filter Plugin */
+.compositeGrid .filterPlugin {
+	background-color: #f2f5f9;
+}
+
+.compositeGrid .filterPlugin TABLE.filterPluginTable {
+    border: 0;
+    border-collapse: collapse;
+    width: inherit;
+}
+
+
+.compositeGrid .filterPlugin TABLE.filterPluginTable TD {
+    padding:0;
+	padding-left:2px;
+	padding-right:2px;
+	padding-bottom:3px;
+	padding-top:3px;
+ }
+
+
+/* fixed width columns */
+.compositeGrid .filterPlugin TABLE.filterPluginTable TD.firstColumn {
+    width:70px;
+	text-align: right;
+}
+
+.compositeGrid .filterPlugin TABLE.filterPluginTable TD.secondColumn {
+
+}
+
+.compositeGrid .filterPlugin TABLE.filterPluginTable TD.thirdColumn {
+    xbackground-color:#ff0;
+    xwidth:200px;
+}
+
+
+.compositeGrid .filterPlugin TABLE.filterPluginTable TD.fourthColumn {
+}
+
+.compositeGrid .filterPlugin TABLE.filterPluginTable TD.fifthColumn {
+	xwidth:50px;
+}
+
+.compositeGrid .filterPlugin TABLE.filterPluginTable TD.sixthColumn {
+    width:120px;
+    text-align: center;
+}
+
+
+
+/* debug info */
+.compositeGrid .filterPlugin TABLE.filterPluginTable TD.seventhColumn {
+
+}
+
+.compositeGrid .filterPlugin TABLE.filterPluginTable TD.seventhColumn .debugWrapper {
+	width:200px;
+	height:65px;
+	border:1px #caa solid;
+	background-color: #f8d8ca;
+	padding-left:5px;
+	font-size:8pt;
+}
+
+
+/* selector - boolean op */
+.compositeGrid .filterPlugin .booleanOperatorSelect {
+	width: 50px;
+	margin-right:3px;
+}
+
+/* remove junk that obtructs */
+.compositeGrid .filterPlugin .logicOperatorSelect .dijitValidationIcon,
+.compositeGrid .filterPlugin .fieldSelect .dijitValidationIcon,
+.compositeGrid .filterPlugin .booleanOperatorSelect .dijitValidationIcon {
+	display:none;
+}
+
+/* selector - which field to filter for condition */
+.compositeGrid .filterPlugin .fieldSelect {
+	width: 10em;
+}
+
+
+/* logic operator */
+.compositeGrid .filterPlugin .logicOperatorSelect {
+	width: 12em;
+}
+
+
+/* client input value for the filter */
+/* these components occupy SAME real estate dimensions */
+.compositeGrid .filterPlugin .clientSelectConstrainedSelect,
+.compositeGrid .filterPlugin .clientTextbox {
+	width: 15em;
+	height: 19px;
+}
+
+
+/* add/remove row buttons */
+.compositeGrid .filterPlugin .rowObjectModificationButton {
+	margin-right:5px;
+}
+
+.compositeGrid .filterPlugin .rowObjectModificationButton BUTTON {
+	width: 22px;
+}
+
+
+/* progressiveDisclosureButton */
+.compositeGrid .filterPlugin .progressiveDisclosureButton_expanded BUTTON,
+.compositeGrid .filterPlugin .progressiveDisclosureButton_collapsed BUTTON {
+	width:16px !important;
+}
+
+
+/* arrows for button */
+
+.compositeGrid .filterPlugin .progressiveDisclosureButton_expanded ,
+.compositeGrid .filterPlugin .progressiveDisclosureButton_collapsed {
+	padding-right: 7px;
+
+}
+
+.compositeGrid .filterPlugin .progressiveDisclosureButton_expanded .dijitButtonText,
+.compositeGrid .filterPlugin .progressiveDisclosureButton_collapsed .dijitButtonText {
+	background-image:url('images/spriteArrows.png');
+	height: 8px;
+	padding-right: 0px;
+}
+
+
+
+.compositeGrid .filterPlugin .progressiveDisclosureButton_expanded .dijitButtonText {
+	background-position: 35px 0px;
+	width: 3px;
+}
+
+
+.compositeGrid .filterPlugin .progressiveDisclosureButton_collapsed .dijitButtonText {
+	background-position: -13px 0px;
+	width: 3px;
+
+}
+
+/* == Composite Grid : Filter Plugin */

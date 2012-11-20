@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="true" xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender class="org.apache.log4j.RollingFileAppender" name="bsslogger">
+        <param name="file" value="${cisco.logdir}/ssue/BSSPortletApp.log"/>
+        <param name="MaxFileSize" value="10000KB"/>
+        <param name="MaxBackupIndex" value="3"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %c - %m %n"/>
+        </layout>
+    </appender>
+
+  	<logger name="com.cisco.swtg.bss" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="bsslogger" />
+	</logger>
+
+	<logger name="org.json" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="bsslogger" />
+	</logger>
+	
+	<root>
+        	<priority value="debug"/>       
+       		<appender-ref ref="bsslogger"/>
+   	</root>
+</log4j:configuration>

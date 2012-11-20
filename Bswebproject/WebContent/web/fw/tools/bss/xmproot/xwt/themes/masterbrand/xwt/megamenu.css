@@ -1,0 +1,88 @@
+/* ************************************************** */
+/* Copyright (c) 2009, 2010 Cisco Systems, Inc.       */
+/* All rights reserved.                               */
+/* ************************************************** */
+.masterbrand .megamenu {
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+	width: auto;
+	height: auto;
+	-moz-border-radius-bottomleft: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	-moz-box-shadow:rgba(57,57,57,.48) 3px 3px 3px;
+	box-shadow: 3px 3px 3px rgba(57,57,57,.48);
+	-webkit-box-shadow: 3px 3px 3px rgba(57,57,57,.48);
+	background-color: #FFFFFF;
+	border-left: solid 1px #546e8b;
+	border-right: solid 1px #546e8b;
+	border-bottom: solid 1px #546e8b;
+	z-index:1;
+}
+
+.dj_ie7 .masterbrand .megamenu {
+	max-width: 800px;
+}
+
+.dj_ie8 .masterbrand .megamenu {
+	/*filter:progid:DXImageTransform.Microsoft.Shadow(color='gray',direction='120',strength='5');*/
+	/*filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=3, OffY=3, Color=gray, Positive=true);	
+	xxxborder-right: #C4CCD6 5px ridge;
+	xxxborder-bottom: #C4CCD6 5px groove;*/
+}
+
+.masterbrand .megamenu .dojoxResizeHandle {
+	background-image:url(images/megamenu/resize.png) !important;
+}
+
+.masterbrand .megamenu .megamenuHeader {
+	display: none;
+}
+
+.masterbrand .megamenu .mmHeaderText {
+	font-weight: bold;
+	display: inline;
+	float: left;
+	margin: 5px;
+}
+
+.masterbrand .megamenu .mmHeaderToolbar {
+	display: inline;
+	float: right;
+	right: 10px;
+	top: 10px;
+	position: absolute;
+}
+.masterbrand .megamenu .megamenuContent {
+	overflow: hidden;
+	margin-bottom: 8px;
+	margin-top: 10px;
+}
+
+.masterbrand .megamenu .mm_mm
+{
+	background-color: transparent;
+	vertical-align: top;
+}
+
+.masterbrand .megamenu table
+{
+	border-spacing:0;
+	border-collapse:collapse;
+	border:none;
+}
+
+.masterbrand .megamenu .topBorderContainer {
+	width: 100%;
+}
+.masterbrand .megamenu .topBorderLeft, .masterbrand .megamenu .topBorderRight, .masterbrand .megamenu .topBorderCenter {
+	border-top: 1px solid #FFFFFF;
+	float: left;
+	width: 0px;
+}
+
+.masterbrand .megamenu .showTopBorder .topBorderLeft, .masterbrand .megamenu .showTopBorder .topBorderRight {
+	border-top: 1px solid #546E8B;
+}

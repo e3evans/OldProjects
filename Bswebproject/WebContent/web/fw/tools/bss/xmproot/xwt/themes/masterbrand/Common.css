@@ -1,0 +1,115 @@
+/* ************************************************** */
+/* Copyright (c) 2009, 2010 Cisco Systems, Inc.       */
+/* All rights reserved.                               */
+/* ************************************************** */
+/* override Dojo default font setting */
+/*.masterbrand textarea {
+	font-family: Arial, Helvetica, sans-serif;	
+	font-size: 12px;
+}*/
+
+
+/* 	Chrome and Safari shows thick blue line on focus. */ 
+/*	Making it consistent with FF and IE with the following CSS */
+div:focus{
+	outline: 1px dotted #000000;
+}
+li:focus{
+	outline: 1px dotted #000000;
+}
+a:focus{
+	outline: 1px dotted #000000;
+}
+button:focus{
+	outline: 1px dotted #000000;
+}
+input:focus{
+	outline: 1px dotted #000000;
+}
+/* DnD avatar-specific settings */
+/* For now it uses a default set of rules. Some other DnD classes can be modified as well. */
+.masterbrand .dojoDndItemBefore {
+	border-top: 2px solid #369;
+}
+
+.masterbrand .dojoDndItemAfter {
+	border-bottom: 2px solid #369;
+}
+
+.masterbrand .dojoDndItemOver {
+	cursor:pointer;
+}
+
+/* drag and drop */
+.masterbrand table.dojoDndAvatar { -moz-border-radius: 0; border: 1px solid #ccc; border-collapse: collapse; background-color: #fff; font-size: 75%; color: black;}
+.masterbrand .dojoDndAvatar td	{ border: none; }
+.masterbrand .dojoDndAvatar tr	{ border: none; }
+.masterbrand .dojoDndAvatarHeader td	{ height: 20px; padding: 0 0 0 21px; }
+.masterbrand .dojoDndAvatarItem td { padding: 2px;}
+.masterbrand.dojoDndMove .dojoDndAvatarHeader	{background-color: #f58383; background-image: url(images/dndNoMove.png); background-repeat: no-repeat; background-position: 2px center;}
+.masterbrand.dojoDndCopy .dojoDndAvatarHeader	{background-color: #f58383; background-image: url(images/dndNoCopy.png); background-repeat: no-repeat; background-position: 2px center;}
+.masterbrand.dojoDndMove .dojoDndAvatarCanDrop .dojoDndAvatarHeader	{background-color: #97e68d; background-image: url(images/dndMove.png); background-repeat: no-repeat; background-position: 2px center;}
+.masterbrand.dojoDndCopy .dojoDndAvatarCanDrop .dojoDndAvatarHeader	{background-color: #97e68d; background-image: url(images/dndCopy.png); background-repeat: no-repeat; background-position: 2px center;}
+
+.masterbrand .dijitContentPaneLoading {
+	background:url('xwt/images/misc/loading.gif') no-repeat left center;
+	padding-left:25px;
+}
+
+.masterbrand .dijitContentPaneError {
+	background:url('images/warning.png') no-repeat left center;
+	padding-left:25px;
+}
+
+/* standard page font */
+BODY.masterbrand {
+	font: 12px Arial, Helvetica;
+    color: #333333;
+}
+
+/* Default hyperlink colors + classnames for small and extra small. */
+.masterbrand a,
+.masterbrand a:link,
+.masterbrand a:visited {
+        color: #007FC5;
+        /*
+        font-size: 12px;
+        */
+        text-decoration: none;
+}
+.masterbrand a.smallLink,
+.masterbrand a.smallLink:link,
+.masterbrand a.smallLink:visitied {
+        font-size: 11px;
+}
+.masterbrand a.extraSmallLink,
+.masterbrand a.extraSmallLink:link,
+.masterbrand a.extraSmallLink:visitied {
+        font-size: 10px;
+}
+
+.masterbrand a:hover,
+.masterbrand a:active {
+        text-decoration: underline;
+}
+
+/* dark background classname for handling color change on links. */
+.masterbrand a.darkBackground,
+.masterbrand a.darkBackground:link,
+.masterbrand a.darkBackground:visited {
+        color: #FFFFFF;
+        text-decoration: underline;
+}
+
+/* End of default link styling. */
+
+/* aliases
+.masterbrand .xxLargeText {
+*
+
+/* font guidelines */
+.masterbrand .contentPaneModuleTitle {
+    font-size: 18px;
+    color: #333;
+}
+/* /font guidelines */

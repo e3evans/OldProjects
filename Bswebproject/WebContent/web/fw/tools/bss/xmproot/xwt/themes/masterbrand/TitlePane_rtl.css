@@ -1,0 +1,7 @@
+/* ************************************************** */
+/* Copyright (c) 2009, 2010 Cisco Systems, Inc.       */
+/* All rights reserved.                               */
+/* ************************************************** */
+.dijitRtl .masterbrand .dijitTitlePane .dijitClosed .dijitArrowNode {
+	background-position: -7px 0px;
+}

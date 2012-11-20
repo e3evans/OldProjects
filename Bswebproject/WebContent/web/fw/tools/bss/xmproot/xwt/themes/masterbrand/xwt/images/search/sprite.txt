@@ -1,0 +1,43 @@
+
+.field-l-up, .field-r, .field-l-hov, .advanced-16x16, .dd-search-14x14, 
+.enter-13x13, .basic-12x12, .close-10x10, .dd-arrow-8x8
+{ background: url('tmp.png') no-repeat; }
+
+.field-l-up { background-position: -3px -0px; }
+.field-r { background-position: -3px -28px; }
+.field-l-hov { background-position: -3px -55px; }
+.advanced-16x16 { background-position: -18px -29px; }
+.dd-search-14x14 { background-position: -37px -29px; }
+.enter-13x13 { background-position: -3px -82px; }
+.basic-12x12 { background-position: -19px -83px; }
+.close-10x10 { background-position: -34px -83px; }
+.dd-arrow-8x8 { background-position: -37px -46px; }
+
+
+Name				WxH
+advanced_16x16.png	16x16
+basic_12x12.png		12x12
+close_10x10.png		10x10
+dd_arrow_8x8.png	8x8
+dd_search_14x14.png	14x14
+enter_13x13.png		13x13
+field_l_hov.png		53x25
+field_l_up.png		53x26
+field_m.png			12x25
+field_r.png			12x25
+
+
+
+.field-l-up, .field-r, .field-l-hov, .advanced-16x16, .dd-search-14x14, 
+.enter-13x13, .basic-12x12, .close-10x10, .dd-arrow-8x8
+{ background: url('search-sprite.png') no-repeat top left; }
+
+.advancedSearch_16x16 { background-position: 0 0; width: 16px; height: 16px; } 
+.clear16x16 { background-position: 0 -21px; width: 16px; height: 16px; } 
+.dd_arrow_8x8 { background-position: 0 -42px; width: 8px; height: 8px; } 
+.enter_clk_16x16 { background-position: 0 -55px; width: 16px; height: 16px; } 
+.field_l_hov { background-position: 0 -76px; width: 53px; height: 25px; } 
+.field_l_up { background-position: 0 -106px; width: 53px; height: 26px; } 
+.field_r { background-position: 0 -137px; width: 12px; height: 25px; } 
+.savedSearch_16x16 { background-position: 0 -167px; width: 16px; height: 16px; } 
+.search_clk_16x16 { background-position: 0 -188px; width: 16px; height: 16px; } 

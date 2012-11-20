@@ -1,0 +1,973 @@
+-/*   
+ *        Copyright (c) 2009 Cisco Systems, Inc.   
+ *        All rights reserved.   
+ *
+ * @author nbhattac
+ * CSS rules for drop down menu button with default action (combo button)
+ */
+ 
+/*
+btn_left_new.png 
+btn_right_new.png
+5 layers order is 
+normal, 0
+hover, -18
+pressed, -36
+default  -54
+disabled, -72
+
+and each button height is 18px.
+  0, -18px, -36, -54px, -72px, -90px
+*/
+
+/* FF : remove dashed border  -- actually this destroys keyboard accessibility on second thought */
+.masterbrand .combobutton .dijitButtonNode BUTTON::-moz-focus-inner
+{
+    border:none !important;
+    -moz-outline:none !important;
+ }
+
+.masterbrand .combobutton .dijitButtonNode BUTTON{
+	outline: 0 none !important;
+}
+.masterbrand .combobutton table {
+	background-color: transparent;
+	border: none;
+}
+
+.masterbrand .combobutton .dijitLeft table {
+	background-color: transparent;
+	border: none;
+}
+
+/* BEGIN: buttons */
+.masterbrand .combobutton .dijitButtonContents{
+	padding: 0px 1px 1px 0px;
+	/*margin-top: -17px;*/
+	/* height: 18px; */
+	/*margin-right: 4px;*/
+	/*border-right: 1px solid #C76A1C;*/
+	/* padding-right: 1px; */
+}
+
+.masterbrand table.dijitComboButton {
+	/*color: #DA7A02;*/
+	font-size: 12px;
+	font-family: Arial, Helvetica;
+	font-weight: normal;	 	
+	text-align:center;	
+	padding:6px 1px 6px 0px;
+	/* 2 and  1  firefox to set button text position padding: old value 0px 3px 2.5px 3px; */
+	/*background: -moz-linear-gradient(top, #F9F9F9 , #CCCDCE);*/
+  	/*border: 2px solid #DA7A02;*/
+  	/*-moz-border-radius: 18px;*/
+	-webkit-border-radius: 18px;
+	height: 20px;	
+	
+}
+
+.masterbrand table.combobutton {
+	/*-moz-border-top-colors:#F0C896 #DA7902 #F0C896 #DA7902 #F0C896 #DA7902 #F0C896 #DA7902;
+	-moz-border-left-colors:#F0C896 #DA7902 #F0C896 #DA7902 #F0C896 #DA7902 #F0C896 #DA7902;
+	-moz-border-right-colors:#F0C896 #DA7902 #F0C896 #DA7902 #F0C896 #DA7902 #F0C896 #DA7902;*/
+}
+
+.dj_ie .masterbrand table.dijitComboButton {
+	background-color: transparent;
+	border:none;
+}
+.masterbrand table.dijitComboButton td {
+	background: none;	
+}
+
+/* BEGIN: normal states */
+.masterbrand .combobutton .dijitButton,
+.masterbrand .combobutton .dijitButtonDisabled {
+	/*margin: 0 !important;*/
+	padding: 0;
+/*	float: left; vijagraw: float:left causes alignment issues with span - it puts the button in the next line*/
+}
+
+
+
+
+.masterbrand .combobutton .dijitButtonNode { 
+	/*background: url(../images/menubutton/btn_left_new.png) no-repeat top left;*/
+	border:none;
+	/* height: 18px; */
+	text-align:center;
+	vertical-align:middle;
+  	border: none;
+	padding: 0px 0px 0px 1px; /*  set left padding 2px, to let outline box be symetrical to the right */
+	
+}
+
+dj_ie .masterbrand .dijitComboButton.dijitComboButtonActive .dijitButtonContents
+{
+	background-position: 0px -40px;
+	margin-top: 0px;
+}
+
+.masterbrand .combobutton .dijitDownArrowButton .dijitArrowButtonInner {
+	height: 0px;
+	width: 0px;
+	border: none;
+	margin: none;
+	padding: 0px 0px 0px 0px;	
+}
+
+.masterbrand .combobutton .dijitDownArrowButton {
+	border: none;
+	height: 18px;
+	width: 15px;
+	padding:0px 0px 0px 0px; /*  set left padding 2px, to let outline box be symetrical to the right */
+	margin: none;
+	outline:0 none;
+
+}
+
+
+.masterbrand .combobutton .dijitDownArrowButton.dijitButtonNode { 
+	/*background: url(../images/menubutton/bt_right_normal.png) no-repeat top left;
+	background-position: 0 0;*/
+	background: url(../images/menubutton/bt_arrow_orange.png) no-repeat top left;
+	border: none;
+	height: 18px;
+	width: 15px;
+	/* 1 */
+	padding:0px 0px 0px 0px; /*  set left padding 2px, to let outline box be symetrical to the right */
+	margin: none;
+	
+}
+.masterbrand .combobutton .dijitButtonNode .dijitButtonText {
+    padding-right: 0px;
+	margin-bottom: 2px;
+}
+.dj_ie .masterbrand .combobutton .dijitButtonNode .dijitButtonText {
+	color: #454545;
+	line-height: 14px;
+	font-size: 12px;
+	font-family: Arial, Helvetica;
+	font-weight: normal;	 	
+	text-align:center;	
+	padding:0px 0px 2px 6px;
+	margin-top:0px;
+}
+
+
+.dj_ie .masterbrand .combobutton .dijitButtonNode .dijitButtonText {
+	padding:0px 0px 2px 6px;	
+}
+
+
+.masterbrand .combobutton.dijitComboButtonHover .dijitButtonText {
+	color: #454545;
+}
+
+.dj_ie .masterbrand .combobutton .dijitActive .dijitButtonText {
+	color: #FFFFFF;
+	outline:none !important;
+}
+
+
+/* BEGIN: hover states */
+.masterbrand .combobutton .dijitButtonNode:hover{
+    background-position: 0px -18px;
+    cursor: pointer;
+
+
+}
+.masterbrand .combobutton .dijitDownArrowButton.dijitButtonNode:hover  {
+	/*background: url(../images/menubutton/bt_right_hover.png) no-repeat top left;
+	background-position: 0 0;*/
+	background: url("../images/menubutton/bt_arrow_orange.png") no-repeat scroll left top transparent;
+	border: none;
+	height: 18px;
+	width: 15px;
+	/* 1 */
+	padding: 0px 0px 0px 0px; /*  set left padding 2px, to let outline box be symetrical to the right */
+    cursor: pointer;
+}
+
+
+.masterbrand table.combobutton.dijitComboButton.dijitComboButtonHover{
+	/*background: -moz-linear-gradient(top, #F7FAFD , #BEC8D3);*/
+    cursor: pointer;
+	/*-moz-border-top-colors:#F0C896 #DA7902 #F0C896 #DA7902 #F0C896 #DA7902 #F0C896 #DA7902;*/
+	
+}
+
+
+/* BEGIN: active states */
+
+
+.masterbrand .combobutton .dijitButtonNode:active {
+	/*background-position: 0px -36px;*/
+}
+
+.masterbrand .combobutton .dijitDownArrowButton.dijitButtonNode:active{
+	/*background: url(../images/menubutton/bt_right_pressed.png) no-repeat top left;*/
+    outline: none;
+    text-decoration: none;
+}
+.masterbrand table.combobutton.dijitComboButton.dijitComboButtonFocusedHover,
+.masterbrand table.combobutton.dijitComboButton.dijitComboButtonFocused,
+.masterbrand table.combobutton.dijitComboButton.dijitComboButtonActive {
+	/*background: -moz-linear-gradient(top, #E1E1E1,#FFFFFF);*/
+    outline: none;
+    text-decoration: none;
+	cursor: pointer;
+	/*-moz-border-top-colors:#F0C896 #DA7902 #F0C896 #DA7902 #F0C896 #DA7902 #F0C896 #DA7902;*/
+	
+}
+
+
+/* BEGIN: disabled states */
+.masterbrand .combobutton.dijitComboButtonDisabled .dijitButtonNode{
+	/*background-position: 0px -72px;*/
+	background: none;
+}
+
+.masterbrand table.dijitComboButtonDisabled {
+	/*-moz-border-left-colors: none;
+	-moz-border-top-colors: none;
+	-moz-border-right-colors: none;
+	border: 2px solid #D5D4D4;
+    background: #ECEDED;*/	
+	/*-moz-border-top-colors:none;*/
+}
+
+.masterbrand .combobutton.dijitComboButtonDisabled .dijitDownArrowButton.dijitButtonNode {
+	/*background: url(../images/menubutton/bt_right_disabled.png) no-repeat top left;*/
+	background: url(../images/menubutton/bt_arrow_gray.png) no-repeat top left;
+}
+
+.dj_ie .masterbrand .combobutton.dijitComboButtonDisabled .dijitDownArrowButton.dijitButtonNode {
+	/*background: url(../images/menubutton/bt_right_disabled.png) no-repeat top left;*/
+}
+
+
+
+/* BEGIN: default state */
+/*psesumic*/
+.masterbrand .combobutton button{
+	outline: 0 none !important;
+}
+.masterbrand table.defaultcombobutton.dijitComboButton{
+	height:20px;
+	/*background: -moz-linear-gradient(top, #F79B0A , #D16215);*/
+    /*border: 2px solid #C55D09;*/
+	/*-moz-border-top-colors:#E7BC99 #A3581B #E7BC99 #A3581B #E7BC99 #A3581B #E7BC99 #A3581B;
+	-moz-border-left-colors:#E7BC99 #A3581B #E7BC99 #A3581B #E7BC99 #A3581B #E7BC99 #A3581B;
+	-moz-border-right-colors:#E7BC99 #A3581B #E7BC99 #A3581B #E7BC99 #A3581B #E7BC99 #A3581B;*/
+}
+
+.dj_ie .masterbrand table.defaultcombobutton.dijitComboButton{
+	background: none;
+    border: none;
+	background-color:transparent;
+}
+
+.masterbrand table.defaultcombobutton {
+	/*-moz-border-top-colors:#E7BC99 #A3581B #E7BC99 #A3581B #E7BC99 #A3581B #E7BC99 #A3581B ;*/
+}
+
+.masterbrand .defaultcombobutton .dijitDownArrowButton .dijitArrowButtonInner {
+	/*height: 0px; psesumic*/
+	width: 0px;
+	border: none;
+	margin: none;
+	padding: 0px 0px 0px 0px;	
+}
+
+/*psesumic*/
+.masterbrand .defaultcombobutton .dijitButtonNode button {
+	/* height:18px; */
+	/*padding-bottom:2px;*/
+	/*margin-top: -18px;*/
+	margin-right: 1px;
+	padding-right: 1px;
+	/*border-right: 1px solid #C76A1C;*/
+}	
+
+.dj_ie .masterbrand .defaultcombobutton .dijitButtonNode button {
+	border-right: none;
+}
+
+.masterbrand .defaultcombobutton .dijitButtonNode {
+	/*background: url(../images/menubutton/btn_left_new.png) no-repeat top left;*/
+	border:none;
+	/*background-position: 0px -54px;*/
+	/*padding: 0px 0px 0px 3px;*/ /*  set left padding 2px, to let outline box be symetrical to the right */
+	margin: none;
+}
+.masterbrand .defaultcombobutton .dijitDownArrowButton.dijitButtonNode { 
+	/*background: url(../images/menubutton/bt_right_default.png) no-repeat top left;
+	background-position: 0 0;*/
+	background: url(../images/menubutton/bt_arrow_white.png) no-repeat top left;
+	border: none;
+	height: 18px;
+	width: 15px;
+	/* 1 */
+	padding: 0px 0px 0px 0px; /*  set left padding 2px, to let outline box be symetrical to the right */
+	margin: none;
+	
+}
+
+
+
+/* on default button, when mouse hover/press change left and right images*/
+
+.masterbrand table.defaultcombobutton .dijitComboButtonHover .dijitButtonNode:hover {
+	background: -moz-linear-gradient(top, #FBB951 , #EB792A );
+}
+
+
+.masterbrand .defaultcombobutton .dijitDownArrowButton.dijitButtonNode:hover { 
+/*	background: url(../images/menubutton/bt_right_hover.png) no-repeat top left; */
+	background-position: 0 0;
+	border: none;
+	height: 18px;
+	width: 15px;
+	/* 1 */
+	padding: 0px 0px 0px 0px; /*  set left padding 2px, to let outline box be symetrical to the right */
+	margin: none;
+	
+}
+.masterbrand .defaultcombobutton .dijitDownArrowButton{
+	outline:0 none;	
+}
+
+
+.masterbrand .defaultcombobutton .dijitButtonNode .dijitButtonText {	
+	font-size: 12px;
+	font-family: Arial, Helvetica;
+	text-align:center;	
+	font-weight: normal;
+	padding-right:0px;
+	margin-bottom:1px;
+	color:#ffffff;  /* defautl button white color */
+}
+
+
+.dj_ie .masterbrand .defaultcombobutton .dijitButtonNode .dijitButtonText {	
+	padding: 0px 0px 2px 4px;
+	margin-top:0px;
+	margin-right:2px;
+}
+.dj_ie .masterbrand .dijitComboButtonActive.defaultcombobutton .dijitButtonContents .dijitButtonText{
+	color:white !important;
+}
+.masterbrand .defaultcombobutton.dijitComboButtonActive .dijitButtonNode .dijitButtonText {
+	color: #FFFFFF;
+}
+
+.masterbrand .defaultcombobutton.dijitComboButtonHover .dijitButtonNode .dijitButtonText {			
+	color: #FFFFFF;	
+}
+
+.masterbrand .defaultcombobutton .dijitButtonNode:active {
+	
+}
+
+/* BEGIN: disabled states */
+
+
+/*  END default state */
+
+/* 
+https://support.sitepen.com/issues/20294
+In Internet explorer, when mouse press on button, the text shift south-east 1 px.
+That behavior cannot be modified by script or CSS. Have to adjust background position to compensate
+*/
+
+.masterbrand .combobutton .dijitDownArrowButton.dijitButtonNode:active  {
+	/*background: url(../images/menubutton/bt_right_pressed.png) no-repeat top left;*/
+    cursor: pointer;
+}
+
+.masterbrand .defaultcombobutton .dijitDownArrowButton.dijitButtonNode:active {
+	/*background: url(../images/menubutton/bt_right_pressed.png) no-repeat top left;*/
+    cursor: pointer;
+}
+
+
+
+
+/* BEGIN: disabled states */
+
+
+.masterbrand .combobutton .dijitButtonNode:disabled,
+.masterbrand .combobutton .dijitComboButtonDisabled .dijitButtonContents,
+.masterbrand .combobutton .dijitButtonDisabled ,
+.masterbrand .combobutton .dijitDropDownButtonDisabled ,
+.masterbrand .combobutton .dijitButtonDisabled .dijitButtonNode:hover {
+}
+
+.masterbrand .dijitComboButtonDisabled .dijitButtonContents {
+	padding-right: 2px;
+	border-right: 1px solid #D5D4D4;
+}
+
+/* BEGIN: disabled states */
+
+
+.dj_ie .masterbrand .dijitButtonContents {
+	border-right: none;
+}
+
+.masterbrand .combobutton .dijitButtonDisabled .dijitButtonNode,
+.masterbrand .combobutton .dijitDropDownButtonDisabled .dijitButtonNode,
+.masterbrand .combobutton .dijitComboButtonDisabled .dijitDownArrowButton, /*psesumic*/
+.masterbrand .combobutton .dijitDownArrowDisabled .dijitDownArrowButton {
+	/*background-position: 0 -72px;*/
+}
+
+/* get IE to show disabled */
+.dj_ie .masterbrand .combobutton .dijitButtonDisabled .dijitButtonContents {
+	/*background-position: 0 -72px;*/
+	margin-top: 0px;
+}
+
+.masterbrand .combobutton .dijitButtonDisabled .dijitButtonText {
+	color: #969696;
+}
+
+.masterbrand .combobutton.dijitComboButtonDisabled .dijitButtonText {
+	color: #969696;
+}
+
+.masterbrand .defaultcombobutton.dijitComboButtonDisabled .dijitButtonText {
+	color: #969696;
+}
+
+.dj_ie .masterbrand .defaultcombobutton.dijitComboButtonDisabled .dijitButtonText {
+	color: #969696;
+}
+
+/* END: disabled states */
+
+
+.dj_ie .masterbrand .defaultcombobutton.dijitComboButtonActive .dijitButtonNode,
+.dj_ie .masterbrand .combobutton.dijitComboButtonActive .dijitButtonNode {	
+	/*background-position: 0px -36px;*/
+}
+
+
+.dj_ie .masterbrand .defaultcombobutton.dijitComboButtonActive .dijitButtonNode,
+.dj_ie .masterbrand .combobutton.dijitComboButtonActive .dijitButtonNode {	
+	/*background-position: 0px -36px;*/
+}
+
+.dj_ie .masterbrand .combobutton .dijitDownArrowButton.dijitButtonNode { 
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 0 -60px;
+	
+}
+
+.dj_ie .masterbrand .defaultcombobutton .dijitDownArrowButton.dijitButtonNode { 
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	/*background-position: 0 -20px;*/
+}
+
+/* active */
+
+.dj_ie .masterbrand .combobutton .dijitArrowButton.dijitDownArrowButton.dijitButtonNode:active,
+.dj_ie .masterbrand .defaultcombobutton .dijitArrowButton.dijitDownArrowButton.dijitButtonNode:active { 
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	cursor: pointer;
+	
+}
+
+
+/* */
+
+/* hover */
+.dj_ie .masterbrand .combobutton.dijitComboButtonDownArrowHover .dijitDownArrowButton.dijitButtonNode,
+.dj_ie .masterbrand .defaultcombobutton.dijitComboButtonDownArrowHover .dijitDownArrowButton.dijitButtonNode { 
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 0 -80px;
+	cursor: pointer;
+	
+}
+
+
+.dj_ie .masterbrand .combobutton .dijitDownArrowButton.dijitButtonNode:hover{ 
+	background-position: 100% -80px;
+	cursor: pointer;
+}
+
+.dj_ie .masterbrand .defaultcombobutton .dijitDownArrowButton.dijitButtonNode:hover{
+	background-position: 100% -20px;
+}
+
+
+.dj_ie .masterbrand .combobutton.dijitComboButton.dijitComboButtonDisabled .dijitDownArrowButton {
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	cursor: pointer;
+}
+
+
+.dj_ie .masterbrand .defaultcombobutton.dijitComboButton.dijitComboButtonDisabled .dijitDownArrowButton {
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	cursor: pointer;
+}
+
+.masterbrand table.dijitComboButton.dijitComboButtonHover.defaultcombobutton{
+	/*background: -moz-linear-gradient(top, #FBB951 , #EB792A ) transparent;*/ 
+	cursor: pointer;
+}
+
+.masterbrand table.defaultcombobutton.dijitComboButton.dijitComboButtonFocusedHover,
+.masterbrand table.defaultcombobutton.dijitComboButton.dijitComboButtonFocused,
+.masterbrand table.defaultcombobutton.dijitComboButton.dijitComboButtonActive {
+	/*background: -moz-linear-gradient(top, #D16215, #F79B0A );*/
+	cursor: pointer;
+	}
+
+/*psesumic*/
+/*psesumic*/
+
+.dj_ie8 .masterbrand .combobutton. dijitButtonContents {	
+	margin-bottom:0px;
+	margin-top:0px;
+}
+
+
+/******************************************************************************
+ * 
+ * 
+ * Start IE8 reboot theming
+ * 
+ * 
+ */
+   
+
+
+.masterbrand .combobutton table {
+	background-color: transparent;
+	border: none;
+}
+
+.masterbrand .combobutton .dijitLeft table {
+	background-color: transparent;
+	border: none;
+}
+
+/* BEGIN: buttons */
+/*
+.masterbrand .combobutton  .dijitButtonContents{
+	padding:0px;
+}
+*/
+
+.masterbrand .defaultcombobutton. .dijitButtonContents{
+		padding-right: 2px;
+		border-right: none;
+}
+
+
+/* BEGIN: normal states */
+.masterbrand .combobutton .dijitButton,
+.masterbrand .combobutton .dijitButtonDisabled {
+	/*margin: 0 !important;*/
+	padding: 0;
+/*	float: left; vijagraw: float:left causes alignment issues with span - it puts the button in the next line*/
+}
+
+
+
+
+.masterbrand .combobutton .dijitButtonNode { 
+	background: url(../images/menubutton/new_reboot_btn_left.png) no-repeat top left;
+	background-position: 0px -60px;
+	border:none;
+	height: 20px;
+	text-align:center;
+	vertical-align:middle;
+  	border: none;
+	padding: 0px 0px 0px 2px; /*  set left padding 2px, to let outline box be symetrical to the right */
+}
+
+
+.masterbrand .dijitComboButton.dijitComboButtonActive .dijitButtonContents
+{
+	background-position: 0px -80px;
+}
+
+.masterbrand .combobutton .dijitDownArrowButton .dijitArrowButtonInner {
+	height: 0px;
+	width: 0px;
+	border: none;
+	margin: none;
+	padding: 0px 0px 0px 0px;	
+}
+
+.masterbrand .combobutton .dijitDownArrowButton {
+	border: none;
+	height: 20px;
+	width: 23px;
+	padding:0px 0px 0px 0px; /*  set left padding 2px, to let outline box be symetrical to the right */
+	margin: none;
+}
+
+
+.masterbrand .combobutton .dijitDownArrowButton.dijitButtonNode { 
+	/*background: url(../images/menubutton/bt_right_normal.png) no-repeat top left;*/
+	background-position: 0 0;
+	border: none;
+	height: 20px;
+	width: 23px;
+	/* 1 */
+	padding:0px 0px 0px 0px; /*  set left padding 2px, to let outline box be symetrical to the right */
+	margin: none;
+}
+
+.masterbrand .combobutton .dijitButtonNode .dijitButtonText {
+	color: #454545;
+	line-height: 14px;
+	font-size: 12px;
+	font-family: Arial, Helvetica;
+	font-weight: normal;	 	
+	text-align:center;	
+	padding:0px 2px 1px 6px;
+}
+
+
+.masterbrand .combobutton .dijitButtonNode .dijitButtonText {
+	padding:0px 0px 0px 3px;
+	/* margin-top:2px; */
+}
+
+.dj_chrome .masterbrand .combobutton .dijitButtonNode .dijitButtonText {
+	padding:0px 3px 0px 3px;
+	/* margin-top:2px; */
+}
+
+.dj_ie .masterbrand .combobutton .dijitButtonNode .dijitButtonText {
+	padding:0px 0px 2px 6px;
+	margin-top:0px;
+	margin-right: 2px;
+	margin-bottom:0px;
+}
+
+.masterbrand .combobutton .dijitComboButtonHover .dijitButtonText {
+	color: #454545;
+}
+
+.masterbrand .combobutton .dijitActive .dijitButtonText {
+	color: #454545;
+}
+
+/* BEGIN: hover states */
+.masterbrand .combobutton .dijitButtonNode:hover{
+    background-position: 0 -80px;
+    cursor: pointer;
+}
+.masterbrand .combobutton .dijitDownArrowButton.dijitButtonNode:hover  {
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 0 -80px;
+	border: none;
+	height: 20px;
+	width: 23px;
+	/* 1 */
+	padding: 0px 0px 0px 0px; /*  set left padding 2px, to let outline box be symetrical to the right */
+    cursor: pointer;
+}
+
+/* BEGIN: active states */
+
+
+.masterbrand .combobutton .dijitButtonNode:active {
+	background-position: 0px -100px;
+}
+
+.masterbrand .combobutton .dijitButtonActive .dijitButtonNode {
+	background-position: 100% -100px;
+}
+
+
+.masterbrand .combobutton .dijitDownArrowButton.dijitButtonNode:active{
+	/*background: url(../images/menubutton/bt_right_pressed.png) no-repeat top left;*/
+    outline: none;
+    text-decoration: none;
+}
+
+/* BEGIN: default state */
+/*psesumic*/
+.masterbrand .defaultcombobutton.dijitComboButton{
+	height:20px;
+}
+
+.masterbrand .defaultcombobutton .dijitDownArrowButton .dijitArrowButtonInner {
+	/*height: 0px; psesumic*/
+	width: 0px;
+	border: none;
+	margin: none;
+	padding: 0px 0px 0px 0px;	
+}
+
+/*psesumic*/
+.masterbrand .defaultcombobutton .dijitButtonNode button {
+	height:20px;
+	/* padding-bottom:2px; */
+}	
+
+.masterbrand .defaultcombobutton .dijitButtonNode {
+	background: url(../images/menubutton/new_reboot_btn_left.png) no-repeat top left;
+	border:none;
+	background-position: 0 0px;
+	padding: 0px 0px 0px 3px; /*  set left padding 2px, to let outline box be symetrical to the right */
+	margin: none;
+}
+
+.masterbrand .defaultcombobutton .dijitDownArrowButton.dijitButtonNode { 
+	background: url(../images/menubutton/new_reboot_btn_right.png) no-repeat top left;
+	background-position: 0 0;
+	border: none;
+	height: 20px;
+	width: 23px;
+	/* 1 */
+	padding: 0px 0px 0px 0px; /*  set left padding 2px, to let outline box be symetrical to the right */
+	margin: none;
+	
+}
+
+
+
+/* on default button, when mouse hover/press change left and right images*/
+.masterbrand .defaultcombobutton .dijitButtonNode:hover {
+	background-position: 0px -20px;
+}
+
+
+.masterbrand .defaultcombobutton .dijitDownArrowButton.dijitButtonNode:hover { 
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 0 0;
+	border: none;
+	height: 20px;
+	width: 23px;
+	/* 1 */
+	padding: 0px 0px 0px 0px; /*  set left padding 2px, to let outline box be symetrical to the right */
+	margin: none;
+}
+
+
+.masterbrand .defaultcombobutton .dijitButtonNode .dijitButtonText {	
+	font-size: 12px;
+	font-family: Arial, Helvetica;
+	text-align:center;	
+	font-weight: normal;
+	color:#FFFFFF;  /* defautl button white color */
+	padding: 0px 0px 2px 5px;
+}
+
+
+.masterbrand  .defaultcombobutton .dijitButtonNode .dijitButtonText {	
+	padding: 0px 0px 2px 3px;
+	/* margin-top:2px; */
+}
+
+.dj_chrome .masterbrand .defaultcombobutton .dijitButtonNode .dijitButtonText {	
+	padding: 0px 2px 2px 3px;
+	/* margin-top:2px; */
+}
+.masterbrand .defaultcombobutton.dijitComboButtonActive .dijitButtonNode .dijitButtonText {
+	color: #FFFFFF;
+}
+
+.masterbrand .defaultcombobutton.dijitComboButtonHover .dijitButtonNode .dijitButtonText {			
+	color: #FFFFFF;	
+}
+
+.dj_ie .masterbrand .defaultcombobutton .dijitButtonNode:active {
+	background-position: 0px -40px;
+}
+
+/* BEGIN: disabled states */
+.masterbrand .defaultcombobutton.dijitComboButtonDisabled .dijitButtonNode{
+	background-position: 0px -120px;
+}
+
+.masterbrand .combobutton.dijitComboButtonDisabled .dijitDownArrowButton.dijitButtonNode {
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 0px -120px;
+}
+
+/*  END default state */
+
+/* 
+https://support.sitepen.com/issues/20294
+In Internet explorer, when mouse press on button, the text shift south-east 1 px.
+That behavior cannot be modified by script or CSS. Have to adjust background position to compensate
+*/
+
+.masterbrand .combobutton .dijitDownArrowButton.dijitButtonNode:active  {	
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 100% -100px;
+    cursor: pointer;
+}
+
+.masterbrand .defaultcombobutton .dijitDownArrowButton.dijitButtonNode:active {
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 100% -40px;
+    cursor: pointer;
+}
+
+
+
+
+/* BEGIN: disabled states */
+
+
+
+
+/* get IE to show disabled */
+.masterbrand .combobutton .dijitButtonDisabled .dijitButtonContents {
+	background: url(../images/menubutton/new_reboot_btn_left.png) no-repeat top left;	
+	background-position: 0 -120px;
+}
+
+.masterbrand .combobutton .dijitButtonDisabled .dijitButtonText {
+	color: #8E8E8E;
+}
+
+.masterbrand .combobutton.dijitComboButtonDisabled .dijitButtonText {
+	color: #8E8E8E;
+}
+
+.masterbrand .defaultcombobutton.dijitComboButtonDisabled .dijitButtonText {
+	color: #8E8E8E;
+}
+
+/* END: disabled states */
+
+
+.masterbrand .defaultcombobutton.dijitComboButtonActive .dijitButtonNode{
+	background-position: 0 -40px;
+}
+.masterbrand .combobutton.dijitComboButtonActive .dijitButtonNode {	
+	background-position: 0 -100px;
+}
+
+.masterbrand .combobutton .dijitDownArrowButton.dijitButtonNode { 
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 0 -60px;
+}
+
+.masterbrand .defaultcombobutton .dijitDownArrowButton.dijitButtonNode { 
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 0 0px;
+}
+
+/* active */
+
+
+.masterbrand .defaultcombobutton .dijitArrowButton.dijitDownArrowButton.dijitButtonNode:active { 
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 0 -40px;
+	cursor: pointer;
+}
+
+.masterbrand .combobutton .dijitArrowButton.dijitDownArrowButton.dijitButtonNode:active{
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 0 -100px;
+	cursor: pointer;
+}
+
+
+/* */
+
+/* hover */
+.masterbrand .defaultcombobutton.dijitComboButtonDownArrowHover .dijitDownArrowButton.dijitButtonNode { 
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 100% -20px;
+	cursor: pointer;
+}
+
+/* hover */
+.masterbrand .combobutton.dijitComboButtonDownArrowHover .dijitDownArrowButton.dijitButtonNode{
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 100% -80px;
+	cursor: pointer;
+}
+
+.masterbrand .combobutton.dijitComboButton.dijitComboButtonDisabled .dijitDownArrowButton {
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 100% -120px;
+	cursor: pointer;
+}
+
+.dj_ie .masterbrand .combobutton.dijitComboButton.dijitComboButtonDisabled .dijitDownArrowButton {
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	background-position: 100% -120px;
+	cursor: pointer;
+}
+
+.masterbrand .defaultcombobutton.dijitComboButton.dijitComboButtonDisabled .dijitDownArrowButton {
+	background: url(../images/menubutton/new_reboot_btn_action.png) no-repeat top left;
+	cursor: pointer;
+}
+
+/*psesumic*/
+.masterbrand .defaultcombobutton.dijitComboButtonHover .dijitButtonContents {
+	/*background: url(../images/menubutton/new_reboot_btn_left.png) no-repeat top left;*/
+	/*background-position: 0 -20px;*/
+	height:20px;
+}
+
+/*psesumic*/
+.masterbrand .combobutton.dijitComboButtonHover .dijitButtonContents {
+	/*background: url(../images/menubutton/new_reboot_btn_left.png) no-repeat top left;*/
+	/*background-position: 0 -20px;*/
+	
+}
+/*psesumic*/
+.masterbrand .combobutton.dijitComboButtonHover .dijitButtonContents {
+	/*background: url(../images/menubutton/new_reboot_btn_left.png) no-repeat top left;*/
+	/*background-position: 0 -20px;*/
+	
+}
+
+
+.masterbrand .combobutton. dijitButtonContents {	
+	margin-bottom:0px;
+}
+
+.masterbrand .combobutton.dijitComboButtonDisabled .dijitButtonNode{
+	background-color: transparent;	
+	background: url(../images/menubutton/new_reboot_btn_left.png) no-repeat top left;
+	background-position: 0 -120px;
+}
+
+.masterbrand .defaultcombobutton .dijitButtonText {
+	color: #FFFFFF;
+}
+
+.masterbrand .defaultcombobutton .dijitButtonContents {
+	color: #FFFFFF;
+}
+
+.masterbrand .defaultcombobutton .dijitButtonContentsFocused{
+	color: #FFFFFF;
+}
+.masterbrand .combobutton.dijitComboButtonDisabled .dijitButtonText {
+	margin:0px 0px 0px 5px !important;
+	padding:0px 0px 2px 6px !important;	
+}
+
+.dj_ie .masterbrand .combobutton.dijitComboButtonDisabled .dijitButtonText {
+	margin:0px 0px 0px 5px !important;
+	padding:0px 0px 2px 6px !important;	
+	color: #8E8E8E;
+}
+
+.masterbrand .combobutton .dijitButtonNode BUTTON::-moz-focus-inner {
+    border:none !important;
+    -moz-outline:none !important;	
+ }
+
+.masterbrand .defaultcombobutton .dijitButtonNode BUTTON::-moz-focus-inner {
+    border:none !important;
+    -moz-outline:none !important;	
+ }

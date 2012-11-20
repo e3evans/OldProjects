@@ -1,0 +1,100 @@
+/*******************************************************************
+ Copyright (c) 2009-2010 Cisco Systems, Inc.
+ All rights reserved.
+ *******************************************************************/
+/*
+ * @author Priston
+ * All the CSS elements for Progress ball goes here.
+ */
+.masterbrand .xwtsmallimage1ball, .masterbrand .xwtsmallgrayball {
+    background: transparent url('../images/misc/progress_indicator_16_gray_antialiased_lightgray.gif') no-repeat;
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    padding: 5px;
+    float: left;
+    display: block;
+}
+.xwtProgresBallText {
+    display:none;
+}
+
+.masterbrand .xwtsmallimage2ball, .masterbrand .xwtsmallwhiteball {
+    background: transparent url('../images/misc/progress_indicator_16_white.gif') no-repeat;
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    padding: 5px;
+    display: block;
+}
+
+.masterbrand .xwtmediumimage1ball, .masterbrand .xwtmediumgrayball {
+    background: transparent url('../images/misc/progress_indicator_24_gray.gif') no-repeat;
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    padding: 5px;
+    float: left;
+    display: block;
+}
+
+
+.masterbrand .xwtmediumimage2ball, .masterbrand .xwtmediumwhiteball {
+    background: transparent url('../images/misc/progress_indicator_24_white.gif') no-repeat;
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    padding: 5px;
+    float: left;
+    display: block;
+}
+
+.xwtmediumimage2ball .xwtProgresBallText, 
+.xwtmediumwhiteball .xwtProgresBallText {
+    display:none;
+}
+
+.masterbrand .xwtextremeimage1ball, .masterbrand .xwtextremegrayball {
+    background: transparent url('../images/misc/progress_indicator_32_gray_antialiased_lightgray.gif') no-repeat;
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    padding: 5px;
+    float: left;
+    display: block;
+}
+
+.masterbrand .xwtextremeimage2ball, .masterbrand .xwtextremewhiteball {
+    background: transparent url('../images/misc/progress_indicator_32_white.gif') no-repeat;
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    padding: 5px;
+    float: left;
+    display: block;
+}
+
+.dijit_a11y .xwtProgresBallText{   
+    width:auto;
+    padding: 5px !important;
+	border: 1px solid !important; 	
+    float: left !important;
+    display: block !important;
+}
+
+.masterbrand .xwtProgressBallShow {
+    display: block;
+}
+
+.masterbrand .xwtProgressBallHide {
+    display: none;
+}
+
+/*
+.ally_progressball{
+	display:none;	
+}
+.dijit_a11y .ally_progressball{	
+	display: block !important;
+}*/
+

@@ -1,0 +1,466 @@
+/* ************************************************** */
+/* Copyright (c) 2009, 2010 Cisco Systems, Inc.       */
+/* All rights reserved.                               */
+/* ************************************************** */
+
+/* add background to all test pages */
+/*
+HTML.dj_contentbox {
+    height: 100%;
+    width: 100%;
+}
+BODY.masterbrand {
+    background: -moz-linear-gradient(center top , #FFFFFF, #FFFFFF 100px, #DCE3E7) repeat scroll 0 0 transparent;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#dce3e7');
+}
+*/
+
+
+
+/*Temp for demo*/
+.masterbrand .contentPane {
+	background: #FFFFFF;
+	opacity:0.8;
+	width : 48%;
+	height: 100%;
+	border: 2px ridge #84AAC6;
+	padding: 5px;
+	margin: 0 10px 10px 0;
+	float: left;
+	-moz-border-radius-bottomleft: 4px;
+    -moz-border-radius-bottomright: 4px;
+	-moz-border-radius-topleft: 4px;
+    -moz-border-radius-topright: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-top-right-radius: 4px;
+}
+
+
+
+
+
+/* Style for global toolbar - jose*/
+.masterbrand .gt_divider {
+	background: transparent url(images/misc/divider.png) no-repeat scroll center;
+	padding-right: 1px;
+	padding-left  : 1px;
+	margin-left:-5px;
+     margin-right:-5px;
+	width:2px;
+}
+.masterbrand .gt_divider1 .dijitButtonText{
+	padding:0 0;
+	
+}
+.masterbrand .gt_divider_R {
+	background: transparent url(images/misc/divider.png) no-repeat scroll center center;
+	padding-right: 1px;
+	padding-left  : 6px;
+	margin-left:-5px;
+     margin-right:-5px;
+	width:2px;
+	/*padding-right: 6px;
+	padding-left  : 10px;
+	width:2px;*/
+}
+.masterbrand .gt_Maps {
+	background: transparent url(images/misc/topology16.png) no-repeat scroll center center;
+	padding-right : 19px;
+	padding-left  : 0px;
+    margin-right:8px;
+
+}
+.masterbrand .dj_ie7 .gt_Maps {
+	background: transparent url(images/misc/topology16.png) no-repeat scroll center center;
+	padding-right : 19px;
+	padding-left  : 0px;
+    margin-right:8px;
+	display:inline-block;
+
+}
+.masterbrand .gt_Tags {
+	background: transparent url(images/misc/gauge16.png) no-repeat scroll center center;
+	padding-right : 19px;
+	padding-left  : 0px;
+    margin-right:8px;
+
+	
+}
+.masterbrand .dj_ie7 .gt_Tags {
+	background: transparent url(images/misc/gauge16.png) no-repeat scroll center center;
+	padding-right : 19px;
+	padding-left  : 0px;
+    margin-right:8px;
+	display:inline-block;
+
+	
+}
+.masterbrand .gt_RecentItems {
+	background: transparent url(images/misc/web16.png) no-repeat scroll center center;
+	padding-right : 19px;
+	padding-left  : 0px;
+    margin-right:8px;
+
+	
+}
+.masterbrand .gt_Favorites {
+	background: transparent url(images/misc/favorites16.png) no-repeat scroll center center;
+	padding-right : 19px;
+	padding-left  : 0px;
+    margin-right:8px;
+}
+.masterbrand .dj_ie7 .gt_Favorites {
+	background: transparent url(images/misc/favorites16.png) no-repeat scroll center center;
+	padding-right : 19px;
+	padding-left  : 0px;
+    margin-right:8px;
+	display:inline-block;
+}
+
+.masterbrand .gt_Toolbox{
+	background: transparent url(images/misc/tools16.png) no-repeat scroll center center;
+	padding-right : 19px;
+	padding-left  : 0px;
+    margin-right:8px;
+}
+.masterbrand .dj_ie7 .gt_Toolbox{
+	background: transparent url(images/misc/tools16.png) no-repeat scroll center center;
+	padding-right : 19px;
+	padding-left  : 0px;
+    margin-right:8px;
+	display:inline-block;
+}
+.masterbrand .gt_alarmNormal {
+	background: transparent url(images/misc/alerts/alert_normal.png) no-repeat scroll center right;
+	padding-right: 16px;
+}
+.masterbrand .dj_ie7 .gt_alarmNormal {
+	background: transparent url(images/misc/alerts/alert_normal.png) no-repeat scroll center right;
+	padding-right: 16px;
+	display:inline-block;
+}
+.masterbrand .gt_alarmCritical {
+	background: transparent url(images/misc/alerts/alert_critical.png) no-repeat scroll center right;
+	padding-right: 16px;
+}
+.masterbrand .dj_ie7 .gt_alarmCritical {
+	background: transparent url(images/misc/alerts/alert_critical.png) no-repeat scroll center right;
+	padding-right: 16px;
+	display:inline-block;
+}
+.masterbrand .gt_alarmMajor {
+	background: transparent url(images/misc/alerts/alert_major.png) no-repeat scroll center right;
+	padding-right: 16px;
+}
+.masterbrand .dj_ie7 .gt_alarmMajor {
+	background: transparent url(images/misc/alerts/alert_major.png) no-repeat scroll center right;
+	padding-right: 16px;
+	display:inline-block;
+}
+.masterbrand .gt_Uparrow{
+	background: transparent url(images/misc/uparrow.png) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .gt_Accessories{
+	background: transparent url(images/misc/accessories.png) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .gt_Address_book{
+	background: transparent url(images/misc/Address_book.png) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .gt_alarms{
+	background: transparent url(images/misc/alarms/alarms16.png) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .gt_calls{
+	background: transparent url(images/misc/calls.png) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .gt_printer{
+	background: transparent url(images/misc/device/printer.png) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .gt_configure{
+	background: transparent url(images/misc/configure.png) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .gt_certified{
+	background: transparent url(images/misc/certified.png) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .gt_topology{
+	background: transparent url(images/misc/topology16.png) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .gt_area{
+	background: transparent url(images/misc/area.png) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .gt_copy{
+	background: transparent url(images/misc/copy.gif) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .gt_paste{
+	background: transparent url(images/misc/paste.gif) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .gt_arrow{
+	background: transparent url(images/misc/arrow.png) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .gt_help{
+	background: transparent url(images/misc/help.png) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;	
+}
+.masterbrand .dj_ie7 .gt_help{
+	background: transparent url(images/misc/help.png) no-repeat scroll center center;
+	padding-right : 10px;
+	padding-left  : 10px;
+	display:inline-block;	
+}
+.masterbrand .home{
+	background: transparent url(images/toolbar/home_16x16.png) no-repeat scroll center center;
+	padding-right : 0px;
+	padding-left  : 0px;	
+}
+
+/*FOR DEMO REMOVE LATER*/
+.masterbrand .alarm {
+	margin-right: 5px;
+	margin-left: 2px;
+}
+.masterbrand .alarmNormal {
+	background: transparent url(images/misc/alerts/alert_normal.png) no-repeat scroll center right;
+	padding-right: 16px;
+}
+.masterbrand .alarmCritical {
+	background: transparent url(images/misc/alerts/alert_critical.png) no-repeat scroll center right;
+	padding-right: 16px;
+}
+.masterbrand .alarmMajor {
+	background: transparent url(images/misc/alerts/alert_major.png) no-repeat scroll center right;
+	padding-right: 16px;
+}
+.masterbrand .alarmMinor {
+	background: transparent url(images/misc/alerts/alert_minor.png) no-repeat scroll center right;
+	padding-right: 16px;
+	padding-left  : 10px;
+}
+
+.masterbrand .deviceIcon {
+		background: transparent url(images/misc/device/Blue_Device16x16.png) no-repeat scroll center right;
+}
+.masterbrand .demoIcon {
+		background: transparent url(images/misc/device/Blue_Device16x16.png) no-repeat scroll center left;
+}
+.masterbrand .alarmIcon {
+	background: transparent url(images/misc/alerts/alert_normal.png) no-repeat scroll center right;
+}
+
+/*toolbar icons*/
+
+.masterbrand .actionHistory {
+	background-image: url(images/toolbar/history.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionClone {
+	background-image: url(images/toolbar/clone.gif);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionCreate {
+	background-image: url(images/toolbar/create.gif);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionDevice {
+	background: url(images/misc/device/Blue_Device16x16.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionAlarm {
+	background: url(images/misc/favorites16.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionMaps {
+	background: url(images/misc/topology16.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionTags {
+	background: url(images/misc/gauge16.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionRecentItems {
+	background: url(images/misc/web16.png);
+	background-repeat: no-repeat;
+}
+	
+}
+.masterbrand .actionFavorites {
+	background: url(images/misc/favorites16.png);
+	background-repeat: no-repeat;
+}
+
+.masterbrand .actionToolbox{
+	background: url(images/misc/tools16.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionAccessories{
+	background: url(images/misc/favorites16.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionAddressBook{
+	background: url(images/misc/Address_book.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionCalls{
+	background: url(images/misc/calls.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionPrinter{
+	background: url(images/misc/device/printer.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionConfigure{
+	background: url(images/misc/configure.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionCertified{
+	background: url(images/misc/certified.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionTopology{
+	background: url(images/misc/topology16.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionCopy{
+	background: url(images/misc/copy.gif);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionPaste{
+	background: transparent url(images/misc/paste.gif);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionHelp{
+	background: url(images/misc/calls.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .actionHome{
+	background: url(images/toolbar/home.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .homeIcon {
+	background: url(images/toolbar/home.png) no-repeat;
+}
+.masterbrand .dj_ie7 .homeIcon {
+	background: url(images/toolbar/home.png) no-repeat;
+	display:inline-block;
+	margin-top:4px;
+}
+.masterbrand .policy {
+	background: url(images/misc/context/policy.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .authentication {
+	background: url(images/misc/context/authentication.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .overview {
+	background: url(images/misc/context/overview.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .autho {
+	background: url(images/misc/context/autho.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .clientpro {
+	background: url(images/misc/context/clientpro.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .deviceadmin {
+	background: url(images/misc/context/deviceadmin.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .endpoint {
+	background: url(images/misc/context/endpoint.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .guest {
+	background: url(images/misc/context/guest.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .identity {
+	background: url(images/misc/context/identity.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .networkaccess {
+	background: url(images/misc/context/networkaccess.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .reports {
+	background: url(images/misc/context/reports.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .posture {
+	background: url(images/misc/context/posture.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .system {
+	background: url(images/misc/context/system.png);
+	background-repeat: no-repeat;
+}
+
+.masterbrand .ctx_alarms{
+	background: transparent url(images/misc/alarms/alarms16.png);
+	background-repeat: no-repeat;
+}
+.masterbrand .status{
+		background:transparent url(images/header/server_status_icon.png) no-repeat scroll 0 0;
+		padding-left:25px;
+		padding-top:4px;
+	
+}
+.masterbrand .dj_ie7 .status{
+		background:transparent url(images/header/server_status_icon.png) no-repeat scroll 0 0;
+		vertical-align:middle;
+		margin-top:-3px;
+		display:inline-block;
+}
+
+/* Formatter styles*/
+/*
+.formatAlarms {
+	padding-right: 5px;
+}
+
+.alarmNormalFormat, .alarmCriticalFormat, .alarmMajorFormat, .alarmNormalFormat {
+	padding-left: 16px;
+	padding-right: 5px;
+}
+.alarmNormalFormat {
+	background: transparent url(images/misc/alerts/alert_normal.png) no-repeat scroll center left;
+}
+.alarmCriticalFormat {
+	background: transparent url(images/misc/alerts/alert_critical.png) no-repeat scroll center left;
+}
+.alarmMajorFormat {
+	background: transparent url(images/misc/alerts/alert_major.png) no-repeat scroll center left;
+}
+.alarmMinorFormat {
+	background: transparent url(images/misc/alerts/alert_minor.png) no-repeat scroll center left;
+}
+*/

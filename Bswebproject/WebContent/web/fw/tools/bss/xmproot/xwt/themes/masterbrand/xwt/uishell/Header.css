@@ -1,0 +1,391 @@
+
+/* outer component that wraps the header and the toolbar  */
+.masterbrand .csPageLayout .csPageLayoutHeader {
+    margin-bottom:5px;
+    width:100%;
+    border:none;
+    background: transparent;
+}
+
+
+
+/* top level tag */
+.masterbrand .applicationHeader15 {
+  background:none;
+  padding:0;
+  margin:0;
+  xposition: relative;
+  xheight: auto;
+
+  height: auto;
+}
+
+.dj_gecko .masterbrand .applicationHeader15 {
+  -moz-user-select: none;
+  /* Danger, watch the window.onresize mess up page */
+  /*
+  margin-bottom:4px;
+  */
+  -moz-border-radius-bottomleft: 12px;
+  -moz-border-radius-bottomright: 12px;
+  -moz-box-shadow: 0px 2px 4px rgba(0,0,0, .4);
+  margin-bottom: 2px;
+}
+
+.dj_webkit .masterbrand .applicationHeader15 {
+  -webkit-user-select: none;
+  /* Danger, watch the window.onresize mess up page */
+  /*
+  margin-bottom:4px;
+  */
+  -webkit-border-bottom-left-radius: 12px;
+  -webkit-border-bottom-right-radius: 12px;
+  -webkit-box-shadow: 0px 2px 4px rgba(0,0,0, .4);
+  margin-bottom: 2px;
+}
+
+
+.dj_ie .masterbrand .applicationHeader15 {
+  -moz-box-shadow: 0px 2px 4px rgba(0,0,0, .4);
+}
+
+/* secondary layer of gradient */
+.masterbrand .applicationHeader15  .applicationHeaderComponentContainer {
+    vertical-align:top;
+    xposition: absolute;
+    xwidth:inherit;
+    xheight:inherit;
+    xheight:100%;
+
+    xmargin:0;
+    xmargin-left:20px;
+    xmargin-right:20px;
+
+}
+
+/* FF */
+.dj_gecko .masterbrand .applicationHeader15  .applicationHeaderComponentContainer {
+    -moz-border-radius-bottomleft: 12px;
+    -moz-border-radius-bottomright: 12px;
+}
+
+/* webkit */
+.dj_webkit .masterbrand .applicationHeader15  .applicationHeaderComponentContainer {
+    -webkit-border-bottom-left-radius: 12px;
+    -webkit-border-bottom-right-radius: 12px;
+}
+
+
+/* color branding themes for the header */
+
+
+/* Green theme 1 */
+
+/* webkit */
+.dj_webkit .masterbrand .applicationHeader15.theme1  .applicationHeaderComponentContainer {
+    background: 
+        -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255,255,255, 0.3)), color-stop(.5, rgba(255,255,255, 0.1)), to(rgba(255,255,255,0))),
+        -webkit-gradient(linear, 0 0, 100% 0, from(rgb(1,108,139)), to( rgb(55,173,127) ));
+
+}
+/* FF */
+.dj_gecko .masterbrand .applicationHeader15.theme1  .applicationHeaderComponentContainer {
+    background-image: 
+        -moz-linear-gradient(top, rgba(255,255,255, .3),  rgba(255,255,255, .1) 50%, rgba(255,255,255, 0)),
+        -moz-linear-gradient(left, #016c8b 0%, #37ad7f 100% );
+}
+
+/* IE */
+.dj_ie .masterbrand .applicationHeader15.theme1  .applicationHeaderComponentContainer {
+    filter: progid:DXImageTransform.Microsoft.gradient (GradientType=1, startColorstr=#016c8b, endColorstr=#37ad7f); 
+}
+
+.dj_ie .masterbrand .applicationHeader15.theme1  .applicationHeaderComponentContainer > .applicationHeaderComponentContainer2 {
+    filter: progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#40ffffff, endColorstr=#00ffffff); 
+}
+
+
+
+/* dark blue theme 2 */
+
+/* webkit */
+.dj_webkit .masterbrand .applicationHeader15.theme2  .applicationHeaderComponentContainer {
+    background-image:  -webkit-gradient(linear, 0% 0%, 0% 100%, from(#677d91), to(#1e3c5a));
+}
+/* FF */
+.dj_gecko .masterbrand .applicationHeader15.theme2  .applicationHeaderComponentContainer {
+    background-image: -moz-linear-gradient(top, #677d91 0%, #1e3c5a 100% );
+}
+
+.dj_ie .masterbrand .applicationHeader15.theme2  .applicationHeaderComponentContainer > .applicationHeaderComponentContainer2 {
+    filter: progid:DXImageTransform.Microsoft.gradient (GradientType=1, startColorstr=#677d91, endColorstr=#1e3c5a); 
+}
+
+
+
+
+/* dark grey theme 3 */
+
+/* webkit */
+.dj_webkit .masterbrand .applicationHeader15.theme3  .applicationHeaderComponentContainer {
+    background-image:  -webkit-gradient(linear, 0 0, 100% 0, from( rgba(0,0,0, .55)), to( rgba(0,0,0, .95)) ),
+    -webkit-gradient(linear, 0 0, 0 100%, from( rgba(255,255,255, .33)), to( rgba(255,255,255, 0)) );
+}
+/* FF */
+.dj_gecko .masterbrand .applicationHeader15.theme3  .applicationHeaderComponentContainer {
+    background-image:  -moz-linear-gradient(left, rgba(0,0,0, .55) 0%, rgba(0,0,0, .95) 100% ),
+    -moz-linear-gradient(top, rgba(255,255,255, .33) 0%, rgba(255,255,255, 0) 100% );
+}
+
+.dj_ie .masterbrand .applicationHeader15.theme3  .applicationHeaderComponentContainer > .applicationHeaderComponentContainer2 {
+    filter: progid:DXImageTransform.Microsoft.gradient (GradientType=1, startColorstr=#84000000, endColorstr=#f1000000); 
+}
+
+
+/* padding for all the widgets inside the header */
+.masterbrand .applicationHeader15 .applicationHeaderComponentContentWrapper {
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:12px;
+    xborder:1px solid yello;
+    width: 100%;
+}
+
+
+
+/* company logo */
+.masterbrand .applicationHeader15 .applicationLogoImage{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAAjCAYAAAAg/NwXAAAEr0lEQVRo3u1ZXUhUQRTeJ9+Chd582gdZAhFEH6K3C9YGUiH5JGSsEPfBIASTCqIEIxRWzBLBfNAnyaeSTAyCRcGCJFcDyRXU3XzxJ03RdRV/bnOWM3Ka5v7M3R8rPHAYvXNmvrnfnTlzzlmPYRiedLS8vPzO0NDQ20AgcDfduU4SO+3FbG5u/mCtsbe3l/B4PPm5JIJinzgRBpGxsbHKHO8KKqdE5IwIJnnpEGEzPiPYLsc7J4KJr6CgoI61QaZnVIiARTCtxPEXXJBQ5BRbRgCMc4ptu5ju7u4n3CHV19dfViFC1/VzKysr36EvEom8USVieHi4m2N3dHScVyECsNGJWmIfi91ilpaWvnKk8fHxVhUi8P+U4DxKRFBsk2NnSoRT7N+IgG3H9KzdYqanp7syTYRT7GwQAbioKckvKyt7UF1d3QRnMpdECNj+XBIBvg9wEdvn6e3t1fkAPJM5I4Jih8PhxlwSMTAwUM/74W8PvpzpgGwSQbFlc2eTCBH7lAhOxOzsbCd/sLq6GhEHLC8vT/H++fn5FypETE1NXbNaDMWWEUGxs07E7u7u8VnZ3t7uEwckk8l3vD+RSNxSjCyLydhP4liKvb6+3mKFzURTjCw13rGzs/NR7GcxRhN576fw0Mv0NWqxZEJ4Fmbag7aqIXYbjq+Q9KlguwmxObZmg+3LaOKzsbFx8V9LuhxHlnZ6eHgYJ4vx5pKIo6Ojjb+GCNy+jSZbP9uaNnYmifgv9JSEUyLcVajymQaYVjHVsb0iFkvwWUpNCiWlUKjBOXS0LTWrLEESiDbcvtLCHrJYjcwfxDX7M1Wh0hoaGkIzMzMRXjWGNhaLRcViCTzjKs5TWFh4E0rvvFADAnYs9uiTpcdg388E50oJjDWx90MWOzExMcbnh6IMrLmrq6sXCclzTQSUuGByw0QkAZT0Xoc0lxJARQx/YcG6rt9XsPfByxoWAoSUlJRcd0UEbLXR0dEPVgCYS9gSQVNelAWM+Hh7bKsx4TtPJqzvM7Vvb29vNRwIkGH1u4spEVifPBYMXoIYrmoYvhY7IYImV/CSeO79su06MjLSL8zDw3MN2zrquySkNaJtkK05RjvYzrmtTATWJ6kUuw15aXLFfQNsZ7/fXys6M3okWLL0zQqP7bQbAmadmE/s7+9v8U7LIq5ZB01T19bWFtKM/b1COGxwh4bO7IxsjsnJyRYrPOajHtK5ZDbRaPSVoyKuWQfdzvCVzAqsCkkQzyT/kNra2quyOQYHB3us8OLx+GNKBDhO0fEyst6TVP+LMhEsk7xHF1VTU/OIn2us/JZKyDG7NegX9+E5NmRFma2trajwAQIYx+RhWySrOYCEQqHnGHuAnQ+uYP7bBu7sl26uT59sG8MvR1D5hZiAndFLToiAL04CKNAq6gsWFxefyQom3NtDHAO40IoFZuYDFukaIfYAu+bm5k7JFay5DajarK4kp3EE9zc82JJ4+go7f2JxziucXJ8HBwcDsqxTJcTuMZt8bm6u3AkRWOs0k7DMn4hXn805D9rwEJbVSpLJpHLSVYElrZ/C5D7BLkxUXGhEsrg6C0wv+pKIEIi1mdhr+NHENQadvOMv13t3Zihfad4AAAAASUVORK5CYII=);
+	width:66px;
+	height:35px;
+    margin-right: 15px;
+}
+
+.dj_ie6 .masterbrand .applicationHeader15 .applicationLogoImage,
+.dj_ie7 .masterbrand .applicationHeader15 .applicationLogoImage{ background-image: url("../images/cisco-logo.png"); }
+
+
+/* app title */
+.masterbrand .applicationHeader15 .applicationHeaderAppName {
+  color: #fff;
+  cursor: default;
+  font: normal 22px Arial;
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-shadow: rgba(0,0,0,0.5) 0px 2px 2px;
+  /*
+  letter-spacing: 1px;
+  */
+  margin-top:0px;
+
+}
+
+/* app sub title */
+.masterbrand .applicationHeader15 .applicationHeaderAppSubtitle {
+  color: #fff;
+  cursor: default;
+  font: normal 12px Arial;
+  text-shadow: rgba(0,0,0,0.5) 0px 1px 1px;
+  xletter-spacing: 1px;
+}
+
+
+/* thin line separator */
+.masterbrand .applicationHeader15 .applicationHeaderHorizontalSeparator {
+    clear: both;
+    height: 0px;
+    width:100%;
+
+    border-top: 1px solid rgba(0,0,0, 0.15);
+    border-bottom: 1px solid rgba(255,255,255, 0.2);
+
+    position: relative;
+    top: 2px;
+    margin-bottom:4px;
+}
+
+
+/* Group search and toolbar , put back in the flow */
+.masterbrand .applicationHeader15 .applicationHeaderBottom {
+    padding-top:3px;
+    padding-bottom:4px;
+    clear: both;
+    float:none;
+}
+
+/* toolbar widget in header */
+.masterbrand .applicationHeader15 .applicationHeaderBottom .ToolbarWrapperOuter {
+    float:left;
+}
+
+/* redefine UI for header buttons */
+
+/* for active button */
+/* 2 slices to adjust */
+.masterbrand .applicationHeader15 .applicationHeaderBottom .ToolbarWrapperOuter .dijitButtonSelected {
+    border: none,
+    border: 1px solid rgba(250,250,250, 0.1);
+    border-top: 1px solid rgba(0,0,0, 0.5);
+    -moz-border-radius-bottomleft: 8px;
+    -moz-border-radius-bottomright: 8px;
+    background-image: -moz-linear-gradient(top, rgba(255,255,255, 0.1) 0%,  rgba(255,255,255, 0.4) 50%, rgba(255,255,255, 0.6) 100% );
+}
+
+.masterbrand .applicationHeader15 .applicationHeaderBottom .ToolbarWrapperOuter .dijitButtonSelected .dijitButtonNode {
+    background: none;
+    xborder: 1px solid rgba(0,0,0, 0.2);
+}
+
+.masterbrand .applicationHeader15 .applicationHeaderBottom .ToolbarWrapperOuter .dijitButtonSelected .dijitButtonNode BUTTON.dijitButtonContents,
+.masterbrand .applicationHeader15 .applicationHeaderBottom .ToolbarWrapperOuter .dijitButton .dijitButtonNode BUTTON.dijitButtonContents {
+    background: none;
+}
+
+
+.masterbrand .applicationHeader15 .applicationHeaderBottom .ToolbarWrapperOuter .dijitButtonHover {
+}
+
+
+/* default unselected button, hover state */
+.masterbrand .ToolbarWrapperOuter.fullSize.globalToolbar .dijitButton.dijitButtonHover .dijitButtonNode {
+    background: none;
+
+    border: none,
+    border: 1px solid rgba(250,250,250, 0.1);
+    border-top: 1px solid rgba(0,0,0, 0.5);
+    -moz-border-radius-bottomleft: 8px;
+    -moz-border-radius-bottomright: 8px;
+    background-image: -moz-linear-gradient(top, rgba(255,255,255, 0.1) 0%,  rgba(255,255,255, 0.4) 50%, rgba(255,255,255, 0.6) 100% );
+}
+
+/* ------------------------- */
+
+
+ /* search widget */
+.masterbrand .applicationHeader15 .applicationSearch {
+    float: right;
+    xdisplay: inline-block;
+    padding:0;
+    margin-right:15px;
+}
+
+/* override base */
+.masterbrand .applicationHeader15 .xwtToolbarContainer {
+
+}
+
+
+/* links container */
+.masterbrand .applicationHeader15 .applicationHeaderLinks15 {
+    float:left;
+	margin-top: 8px;
+    margin-right:20px;
+}
+
+/* layout right */
+.masterbrand .applicationHeader15 .applicationHeaderRight {
+    float: right;
+	margin-right:15px !important;
+    clear: right;
+}
+
+/* text */
+.masterbrand .applicationHeader15 .applicationHeaderLogoText {
+  float: left;
+  xpadding: 8px 0 0 15px;
+  padding: 0px;
+  margin-top:0px !important;
+  position:relative;
+}
+
+.masterbrand .applicationHeader15 .applicationHeaderLogo {
+    xfloat: none;
+    float: right;
+	padding-top:0px;
+    margin-left:0px;
+    margin-bottom:0px;
+}
+
+
+
+/* links */
+
+.masterbrand .applicationHeaderLinks15 .popup {
+  xfloat: auto;
+  display: inline;
+  margin-left: 2px;
+  padding-top: 5px;
+}
+
+
+.masterbrand .applicationHeaderLinks15 .popup:after {
+    color: #fff;
+    font: normal 12px Arial;
+    content: "|";
+}
+
+.masterbrand .applicationHeaderLinks15 .popup:last-child:after {
+    content: none;
+}
+
+
+
+
+
+.masterbrand .applicationHeaderLinks15 .popup:hover {
+    text-decoration: none;
+}
+
+
+.masterbrand .applicationHeader15 .applicationHeaderLinks15 a,
+.masterbrand .applicationHeader15 .applicationHeaderLinks15 a:link,
+.masterbrand .applicationHeader15 .applicationHeaderLinks15 a:hover {
+  color: #fff;
+  font: normal 12px Arial;
+  font-weight:bold;
+}
+
+/* visited color */
+/*
+.masterbrand .applicationHeader15 .applicationHeaderLinks15 a:visited {
+    color: #fdf;
+    font: normal 12px Arial;
+}
+*/
+
+
+.masterbrand .applicationHeader15 .applicationHeaderLinks15 .popup {
+  padding: 4px 1px 2px;
+}
+
+
+.masterbrand .applicationHeader15 .applicationHeaderLinks15 .popup > a {
+    text-shadow: rgba(0,0,0,0.5) 0px 1px 1px;
+}
+
+.masterbrand .applicationHeader15 .applicationHeaderLinks15 .popup > a {
+  padding: 4px 5px 2px;
+}
+
+/* hover */
+.dj_gecko .masterbrand .applicationHeader15 .applicationHeaderLinks15 .popup > a:hover {
+  background-image: -moz-linear-gradient(top, rgba(255,255,255, 0.15), rgba(255,255,255, 0) );
+}
+
+.dj_webkit .masterbrand .applicationHeader15 .applicationHeaderLinks15 .popup > a:hover {
+  background-image:  -webkit-gradient(linear, 0% 0%, 0% 100%, from( rgba( 255,255,255, 0.15) ), to( rgba(255,255,255, 0) ));
+}
+
+
+
+
+
+/* curved edge on first link button */
+.dj_gecko .masterbrand .applicationHeader15 .applicationHeaderLinks15 .popup > a:first-child {
+  -moz-border-radius-bottomleft: 4px;
+}
+
+/* curved edge on last link button */
+.dj_gecko .masterbrand .applicationHeader15 .applicationHeaderLinks15 .popup > a:last-child {
+  -moz-border-radius-bottomright: 4px;
+  margin-right: 0;
+}
