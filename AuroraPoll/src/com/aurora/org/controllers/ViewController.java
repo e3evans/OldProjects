@@ -1,6 +1,8 @@
 package com.aurora.org.controllers;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -42,12 +44,14 @@ public class ViewController {
 		PollOption p = null;
 		while (i.hasNext()){
 			p = i.next();
-			System.out.println(p.getKey()+"--->"+pollForm.getPollSelection());
 			if (p.getKey().toString().equals(pollForm.getPollSelection().trim())){
 				pollDAO.incrementPoll(p);
 				break;
 			}
 		}
+	
+		
+		
 		response.setRenderParameter("action", "displayResults");
 	}
 	
@@ -76,10 +80,22 @@ public class ViewController {
 			totalResults += pOpt.getCount();
 		}
 		pollForm.setTotalResults(totalResults);
-		System.out.println("TOTAL RESPONSES:  "+totalResults);
+		List<Poll> lastPolls = pollDAO.getLastXNumPolls(5);
+		for (int x=0;x<lastPolls.size();x++){
+			int totalCount = 0;
+			Iterator<PollOption> it = lastPolls.get(x).getPollOptions().iterator();	
+			while(it.hasNext()){
+				PollOption pOpt = it.next();
+				totalCount +=pOpt.getCount();
+			}
+			lastPolls.get(x).setTotalAnswers(totalCount);
+
+		}
+		pollForm.setArchivePolls(lastPolls);
 		log.debug("Beginning ShowPollResults Poll Render.");
 		ModelAndView modelAndView = new ModelAndView("results");
 		modelAndView.addObject("pollForm",pollForm);
+
 		return modelAndView;
 		
 	}

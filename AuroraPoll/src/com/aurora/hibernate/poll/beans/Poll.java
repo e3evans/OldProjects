@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.IndexColumn;
+
 /**
  * Title:        Poll
  * Description:  Class to encapsulate all of the information needed for a Poll
@@ -39,10 +41,21 @@ public class Poll implements java.io.Serializable {
     @Column(name = "PT27_CORRECT_POLL_ANSWER")
     private String answer;
 
-	@OneToMany(mappedBy = "poll", cascade = CascadeType.ALL, fetch = FetchType.EAGER)    
+	@OneToMany(mappedBy = "poll",fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
     private List<PollOption> pollOptions;
+	
+	@Transient
+	private int totalAnswers;
 
-    public Poll() {
+	public int getTotalAnswers() {
+		return totalAnswers;
+	}
+
+	public void setTotalAnswers(int totalAnswers) {
+		this.totalAnswers = totalAnswers;
+	}
+
+	public Poll() {
     }
 
     public Date getDate() {

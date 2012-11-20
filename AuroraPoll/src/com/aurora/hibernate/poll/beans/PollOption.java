@@ -32,8 +32,8 @@ public class PollOption implements java.io.Serializable {
     private String answer;
     @Column(name = "PT28_POLL_ANSWER_COUNT")
     private Integer count;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "PT28_POLL_DATE", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PT28_POLL_DATE", insertable = false, updatable = false,unique=true)
     private Poll poll;
 
     public PollOption() {

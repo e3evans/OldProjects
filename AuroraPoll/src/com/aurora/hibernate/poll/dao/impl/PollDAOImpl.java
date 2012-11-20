@@ -37,10 +37,8 @@ public class PollDAOImpl extends BaseDAOImpl implements PollDAO  {
 			tx.commit();
 		}catch (Exception e){
 			e.printStackTrace();
-		}finally{
 			if (session!=null)session.close();
 		}
-		
 	}
 	
     public Poll getPollByDate(final Date date) {
@@ -59,7 +57,6 @@ public class PollDAOImpl extends BaseDAOImpl implements PollDAO  {
     		if (tempList.size()>0) poll = (Poll)tempList.get(0);
     	}catch (Exception e){
     		e.printStackTrace();
-    	}finally{
     		if (session!=null)session.close();
     	}
     	return poll;
@@ -84,9 +81,10 @@ public class PollDAOImpl extends BaseDAOImpl implements PollDAO  {
     		if (!pollList.isEmpty())pollList.remove(0);
     	}catch (Exception e){
     		e.printStackTrace();
-    	}finally{
     		if (session!=null)session.close();
-    	}	
+    	}
+    	
+    	System.out.println(pollList.get(4).getQuestion());
     	return pollList;
     }
     

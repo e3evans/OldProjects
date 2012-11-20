@@ -4,25 +4,64 @@
      <div class="acgc_content_box_top_decal acgc_bg_align_right_top">
                      <!-- decal -->
      </div>
-     <div class="acgc_content_box_body acgc_relative acgc_poll" style="height: 280px;">
-              <p>POLL</p>
-              <h3><c:out value="${pollForm.poll.question}"/></h3>
-              <portlet:actionURL var="submitPoll">
-              	<portlet:param name="action" value="submitPoll"/>
-              </portlet:actionURL>
-
-              <c:forEach items="${pollForm.poll.pollOptions}" var="pOpt">
-             	<p>
-             	<c:set var="pct" value="${(pOpt.count / pollForm.totalResults) * 100}"/>
-             	
-             		${pOpt.answer}---<fmt:parseNumber value="${pct + 0.5}" integerOnly="true"/>
-             	</p>
-			  </c:forEach>                                 
-
-              <p class="acgc_float_right">
-                              <a title="View Results" href="">View results</a> | <a title="View All Polls" href="">View all polls</a>
-              </p>
-              <div class="acgc_clear"><!-- clear --></div>                                        
+     <div class="acgc_content_box_body acgc_relative acgc_poll">
+     <div id="acgc_polls_canvas_slider" class="acgc_relative">
+     	<div id="acgc_polls_canvas_slides">
+				<div class="slide">
+				<!-- **************************************** -->
+				<!-- ********* POLL FORM SUBMIT RESULT ****** -->
+				<!-- **************************************** -->
+				<p>POLL RESULT</p>
+	              <h3><c:out value="${pollForm.poll.question}"/></h3>
+	              <c:forEach items="${pollForm.poll.pollOptions}" var="pOpt">
+	             	<p>
+	             	<c:set var="pct" value="${(pOpt.count / pollForm.totalResults) * 100}"/>
+	             		<span class="acgc_percentage"><fmt:parseNumber value="${pct + 0.5}" integerOnly="true"/>%</span>${pOpt.answer}
+	             	</p>
+				  </c:forEach>                                
+				  <div class="acgc_clear"><!-- clear --></div>
+				<!-- **************************************** -->
+				<!-- ********* END FORM SUBMIT RESULT ******* -->
+				<!-- **************************************** -->
+	            </div>
+	            <c:forEach items="${pollForm.archivePolls }" var="archPoll">
+	            <div class="slide">
+				<!-- **************************************** -->
+				<!-- ********* POLL FORM SUBMIT RESULT ****** -->
+				<!-- **************************************** -->
+				<p>POLL RESULT</p>
+	            <h3><c:out value="${archPoll.question}"/></h3>
+	            	<c:forEach items="${archPoll.pollOptions }" var="archOption" varStatus="status">
+		            	<p>
+		            		<c:choose>
+			            		<c:when test="${archPoll.totalAnswers == 0}">
+			            			<span class="acgc_percentage">0%</span>${archOption.answer}
+			            		</c:when>
+			            		<c:otherwise>
+			            			<c:set var="pct" value="${(archOption.count / archPoll.totalAnswers) * 100}"/>
+			            			<span class="acgc_percentage"><fmt:parseNumber value="${pct + 0.5}" integerOnly="true"/>%</span>${archOption.answer}
+			         			</c:otherwise>
+		         			</c:choose>
+		         		</p>
+	            	</c:forEach>
+	            	<div class="acgc_clear"><!-- clear --></div>
+					<!-- **************************************** -->
+					<!-- ********* END FORM SUBMIT RESULT ******* -->
+					<!-- **************************************** -->
+		            </div>
+	            </c:forEach>
+	         </div>
+	         <div id="acgc_polls_canvas_slider_controls">
+				<div id="acgc_polls_canvas_slider_left"><!-- left --></div>
+				<div class="icon selected"><!-- icon --></div>
+				<div class="icon"><!-- icon --></div>
+				<div class="icon"><!-- icon --></div>
+				<div class="icon"><!-- icon --></div>
+				<div class="icon"><!-- icon --></div>
+				<div class="icon"><!-- icon --></div>
+				<div id="acgc_polls_canvas_slider_right"><!-- left --></div>
+			</div> 
+		</div>                          
      </div>
  </div>
 <div class="acgc_clear"><!-- clear --></div> 

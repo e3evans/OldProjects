@@ -16,7 +16,7 @@
               <form:form commandName="pollForm" action="${submitPoll }" name="pollForm">
               <c:forEach items="${pollForm.poll.pollOptions}" var="pOpt">
              	<p>
-             		<form:radiobutton path="pollSelection" value="${pOpt.key}" />${pOpt.answer}---${pOpt.count }
+             		<form:radiobutton path="pollSelection" value="${pOpt.key}" />${pOpt.answer}
              	</p>
 			  </c:forEach>                                 
               <p>
@@ -27,9 +27,7 @@
                   </a>
               </p>
              </form:form>
-              <p class="acgc_float_right">
-                              <a title="View Results" href="">View results</a> | <a title="View All Polls" href="">View all polls</a>
-              </p>
+
               <div class="acgc_clear"><!-- clear --></div>                                        
      </div>
  </div>
