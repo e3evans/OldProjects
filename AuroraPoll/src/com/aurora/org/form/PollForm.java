@@ -6,6 +6,7 @@ public class PollForm {
 	
 	public Poll poll;
 	public String pollSelection;
+	public int totalResults;
 	
 	public PollForm(){}
 	public PollForm(Poll poll){
@@ -24,5 +25,12 @@ public class PollForm {
 	public void setPollSelection(String pollSelection) {
 		this.pollSelection = pollSelection;
 	}
+	public int getTotalResults() {
+		return totalResults;
+	}
+	public void setTotalResults(int totalResults) {
+		this.totalResults = totalResults;
+	}
+
 
 }

@@ -1,7 +1,6 @@
 package com.aurora.org.controllers;
 
 import java.util.Iterator;
-import java.util.List;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -69,8 +68,17 @@ public class ViewController {
 	public ModelAndView renderPollResults(RenderRequest request, RenderResponse response,@ModelAttribute("pollForm")PollForm pollForm){
 		Poll poll = pollDAO.getLatestPoll();
 		pollForm.setPoll(poll);
+//		List<PollOption> pollOptions = poll.getPollOptions();
+		Iterator<PollOption> i = poll.getPollOptions().iterator();
+		int totalResults = 0;
+		while (i.hasNext()){
+			PollOption pOpt = i.next();
+			totalResults += pOpt.getCount();
+		}
+		pollForm.setTotalResults(totalResults);
+		System.out.println("TOTAL RESPONSES:  "+totalResults);
 		log.debug("Beginning ShowPollResults Poll Render.");
-		ModelAndView modelAndView = new ModelAndView("view");
+		ModelAndView modelAndView = new ModelAndView("results");
 		modelAndView.addObject("pollForm",pollForm);
 		return modelAndView;
 		

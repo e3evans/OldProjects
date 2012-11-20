@@ -6,13 +6,11 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.aurora.hibernate.poll.beans.Poll;
@@ -21,25 +19,18 @@ import com.aurora.hibernate.poll.dao.PollDAO;
 import com.aurora.hibernate.util.SortByParam;
 
 @Repository
-public class PollDAOImpl implements PollDAO {
+public class PollDAOImpl extends BaseDAOImpl implements PollDAO  {
 
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-
-	
 	@Override
 	public Poll getLatestPoll() {
 		// TODO Auto-generated method stub
 		return getPollByDate(new Date());
 	}
 	
-
-	
 	public void incrementPoll(PollOption pollOption){
 		Session session = null;
 		try{
-			session=sessionFactory.openSession();
+			session=getSessionFactory().openSession();
 			Transaction tx = session.beginTransaction();
 			pollOption.setCount(pollOption.getCount()+1);
 			session.update(pollOption);
@@ -59,7 +50,7 @@ public class PollDAOImpl implements PollDAO {
     	Session session = null;
     	Poll poll = null;
     	try{
-    		session = sessionFactory.openSession();
+    		session = getSessionFactory().openSession();
     		Criteria criteria = session.createCriteria(Poll.class)
     				.add(Property.forName("date").eq(maxPollDate));
     		criteria.addOrder(Order.desc("date"));
@@ -84,13 +75,12 @@ public class PollDAOImpl implements PollDAO {
     	Session session = null;
     	List <Poll> pollList = new ArrayList<Poll>();
     	try{
-    		session = sessionFactory.openSession();
+    		session = getSessionFactory().openSession();
     		Criteria criteria = session.createCriteria(Poll.class)
     				.add(Restrictions.le("date",new Date()))
     				.setMaxResults(x);
     		addSortParamCriteria(criteria, sbp);
     		pollList = criteria.list();
-    		System.out.println("LISTED");
     		if (!pollList.isEmpty())pollList.remove(0);
     	}catch (Exception e){
     		e.printStackTrace();
@@ -99,6 +89,7 @@ public class PollDAOImpl implements PollDAO {
     	}	
     	return pollList;
     }
+    
     protected void addSortParamCriteria(Criteria cq, SortByParam[] sortParams) {
         if (sortParams != null && sortParams.length > 0) {
             for (int i = 0; i < sortParams.length; i++) {
