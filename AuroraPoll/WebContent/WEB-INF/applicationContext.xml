@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<context:component-scan base-package="com.eblue.springtest.controllers" />
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/PTLDB2Z" />
+	</bean>
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+   		<property name="basenames">
+   			<list>
+   				<value>com.aurora.org.nl.AuroraPollPortletResource</value>
+   			</list>
+   		</property>
+ 	</bean>
+	
+	<bean id="viewResolver"	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+		<property name="prefix">
+			<value>/WEB-INF/jsp/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>        
+	<!--Declaring Hibernate Session Factory	-->
+	<bean id="urlsessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />		
+		
+		<property name="annotatedClasses">
+			<list>
+				<value>com.aurora.hibernate.poll.beans.Poll</value>
+				<value>com.aurora.hibernate.poll.beans.PollOption</value>
+				<value>com.aurora.hibernate.poll.beans.PollOptionKey</value>
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.DB2390Dialect
+				connection.provider_class=org.hibernate.connection.C3P0ConnectionProvider
+				c3p0.acquire_increment=1
+				c3p0.idle_test_period=100
+				c3p0.min_size=5
+				c3p0.max_size=20
+				c3p0.timeout=300
+				show_sql=true
+				c3p0.max_statements=50
+				current_session_context_class=thread
+				configurationClass=org.hibernate.cfg.AnnotationConfiguration
+				connection.SetBigStringTryClob=true
+				hibernate.show_sql=true
+			</value>			                
+		</property>
+	</bean>
+	<context:annotation-config />
+	<context:component-scan base-package="com.aurora.hibernate.poll.beans" />
+	<context:component-scan base-package="com.aurora.hibernate.poll.dao" />
+	<!-- bean id="contactDAO" class="com.eblue.springtest.services.ContactDAOImpl">
+		<property name="hashMapContact" ref="hashMapContact"/>
+	</bean>
+	<bean id="hashMapContact" class="com.eblue.springtest.services.HashmapContact" /-->
+</beans>
