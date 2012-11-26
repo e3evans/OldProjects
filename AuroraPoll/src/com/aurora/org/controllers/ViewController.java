@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.ModelAndView;
+import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import com.aurora.hibernate.poll.beans.Poll;
 import com.aurora.hibernate.poll.beans.PollOption;
@@ -99,6 +100,7 @@ public class ViewController {
 		return modelAndView;
 		
 	}
+	//@ResourceMapping
 	
 
 	public PollDAO getPollDAO() {

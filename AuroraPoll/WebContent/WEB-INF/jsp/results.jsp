@@ -53,6 +53,7 @@
 	            </c:forEach>
 	         </div>
 	         <div id="acgc_polls_canvas_slider_controls">
+	         	<div style="padding: 0 10px 0 0; font-style: italic; color: #666666;" class="acgc_float_left">Poll Results:</div>
 				<div id="acgc_polls_canvas_slider_left"><!-- left --></div>
 				<div class="icon selected"><!-- icon --></div>
 				<div class="icon"><!-- icon --></div>

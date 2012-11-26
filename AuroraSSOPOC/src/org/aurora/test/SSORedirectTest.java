@@ -40,6 +40,17 @@ public class SSORedirectTest extends HttpServlet {
 //	            "ICONNECT", "XXX", "EVANS", "ERIC",
 //	            "http://iconnect-test.aurora.org/portal/", "10.52.13.197");
 		
+		 //
+        // Get client's IP address
+        //
+        String clientIP = request.getRemoteAddr();
+ 
+        //
+        // Get client's host name
+        //
+        String clintHost = request.getRemoteHost();
+		
+		
 		System.out.println(request.getRemoteAddr());
 		String testURL = testUrl1;
 		if (request.getParameter("testURL").equals("2")){
@@ -50,7 +61,7 @@ public class SSORedirectTest extends HttpServlet {
 		
 		SSOManager.createSSOCookie(request, response, "48067","000282",
 	            "ICONNECT", "EMP", "ROCQUE", "TOM",
-	            "http://iconnect-test.aurora.org/portal/", "10.46.9.19");
+	            "http://iconnect-test.aurora.org/portal/", "10.52.13.197");
 		
 		response.sendRedirect(response.encodeURL(testURL));
 	}
