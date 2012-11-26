@@ -8,9 +8,6 @@
      <div id="acgc_polls_canvas_slider" class="acgc_relative">
      	<div id="acgc_polls_canvas_slides">
 				<div class="slide">
-				<!-- **************************************** -->
-				<!-- ********* POLL FORM SUBMIT RESULT ****** -->
-				<!-- **************************************** -->
 				<p>POLL RESULT</p>
 	              <h3><c:out value="${pollForm.poll.question}"/></h3>
 	              <c:forEach items="${pollForm.poll.pollOptions}" var="pOpt">
@@ -18,17 +15,17 @@
 	             	<c:set var="pct" value="${(pOpt.count / pollForm.totalResults) * 100}"/>
 	             		<span class="acgc_percentage"><fmt:parseNumber value="${pct + 0.5}" integerOnly="true"/>%</span>${pOpt.answer}
 	             	</p>
-				  </c:forEach>                                
+				  </c:forEach> 
+				  <c:if test="${not empty pollForm.poll.answer }">  
+					  <p>
+					  	<strong>The correct answer is:</strong>
+								${pollForm.poll.answer} 
+					  </p>
+				  </c:if> 
 				  <div class="acgc_clear"><!-- clear --></div>
-				<!-- **************************************** -->
-				<!-- ********* END FORM SUBMIT RESULT ******* -->
-				<!-- **************************************** -->
 	            </div>
 	            <c:forEach items="${pollForm.archivePolls }" var="archPoll">
 	            <div class="slide">
-				<!-- **************************************** -->
-				<!-- ********* POLL FORM SUBMIT RESULT ****** -->
-				<!-- **************************************** -->
 				<p>POLL RESULT</p>
 	            <h3><c:out value="${archPoll.question}"/></h3>
 	            	<c:forEach items="${archPoll.pollOptions }" var="archOption" varStatus="status">
@@ -43,11 +40,15 @@
 			         			</c:otherwise>
 		         			</c:choose>
 		         		</p>
+		         	
 	            	</c:forEach>
+	            	<c:if test="${not empty archPoll.answer }">
+	            		<p>
+				  			<strong>The correct answer is:</strong>
+							${archPoll.answer} 
+				  		</p> 
+				  	</c:if>
 	            	<div class="acgc_clear"><!-- clear --></div>
-					<!-- **************************************** -->
-					<!-- ********* END FORM SUBMIT RESULT ******* -->
-					<!-- **************************************** -->
 		            </div>
 	            </c:forEach>
 	         </div>
