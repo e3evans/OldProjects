@@ -1,4 +1,4 @@
-package com.aurora.quicklinksservices.services;
+package com.aurora.quicklinksservices.rest;
 
 import java.util.HashSet;
 import java.util.Set;

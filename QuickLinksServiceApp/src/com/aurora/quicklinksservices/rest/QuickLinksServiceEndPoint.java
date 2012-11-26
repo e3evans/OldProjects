@@ -1,4 +1,4 @@
-package com.aurora.quicklinksservices.services;
+package com.aurora.quicklinksservices.rest;
 
 
 import java.util.List;
@@ -15,8 +15,6 @@ import com.aurora.quicklinksservices.beans.App;
 import com.aurora.quicklinksservices.beans.User;
 import com.aurora.quicklinksservices.beans.UserApp;
 import com.aurora.quicklinksservices.beans.UserAppResponseBean;
-import com.aurora.quicklinksservices.rest.ApplicationResponse;
-import com.aurora.quicklinksservices.rest.UserApplicationResponse;
 import com.aurora.quicklinksservices.services.QuickLinksService;
 
 @Path("/test")
