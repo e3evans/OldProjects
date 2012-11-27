@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/jsp/includeTest.jsp" %>
+<%@ include file="/WEB-INF/jsp/include.jsp" %>
 <script>
  
 function getCheckedValue(radioObj) {

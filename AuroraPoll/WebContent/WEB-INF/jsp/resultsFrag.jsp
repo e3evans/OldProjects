@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/jsp/include.jsp" %> 
+<%@ include file="/WEB-INF/jsp/include.jsp" %>  
      <div id="acgc_polls_canvas_slider" class="acgc_relative">
      	<div id="acgc_polls_canvas_slides">
 				<div class="slide">

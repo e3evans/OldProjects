@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+ 
 <portlet:defineObjects />
  
 <link type="text/css" rel="stylesheet" href="http://porporit1.ahc.root.loc:10039/AuroraTheme/themes/html/assets/css/common.css" />
