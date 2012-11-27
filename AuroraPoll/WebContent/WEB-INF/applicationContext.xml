@@ -55,7 +55,7 @@
 				current_session_context_class=thread
 				configurationClass=org.hibernate.cfg.AnnotationConfiguration
 				connection.SetBigStringTryClob=true
-				hibernate.show_sql=true
+				hibernate.show_sql=false
 			</value>			                
 		</property>
 	</bean>

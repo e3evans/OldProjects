@@ -1,10 +1,4 @@
-<%@ include file="/WEB-INF/jsp/includeTest.jsp" %>
- 
-<div id="acgc_bottom_content_box_split_3" class="acgc_float_left">
-     <div class="acgc_content_box_top_decal acgc_bg_align_right_top">
-                     <!-- decal -->
-     </div>
-     <div class="acgc_content_box_body acgc_relative acgc_poll">
+<%@ include file="/WEB-INF/jsp/include.jsp" %> 
      <div id="acgc_polls_canvas_slider" class="acgc_relative">
      	<div id="acgc_polls_canvas_slides">
 				<div class="slide">
@@ -64,9 +58,5 @@
 				<div id="acgc_polls_canvas_slider_right"><!-- left --></div>
 			</div> 
 		</div>                          
-     </div>
- </div>
-<div class="acgc_clear"><!-- clear --></div> 
-<script>
-initPolls();
-</script>
+
+
