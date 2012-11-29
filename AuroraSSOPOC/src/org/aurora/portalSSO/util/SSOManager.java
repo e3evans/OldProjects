@@ -112,6 +112,33 @@ public class SSOManager {
     sso = null;
   }
 
+  public static HttpServletResponse createSSOCookie(HttpServletResponse response, String portalKey, String userId,
+		  String portalId, String userRole, String userLastName,
+		  String userFirstName, String portalUrl, String clientIPAddress) {
+    SSOUtil ssoUtil = new SSOUtil();
+    String sso = ssoUtil.create(portalKey, userId, portalId, userRole,
+            userLastName, userFirstName, clientIPAddress, portalUrl);
+    Cookie cookie = new Cookie(SSOManager.COOKIE_NAME, sso);
+    cookie.setPath(SSOManager.COOKIE_PATH);
+    cookie.setDomain(SSOManager.COOKIE_DOMAIN);
+    response.addCookie(cookie);
+    
+    //deref
+    portalKey = null; 
+    userId = null;
+    portalId = null;
+    userRole = null;
+    userLastName = null;
+	userFirstName = null; 
+	portalUrl = null; 
+	clientIPAddress = null;
+    ssoUtil = null;
+    sso = null;
+    
+    return response;
+  }
+  
+  
   /**
    * Append additional portal to SSO cookie and store it in the Http servlet
    * response.

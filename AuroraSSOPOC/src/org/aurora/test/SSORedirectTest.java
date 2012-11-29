@@ -17,7 +17,7 @@ public class SSORedirectTest extends HttpServlet {
 //	private String testUrl = "https://lmsproxy.aurora.org/main_app.asp?main=app";
 	public static String testUrl1 = "http://iconnect-test.aurora.org/ireq/servlet/IreqMain?command=eporthome&from=eportal&firsttime=Y";
 	public static String testUrl2 = "http://iconnect-test.aurora.org/portal-extensions/callJsp.do?actionForward=lmsForward&breakFrames=Y&actionUrl=https://lmsproxy.aurora.org/dologon.asp";
-	                                                                              
+	public static String testUrl3 = "https://myaurora-test.aurora.org/apb/clearPatient/admin/viewConsolidatedBillAction.do?method=removePaymentAgreementParam";                                                                            
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -39,31 +39,28 @@ public class SSORedirectTest extends HttpServlet {
 //		SSOManager.createSSOCookie(request, response, "398904","N26760",
 //	            "ICONNECT", "XXX", "EVANS", "ERIC",
 //	            "http://iconnect-test.aurora.org/portal/", "10.52.13.197");
-		
-		 //
-        // Get client's IP address
-        //
-        String clientIP = request.getRemoteAddr();
- 
-        //
-        // Get client's host name
-        //
-        String clintHost = request.getRemoteHost();
-		
-		
-		System.out.println(request.getRemoteAddr());
+
 		String testURL = testUrl1;
 		if (request.getParameter("testURL").equals("2")){
 			testURL = testUrl2;
+		}else if (request.getParameter("testURL").equals("3")){
+			testURL = testUrl3;
 		}
-//		testURL = testUrl2;
 		
+		System.out.println(testURL);
 		
 		SSOManager.createSSOCookie(request, response, "48067","000282",
 	            "ICONNECT", "EMP", "ROCQUE", "TOM",
-	            "http://iconnect-test.aurora.org/portal/", "10.52.13.197");
+	            "http://iconnect-test.aurora.org/portal/", "10.46.9.19");
+		
+//		SSOManager.createSSOCookie(request, response, "398904","N26760",
+//	            "ICONNECT", "EMP", "EVANS", "ERIC",
+//	            "http://iconnect-test.aurora.org/portal/", "10.52.11.176");
+		
+		
 		
 		response.sendRedirect(response.encodeURL(testURL));
+//		response.sendRedirect(response.encodeURL("http://localhost:10039/AuroraSSOPOC/Test.jsp"));
 	}
 
 	/**
