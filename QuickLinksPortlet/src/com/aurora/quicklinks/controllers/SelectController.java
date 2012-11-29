@@ -2,6 +2,7 @@ package com.aurora.quicklinks.controllers;
 
 import java.util.List;
 import javax.portlet.RenderRequest;
+import javax.portlet.RenderResponse;
 
 
 import org.apache.commons.logging.Log;
@@ -41,13 +42,27 @@ public class SelectController {
 	}
 	
 	@ModelAttribute(value="urlList")
-	public List<UserApplication> getUrls() {
+	public List<UserApplication> getUrls(RenderRequest request, RenderResponse response) {
+		
+		System.out.println("HERE!!");
+		System.out.println("*********************************************************************************");
+		System.out.println("printing context path"+request.getContextPath());
+		System.out.println("printing server port"+request.getServerPort());
+		System.out.println("printing etag "+request.getETag());
+		System.out.println("printing "+request.getServerName());
+		System.out.println("printing "+request.getPortalContext());
+		System.out.println("*********************************************************************************");
 		return urlService.listCompleteUrlBeanV();
 	}
 	
 	
 	@RenderMapping
 	public String showIndex(RenderRequest request){
+		System.out.println("printing context path"+request.getContextPath());
+		System.out.println("printing server port"+request.getServerPort());
+		System.out.println("printing etag "+request.getETag());
+		System.out.println("printing "+request.getServerName());
+		System.out.println("printing "+request.getPortalContext());
 		System.out.println("HERE!!! showIndex111");
 		System.out.println("Entering SelectController.showIndex11()");
 		//request.setAttribute("urlList", urlService.listUrlBean("test"));

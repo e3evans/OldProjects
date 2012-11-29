@@ -93,7 +93,7 @@ public class ServiceInterfaceDelegate {
 
 		System.out.println("!!!!!!!!!!!!!!processRequestCache Starts!!!!!1111");
 		String requestUrl = stringProxyURL + requestPath;
-		requestUrl = "/QuickLinksServiceApp/rest/test/userapplist";
+		requestUrl = "http://localhost:10039/QuickLinksServiceApp/rest/test/userapplist";
 		String responseText = BSSConstants.SERVICE_ERROR_MESSAGE;
 		HttpEntity<String> requestEntity = new HttpEntity<String>(entityHeaders);
 		try {
@@ -134,7 +134,7 @@ public class ServiceInterfaceDelegate {
 
 		System.out.println("!!!!!!!!!!!!!!processRequestCache Starts!!!!!1111");
 		String requestUrl = stringProxyURL + requestPath;
-		requestUrl = "/QuickLinksServiceApp/rest/test/results";
+		requestUrl = "http://localhost:10039/QuickLinksServiceApp/rest/test/results";
 		String responseText = BSSConstants.SERVICE_ERROR_MESSAGE;
 		HttpEntity<String> requestEntity = new HttpEntity<String>(entityHeaders);
 		try {

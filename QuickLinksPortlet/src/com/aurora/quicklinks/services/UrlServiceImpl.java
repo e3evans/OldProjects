@@ -38,14 +38,14 @@ public class UrlServiceImpl implements UrlService {
 	public List<UserApplication> listCompleteUrlBeanV(){
         System.out.println("getting user applist*********");
 		List<UserApplication> appList = null;
-		UserApplication app = null;
+      	UserApplication app = null;
 		try {
 			appList = new ArrayList<UserApplication>();
 			JSONObject completeUrlJson = new JSONObject(serviceInterfaceDelegate.processRequestCache("test", false,
 					null, null));
 			System.out.println("completeUrlJson!!!!"+completeUrlJson);
 		 	JSONArray jsonArray = completeUrlJson.getJSONArray("userAppList");
-			for(int i=0;i<jsonArray.length();i++){
+    		for(int i=0;i<jsonArray.length();i++){
 				app = new UserApplication();
 				JSONObject jsonobj = jsonArray.getJSONObject(i);
 				System.out.println(jsonArray.get(i)+jsonArray.get(i).toString());
@@ -96,7 +96,7 @@ public List<Application> listEditUrlBeanV(){
 		for(int i=0;i<jsonArray.length();i++){
 			app = new Application();
 			JSONObject jsonobj = jsonArray.getJSONObject(i);
-			System.out.println("printing json array"+jsonArray.get(i)+jsonArray.get(i).toString());
+			
 			//JSONObject jsonobj = new JSONObject(jsonArray.get(i).toString());
 			app.setAppDesc(jsonobj.get("appDesc").toString().trim());
 			app.setAppName(jsonobj.get("appName").toString().trim());
