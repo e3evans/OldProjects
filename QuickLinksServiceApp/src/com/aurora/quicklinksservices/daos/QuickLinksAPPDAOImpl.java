@@ -127,7 +127,7 @@ public class QuickLinksAPPDAOImpl  implements
 			listUserAppBean.add(bean);
 			//appList.add(temp);
 		}
-		System.out.println("result"+sb.toString());
+		//System.out.println("result"+sb.toString());
 		return listUserAppBean;
 	  
 	  
