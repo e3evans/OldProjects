@@ -16,6 +16,15 @@ public class User {
 	private String portalID;
 	@Column(name = "PT2A_LAST_NAME")
 	private String lastName;
+	@Column(name = "PT2A_EMP_NO")
+	private String empNO;
+	
+	public String getEmpNO() {
+		return empNO;
+	}
+	public void setEmpNO(String empNO) {
+		this.empNO = empNO;
+	}
 	public Long getUserID() {
 		return userID;
 	}

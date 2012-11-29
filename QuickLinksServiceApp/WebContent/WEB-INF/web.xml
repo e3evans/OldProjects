@@ -19,11 +19,9 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
-		<description>
-		</description>
 		<display-name>QuickLinksRedirect</display-name>
 		<servlet-name>QuickLinksRedirect</servlet-name>
-		<servlet-class>com.aurora.quicklinksservices.servlet.QuickLinksRedirect</servlet-class>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ResultsEndpoint</servlet-name>
@@ -31,8 +29,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>QuickLinksRedirect</servlet-name>
-		<url-pattern>
-		/QuickLinksRedirect</url-pattern>
+		<url-pattern>/QuickLinksRedirect/*</url-pattern>
 	</servlet-mapping>
 	
 		</web-app>

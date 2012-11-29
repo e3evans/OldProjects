@@ -88,7 +88,7 @@ public class QuickLinksAPPDAOImpl  implements
 		
 		Session session = urlsessionFactory.openSession();
 		session.beginTransaction();
-		Query query = session.createQuery("from com.aurora.quicklinksservices.beans.User");
+		Query query = session.createQuery("from com.aurora.quicklinksservices.beans.User where userID="+userid);
 		List list = query.list();
 		System.out.println("TEST -- > "+list.size());
 		List<User> appList = new ArrayList<User>();
@@ -121,8 +121,8 @@ public class QuickLinksAPPDAOImpl  implements
 			bean =  new UserAppResponseBean(); 
 			UserApp temp = (UserApp)list.get(i);
 			sb.append(temp.getCreated()+"----application---->"+temp.getApplication()+"<br/>");
-			bean.setAppName(temp.getApplication().getAppName());
-			bean.setAppUrl(temp.getApplication().getAppURL());
+			bean.setAppName(temp.getApplication().getAppName().trim());
+			bean.setAppUrl(temp.getApplication().getAppURL().trim());
 			bean.setUserId(userid+"");
 			listUserAppBean.add(bean);
 			//appList.add(temp);
