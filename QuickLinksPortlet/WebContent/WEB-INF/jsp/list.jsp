@@ -4,7 +4,7 @@
 <%@ page contentType="text/html" isELIgnored="false"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <portlet:defineObjects />
-
+  
 <a href='<portlet:renderURL>
       		<portlet:param name="action" value="editUrl"/>
 		</portlet:renderURL>'>Edit Link</a>
