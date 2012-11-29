@@ -18,9 +18,18 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet>
+		<display-name>QuickLinksRedirect</display-name>
+		<servlet-name>QuickLinksRedirect</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>ResultsEndpoint</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>QuickLinksRedirect</servlet-name>
+		<url-pattern>/QuickLinksRedirect/*</url-pattern>
 	</servlet-mapping>
 	
 		</web-app>

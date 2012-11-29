@@ -1,4 +1,4 @@
-package org.aurora.test;
+package com.aurora.quicklinksservices.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,13 +6,18 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.aurora.portalSSO.util.SSOManager;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.AbstractController;
+
+import com.aurora.quicklinksservices.util.SSOManager;
+
 
 
 /**
  * Servlet implementation class SSORedirectTest
  */
-public class SSORedirectTest extends HttpServlet {
+public class QuickLinksRedirect extends AbstractController {
 	private static final long serialVersionUID = 1L;
 //	private String testUrl = "https://lmsproxy.aurora.org/main_app.asp?main=app";
 	public static String testUrl1 = "http://iconnect-test.aurora.org/ireq/servlet/IreqMain?command=eporthome&from=eportal&firsttime=Y";
@@ -21,7 +26,7 @@ public class SSORedirectTest extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SSORedirectTest() {
+    public QuickLinksRedirect() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,16 +47,11 @@ public class SSORedirectTest extends HttpServlet {
 		
 		System.out.println(request.getRemoteAddr());
 		String testURL = testUrl1;
-		if (request.getParameter("testURL").equals("2")){
+		if (request.getParameter("url")!=null){
 			testURL = testUrl2;
 		}
 //		testURL = testUrl2;
-		/**
-		 * Connecting to Cookie Manager to get credentials
-		 * 
-		 * input: Id, password
-		 * Output: QuickLinks
-		 */
+		
 		
 		SSOManager.createSSOCookie(request, response, "48067","000282",
 	            "ICONNECT", "EMP", "ROCQUE", "TOM",
@@ -65,6 +65,13 @@ public class SSORedirectTest extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	protected ModelAndView handleRequestInternal(HttpServletRequest arg0,
+			HttpServletResponse arg1) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
