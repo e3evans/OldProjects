@@ -9,9 +9,9 @@
 </head>
 <body>
 
-IREQ --> <a href="/AuroraSSOPOC/SSORedirectTest?testURL=1">Link</a><br>
+IREQ --><a href="/AuroraSSOPOC/SSORedirectTest?testURL=1">Link</a><br>
 
-Learning Center --> <a href="/AuroraSSOPOC/SSORedirectTest?testURL=2">Link</a>
+Learning Center --><a href="/AuroraSSOPOC/SSORedirectTest?testURL=2">Link</a>
 
 </body>
 </html>

@@ -46,7 +46,12 @@ public class SSORedirectTest extends HttpServlet {
 			testURL = testUrl2;
 		}
 //		testURL = testUrl2;
-		
+		/**
+		 * Connecting to Cookie Manager to get credentials
+		 * 
+		 * input: Id, password
+		 * Output: QuickLinks
+		 */
 		
 		SSOManager.createSSOCookie(request, response, "48067","000282",
 	            "ICONNECT", "EMP", "ROCQUE", "TOM",
