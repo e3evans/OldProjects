@@ -44,14 +44,6 @@
 		<property name="hibernateProperties">
 			<value>
 				hibernate.dialect=org.hibernate.dialect.DB2390Dialect
-				connection.provider_class=org.hibernate.connection.C3P0ConnectionProvider
-				c3p0.acquire_increment=1
-				c3p0.idle_test_period=100
-				c3p0.min_size=5
-				c3p0.max_size=20
-				c3p0.timeout=300
-				show_sql=true
-				c3p0.max_statements=50
 				current_session_context_class=thread
 				configurationClass=org.hibernate.cfg.AnnotationConfiguration
 				connection.SetBigStringTryClob=true
