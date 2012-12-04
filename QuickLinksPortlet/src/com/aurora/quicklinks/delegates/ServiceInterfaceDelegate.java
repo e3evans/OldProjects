@@ -88,12 +88,12 @@ public class ServiceInterfaceDelegate {
 	 * @throws IOException
 	 */
 	public String processRequestCache(String requestPath, boolean cache,
-			final Map<String, String> requestResponseCache, final Map<String, Header[]> requestHeadersCache)
+			final Map<String, String> requestResponseCache, final Map<String, Header[]> requestHeadersCache,String userid)
 			throws HttpException, IOException {
 
 		System.out.println("!!!!!!!!!!!!!!processRequestCache Starts!!!!!1111");
 		String requestUrl = stringProxyURL + requestPath;
-		requestUrl = "http://localhost:10039/QuickLinksServiceApp/rest/test/userapplist";
+		requestUrl = "http://localhost:10039/QuickLinksServiceApp/rest/test/userapplist/"+userid;
 		String responseText = BSSConstants.SERVICE_ERROR_MESSAGE;
 		HttpEntity<String> requestEntity = new HttpEntity<String>(entityHeaders);
 		try {
@@ -156,6 +156,88 @@ public class ServiceInterfaceDelegate {
 		System.out.println("!!!!!!!!!!!!!!processRequestCache Ends!!!!!1111");
 		return responseText;
 	}
+	
+	
+	
+	
+	
+	/**
+	 * This method is used to get JSONObject response for given request path.
+	 * 
+	 * @param requestPath
+	 * @param cache
+	 * @param requestResponseCache
+	 * @param requestHeadersCache
+	 * @param seqNo 
+	 * @param appId 
+	 * @param userid 
+	 * @return
+	 * @throws HttpException
+	 * @throws IOException
+	 */
+	public String processRequestCacheRetrieveUserApp(String requestPath, boolean cache,
+			final Map<String, String> requestResponseCache, final Map<String, Header[]> requestHeadersCache, String userid, String appId, String seqNo)
+			throws HttpException, IOException {
+
+		System.out.println("!!!!!!!!!!!!!!processRequestCacheRetrieveUserApp Starts!!!!!1111");
+		String requestUrl = stringProxyURL + requestPath;
+		requestUrl = "http://localhost:10039/QuickLinksServiceApp/rest/test/retrieveuserapp/"+appId+"/"+seqNo+"/"+userid;
+		System.out.println("requestUrl!!!!"+requestUrl);
+		String responseText = BSSConstants.SERVICE_ERROR_MESSAGE;
+		HttpEntity<String> requestEntity = new HttpEntity<String>(entityHeaders);
+		try {
+			URI requestURI = new URI(requestUrl);
+			System.out.println("web service call start with request path : " + requestUrl);
+			ResponseEntity<String> result = restTemplate.exchange(requestURI, HttpMethod.GET, requestEntity,
+					String.class);
+			System.out.println("web service call end with request path : " + requestUrl);
+			responseText = result.getBody();
+		} catch (Exception e) {
+			
+			System.out.println("Exception in processRequestCacheRetrieveUserApp !!!  "+e);
+			//logger.error("ProcessRequestCache Exception", e);
+		}
+		if (cache == true) {
+			if (requestResponseCache != null) {
+				requestResponseCache.put(requestPath, responseText);
+			}
+		}
+		
+		System.out.println("!!!!!!!!!!!!!!processRequestCacheRetrieveUserApp Ends!!!!!1111");
+		return responseText;
+	}
+	
+	
+	
+	
+	
+	public String processRequestCacheCreateUserApp(String requestPath, String userid, String appId, String seqNo)
+			throws HttpException, IOException {
+
+		System.out.println("!!!!!!!!!!!!!!processRequestCacheRetrieveUserApp Starts!!!!!1111");
+		String requestUrl = stringProxyURL + requestPath;
+		requestUrl = "http://localhost:10039/QuickLinksServiceApp/rest/test/createuserapp/"+appId+"/"+seqNo+"/"+userid;
+		System.out.println("requestUrl!!!!"+requestUrl);
+		String responseText = BSSConstants.SERVICE_ERROR_MESSAGE;
+		HttpEntity<String> requestEntity = new HttpEntity<String>(entityHeaders);
+		try {
+			URI requestURI = new URI(requestUrl);
+			System.out.println("web service call start with request path : " + requestUrl);
+			ResponseEntity<String> result = restTemplate.exchange(requestURI, HttpMethod.GET, requestEntity,
+					String.class);
+			System.out.println("web service call end with request path : " + requestUrl);
+			responseText = result.getBody();
+		} catch (Exception e) {
+			
+			System.out.println("Exception in processRequestCacheRetrieveUserApp !!!  "+e);
+			//logger.error("ProcessRequestCache Exception", e);
+		}
+		
+		
+		System.out.println("!!!!!!!!!!!!!!processRequestCacheRetrieveUserApp Ends!!!!!1111");
+		return responseText;
+	}
+	
 	
 	
 

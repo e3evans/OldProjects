@@ -9,11 +9,11 @@ import com.aurora.quicklinks.beans.UserApplication;
 
 public interface UrlService {
 	
-	/*public void updateUrl(List<UrlBean> listBean);
-	public List<UrlBean> listUrlBean(String userid);
-	public List<CompleteURLBean> listCopmpleteUrlBean();
-	*/public List<UserApplication> listCompleteUrlBeanV();
-	public List<Application> listEditUrlBeanV();
 	
+	public List<UserApplication> listCompleteUrlBeanV(String userid);
+	public List<Application> listEditUrlBeanV();
+	public UserApplication retrieveUserApp(String userid,String appId,String seqNo);
+	
+	public void  createUserApp(String userid,String  appId, String seqNo);
 
 }
