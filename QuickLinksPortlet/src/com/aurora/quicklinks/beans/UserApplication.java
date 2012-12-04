@@ -8,6 +8,16 @@ public class UserApplication {
 	private String appDesc;
 
 	private String appURL;
+	
+	private String appId;
+
+	public String getAppId() {
+		return appId;
+	}
+
+	public void setAppId(String appId) {
+		this.appId = appId;
+	}
 
 	private boolean checked;
 	
@@ -49,6 +59,12 @@ public class UserApplication {
 
 	public void setAppURL(String appURL) {
 		this.appURL = appURL;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "user app: " + "appName :" +appName+ "app Description :" + appDesc;
 	}
 
 }

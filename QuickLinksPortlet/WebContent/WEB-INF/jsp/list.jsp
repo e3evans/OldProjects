@@ -4,55 +4,87 @@
 <%@ page contentType="text/html" isELIgnored="false"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <portlet:defineObjects />
-<a href='<portlet:renderURL>
-<portlet:param name="action" value="editUrl"/>
-</portlet:renderURL>'>Edit Link</a>
-<div id="acgc_my_quicklinks_slider">
-	<div id="acgc_my_quicklinks_slides">
-		<c:set var="pageCount" value="1" scope="page" /> 
-		<c:set var="noOfPages" value="0" scope="page" />
-		<c:set var="count" value="1" scope="page" /> 
-		<c:set var="totalCount" value="0" scope="page" /> 
-		<c:set var="totallist" value="${fn:length(urlList)}"/>
-	
-		<c:forEach items="${urlList}" var="urlLst"  varStatus="status" >
-		
-		<c:set var="totalCount" value="${totalCount + 1}" scope="page" />
-			<c:if test="${pageCount=='1'}">
-		<div class="slide">
-			</c:if>
-			<c:if test="${count=='1'}">
-			<div class="acgc_links_inner_box">
-				<ul class="acgc_links_inner_box_list acgc_no_underline">
-			</c:if>
-					<li>
-						<a href="${urlLst.appURL}" title="Metro Wayfinding Maps">${urlLst.appName}<img
-		src="/assets/images/popout-icon-no-shadow.gif"
-		class="acgc_vertical_middle" alt="popout" /></a>
-					</li>
-					
-    		<c:if test="${count=='8'|| totalCount==totallist}">
-    			</ul>
-    		</div>
-    			<c:set var="count" value="0" scope="page" /> 
-    		</c:if>
-    		<c:if test="${pageCount=='24' || totalCount==totallist}">
-   		</div>
-				<c:set var="pageCount" value="0" scope="page" />
-				<c:set var="noOfPages" value="${noOfPages + 1}" scope="page" />
-			</c:if>
-			<c:set var="count" value="${count + 1}" scope="page" />
-			<c:set var="pageCount" value="${pageCount + 1}" scope="page" />
-		</c:forEach>
-		
+<script>
+
+	function loadQuicklinksEditOverlay(){
+
+		// make ajax call to retrieve upcoming page
+        $.get("<portlet:resourceURL id='quicklinksEditList'/>", {
+
+        }).success(function(data) {
+   
+		//load the overlay
+		$().overlay({
+			content : data
+		});
+ 
+ 		//do search field swaps
+		acgcInputTitleSwaps();
+ 
+		//add quiclinks hooks
+		acgcAddQuicklinksHooks();
+ 
+        }).error(function() {
+			alert('no buenoo - did not reach server?');
+    	});
+    }
+                        
+	$().ready(function(){
+		initQuickLinksMenu('test', 'test',"portlet");
+	});
+	                        
+</script> 
+
+
+<div class="acgc_ui_overlay_mast">
+	<div class="acgc_ui_overlay_base">
+		<div class="acgc_ui_overlay_canvas acgc_striped_bg">
+			<!-- content loads here -->
+		</div>
 	</div>
-	<div id="acgc_my_quicklinks_controls">
-		<div id="acgc_my_quicklinks_control_left_arrow"></div>
-		<div class="icon selected"></div>
-		<c:forEach   begin="1" end="${noOfPages}" >
-		<div class="icon"></div>
-		</c:forEach>
-		<div id="acgc_my_quicklinks_control_right_arrow"></div>
+</div>
+
+
+<div class="acgc_content_box">
+	<div class="acgc_content_box_top_decal">
+		<!--  top decal -->
 	</div>
+	<div class="acgc_content_box_body acgc_relative">
+		<div class="acgc_content_box_header acgc_relative">
+			<div class="content_box_button_wrap">
+				<a id="acgc_quicklinks_picker_trigger" class="content_box_button acgc_radius_5" title="" href="#edit" onclick="javascript: loadQuicklinksEditOverlay(); return false;">
+					<span class="content_box_button_inner acgc_radius_3"> Edit Quicklink </span>
+				</a>
+			</div>
+			<div class="acgc_content_box_header_icon acgc_site_icon links"> 
+				<!--  icon -->
+			</div>
+			<h3 class="acgc_content_box_header_title"> My Quick Links </h3>
+		</div>
+		<div id="acgc_my_quicklinks_canvas_target">
+			<!--  quicklinks html loads here -->
+			<div class="acgc_loading_indicator">
+				<!--  loading indicator .. loading .. loading .. robot -->
+			</div>
+		</div>
+		<div class="acgc_clear"></div>
+		<div class="acgc_add_app_callout">
+			<div class="acgc_app_callout_box"> Featured App: </div>
+			<div class="acgc_app_title_box">
+				Title Of App Goes Here
+				<br />
+				<a title="App Category" href="">App Category</a>
+			</div>
+			<div class="acgc_app_text_box"> Description lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie dolor ut est placerat ornare... </div>
+			<div class="acgc_app_bttn_box">
+				<a class="acgc_green_bttn acgc_radius_5" title="Browse Apps" href="">
+					<span class="acgc_green_bttn_inner acgc_radius_3"> Add To My Apps </span>
+				</a>
+			</div>
+		</div>
+		<div class="acgc_spacer_10"> </div>
+	</div>
+	<div class="acgc_content_box_bottom_decal"> </div>
 </div>
