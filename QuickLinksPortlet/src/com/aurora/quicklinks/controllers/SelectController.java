@@ -43,7 +43,7 @@ public class SelectController {
 	
 	@ModelAttribute(value="urlList")
 	public List<UserApplication> getUrls(RenderRequest request, RenderResponse response) {
-		
+		String userid="28355";
 		System.out.println("HERE!!");
 		System.out.println("*********************************************************************************");
 		System.out.println("printing context path"+request.getContextPath());
@@ -52,7 +52,7 @@ public class SelectController {
 		System.out.println("printing "+request.getServerName());
 		System.out.println("printing "+request.getPortalContext());
 		System.out.println("*********************************************************************************");
-		return urlService.listCompleteUrlBeanV();
+		return urlService.listCompleteUrlBeanV(userid);
 	}
 	
 	

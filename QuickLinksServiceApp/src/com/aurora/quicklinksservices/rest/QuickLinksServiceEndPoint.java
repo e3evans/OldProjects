@@ -4,10 +4,12 @@ package com.aurora.quicklinksservices.rest;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 
+import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
@@ -56,14 +58,43 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 	}
 	
 	@GET
-	@Path("/userapplist")
-	public UserApplicationResponse getUserAppDetails() {
-		Long i = 1111l;
+	@Path("/userapplist/{userId}")
+	public UserApplicationResponse getUserAppDetails(@PathParam("userId")String userId) {
+	
+		//Long i = 1111l;
 		System.out.println("getUserAppDetails *****************");
 		UserApplicationResponse userAppResponse = new UserApplicationResponse();
-		List<UserAppResponseBean> userAppList = quickLinksService.findUserAppsByUser(i);
+		List<UserAppResponseBean> userAppList = quickLinksService.findUserAppsByUser(userId);
 		userAppResponse.setUserAppList(userAppList);
 		return userAppResponse;
+	}
+	
+	
+	
+	@GET
+	@Path("/retrieveuserapp/{appId}/{seqNo}/{userId}")
+	
+	public UserAppResponseBean retrieveUserApp(@PathParam("appId")String appId,@PathParam("seqNo")String seqNo,@PathParam("userId")String userId) {
+		Long i = 1111l;
+		System.out.println("EndPoint getUserAppDetails *****************"+appId+"---"+seqNo+"---"+userId);
+		UserApplicationResponse userAppResponse = new UserApplicationResponse();
+		UserAppResponseBean userApp = quickLinksService.retrieveUserApp(appId,seqNo,userId);
+		//userAppResponse.setUserAppList(userAppList);
+		return userApp;
+	}
+	
+	
+	@GET
+	@Path("/createuserapp/{appId}/{seqNo}/{userId}")
+	
+	public UserAppResponseBean createUserApp(@PathParam("appId")String appId,@PathParam("seqNo")String seqNo,@PathParam("userId")String userId) {
+		Long i = 1111l;
+		System.out.println("EndPoint createUserApp *****************"+appId+"---"+seqNo+"---"+userId);
+		quickLinksService.createUserApp(userId, appId, seqNo);
+		UserApplicationResponse userAppResponse = new UserApplicationResponse();
+		UserAppResponseBean userApp = quickLinksService.retrieveUserApp(appId,seqNo,userId);
+		//userAppResponse.setUserAppList(userAppList);
+		return userApp;
 	}
 
 	
