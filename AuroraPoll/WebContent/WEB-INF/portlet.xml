@@ -18,6 +18,12 @@
 			<short-title>AuroraPoll</short-title>
 			<keywords>AuroraPoll</keywords>
 		</portlet-info>
+		<portlet-preferences>
+			<preference>
+				<name>com.aurora.polls.lastpolltake</name>
+				<value>EMPTY</value>
+			</preference>
+		</portlet-preferences>
 	</portlet>
 	<custom-portlet-mode>
 		<portlet-mode>edit_defaults</portlet-mode>
