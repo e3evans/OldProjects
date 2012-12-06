@@ -61,23 +61,20 @@ if(null!=request.getParameter("selected")){
 </div>
 </form>
 
-
-
 <%
 
 try{ 
 
-    String ContentLibrary     = "CaregiverContentLibrary_en";
+    String ContentLibrary	  = "CaregiverContentLibrary_en";
 	String DesignLib		  = "CaregiverDesignLibrary";
-	String sitePath			  = "/Caregiver/News";
-    String ascMenu			  = "AllNews_ASC_MNU";
-	String descMenu			  = "Allnews_DESC_MNU";   
- 
+	String sitePath			  = "/Caregiver/Videos";
+    String ascMenu			  = "AllVideos_ASC_MNU";
+	String descMenu			  = "AllVideos_DESC_MNU";
     String componentName = "";
     DocumentId docId;
  	LibraryComponent component;
  
-	//Creating a workspace 
+   	//Creating a workspace 
 	Workspace ws = (Workspace) pageContext.getAttribute(Workspace.WCM_WORKSPACE_KEY);
                                        
     if (ws == null)
@@ -139,4 +136,14 @@ try{
 
 
 
+ 
 %>
+
+
+<script type="text/javascript">
+function changeSort(order){
+ document.getElementById("selected").value=order;
+ document.forms["sortChangeForm"].submit();
+}
+
+</script>
