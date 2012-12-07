@@ -12,7 +12,20 @@ public class Application {
 	
 	private boolean checked;
 	
+	private String loggedInAccess;
 	
+	
+	
+	
+	
+	public String getLoggedInAccess() {
+		return loggedInAccess;
+	}
+
+	public void setLoggedInAccess(String loggedInAccess) {
+		this.loggedInAccess = loggedInAccess;
+	}
+
 	public String getSeqNo() {
 		return seqNo;
 	}

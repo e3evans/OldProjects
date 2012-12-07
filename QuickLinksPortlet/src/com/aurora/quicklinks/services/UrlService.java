@@ -13,7 +13,9 @@ public interface UrlService {
 	public List<UserApplication> listCompleteUrlBeanV(String userid);
 	public List<Application> listEditUrlBeanV();
 	public UserApplication retrieveUserApp(String userid,String appId,String seqNo);
+	public UserApplication  createUserApp(String userid,String  appId, String seqNo);
+	public  List<Application> retrieveAppMenuAutoList(String paramString);
 	
-	public void  createUserApp(String userid,String  appId, String seqNo);
+	public void updateUserApp(UserApplication userApp,String userId);
 
 }

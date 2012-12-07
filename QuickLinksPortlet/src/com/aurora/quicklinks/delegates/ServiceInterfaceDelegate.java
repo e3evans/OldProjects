@@ -22,6 +22,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.aurora.quicklinks.beans.UserApplication;
 import com.aurora.quicklinks.util.BSSConstants;
 import com.aurora.quicklinks.util.Base64Coder;
 
@@ -190,6 +191,7 @@ public class ServiceInterfaceDelegate {
 			System.out.println("web service call start with request path : " + requestUrl);
 			ResponseEntity<String> result = restTemplate.exchange(requestURI, HttpMethod.GET, requestEntity,
 					String.class);
+			
 			System.out.println("web service call end with request path : " + requestUrl);
 			responseText = result.getBody();
 		} catch (Exception e) {
@@ -237,6 +239,112 @@ public class ServiceInterfaceDelegate {
 		System.out.println("!!!!!!!!!!!!!!processRequestCacheRetrieveUserApp Ends!!!!!1111");
 		return responseText;
 	}
+	
+	
+	
+	
+	
+	/**
+	 * This method is used to get JSONObject response for AppMenuAutoList.
+	 * 
+	 * @param requestPath
+	 * @param cache
+	 * @param requestResponseCache
+	 * @param requestHeadersCache
+	 * @return
+	 * @throws HttpException
+	 * @throws IOException
+	 */
+	public String processRequestCacheRetrieveAppMenuAutoList(String requestPath, boolean cache,
+			final Map<String, String> requestResponseCache, final Map<String, Header[]> requestHeadersCache,String appId)
+			throws HttpException, IOException {
+
+		System.out.println("!!!!!!!!!!!!!!processRequestCacheRetrieveAppMenuAutoList!!!!!1111");
+		String requestUrl = stringProxyURL + requestPath;
+		requestUrl = "http://localhost:10039/QuickLinksServiceApp/rest/appautolist/"+appId;
+		String responseText = BSSConstants.SERVICE_ERROR_MESSAGE;
+		HttpEntity<String> requestEntity = new HttpEntity<String>(entityHeaders);
+		try {
+			URI requestURI = new URI(requestUrl);
+			System.out.println("web service call start with request path : " + requestUrl);
+			ResponseEntity<String> result = restTemplate.exchange(requestURI, HttpMethod.GET, requestEntity,
+					String.class);
+			System.out.println("web service call end with request path : " + requestUrl);
+			responseText = result.getBody();
+		} catch (Exception e) {
+			//logger.error("ProcessRequestCache Exception", e);
+		}
+		if (cache == true) {
+			if (requestResponseCache != null) {
+				requestResponseCache.put(requestPath, responseText);
+			}
+		}
+		
+		System.out.println("!!!!!!!!!!!!!!processRequestCache Ends!!!!!1111");
+		return responseText;
+	}
+	
+	
+	
+	
+	
+	/**
+	 * This method is used to get JSONObject response for AppMenuAutoList.
+	 * 
+	 * @param requestPath
+	 * @param cache
+	 * @param requestResponseCache
+	 * @param requestHeadersCache
+	 * @return
+	 * @throws HttpException
+	 * @throws IOException
+	 * 
+	 * 
+	 */
+	public String processRequestCacheUpdateUserApp(String requestPath, boolean cache,
+			final Map<String, String> requestResponseCache, final Map<String, Header[]> requestHeadersCache,UserApplication userapp,String userId)
+			throws HttpException, IOException {
+        System.out.println("printing appId seqno Activecd"+userapp.getAppId()+userapp.getSeqNo()+userId+userapp.getActiveCd());
+		System.out.println("!!!!!!!!!!!!!!processRequestCacheUpdateUserApp!!!!!1111");
+		String requestUrl = stringProxyURL + requestPath;
+		requestUrl = "http://localhost:10039/QuickLinksServiceApp/rest/test/updateuserapp/"+userapp.getAppId()+"/"+userapp.getSeqNo()+"/"+userId+"/"+userapp.getActiveCd();
+		String responseText = BSSConstants.SERVICE_ERROR_MESSAGE;
+		//JSONObject json = new JSONObject(bean);
+		HttpEntity<String> requestEntity = new HttpEntity<String>(entityHeaders);
+		try {
+			URI requestURI = new URI(requestUrl);
+			System.out.println("web service call start with request path : " + requestUrl);
+			ResponseEntity<String> result = restTemplate.exchange(requestURI, HttpMethod.GET, requestEntity,
+					String.class);
+			System.out.println("web service call end with request path : " + requestUrl);
+			responseText = result.getBody();
+		} catch (Exception e) {
+			//logger.error("ProcessRequestCache Exception", e);
+		}
+		if (cache == true) {
+			if (requestResponseCache != null) {
+				requestResponseCache.put(requestPath, responseText);
+			}
+		}
+		
+		System.out.println("!!!!!!!!!!!!!!processRequestCache Ends!!!!!1111");
+		return responseText;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

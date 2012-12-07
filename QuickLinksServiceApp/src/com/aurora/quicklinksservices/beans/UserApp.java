@@ -22,9 +22,9 @@ import javax.persistence.Table;
 public class UserApp
   implements Serializable
 {
-  /*public static final String ACTIVE = "A";
+  public static final String ACTIVE = "A";
   public static final String INACTIVE = "I";
-  public static final Integer NOTDISPLAYED = new Integer(0);*/
+  public static final Integer NOTDISPLAYED = new Integer(0);
   private UserAppKey userAppKey;
   private App application;
   private Timestamp created;

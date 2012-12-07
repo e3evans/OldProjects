@@ -67,8 +67,18 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
 		
 	
 	}
+	@Override
+	public List retrieveAppMenuAutoList(String appId) {
+		// TODO Auto-generated method stub
+		return quickLinksAPPDAO.findAppMenuAutoList(appId);
+	}
 	
 	
+	public void updateUserApp(String userId, String appId, String seqNo,String activecd){
+        Long userid = Long.parseLong(userId,10);
+        quickLinksAPPDAO.updateUserApp(new UserAppKey(userid, appId,new Integer(seqNo)),activecd);
+       
 	
+}
 	
 }
