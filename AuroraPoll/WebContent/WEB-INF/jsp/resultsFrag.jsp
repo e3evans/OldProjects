@@ -1,10 +1,4 @@
-<%@ include file="/WEB-INF/jsp/include.jsp" %>
-
-<div id="acgc_bottom_content_box_split_3" class="acgc_float_left">
-     <div class="acgc_content_box_top_decal acgc_bg_align_right_top">
-                     <!-- decal -->
-     </div>
-     <div class="acgc_content_box_body acgc_relative acgc_poll">
+<%@ include file="/WEB-INF/jsp/include.jsp" %>  
      <div id="acgc_polls_canvas_slider" class="acgc_relative">
      	<div id="acgc_polls_canvas_slides">
 				<div class="slide">
@@ -12,15 +6,8 @@
 	              <h3><c:out value="${pollForm.poll.question}"/></h3>
 	              <c:forEach items="${pollForm.poll.pollOptions}" var="pOpt">
 	             	<p>
-	             	<c:choose>
-		             	<c:when test="${pollForm.totalResults==0 }">
-		             		<span class="acgc_percentage">0%</span>${pOpt.answer}
-		             	</c:when>
-		             	<c:otherwise>
-			             	<c:set var="pct" value="${(pOpt.count / pollForm.totalResults) * 100}"/>
-			             		<span class="acgc_percentage"><fmt:parseNumber value="${pct + 0.5}" integerOnly="true"/>%</span>${pOpt.answer}
-		             	</c:otherwise>
-	             	</c:choose>
+	             	<c:set var="pct" value="${(pOpt.count / pollForm.totalResults) * 100}"/>
+	             		<span class="acgc_percentage"><fmt:parseNumber value="${pct + 0.5}" integerOnly="true"/>%</span>${pOpt.answer}
 	             	</p>
 				  </c:forEach> 
 				  <c:if test="${not empty pollForm.poll.answer }">  
@@ -71,9 +58,5 @@
 				<div id="acgc_polls_canvas_slider_right"><!-- left --></div>
 			</div> 
 		</div>                          
-     </div>
- </div>
-<div class="acgc_clear"><!-- clear --></div> 
-<script>
-initPolls();
-</script>
+
+

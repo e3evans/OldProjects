@@ -83,8 +83,6 @@ public class PollDAOImpl extends BaseDAOImpl implements PollDAO  {
     		e.printStackTrace();
     		if (session!=null)session.close();
     	}
-    	
-    	System.out.println(pollList.get(4).getQuestion());
     	return pollList;
     }
     

@@ -9,9 +9,22 @@
 </head>
 <body>
 
-IREQ --><a href="/AuroraSSOPOC/SSORedirectTest?testURL=1">Link</a><br>
 
-Learning Center --><a href="/AuroraSSOPOC/SSORedirectTest?testURL=2">Link</a>
+<%
+	Cookie[] cookies = request.getCookies();
+	
+	for (int i = 0;i<cookies.length;i++){
+		Cookie temp = cookies[i];
+		%><%= temp.getName()%><hr><%
+	}
+
+ %>
+
+IREQ --> <a href="/AuroraSSOPOC/SSORedirectTest?testURL=1">Link</a><br>
+
+Learning Center --> <a href="/AuroraSSOPOC/SSORedirectTest?testURL=2">Link</a><br>
+
+E Health Patient ---> <a href="/AuroraSSOPOC/SSORedirectTest?testURL=3">Link</a>
 
 </body>
 </html>

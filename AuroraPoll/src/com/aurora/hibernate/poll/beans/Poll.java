@@ -13,8 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.hibernate.annotations.IndexColumn;
-
 /**
  * Title:        Poll
  * Description:  Class to encapsulate all of the information needed for a Poll
