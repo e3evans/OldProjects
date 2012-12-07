@@ -18,7 +18,9 @@ public class SSORedirectTest extends HttpServlet {
 	public static String testUrl1 = "http://iconnect-test.aurora.org/ireq/servlet/IreqMain?command=eporthome&from=eportal&firsttime=Y";
 	public static String testUrl2 = "http://iconnect-test.aurora.org/portal-extensions/callJsp.do?actionForward=lmsForward&breakFrames=Y&actionUrl=https://lmsproxy.aurora.org/dologon.asp";
 	public static String testUrl3 = "https://myaurora-test.aurora.org/apb/clearPatient/admin/viewConsolidatedBillAction.do?method=removePaymentAgreementParam";                                                                            
-    /**
+    public static String testUrl4 = "https://iconnect-test.aurora.org/wmrmain/servlet/ReportPrinter?command=wmrhome";
+	
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public SSORedirectTest() {
@@ -45,6 +47,8 @@ public class SSORedirectTest extends HttpServlet {
 			testURL = testUrl2;
 		}else if (request.getParameter("testURL").equals("3")){
 			testURL = testUrl3;
+		}else if (request.getParameter("testURL").equals("4")){
+			testURL = testUrl4;
 		}
 		
 		System.out.println(testURL);
