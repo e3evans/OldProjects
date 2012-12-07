@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.SharedSessionContract;
@@ -65,6 +66,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 				.setString(0, "EMP").list();
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < list.size(); i++) {
+			
 			App temp = (App) list.get(i);
 			sb.append(temp.getAppName() + "---->" + temp.getAppDesc() + "<br/>");
 			sb.append(temp.getAppURL() + "----><br/>");
@@ -81,12 +83,14 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	@Override
 	public List findUserDetails(String userid) {
 		// TODO Auto-generated method stub
-		Long userId=43l;
+		//Long userId=43l;
+		
+	
 		Session session = urlsessionFactory.openSession();
 		session.beginTransaction();
 		Query query = session
 				.createQuery("from com.aurora.quicklinksservices.beans.User where userID="
-						+ userId);
+						+userid );
 		List list = query.list();
 		System.out.println("TEST -- > " + list.size());
 		List<User> appList = new ArrayList<User>();
@@ -124,6 +128,9 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 					+ temp.getApplication() + "<br/>");
 			bean.setAppName(temp.getApplication().getAppName().trim());
 			bean.setAppUrl(temp.getApplication().getAppURL().trim());
+			bean.setAppId((temp.getApplication().getAppKey().getAppId()));
+			bean.setActiveCd(temp.getApplication().getActiveCd());
+			bean.setSeqNo(temp.getApplication().getAppKey().getSeqNo().toString());
 			bean.setUserId(userid + "");
 			listUserAppBean.add(bean);
 			// appList.add(temp);
@@ -143,15 +150,19 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		UserApp userApp = (UserApp) session.createCriteria(UserApp.class)
 				.add(Expression.idEq(userAppKey)).uniqueResult();
 		System.out.println("userApp from query --- " + userApp);
+		System.out.println("printing readUserApp after create user app method"+userApp.getUserAppKey().getAppId()+userApp.getActiveCd().toString()+userApp.getUserAppKey().getSeqNo()
+					.toString()+userApp.getUserAppKey().getSeqNo()
+					.toString());
 		UserAppResponseBean userAppResponseBean = new UserAppResponseBean();
 		if (null != userApp) {
 			System.out.println(userApp.getUserAppKey());
 			System.out.println(userApp.getApplication());
 			userAppResponseBean.setAppId(userApp.getUserAppKey().getAppId());
-			userAppResponseBean.setSeqNo(userApp.getUserAppKey().getSeqNo()
-					.toString());
+			userAppResponseBean.setSeqNo(userApp.getUserAppKey().getSeqNo().toString());
+			
 			userAppResponseBean.setUserId(userApp.getUserAppKey().getUserId()
 					.toString());
+			userAppResponseBean.setActiveCd(userApp.getActiveCd().toString());
 		}
 		System.out.println("userAppResponseBean!!!!!!  " + userAppResponseBean);
 		session.close();
@@ -189,5 +200,52 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		}
 
 }
+
+	@Override
+	public List findAppMenuAutoList(String appId)
+	  {
+	    
+	     StringBuffer sql = new StringBuffer();
+         sql.append("SELECT {app.*} ");
+	     sql.append("FROM S05DTDB.tpt2b_application app ");
+	     sql.append("WHERE pt2b_appid = ? ");
+	     sql.append("AND pt2b_auto_reg = 'Y' ");
+	     sql.append("AND pt2b_login_acc NOT IN ('E','N') ");
+	     sql.append("AND pt2b_active_cd = 'A' ");
+	     sql.append("AND pt2b_seq_no > 0 ");
+	     sql.append("ORDER BY pt2b_seq_no ");
+	     Session session = urlsessionFactory.openSession();
+	     List list = session.createSQLQuery(sql.toString()).addEntity("app", App.class).setString(0, appId).list();
+	     session.close();
+	     return list;
+	   }
+	
+	
+	public void updateUserApp( UserAppKey userAppKey , String activecd){
+        Transaction txn = null;
+        Session session = null;
+        try { 
+        session = urlsessionFactory.openSession();
+        txn = session.beginTransaction();
+        UserApp   userApp = (UserApp) session.createCriteria(UserApp.class)
+                .add(Expression.idEq(userAppKey)).uniqueResult();
+        System.out.println("updateUserApp userApp from query --- " + userApp);
+        if(null!=userApp){
+            System.out.println("updating activecd in userapp "+userApp);
+        userApp.setActiveCd(activecd);
+        session.update(userApp);
+        }} catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if (!txn.wasCommitted()) {
+                txn.rollback();
+            }
+
+            session.flush(); 
+            session.close();  
+        }
+       
+	}
+	
 	
 }

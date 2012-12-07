@@ -53,6 +53,9 @@ public class UrlServiceImpl implements UrlService {
 				app.setUserid(jsonobj.get("userId").toString().trim());
 				app.setAppName(jsonobj.get("appName").toString().trim());
 				app.setAppURL((jsonobj.get("appUrl").toString()).trim());
+				app.setSeqNo(jsonobj.get("seqNo").toString());
+				app.setAppId(jsonobj.get("appId").toString());
+				app.setActiveCd((jsonobj.get("activeCd").toString()).trim());
 				//System.out.println(jsonobj.get("userId"));
 				//System.out.println(jsonobj.get("appName"));
 				//System.out.println(jsonobj.get("appUrl"));
@@ -91,7 +94,7 @@ public List<Application> listEditUrlBeanV(){
 		JSONObject completeUrlJson = new JSONObject(serviceInterfaceDelegate.processRequestCacheEdit("test", false,
 				null, null));
 		
-		//System.out.println("completeUrlJson!!!!"+completeUrlJson);
+		System.out.println("completeUrlJson!!!!"+completeUrlJson);
 	 	JSONArray jsonArray = completeUrlJson.getJSONArray("applicationList");
 		for(int i=0;i<jsonArray.length();i++){
 			app = new Application();
@@ -108,6 +111,8 @@ public List<Application> listEditUrlBeanV(){
 			app.setAppDesc(jsonobj.get("appDesc").toString().trim());
 			app.setAppName(jsonobj.get("appName").toString().trim());
 			app.setAppURL((jsonobj.get("appURL").toString()).trim());
+			app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString()).trim());
+			
 			//System.out.println(jsonobj.get("appDesc"));
 			//System.out.println(jsonobj.get("appName"));
 			//System.out.println(jsonobj.get("appURL"));
@@ -144,7 +149,7 @@ public List<Application> listEditUrlBeanV(){
 				
 				JSONObject jsonobj = new JSONObject(serviceInterfaceDelegate.processRequestCacheRetrieveUserApp("test", false,
 						null, null,userid,appId,seqNo));
-				System.out.println("retrieve user app json !!!! "+jsonobj);
+				System.out.println("retrieve user app json  in retrieveUserApp !!!! "+jsonobj);
 			 	//JSONArray jsonArray = completeUrlJson.getJSONArray("userAppList");
 	    		//for(int i=0;i<jsonArray.length();i++){
 					if(jsonobj.get("appId")!=null&&!jsonobj.get("appId").toString().trim().equalsIgnoreCase("null")){
@@ -155,9 +160,15 @@ public List<Application> listEditUrlBeanV(){
 					app.setUserid(jsonobj.get("userId").toString().trim());
 					app.setAppName(jsonobj.get("appName").toString().trim());
 					app.setAppId((jsonobj.get("appId").toString()).trim());
+					if(jsonobj.get("activeCd")!=null){
+					app.setActiveCd(jsonobj.get("activeCd").toString());
+					}
+					//app.setDispSeq( jsonobj.get("dispSeq"));
 					System.out.println(jsonobj.get("userId"));
 					System.out.println(jsonobj.get("appName"));
 					System.out.println(jsonobj.get("appUrl"));
+					System.out.println(jsonobj.get("activeCd"));
+					System.out.println(jsonobj.get("dispSeq"));
 					}
 					
 				//}
@@ -181,17 +192,17 @@ public List<Application> listEditUrlBeanV(){
 	
 	/**
 	 * reating and retrieving userapp
-	 */
+  	 */
 
 @Override
-public void createUserApp(String userid, String appId, String seqNo) {
+public UserApplication createUserApp(String userid, String appId, String seqNo) {
 	// TODO Auto-generated method stub
 	
 	UserApplication app = null;
 	try {
 		
 		JSONObject jsonobj = new JSONObject(serviceInterfaceDelegate.processRequestCacheCreateUserApp("",userid,appId,seqNo));
-		System.out.println("retrieve user app json !!!! "+jsonobj);
+		System.out.println("retrieve user app json !!!! createUserApp"+jsonobj);
 	 	//JSONArray jsonArray = completeUrlJson.getJSONArray("userAppList");
 		//for(int i=0;i<jsonArray.length();i++){
 			if(jsonobj.get("appId")!=null&&!jsonobj.get("appId").toString().trim().equalsIgnoreCase("null")){
@@ -202,6 +213,8 @@ public void createUserApp(String userid, String appId, String seqNo) {
 			app.setUserid(jsonobj.get("userId").toString().trim());
 			app.setAppName(jsonobj.get("appName").toString().trim());
 			app.setAppId((jsonobj.get("appId").toString()).trim());
+			app.setActiveCd(jsonobj.get("activeCd").toString());
+			app.setSeqNo(jsonobj.get("seqNo").toString());
 			System.out.println(jsonobj.get("userId"));
 			System.out.println(jsonobj.get("appName"));
 			System.out.println(jsonobj.get("appUrl"));
@@ -224,16 +237,83 @@ public void createUserApp(String userid, String appId, String seqNo) {
 	
 	
 	
-	    
+	  return app;  
 	  
 
 	
 }
-	
-	
-	
-	
+
+	@Override
+	public List retrieveAppMenuAutoList(String appId) {
+		List<Application> appList = null;
+		Application app = null;
+		try {
+			appList = new ArrayList<Application>();
+			JSONObject completeUrlJson = new JSONObject(serviceInterfaceDelegate.processRequestCacheRetrieveAppMenuAutoList("test", false,
+					null, null,appId));
+			
+			System.out.println("completeUrlJson!!!!"+completeUrlJson);
+		 	JSONArray jsonArray = completeUrlJson.getJSONArray("applicationList");
+			for(int i=0;i<jsonArray.length();i++){
+				app = new Application();
+				JSONObject jsonobj = jsonArray.getJSONObject(i);
+				//System.out.println("printing appkey"+jsonobj.getJSONArray("appKey"));
+				//System.out.println("printing appkey seq no"+jsonobj.getJSONObject("appKey").get("seqNo"));
+				//System.out.println("printing appKey toString1111"+jsonobj.get("seqNo"));
+				//System.out.println("printing appKey toString22222"+jsonobj.get("appKey.appId").toString());
+				//JSONObject jsonobj = new JSONObject(jsonArray.get(i).toString());
+				//app.setAppDesc(jsonobj.get("appDesc").toString().trim());
+				//app.setAppDesc(jsonobj.get("appDesc").toString().trim());
+				app.setSeqNo(jsonobj.getJSONObject("appKey").get("seqNo").toString());
+				app.setAppId(jsonobj.getJSONObject("appKey").get("appId").toString());
+				app.setAppDesc(jsonobj.get("appDesc").toString().trim());
+				app.setAppName(jsonobj.get("appName").toString().trim());
+				app.setAppURL((jsonobj.get("appURL").toString()).trim());
+				app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString()).trim());
+				
+				//System.out.println(jsonobj.get("appDesc"));
+				//System.out.println(jsonobj.get("appName"));
+				//System.out.println(jsonobj.get("appURL"));
+				appList.add(app);
+			}
+				
+		} catch (HttpException e) {
+			// TODO Auto-generated catch block
+		System.out.println(e);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+		}catch(Exception e){
+			System.out.println(e);
+		}
 		
+		return appList;
+		
+	}
+	
+	/// For user app update
+	
+	public void updateUserApp(UserApplication userApp,String userId){
+		try {
+			
+			serviceInterfaceDelegate.processRequestCacheUpdateUserApp("test", false,null, null,userApp,userId);
+				
+		} catch (HttpException e) {
+			// TODO Auto-generated catch block
+		System.out.println(e);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		
+}
+	
+	
 }
 	
 

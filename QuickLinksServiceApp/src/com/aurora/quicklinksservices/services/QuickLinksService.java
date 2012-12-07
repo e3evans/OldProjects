@@ -5,6 +5,7 @@ import java.util.List;
 import com.aurora.quicklinksservices.beans.UserApp;
 import com.aurora.quicklinksservices.beans.UserAppResponseBean;
 
+
 public interface QuickLinksService {
 	
 	public List retrieveAvailAppListByRole(String roleCd);
@@ -12,5 +13,8 @@ public interface QuickLinksService {
 	public List findUserAppsByUser(String userid);
 	public UserAppResponseBean retrieveUserApp(String appId,String seqNo,String userId);
 	public void createUserApp(String userid, String appId, String seqNo);
+	public List retrieveAppMenuAutoList(String appId);
+	public void updateUserApp(String userid, String appId, String seqNo,String activecd);
+
 
 }
