@@ -22,13 +22,10 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
 	@Autowired
 	private QuickLinksAPPDAO quickLinksAPPDAO;
 	public List retrieveAvailAppListByRole(String roleCd) {
-		// TODO Auto-generated method stub
-		System.out.println("retrieveAvailAppListByRole");
 		return quickLinksAPPDAO.findAvailAppListByRole(roleCd);
 	}
 	@Override
 	public List retrieveUserDetails(String userid) {
-		// TODO Auto-generated method stub
 		return quickLinksAPPDAO.findUserDetails(userid);
 	}
 	
@@ -37,9 +34,16 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
 		Long userId = Long.parseLong(userid,10);
 		return quickLinksAPPDAO.findUserAppsByUser(userId);
 	}
+	
+	public List findAllUserAppsByUser(String userid){
+		Long userId = Long.parseLong(userid,10);
+		return quickLinksAPPDAO.findAllUserAppsByUser(userId);
+	}
+	
+	
+	
 	@Override
 	public  UserAppResponseBean retrieveUserApp(String appId, String seqNo, String userId) {
-		// TODO Auto-generated method stub
 		Long userid = Long.parseLong(userId,10);
 		return quickLinksAPPDAO.readUserApp(new UserAppKey(userid, appId,new Integer(seqNo)));
 	
@@ -47,29 +51,18 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
 	
 	@Override
 	public  void createUserApp(String userId, String appId, String seqNo) {
-		// TODO Auto-generated method stub
 		Long userid = Long.parseLong(userId,10);
-		//Long userid = 43l;
 		UserApp userApp = new UserApp();
 	    userApp.setUserAppKey(new UserAppKey(userid, appId, new Integer(seqNo)));
 	    userApp.setCreated(QuickLinksUtility.getCurrentTime());
 	    userApp.setLastAccess(userApp.getCreated());
 	    userApp.setDispSeq(QuickLinksUtility.NOTDISPLAYED);
-	    userApp.setActiveCd("I");
-	    System.out.println(" retrieving details from userAPP**********************************************************");
-	    System.out.println(userApp.getUserAppKey());
-	    System.out.println(userApp.getCreated());
-	    System.out.println(userApp.getLastAccess());
-	    System.out.println(userApp.getDispSeq());
-	    System.out.println(userApp.getActiveCd());
+	    userApp.setActiveCd("A");
 	    quickLinksAPPDAO.insertUserApp(userApp);
-	    System.out.println(" retrieving details from userAPP**********************************************************");
-		
-	
+	    
 	}
 	@Override
 	public List retrieveAppMenuAutoList(String appId) {
-		// TODO Auto-generated method stub
 		return quickLinksAPPDAO.findAppMenuAutoList(appId);
 	}
 	

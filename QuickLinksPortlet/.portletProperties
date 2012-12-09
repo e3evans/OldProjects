@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><portlet-properties>
+    <portlet name="QuickLinksPortlet">
+        <property>
+            <name>WSRP_PRODUCER</name>
+            <value>false</value>
+        </property>
+    </portlet>
+</portlet-properties>

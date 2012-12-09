@@ -2,22 +2,14 @@ package com.aurora.quicklinks.beans;
 
 public class Application {
 	private String appName;
-    private String appDesc;
-	
-	private String seqNo;
-	
-	private String appId;
-
+	private String appDesc;
+    private String seqNo;
+    private String appId;
+   
 	private String appURL;
-	
-	private boolean checked;
-	
-	private String loggedInAccess;
-	
-	
-	
-	
-	
+    private boolean checked;
+    private String loggedInAccess;
+
 	public String getLoggedInAccess() {
 		return loggedInAccess;
 	}
@@ -41,9 +33,7 @@ public class Application {
 	public void setAppId(String appId) {
 		this.appId = appId;
 	}
-	
-	
-	
+
 	public boolean isChecked() {
 		return checked;
 	}
@@ -75,5 +65,15 @@ public class Application {
 	public void setAppURL(String appURL) {
 		this.appURL = appURL;
 	}
+	
+	
+	 @Override
+		public String toString() {
+			return "Application [appName=" + appName + ", appDesc=" + appDesc
+					+ ", seqNo=" + seqNo + ", appId=" + appId + ", appURL="
+					+ appURL + ", checked=" + checked + ", loggedInAccess="
+					+ loggedInAccess + "]";
+		}
+
 
 }

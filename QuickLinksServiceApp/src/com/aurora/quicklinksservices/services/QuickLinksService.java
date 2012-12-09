@@ -2,7 +2,6 @@ package com.aurora.quicklinksservices.services;
 
 import java.util.List;
 
-import com.aurora.quicklinksservices.beans.UserApp;
 import com.aurora.quicklinksservices.beans.UserAppResponseBean;
 
 
@@ -15,6 +14,7 @@ public interface QuickLinksService {
 	public void createUserApp(String userid, String appId, String seqNo);
 	public List retrieveAppMenuAutoList(String appId);
 	public void updateUserApp(String userid, String appId, String seqNo,String activecd);
+	public List findAllUserAppsByUser(String userid);
 
 
 }

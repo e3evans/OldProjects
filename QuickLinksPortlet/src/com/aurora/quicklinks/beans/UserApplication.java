@@ -97,8 +97,10 @@ public class UserApplication {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return "user app: " + "appName :" +appName+ "app Description :" + appDesc;
+		return "UserApplication [appName=" + appName + ", userid=" + userid
+				+ ", appDesc=" + appDesc + ", appURL=" + appURL + ", appId="
+				+ appId + ", seqNo=" + seqNo + ", activeCd=" + activeCd
+				+ ", checked=" + checked + "]";
 	}
 
 	public String getActiveCd() {

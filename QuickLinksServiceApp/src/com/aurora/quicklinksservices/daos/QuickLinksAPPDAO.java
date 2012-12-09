@@ -15,4 +15,5 @@ public interface QuickLinksAPPDAO {
 	public void insertUserApp(UserApp paramUserApp);
 	public List findAppMenuAutoList(String paramString);
 	public void updateUserApp( UserAppKey userAppKey , String activecd);
+	public List findAllUserAppsByUser(Long userid);
 }

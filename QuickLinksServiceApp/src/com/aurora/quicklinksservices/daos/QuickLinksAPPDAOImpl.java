@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.SharedSessionContract;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Repository;
 
 import com.aurora.quicklinksservices.beans.App;
@@ -26,23 +24,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	@Autowired
 	private SessionFactory urlsessionFactory;
 
-	/*
-	 * public List findAvailAppListByRole(String roleCd) { Session session =
-	 * urlsessionFactory.openSession(); session.beginTransaction();
-	 * 
-	 * Query query =
-	 * session.createQuery("from com.aurora.quicklinksservices.beans.Application"
-	 * ); List list = query.list();
-	 * System.out.println("TEST -- > "+list.size()); List<Application> appList =
-	 * new ArrayList<Application>(); StringBuffer sb = new StringBuffer(); for
-	 * (int i=0;i<list.size();i++){ Application temp = (Application)list.get(i);
-	 * sb.append(temp.getAppName()+"---->"+temp.getAppDesc()+"<br/>");
-	 * sb.append(temp.getAppURL()+"----><br/>"); appList.add(temp); }
-	 * session.close(); System.out.println("result"+sb.toString()); return
-	 * appList;
-	 * 
-	 * }
-	 */
+	
 
 	/* getting Available quicklinks list based on user role */
 
@@ -64,16 +46,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		List list = session.createSQLQuery(sql.toString())
 				.addEntity("app", "com.aurora.quicklinksservices.beans.App")
 				.setString(0, "EMP").list();
-		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < list.size(); i++) {
-			
-			App temp = (App) list.get(i);
-			sb.append(temp.getAppName() + "---->" + temp.getAppDesc() + "<br/>");
-			sb.append(temp.getAppURL() + "----><br/>");
-
-		}
 		session.close();
-		// System.out.println("result"+sb.toString());
 		return list;
 
 	}
@@ -97,9 +70,6 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < list.size(); i++) {
 			User temp = (User) list.get(i);
-			sb.append(temp.getFirstName() + "---->" + temp.getLastName()
-					+ "<br/>");
-			sb.append(temp.getPortalID() + "----><br/>");
 			appList.add(temp);
 		}
 		session.close();
@@ -116,17 +86,15 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		UserAppResponseBean bean = null;
 		List<UserAppResponseBean> listUserAppBean = new ArrayList<UserAppResponseBean>();
 		List list = session.createCriteria(UserApp.class)
-				.add(Expression.eq("userAppKey.userId", userid))
-				.add(Expression.eq("activeCd", "A")).list();
+				.add(Restrictions.eq("userAppKey.userId", userid))
+				.add(Restrictions.eq("activeCd", "A")).list();
 
-		System.out.println("findUserAppsByUsers -- > " + list);
+		
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < list.size(); i++) {
 			bean = new UserAppResponseBean();
 			UserApp temp = (UserApp) list.get(i);
-			sb.append(temp.getCreated() + "----application---->"
-					+ temp.getApplication() + "<br/>");
-			bean.setAppName(temp.getApplication().getAppName().trim());
+		    bean.setAppName(temp.getApplication().getAppName().trim());
 			bean.setAppUrl(temp.getApplication().getAppURL().trim());
 			bean.setAppId((temp.getApplication().getAppKey().getAppId()));
 			bean.setActiveCd(temp.getApplication().getActiveCd());
@@ -136,11 +104,40 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 			// appList.add(temp);
 		}
 		session.close();
-		// System.out.println("result"+sb.toString());
+		
 		return listUserAppBean;
 
 	}
 
+	
+	public List findAllUserAppsByUser(Long userid) {
+		Session session = urlsessionFactory.openSession();
+		session.beginTransaction();
+		UserAppResponseBean bean = null;
+		List<UserAppResponseBean> listUserAppBean = new ArrayList<UserAppResponseBean>();
+		List list =  session.createCriteria(UserApp.class).add(Expression.eq("userAppKey.userId", userid)).list();
+        StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < list.size(); i++) {
+			
+			bean = new UserAppResponseBean();
+			UserApp temp = (UserApp) list.get(i);
+			bean.setAppName(temp.getApplication().getAppName().trim());
+			bean.setAppUrl(temp.getApplication().getAppURL().trim());
+			bean.setAppId((temp.getApplication().getAppKey().getAppId()));
+			bean.setActiveCd(temp.getActiveCd());
+			bean.setSeqNo(temp.getApplication().getAppKey().getSeqNo().toString());
+			bean.setUserId(userid + "");
+			listUserAppBean.add(bean);
+			// appList.add(temp);
+		}
+		session.close();
+		return listUserAppBean;
+
+	}
+	
+	
+	
+	
 	/* find userapp */
 
 	@Override
@@ -148,24 +145,17 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		Session session = urlsessionFactory.openSession();
 		session.beginTransaction();
 		UserApp userApp = (UserApp) session.createCriteria(UserApp.class)
-				.add(Expression.idEq(userAppKey)).uniqueResult();
-		System.out.println("userApp from query --- " + userApp);
-		System.out.println("printing readUserApp after create user app method"+userApp.getUserAppKey().getAppId()+userApp.getActiveCd().toString()+userApp.getUserAppKey().getSeqNo()
-					.toString()+userApp.getUserAppKey().getSeqNo()
-					.toString());
+				.add(Restrictions.idEq(userAppKey)).uniqueResult();
 		UserAppResponseBean userAppResponseBean = new UserAppResponseBean();
 		if (null != userApp) {
-			System.out.println(userApp.getUserAppKey());
-			System.out.println(userApp.getApplication());
-			userAppResponseBean.setAppId(userApp.getUserAppKey().getAppId());
+			userAppResponseBean.setAppId(userApp.getUserAppKey().getAppId().toString());
 			userAppResponseBean.setSeqNo(userApp.getUserAppKey().getSeqNo().toString());
 			
 			userAppResponseBean.setUserId(userApp.getUserAppKey().getUserId()
 					.toString());
 			userAppResponseBean.setActiveCd(userApp.getActiveCd().toString());
 		}
-		System.out.println("userAppResponseBean!!!!!!  " + userAppResponseBean);
-		session.close();
+	    session.close();
 		return userAppResponseBean;
 
 	}
@@ -178,16 +168,11 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	public void insertUserApp(UserApp userApp) {
 		Transaction txn = null;
 		Session session=null;
-		
-		System.out.println("Inserting User App!!!!!!" + userApp);
-		
 		try {  
-		 session = urlsessionFactory.openSession();
+		session = urlsessionFactory.openSession();
 		txn=session.beginTransaction();
 		session.save(userApp);
 		txn.commit();
-		System.out.println("Inserting User App!!!!!!" + userApp);
-		
 		} catch (Exception e) { 
 		    System.out.println(e.getMessage());
 		} finally {
@@ -228,11 +213,9 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
         session = urlsessionFactory.openSession();
         txn = session.beginTransaction();
         UserApp   userApp = (UserApp) session.createCriteria(UserApp.class)
-                .add(Expression.idEq(userAppKey)).uniqueResult();
-        System.out.println("updateUserApp userApp from query --- " + userApp);
-        if(null!=userApp){
-            System.out.println("updating activecd in userapp "+userApp);
-        userApp.setActiveCd(activecd);
+                .add(Restrictions.idEq(userAppKey)).uniqueResult();
+       if(null!=userApp){
+         userApp.setActiveCd(activecd);
         session.update(userApp);
         }} catch (Exception e) {
             System.out.println(e.getMessage());

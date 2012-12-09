@@ -3,11 +3,8 @@ package com.aurora.quicklinks.beans;
 
 
 import java.io.Serializable;
-import com.aurora.quicklinks.beans.Application;
-import com.aurora.quicklinks.beans.UserApplication;
 
-public class MenuApp
-  implements Serializable
+public class MenuApp implements Serializable
 {
   private Application app;
   private UserApplication userApp;
