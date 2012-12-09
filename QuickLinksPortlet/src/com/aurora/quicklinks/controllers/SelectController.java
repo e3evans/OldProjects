@@ -23,7 +23,6 @@ import com.aurora.quicklinks.services.UrlService;
 
 @Controller
 @RequestMapping("VIEW")
-
 public class SelectController {
 	private static Log log = LogFactory.getLog(SelectController.class);
 	
