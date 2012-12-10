@@ -91,6 +91,8 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 
 		
 		StringBuffer sb = new StringBuffer();
+		if(!(list.isEmpty())){
+			
 		for (int i = 0; i < list.size(); i++) {
 			bean = new UserAppResponseBean();
 			UserApp temp = (UserApp) list.get(i);
@@ -103,6 +105,18 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 			listUserAppBean.add(bean);
 			// appList.add(temp);
 		}
+	}
+		else{
+			System.out.println("entering in to condition where list is empty");
+			bean = new UserAppResponseBean();
+			bean.setAppName("No quick links saved for this user click on this title to add");
+			bean.setAppUrl("http://porporit1.ahc.root.loc:10039/cgc/myportal/connect/Home/me");
+			bean.setAppId("123");
+			bean.setUserId("default");
+			listUserAppBean.add(bean);
+			
+		}
+			
 		session.close();
 		
 		return listUserAppBean;

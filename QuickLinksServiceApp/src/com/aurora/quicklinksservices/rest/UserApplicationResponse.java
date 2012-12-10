@@ -13,8 +13,8 @@ public class UserApplicationResponse {
 
 	private Collection<UserAppResponseBean> userAppList;
 	
-
 	
+
 	public Collection<UserAppResponseBean> getUserAppList() {
 		return userAppList;
 	}
