@@ -27,7 +27,7 @@ if(null!=request.getParameter("selected")){
 		<div class="acgc_relative">
 			<div style="display: none;" class="acgc_sort_by_holder">
 				<ul>
-				   <% if (selValue!=null && ("asc".equalsIgnoreCase(selValue))) { %>
+				   <% if ((null!=selValue)&& ("asc".equalsIgnoreCase(selValue))) { %>
 					<li>
 					<a href="#newest" title="Newest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
 						<input name="selected" onclick="document.sortChangeForm.submit()" value="asc"  type="radio" checked class="acgc_hidden"><strong>Newest First</strong>
@@ -40,7 +40,7 @@ if(null!=request.getParameter("selected")){
 						</a>
 					</li>
 					<%} 
-					if (selValue!=null && ("desc".equalsIgnoreCase(selValue))) { %>
+					if ((null!=selValue) && ("desc".equalsIgnoreCase(selValue))) { %>
 					<li>
 						
 						<a href="#oldest" title="Oldest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
@@ -132,7 +132,7 @@ try{
  	System.out.println("Exception in AllNews.jsp :"+ ex.getMessage());
    // out.println("Exception in AllNews.jsp :"+ ex.getMessage());
 
-}
+    }
 
 
 
@@ -140,10 +140,3 @@ try{
 %>
 
 
-<script type="text/javascript">
-function changeSort(order){
- document.getElementById("selected").value=order;
- document.forms["sortChangeForm"].submit();
-}
-
-</script>
