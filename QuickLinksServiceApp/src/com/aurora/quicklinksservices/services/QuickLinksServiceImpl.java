@@ -1,12 +1,14 @@
 package com.aurora.quicklinksservices.services;
 
 import java.util.List;
+import java.util.Random;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import com.aurora.quicklinksservices.beans.User;
 import com.aurora.quicklinksservices.beans.UserApp;
 import com.aurora.quicklinksservices.beans.UserAppKey;
 import com.aurora.quicklinksservices.beans.UserAppResponseBean;
@@ -30,14 +32,13 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
 	}
 	
 	
-	public List findUserAppsByUser(String userid){
-		Long userId = Long.parseLong(userid,10);
-		return quickLinksAPPDAO.findUserAppsByUser(userId);
+	public List findUserAppsByUser(Long userid){
+		return quickLinksAPPDAO.findUserAppsByUser(userid);
 	}
 	
-	public List findAllUserAppsByUser(String userid){
-		Long userId = Long.parseLong(userid,10);
-		return quickLinksAPPDAO.findAllUserAppsByUser(userId);
+	public List findAllUserAppsByUser(Long userid){
+		
+		return quickLinksAPPDAO.findAllUserAppsByUser(userid);
 	}
 	
 	
@@ -61,6 +62,24 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
 	    quickLinksAPPDAO.insertUserApp(userApp);
 	    
 	}
+	
+	public  void createUser(String loginId ) {
+		//Long userid = Long.parseLong(userId,10);
+		User user = new User();
+		long range = 1234567L;
+		Random r = new Random();
+		long userID = (long)(r.nextDouble()*range);
+		System.out.println("userID"+userID);
+		//long userID = random.nextLong();
+		user.setUserID(userID);
+		user.setPortalID("ICONNECT");
+		user.setLoginId(loginId);
+	    quickLinksAPPDAO.insertUser(user);
+	    
+	}
+	
+	
+	
 	@Override
 	public List retrieveAppMenuAutoList(String appId) {
 		return quickLinksAPPDAO.findAppMenuAutoList(appId);

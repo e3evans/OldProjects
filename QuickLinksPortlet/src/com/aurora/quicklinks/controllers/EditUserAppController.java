@@ -1,11 +1,13 @@
 package com.aurora.quicklinks.controllers;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
+import javax.portlet.PortletRequest;
 import javax.portlet.PortletSession;
 import javax.portlet.RenderRequest;
 import javax.portlet.ResourceResponse;
@@ -47,8 +49,9 @@ public class EditUserAppController {
 	}
 
 	@ModelAttribute("appFormBean")
-	public AppFormBean getCommandObject() {
-		String userid ="28355";
+	public AppFormBean getCommandObject(PortletRequest request) {
+		PortletSession session = request.getPortletSession();
+		String userid= (String) session.getAttribute("userId");
 		AppFormBean appFormBean = new AppFormBean();
 		try {
 			appFormBean.setListMenuApp(retrieveAvailMenuApps("EMP", userid));
@@ -74,8 +77,8 @@ public class EditUserAppController {
 			BindingResult bindingResult, ActionRequest request ,ActionResponse response,
 			SessionStatus sessionStatus) {
 		PortletSession session =request.getPortletSession();
+		String userid = (String) session.getAttribute("userId");
 		boolean update = false;
-		String userid = "28355";
 		UserApplication userApp = null;
 		List<Application> updateduserapp = new ArrayList<Application>();
 		System.out.println("Inside updateUrl action method");

@@ -2,6 +2,8 @@ package com.aurora.quicklinksservices.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +13,7 @@ public class User {
 
 	@Id
 	@Column(name = "PT2A_USERID",insertable = false, updatable = false)
+	
 	private Long userID;
 	@Column(name = "PT2A_PORTAL_ID")
 	private String portalID;
@@ -18,7 +21,15 @@ public class User {
 	private String lastName;
 	@Column(name = "PT2A_EMP_NO")
 	private String empNO;
+	@Column(name="PT2A_LOGIN_ID")
+	private String loginId;
 	
+	public String getLoginId() {
+		return loginId;
+	}
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
 	public String getEmpNO() {
 		return empNO;
 	}

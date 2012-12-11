@@ -29,7 +29,6 @@ public class AppServiceImpl implements AppService {
 	 * 
 	 */
 	public List<UserApplication> listUserAppByUserId(String userid) throws AppException {
-		System.out.println("getting user applist*********");
 		List<UserApplication> appList = null;
 		UserApplication app = null;
 		try {

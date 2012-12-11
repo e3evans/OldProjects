@@ -62,15 +62,16 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		Session session = urlsessionFactory.openSession();
 		session.beginTransaction();
 		Query query = session
-				.createQuery("from com.aurora.quicklinksservices.beans.User where userID="
-						+userid );
-		List list = query.list();
-		System.out.println("TEST -- > " + list.size());
+				.createQuery("from com.aurora.quicklinksservices.beans.User where loginId='"+userid+"'");
+		List<User> list = query.list();
 		List<User> appList = new ArrayList<User>();
 		StringBuffer sb = new StringBuffer();
+		if(null!=list){
+		System.out.println("TEST -- > " + list.size());
 		for (int i = 0; i < list.size(); i++) {
 			User temp = (User) list.get(i);
 			appList.add(temp);
+		}
 		}
 		session.close();
 		// System.out.println("result"+sb.toString());
@@ -85,13 +86,11 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		session.beginTransaction();
 		UserAppResponseBean bean = null;
 		List<UserAppResponseBean> listUserAppBean = new ArrayList<UserAppResponseBean>();
+		System.out.println("printing userid in findUserAppsByUser"+userid);
 		List list = session.createCriteria(UserApp.class)
 				.add(Restrictions.eq("userAppKey.userId", userid))
 				.add(Restrictions.eq("activeCd", "A")).list();
-
-		
-		StringBuffer sb = new StringBuffer();
-		if(!(list.isEmpty())){
+        if(!(list.isEmpty())){
 			
 		for (int i = 0; i < list.size(); i++) {
 			bean = new UserAppResponseBean();
@@ -107,7 +106,6 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		}
 	}
 		else{
-			System.out.println("entering in to condition where list is empty");
 			bean = new UserAppResponseBean();
 			bean.setAppName("No quick links saved for this user click on this title to add");
 			bean.setAppUrl("http://porporit1.ahc.root.loc:10039/cgc/myportal/connect/Home/me");
@@ -199,6 +197,30 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		}
 
 }
+	
+	
+	
+	public void insertUser(User user){
+		
+		Transaction txn = null;
+		Session session=null;
+		try {  
+		session = urlsessionFactory.openSession();
+		txn=session.beginTransaction();
+		session.save(user);
+		txn.commit();
+		} catch (Exception e) { 
+		    System.out.println(e.getMessage());
+		} finally {
+		    if (!txn.wasCommitted()) {
+		        txn.rollback();
+		    }
+
+		    session.flush();  
+		    session.close();   
+		}
+		
+	}
 
 	@Override
 	public List findAppMenuAutoList(String appId)

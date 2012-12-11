@@ -48,7 +48,7 @@ public class UserAppController {
 		Principal user=request.getUserPrincipal();
 		PortletSession session= request.getPortletSession();
 		session.setAttribute("userId", user.toString());
-		String userid = "28355";
+		String userid = user.toString();
 		
 		List<UserApplication> listUserApp = new ArrayList<UserApplication>();
 		try {

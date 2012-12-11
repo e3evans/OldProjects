@@ -19,8 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "S05DTDB.TPT2J_USER_APP")
-public class UserApp
-  implements Serializable
+public class UserApp implements Serializable
 {
    // public static final String ACTIVE = "A";
    // public static final String INACTIVE = "I";

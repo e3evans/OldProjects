@@ -62,9 +62,7 @@
    <c:forEach items="${appFormBean.listMenuApp}" var="appLst" varStatus="row">
  
     <c:set var="checked" value="${menuApp.alreadyRegistered}"/>
-     <c:set var="Count" value="${Count + 1}" scope="page" />
-    <div class="acgc_quicklinks_link_canvas acgc_relative">
-    
+     <div class="acgc_quicklinks_link_canvas acgc_relative">
         <c:choose>
         <c:when test="${appLst.alreadyRegistered}">
         <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked"/>

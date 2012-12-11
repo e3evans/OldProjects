@@ -38,30 +38,45 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 	}
 
 	@GET
-	@Path("/userresults")
-	public ApplicationResponse getUserDetails() {
+	@Path("/userresults/{loginId}")
+	public ApplicationResponse getUserDetails(@PathParam("loginId") String loginId) {
 		ApplicationResponse appResponse = new ApplicationResponse();
-		List<User> list = quickLinksService.retrieveUserDetails("test");
-		appResponse.setUserList(list);
+		List<User> list = quickLinksService.retrieveUserDetails("userId");
+	    appResponse.setUserList(list);
 		return appResponse;
 	}
 
 	@GET
-	@Path("/alluserapplist/{userId}")
+	@Path("/alluserapplist/{loginId}")
 	public UserApplicationResponse getAllUserAppDetails(
-			@PathParam("userId") String userId) {
+			@PathParam("loginId") String loginId) {
+		List<User> list = quickLinksService.retrieveUserDetails(loginId);
+		User user = new User();
+		Long userId= user.getUserID();
 		UserApplicationResponse userAppResponse = new UserApplicationResponse();
-		List<UserAppResponseBean> userAppList = quickLinksService
-				.findAllUserAppsByUser(userId);
+		List<UserAppResponseBean> userAppList = quickLinksService.findAllUserAppsByUser(userId);
 	    userAppResponse.setUserAppList(userAppList);
 		return userAppResponse;
 	}
 
 	@GET
-	@Path("/userapplist/{userId}")
+	@Path("/userapplist/{loginId}")
 	public UserApplicationResponse getUserAppDetails(
-			@PathParam("userId") String userId) {
-		UserApplicationResponse userAppResponse = new UserApplicationResponse();
+			@PathParam("loginId") String loginId) {
+		Long userId=null;
+		System.out.println("service"+quickLinksService);
+		List<User> list = quickLinksService.retrieveUserDetails(loginId);
+		if(null!=list && list.size()<1){
+			System.out.println("inserting user");
+			quickLinksService.createUser(loginId);
+			list = quickLinksService.retrieveUserDetails(loginId);
+			System.out.println("list!!!!1"+list);
+		}
+		for(User user : list){
+			 userId= user.getUserID();	
+		}
+		
+        UserApplicationResponse userAppResponse = new UserApplicationResponse();
 		List<UserAppResponseBean> userAppList = quickLinksService.findUserAppsByUser(userId);
 		userAppResponse.setUserAppList(userAppList);
 		return userAppResponse;
