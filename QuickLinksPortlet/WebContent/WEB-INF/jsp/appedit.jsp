@@ -54,26 +54,36 @@
 	
 
 
-<form:form  commandName="urlFormBean" method="post" name="editUrlForm" id="editUrlForm" action="${formAction}">
+<form:form  commandName="appFormBean" method="post" name="editUrlForm" id="editUrlForm" action="${formAction}">
 
     <div class="acgc_overlay_body" id="acgc_quicklinks_picker_canvas">
-    
+    <c:set var="Count" value="1" scope="page" /> 
 	
-   <c:forEach items="${urlFormBean.listUrlBean}" var="urlLst" varStatus="row">
-     
-    <div class="acgc_quicklinks_link_canvas acgc_relative">
-        <form:checkbox  path="listUrlBean[${row.index}].checked" id="listUrlBean[${row.index}].checked" />
-	    <form:hidden path="listUrlBean[${row.index}].appName" value="${urlLst.appName}" />
-	    <form:hidden path="listUrlBean[${row.index}].appDesc" value="${urlLst.appDesc}" />
-		<form:hidden path="listUrlBean[${row.index}].seqNo" value="${urlLst.seqNo}" />
-      	<form:hidden path="listUrlBean[${row.index}].appId" value="${urlLst.appId}" />
+   <c:forEach items="${appFormBean.listMenuApp}" var="appLst" varStatus="row">
+ 
+    <c:set var="checked" value="${menuApp.alreadyRegistered}"/>
+     <div class="acgc_quicklinks_link_canvas acgc_relative">
+        <c:choose>
+        <c:when test="${appLst.alreadyRegistered}">
+        <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked"/>
+        </c:when>
+        <c:otherwise>
+        <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listMenuApp[${row.index}].app.checked" />
+        </c:otherwise>
+        </c:choose>
+        
+	    <form:hidden path="listMenuApp[${row.index}].app.appName" value="${appLst.app.appName}" />
+	    <form:hidden path="listMenuApp[${row.index}].app.appDesc" value="${appLst.app.appDesc}" />
+		<form:hidden path="listMenuApp[${row.index}].app.seqNo" value="${appLst.app.seqNo}" />
+      	<form:hidden path="listMenuApp[${row.index}].app.appId" value="${appLst.app.appId}" />
 	<div class="acgc_quicklinks_link_body">
-	    <strong> <c:out value="${urlLst.appName}"/> </strong>
-	     <p><c:out value="${urlLst.appDesc}"/></p>
+	    <strong> <c:out value="${appLst.app.appName}"/> </strong>
+	     <p><c:out value="${appLst.app.appDesc}"/></p>
 	</div>
  
     </div>     	
    </c:forEach>   
+ 
    <div class="acgc_clear"><!-- clear --></div>	
    </div>
    

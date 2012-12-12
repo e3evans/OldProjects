@@ -19,12 +19,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "S05DTDB.TPT2J_USER_APP")
-public class UserApp
-  implements Serializable
+public class UserApp implements Serializable
 {
-  /*public static final String ACTIVE = "A";
-  public static final String INACTIVE = "I";
-  public static final Integer NOTDISPLAYED = new Integer(0);*/
+   // public static final String ACTIVE = "A";
+   // public static final String INACTIVE = "I";
+  public static final Integer NOTDISPLAYED = new Integer(0);
   private UserAppKey userAppKey;
   private App application;
   private Timestamp created;
@@ -144,6 +143,14 @@ public class UserApp
   public void setUser(User user) {
     this.user = user;
   }
+
+@Override
+public String toString() {
+	return "UserApp [userAppKey=" + userAppKey + ", application=" + application
+			+ ", created=" + created + ", lastAccess=" + lastAccess
+			+ ", dispSeq=" + dispSeq + ", activeCd=" + activeCd + ", user="
+			+ user + "]";
+}
 }
 
 
