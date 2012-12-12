@@ -87,11 +87,35 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		UserAppResponseBean bean = null;
 		List<UserAppResponseBean> listUserAppBean = new ArrayList<UserAppResponseBean>();
 		System.out.println("printing userid in findUserAppsByUser"+userid);
+		StringBuffer sql = new StringBuffer();
+	    sql.append("SELECT {app.*} ");
+	    sql.append("FROM S05DTDB.tpt2b_application app ");
+	    sql.append("WHERE pt2b_appid = ? ");
+	    sql.append("AND pt2b_seq_no > 0 ");
+	    sql.append("AND pt2b_no_login_acc = 'D' ");
+        sql.append("AND pt2b_login_acc NOT IN ('E','N') ");
+        sql.append("AND pt2b_active_cd = 'A' ");
+	    sql.append("ORDER BY pt2b_seq_no ");
+	    List<App> defaultapplist =  session.createSQLQuery(sql.toString()).addEntity("app", App.class).setString(0, "ICONNECT").list();
+
+         if(null!=defaultapplist&&!(defaultapplist.isEmpty())){
+	     for(App app : defaultapplist){
+		 bean = new UserAppResponseBean();
+		 bean.setAppId(app.getAppKey().getAppId());
+		 bean.setAppName(app.getAppName().trim());
+		 bean.setAppUrl(app.getAppURL().trim());
+	     bean.setActiveCd(app.getActiveCd());
+		 bean.setSeqNo(app.getAppKey().getSeqNo().toString());
+		 bean.setUserId(userid + "");
+	     listUserAppBean.add(bean);
+	}
+}
+
+		 
 		List list = session.createCriteria(UserApp.class)
 				.add(Restrictions.eq("userAppKey.userId", userid))
 				.add(Restrictions.eq("activeCd", "A")).list();
-        if(!(list.isEmpty())){
-			
+        
 		for (int i = 0; i < list.size(); i++) {
 			bean = new UserAppResponseBean();
 			UserApp temp = (UserApp) list.get(i);
@@ -104,16 +128,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 			listUserAppBean.add(bean);
 			// appList.add(temp);
 		}
-	}
-		else{
-			bean = new UserAppResponseBean();
-			bean.setAppName("No quick links saved for this user click on this title to add");
-			bean.setAppUrl("http://porporit1.ahc.root.loc:10039/cgc/myportal/connect/Home/me");
-			bean.setAppId("123");
-			bean.setUserId("default");
-			listUserAppBean.add(bean);
-			
-		}
+	
 			
 		session.close();
 		
@@ -199,28 +214,6 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 }
 	
 	
-	
-	public void insertUser(User user){
-		
-		Transaction txn = null;
-		Session session=null;
-		try {  
-		session = urlsessionFactory.openSession();
-		txn=session.beginTransaction();
-		session.save(user);
-		txn.commit();
-		} catch (Exception e) { 
-		    System.out.println(e.getMessage());
-		} finally {
-		    if (!txn.wasCommitted()) {
-		        txn.rollback();
-		    }
-
-		    session.flush();  
-		    session.close();   
-		}
-		
-	}
 
 	@Override
 	public List findAppMenuAutoList(String appId)
@@ -253,6 +246,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
        if(null!=userApp){
          userApp.setActiveCd(activecd);
         session.update(userApp);
+        txn.commit();
         }} catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {

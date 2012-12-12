@@ -32,6 +32,19 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
 	}
 	
 	
+	
+	
+	@Override
+	public Long retrieveUserId(String loginid) {
+		Long userid=null;
+		List<User> list= quickLinksAPPDAO.findUserDetails(loginid);
+		if(!(list.isEmpty())){
+			userid = list.get(0).getUserID();
+		}
+		return userid;
+	}
+	
+	
 	public List findUserAppsByUser(Long userid){
 		return quickLinksAPPDAO.findUserAppsByUser(userid);
 	}
@@ -44,17 +57,17 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
 	
 	
 	@Override
-	public  UserAppResponseBean retrieveUserApp(String appId, String seqNo, String userId) {
-		Long userid = Long.parseLong(userId,10);
-		return quickLinksAPPDAO.readUserApp(new UserAppKey(userid, appId,new Integer(seqNo)));
+	public  UserAppResponseBean retrieveUserApp(String appId, String seqNo, Long userId) {
+		//Long userid = Long.parseLong(userId,10);
+		return quickLinksAPPDAO.readUserApp(new UserAppKey(userId, appId,new Integer(seqNo)));
 	
 	}
 	
 	@Override
-	public  void createUserApp(String userId, String appId, String seqNo) {
-		Long userid = Long.parseLong(userId,10);
+	public  void createUserApp(Long userId, String appId, String seqNo) {
+		//Long userid = Long.parseLong(userId,10);
 		UserApp userApp = new UserApp();
-	    userApp.setUserAppKey(new UserAppKey(userid, appId, new Integer(seqNo)));
+	    userApp.setUserAppKey(new UserAppKey(userId, appId, new Integer(seqNo)));
 	    userApp.setCreated(QuickLinksUtility.getCurrentTime());
 	    userApp.setLastAccess(userApp.getCreated());
 	    userApp.setDispSeq(QuickLinksUtility.NOTDISPLAYED);
@@ -63,20 +76,7 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
 	    
 	}
 	
-	public  void createUser(String loginId ) {
-		//Long userid = Long.parseLong(userId,10);
-		User user = new User();
-		long range = 1234567L;
-		Random r = new Random();
-		long userID = (long)(r.nextDouble()*range);
-		System.out.println("userID"+userID);
-		//long userID = random.nextLong();
-		user.setUserID(userID);
-		user.setPortalID("ICONNECT");
-		user.setLoginId(loginId);
-	    quickLinksAPPDAO.insertUser(user);
-	    
-	}
+	
 	
 	
 	
@@ -86,9 +86,9 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
 	}
 	
 	
-	public void updateUserApp(String userId, String appId, String seqNo,String activecd){
-        Long userid = Long.parseLong(userId,10);
-        quickLinksAPPDAO.updateUserApp(new UserAppKey(userid, appId,new Integer(seqNo)),activecd);
+	public void updateUserApp(Long userId, String appId, String seqNo,String activecd){
+        //Long userid = Long.parseLong(userId,10);
+        quickLinksAPPDAO.updateUserApp(new UserAppKey(userId, appId,new Integer(seqNo)),activecd);
        
 	
 }

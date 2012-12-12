@@ -52,6 +52,7 @@ public class UserAppController {
 		
 		List<UserApplication> listUserApp = new ArrayList<UserApplication>();
 		try {
+			System.out.println("printing useridin  UserAppController "+userid);
 			listUserApp = appService.listUserAppByUserId(userid);
 		} catch (AppException ae) {
 			System.out.println(ae.getExceptionDesc());

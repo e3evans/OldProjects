@@ -90,10 +90,10 @@ public class AppServiceImpl implements AppService {
 		try {
 			appList = new ArrayList<UserApplication>();
 			String requestPath = ResourceUtil.getAlluserapplisturl()+userid;
-			 System.out.println("webservice call starts with request path "+requestPath);
+			
 			JSONObject userAppJSON = new JSONObject(
 					serviceInterfaceDelegate.processGetRestRequest(requestPath));
-			 System.out.println("webservice call ends with request path "+requestPath);
+			
 			JSONArray jsonArray = userAppJSON.getJSONArray("userAppList");
 			for (int i = 0; i < jsonArray.length(); i++) {
 				app = new UserApplication();

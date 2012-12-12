@@ -54,6 +54,7 @@ public class EditUserAppController {
 		String userid= (String) session.getAttribute("userId");
 		AppFormBean appFormBean = new AppFormBean();
 		try {
+			System.out.println("printing userid in EditUserAppController"+userid);
 			appFormBean.setListMenuApp(retrieveAvailMenuApps("EMP", userid));
 		} catch (AppException ae) {
 			System.out.println(ae.getExceptionDesc());
@@ -81,7 +82,7 @@ public class EditUserAppController {
 		boolean update = false;
 		UserApplication userApp = null;
 		List<Application> updateduserapp = new ArrayList<Application>();
-		System.out.println("Inside updateUrl action method");
+		System.out.println("Inside updateUrl action method user="+userid);
 		try {
 			List<UserApplication> listUserApp = appService
 					.listAllUserAppByUserId(userid);
