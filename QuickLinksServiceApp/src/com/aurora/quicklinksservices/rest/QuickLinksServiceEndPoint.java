@@ -41,6 +41,7 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 	@GET
 	@Path("/userresults/{loginId}")
 	public ApplicationResponse getUserDetails(@PathParam("loginId") String loginId) {
+		
 		ApplicationResponse appResponse = new ApplicationResponse();
 		List<User> list = quickLinksService.retrieveUserDetails(loginId);
 	    appResponse.setUserList(list);

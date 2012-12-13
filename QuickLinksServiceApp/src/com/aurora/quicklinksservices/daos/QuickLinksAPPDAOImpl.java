@@ -29,6 +29,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	/* getting Available quicklinks list based on user role */
 
 	public List findAvailAppListByRole(String roleCd) {
+		String rolecd="EMP";
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT {app.*} ");
 		sql.append("FROM S05DTDB.tpt2b_application app, S05DTDB.tpt2b_application parent, ");
@@ -37,15 +38,14 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		sql.append("AND app.pt2b_seq_no = approle.pt2e_seq_no ");
 		sql.append("AND app.pt2b_appid = parent.pt2b_appid ");
 		sql.append("AND parent.pt2b_seq_no = 0 ");
-		sql.append("AND approle.pt2e_role_cd = ? ");
+		sql.append("AND approle.pt2e_role_cd ='"+rolecd+"'");
 		sql.append("AND app.pt2b_login_acc NOT IN ('E','N') ");
 		sql.append("AND app.pt2b_active_cd = 'A' ");
 		sql.append("AND parent.pt2b_active_cd = 'A' ");
 		sql.append("ORDER BY parent.pt2b_app_name, app.pt2b_seq_no ");
 		Session session = urlsessionFactory.openSession();
 		List list = session.createSQLQuery(sql.toString())
-				.addEntity("app", "com.aurora.quicklinksservices.beans.App")
-				.setString(0, "EMP").list();
+				.addEntity("app", "com.aurora.quicklinksservices.beans.App").list();
 		session.close();
 		return list;
 

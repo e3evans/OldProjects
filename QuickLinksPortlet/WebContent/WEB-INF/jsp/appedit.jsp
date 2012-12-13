@@ -32,11 +32,7 @@
 						<span id="acgc_quicklinks_picker_show_selected_label">Show My Selected:</span>
 						&nbsp;
 						<span id="acgc_quicklinks_show_sites_trigger">
-							<input type="checkbox" name="acgc_show_sites" value="on" /> Sites
-						</span>
-						&nbsp;
-						<span id="acgc_quicklinks_show_apps_trigger">
-							<input type="checkbox" name="acgc_show_apps" value="on" /> Apps
+							<input type="checkbox" name="acgc_show_sites" value="on" /> Sites &amp; Apps
 						</span>
 					</div>
 					<div class="acgc_searchblock acgc_radius_5">
@@ -62,7 +58,14 @@
    <c:forEach items="${appFormBean.listMenuApp}" var="appLst" varStatus="row">
  
     <c:set var="checked" value="${menuApp.alreadyRegistered}"/>
-     <div class="acgc_quicklinks_link_canvas acgc_relative">
+    <c:choose>
+    	<c:when test="${appLst.alreadyRegistered}">
+    	 	<div class="acgc_quicklinks_link_canvas acgc_relative site selected">
+    	</c:when>
+    	<c:otherwise>
+    		<div class="acgc_quicklinks_link_canvas acgc_relative site">
+    	</c:otherwise>
+    </c:choose>
         <c:choose>
         <c:when test="${appLst.alreadyRegistered}">
         <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked"/>
