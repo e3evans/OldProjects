@@ -5,8 +5,7 @@ public class Application {
 	private String appDesc;
     private String seqNo;
     private String appId;
-   
-	private String appURL;
+    private String appURL;
     private boolean checked;
     private String loggedInAccess;
 

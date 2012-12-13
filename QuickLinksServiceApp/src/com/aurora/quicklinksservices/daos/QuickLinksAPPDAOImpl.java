@@ -54,7 +54,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	/* Service for getting user details */
 
 	@Override
-	public List findUserDetails(String userid) {
+	public List findUserDetails(String loginid) {
 		// TODO Auto-generated method stub
 		//Long userId=43l;
 		
@@ -62,7 +62,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		Session session = urlsessionFactory.openSession();
 		session.beginTransaction();
 		Query query = session
-				.createQuery("from com.aurora.quicklinksservices.beans.User where loginId='"+userid+"'");
+				.createQuery("from com.aurora.quicklinksservices.beans.User where loginId='"+loginid+"'");
 		List<User> list = query.list();
 		List<User> appList = new ArrayList<User>();
 		StringBuffer sb = new StringBuffer();
@@ -82,6 +82,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 
 	public List findUserAppsByUser(Long userid) {
 		//userid = 43l;
+		String appid="ICONNECT";
 		Session session = urlsessionFactory.openSession();
 		session.beginTransaction();
 		UserAppResponseBean bean = null;
@@ -90,13 +91,13 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		StringBuffer sql = new StringBuffer();
 	    sql.append("SELECT {app.*} ");
 	    sql.append("FROM S05DTDB.tpt2b_application app ");
-	    sql.append("WHERE pt2b_appid = ? ");
+	    sql.append("WHERE pt2b_appid = '"+appid+"'");
 	    sql.append("AND pt2b_seq_no > 0 ");
 	    sql.append("AND pt2b_no_login_acc = 'D' ");
         sql.append("AND pt2b_login_acc NOT IN ('E','N') ");
         sql.append("AND pt2b_active_cd = 'A' ");
 	    sql.append("ORDER BY pt2b_seq_no ");
-	    List<App> defaultapplist =  session.createSQLQuery(sql.toString()).addEntity("app", App.class).setString(0, "ICONNECT").list();
+	    List<App> defaultapplist =  session.createSQLQuery(sql.toString()).addEntity("app", App.class).list();
 
          if(null!=defaultapplist&&!(defaultapplist.isEmpty())){
 	     for(App app : defaultapplist){
@@ -222,7 +223,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	     StringBuffer sql = new StringBuffer();
          sql.append("SELECT {app.*} ");
 	     sql.append("FROM S05DTDB.tpt2b_application app ");
-	     sql.append("WHERE pt2b_appid = ? ");
+	     sql.append("WHERE pt2b_appid ='"+appId+"'");
 	     sql.append("AND pt2b_auto_reg = 'Y' ");
 	     sql.append("AND pt2b_login_acc NOT IN ('E','N') ");
 	     sql.append("AND pt2b_active_cd = 'A' ");

@@ -57,23 +57,23 @@ public class QuickLinksRedirectController  {
     	String firstName="";
     	String lastName="";
     	String portalID="";
-    	String userID=request.getParameter("userid");
+    	String LoginId=request.getParameter("userId");
     	String url=request.getParameter("url");
     	String empNo="";
     	Long portalKey;
     	String portalkeys="";
     	String ip=request.getRemoteAddr();
     	System.out.println("url printing"+url);
-    	System.out.println("userid"+userID);
+    	System.out.println("userid"+LoginId);
     	
 		
-    	List<User> list = quickLinksService.retrieveUserDetails("48067");
+    	List<User> list = quickLinksService.retrieveUserDetails("000282");
     	for(User user : list){
     		
     		firstName=user.getFirstName();
     		lastName=user.getLastName();
     		portalID=user.getPortalID();
-    		empNo=user.getEmpNO();
+    		empNo="000282";
     		portalKey=user.getUserID();
     		portalkeys=Long.toString(portalKey);
     		System.out.println("printing ip"+ip);

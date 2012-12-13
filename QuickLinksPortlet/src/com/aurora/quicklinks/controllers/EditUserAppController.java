@@ -94,6 +94,8 @@ public class EditUserAppController {
 				Application bean = menuapp.getApp();
 				String appId = bean.getAppId().trim();
 				String seqNo = bean.getSeqNo().trim();
+				System.out.println("printing appId in edituserappcontroller"+appId);
+				System.out.println("printing seqno in edituserappcontroller"+seqNo);
 
 				if (appId != null && seqNo != null) {
 

@@ -8,7 +8,7 @@ import com.aurora.quicklinksservices.beans.UserAppResponseBean;
 public interface QuickLinksService {
 	
 	public List retrieveAvailAppListByRole(String roleCd);
-	public List retrieveUserDetails(String userid);
+	public List retrieveUserDetails(String loginid);
 	public List findUserAppsByUser(Long userid);
 	public UserAppResponseBean retrieveUserApp(String appId,String seqNo,Long userId);
 	public void createUserApp(Long userid, String appId, String seqNo);
