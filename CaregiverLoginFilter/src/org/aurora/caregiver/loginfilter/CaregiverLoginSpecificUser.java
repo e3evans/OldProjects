@@ -17,7 +17,7 @@ import com.ibm.portal.security.exceptions.SecurityFilterInitException;
 import com.ibm.websphere.security.WSSecurityException;
 
 
-public class CaregiverImplicitLoginFilter implements ExplicitLoginFilter{
+public class CaregiverLoginSpecificUser implements ExplicitLoginFilter{
 
 	@Override
 	public void destroy() {
@@ -42,10 +42,13 @@ public class CaregiverImplicitLoginFilter implements ExplicitLoginFilter{
 			com.ibm.portal.auth.exceptions.LoginException {
 		
 		String host=request.getRemoteHost();
-		
-		chain.login(request, response, userID,password , portalContext, subj, realm);
-		
+		System.out.println("HOST:  "+request.getRemoteHost());
 		String targetURL= portalContext.getRedirectURL();
+		System.out.println("TARGET URL:  "+targetURL);
+		if (host.equals("192.168.1.87")){
+			chain.login(request, response, "waslocal","waslocal".toCharArray() , portalContext, subj, realm);
+		}
+		
 		
 		
 		// TODO Auto-generated method stub
