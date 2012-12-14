@@ -38,8 +38,13 @@ public class CaregiverLoginNoUser implements ImplicitLoginFilter {
 			AuthenticationException, SystemLoginException,
 			com.ibm.portal.auth.exceptions.LoginException {
 		// TODO Auto-generated method stub
+		String host=request.getRemoteHost();
+		System.out.println("HOST:  "+host);
+		if (host.equals("10.46.9.19")){
+			System.out.println("EXECUTING Implicity Login!!");
+			chain.login(request, response, chainContext, "waslocal");
+		}
 		
-		chain.login(request, response, chainContext, arg3);
 		
 
 	}
