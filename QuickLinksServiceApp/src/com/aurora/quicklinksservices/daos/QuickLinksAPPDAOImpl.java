@@ -28,7 +28,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 
 	/* getting Available quicklinks list based on user role */
 
-	public List findAvailAppListByRole(String roleCd) {
+	public List<App> findAvailAppListByRole(String roleCd) {
 		String rolecd="EMP";
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT {app.*} ");
@@ -44,7 +44,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		sql.append("AND parent.pt2b_active_cd = 'A' ");
 		sql.append("ORDER BY parent.pt2b_app_name, app.pt2b_seq_no ");
 		Session session = urlsessionFactory.openSession();
-		List list = session.createSQLQuery(sql.toString())
+		List<App> list = session.createSQLQuery(sql.toString())
 				.addEntity("app", "com.aurora.quicklinksservices.beans.App").list();
 		session.close();
 		return list;
@@ -54,7 +54,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	/* Service for getting user details */
 
 	@Override
-	public List findUserDetails(String loginid) {
+	public List<User> findUserDetails(String loginid) {
 		// TODO Auto-generated method stub
 		//Long userId=43l;
 		
@@ -80,14 +80,13 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 
 	/* Service for getting user saved quick links */
 
-	public List findUserAppsByUser(Long userid) {
+	public List<UserAppResponseBean> findUserAppsByUser(Long userid) {
 		//userid = 43l;
 		String appid="ICONNECT";
 		Session session = urlsessionFactory.openSession();
 		session.beginTransaction();
 		UserAppResponseBean bean = null;
 		List<UserAppResponseBean> listUserAppBean = new ArrayList<UserAppResponseBean>();
-		System.out.println("printing userid in findUserAppsByUser"+userid);
 		StringBuffer sql = new StringBuffer();
 	    sql.append("SELECT {app.*} ");
 	    sql.append("FROM S05DTDB.tpt2b_application app ");
@@ -138,7 +137,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	}
 
 	
-	public List findAllUserAppsByUser(Long userid) {
+	public List<UserAppResponseBean> findAllUserAppsByUser(Long userid) {
 		Session session = urlsessionFactory.openSession();
 		session.beginTransaction();
 		UserAppResponseBean bean = null;
@@ -217,7 +216,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	
 
 	@Override
-	public List findAppMenuAutoList(String appId)
+	public List<App> findAppMenuAutoList(String appId)
 	  {
 	    
 	     StringBuffer sql = new StringBuffer();
@@ -230,7 +229,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	     sql.append("AND pt2b_seq_no > 0 ");
 	     sql.append("ORDER BY pt2b_seq_no ");
 	     Session session = urlsessionFactory.openSession();
-	     List list = session.createSQLQuery(sql.toString()).addEntity("app", App.class).setString(0, appId).list();
+	     List<App> list = session.createSQLQuery(sql.toString()).addEntity("app", App.class).list();
 	     session.close();
 	     return list;
 	   }

@@ -11,7 +11,7 @@
 	function loadQuicklinksEditOverlay(){
 
 		// make ajax call to retrieve upcoming page
-        $.get("<portlet:resourceURL id='quicklinksEditList'/>", {
+        $.get("<portlet:resourceURL id='quicklinksEditList'/>?param=resource", {
 
         }).success(function(data) {
    

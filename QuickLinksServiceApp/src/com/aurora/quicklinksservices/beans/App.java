@@ -1,3 +1,4 @@
+
 package com.aurora.quicklinksservices.beans;
 
 import java.io.Serializable;
@@ -23,7 +24,8 @@ public class App
 	 * 
 	 */
 	private static final long serialVersionUID = 1183612050348742148L;
-	/* public static final String ACTIVE = "A";
+	/*
+	 * public static final String ACTIVE = "A";
     public static final String INACTIVE = "I";
     public static final String BOTH = "B";
     public static final String NO_NON_EMPLOYEES = "N";
