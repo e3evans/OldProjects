@@ -4,7 +4,7 @@
   <xsl:template match="/">
 		<gsafeed>
 		  <header>
-			  <datatsource>caregiver_wcm</datatsource>
+			  <datasource>caregiver_wcm</datasource>
 			  <feedtype>metadata-and-url</feedtype>
 		  </header>
 			<group>
@@ -16,10 +16,10 @@
   <xsl:template match="atom:entry">
 	  <record action="add" mimetype="text/html">
 		  <xsl:attribute name="displayurl">
-			  <xsl:for-each select="atom:link">http://portal-devcg.aurora.org<xsl:value-of select="@href"/></xsl:for-each>
+			  <xsl:for-each select="atom:link">http://porporit1.ahc.root.loc:10039<xsl:value-of select="@href"/></xsl:for-each>
 		  </xsl:attribute>
 		  <xsl:attribute name="url">
-			  <xsl:for-each select="atom:content">http://portal-devcg.aurora.org<xsl:value-of select="@src"/></xsl:for-each>
+			  <xsl:for-each select="atom:content">http://porporit1.ahc.root.loc:10039<xsl:value-of select="@src"/></xsl:for-each>
 		  </xsl:attribute>
 		  <metadata>
 		  <meta name="wplc:securityId">

@@ -28,20 +28,40 @@ import com.aurora.seedlistservice.remoterestclient.SeedListClient;
 public class SeedListService {
 	
 	private static final String XSL_ATOMFEED = "xsl/seedlist.xsl";
+	private static final String XSL_CLEANFEED = "xsl/cleanup.xsl";
 	
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
-	@Path("/google")
+	@Path("/googlefeed")
 	public String getSeedList(@Context HttpServletRequest request,@Context HttpServletResponse response){
+
+		return getSeedListXSL(XSL_ATOMFEED).toString();
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_XML)
+	@Path("/googlecleanup")
+	public String getSeedListCleanup(){
+		return getSeedListXSL(XSL_CLEANFEED).toString();
+	}
+	
+	
+	
+	private StreamSource getXSLStyesheetStream(String feedPath){
+		ClassLoader cl = this.getClass().getClassLoader();
+		InputStream in = cl.getResourceAsStream(feedPath);
+		return new StreamSource(in);
+	}
+	
+	private StringWriter getSeedListXSL(String xslStylesheet){
 		StringWriter writer = new StringWriter();
 		try {
 			Source xmlSource = new StreamSource(new StringReader(SeedListClient.getInstance().getSeedListFeed()));
-			Source xsltSource = getXSLStyesheetStream(XSL_ATOMFEED);
+			Source xsltSource = getXSLStyesheetStream(xslStylesheet);
 			Result result = new StreamResult(writer);
 			
 			TransformerFactory tf = TransformerFactory.newInstance();
 			Transformer transformer = tf.newTransformer(xsltSource);
-			System.out.println("XSLT SOURCE:"+xsltSource);
 			transformer.transform(xmlSource, result);
 			
 		} catch (TransformerConfigurationException e) {
@@ -51,17 +71,7 @@ public class SeedListService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		return writer.toString();
-	}
-
-	
-	
-	private StreamSource getXSLStyesheetStream(String feedPath){
-		ClassLoader cl = this.getClass().getClassLoader();
-		InputStream in = cl.getResourceAsStream(feedPath);
-		return new StreamSource(in);
+		return writer;
 	}
 
 }

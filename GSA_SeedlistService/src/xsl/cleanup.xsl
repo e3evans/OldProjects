@@ -7,37 +7,20 @@
 			  <datasource>caregiver_wcm</datasource>
 			  <feedtype>metadata-and-url</feedtype>
 		  </header>
-			<group>
+			<group action="delete">
 				<xsl:apply-templates select="atom:feed/atom:entry" />
 			</group>
       </gsafeed>
   </xsl:template>
 
   <xsl:template match="atom:entry">
-	  <record action="add" mimetype="text/html">
+	  <record action="delete" mimetype="text/html">
 		  <xsl:attribute name="displayurl">
-			  <xsl:for-each select="atom:link">http://porporit1.ahc.root.loc:10039<xsl:value-of select="@href"/></xsl:for-each>
+			  <xsl:for-each select="atom:link">http://portal-devcg.aurora.org<xsl:value-of select="@href"/></xsl:for-each>
 		  </xsl:attribute>
 		  <xsl:attribute name="url">
-			  <xsl:for-each select="atom:content">http://porporit1.ahc.root.loc:10039<xsl:value-of select="@src"/></xsl:for-each>
-		  </xsl:attribute>
-		  <metadata>
-		  <meta name="wplc:securityId">
-			  <xsl:attribute name="content">
-					<xsl:value-of select="wplc:securityId"/>
-			  </xsl:attribute>
-		  </meta>
-		  <xsl:for-each select="wplc:field">
-			  <meta>
-					<xsl:attribute name="name">
-						<xsl:value-of select="@id"/>
-					</xsl:attribute>
-					<xsl:attribute name="content">
-						<xsl:value-of select="."/>
-					</xsl:attribute>
-			  </meta>
-		  </xsl:for-each>
-		  </metadata>	  
+			  <xsl:for-each select="atom:content">http://portal-devcg.aurora.org<xsl:value-of select="@src"/></xsl:for-each>
+		  </xsl:attribute>	  
 		</record>
   </xsl:template>
 </xsl:stylesheet>
