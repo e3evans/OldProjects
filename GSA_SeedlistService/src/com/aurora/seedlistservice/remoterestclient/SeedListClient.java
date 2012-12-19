@@ -8,12 +8,15 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
 
+import config.ConfigManager;
+
 
 
 public class SeedListClient {
 	
 	private static SeedListClient instance;
 	private static String ENV_USERPASSWORD="com.aurora.seedlist.userpassword";
+	private static final String CONFIG_SERVICELOCAITON = "ibm.seedlist.url";
 	
 	static{
 		instance = new SeedListClient();
@@ -36,28 +39,15 @@ public class SeedListClient {
 		return sb.toString();
 		
 	}
-
-	public String getContentItem(String contentURL){
-		String[] userPassword = System.getProperty(ENV_USERPASSWORD).split(":");
-		BasicAuthClient bac = new BasicAuthClient();
-		bac.setUsernamePassword(userPassword[0], userPassword[1]);
-		StringBuffer sb = new StringBuffer();
-		sb.append(bac.getTestResult());
-		return sb.toString();
-	}
-	
 	
 	static class BasicAuthClient{
 		private WebResource webResource;
 		private Client client;
-		private static final String seedListURI = "http://porporit1.ahc.root.loc:10039/seedlist/myserver?SeedlistId=CaregiverContentLibrary_en/Caregiver&Source=com.ibm.workplace.wcm.plugins.seedlist.retriever.WCMRetrieverFactory&Action=GetDocuments";		
-		private static final String testingURL = "http://porporit1.ahc.root.loc:10039/cgc/wcm/connect/CaregiverContentLibrary_en/Caregiver/Default_Contents/New_Default_content?CACHE=NONE";
-		
-		
+//		private static final String seedListURI = "http://porporit1.ahc.root.loc:10039/seedlist/myserver?SeedlistId=CaregiverContentLibrary_en/Caregiver&Source=com.ibm.workplace.wcm.plugins.seedlist.retriever.WCMRetrieverFactory&Action=GetDocuments";		
+		private static final String seedListURI = ConfigManager.getInstance().getString(CONFIG_SERVICELOCAITON);
 		public BasicAuthClient(){
 			ClientConfig config = new DefaultClientConfig();
 			client = Client.create(config);
-//			client.addFilter(new LoggingFilter());
 			webResource = client.resource(seedListURI);
 		}
 		
@@ -68,13 +58,6 @@ public class SeedListClient {
 			WebResource resource = webResource;
 			return resource.accept(MediaType.APPLICATION_ATOM_XML).get(String.class);
 		}
-		
-		public String getTestResult(){
-			WebResource resource = client.resource(testingURL);
-			client.setFollowRedirects(false);
-			return resource.accept(MediaType.TEXT_HTML).get(String.class);
-		}
-		
 		
 		public void close(){
 			client.destroy();

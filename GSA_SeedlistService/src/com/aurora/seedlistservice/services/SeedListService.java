@@ -1,13 +1,19 @@
 package com.aurora.seedlistservice.services;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.io.Writer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -22,6 +28,8 @@ import javax.xml.transform.stream.StreamSource;
 
 import com.aurora.seedlistservice.remoterestclient.SeedListClient;
 
+import config.ConfigManager;
+
 
 @Path("/seedListService")
 @Produces(MediaType.TEXT_HTML)
@@ -29,12 +37,14 @@ public class SeedListService {
 	
 	private static final String XSL_ATOMFEED = "xsl/seedlist.xsl";
 	private static final String XSL_CLEANFEED = "xsl/cleanup.xsl";
-	
+	private static final String ACTION_FEEDLIST = "feedlist";
+	private static final String ACTION_CLEANLIST = "cleanlist";
+	private static final String CONFIG_FILELOCATION = "google.xml.location";
+			
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
 	@Path("/googlefeed")
 	public String getSeedList(@Context HttpServletRequest request,@Context HttpServletResponse response){
-
 		return getSeedListXSL(XSL_ATOMFEED).toString();
 	}
 
@@ -45,7 +55,19 @@ public class SeedListService {
 		return getSeedListXSL(XSL_CLEANFEED).toString();
 	}
 	
-	
+	@GET
+	@Path("/googlefile/{fileaction}")
+	public void saveGoogleFeedtoFile(@PathParam("fileaction")String fileaction){
+		System.out.println("HERE!!!");
+		String xml = "";
+		if (ACTION_CLEANLIST.equals(fileaction)){
+			xml = getSeedListXSL(XSL_CLEANFEED).toString();
+		}else if (ACTION_FEEDLIST.equals(fileaction)){
+			xml = getSeedListXSL(XSL_ATOMFEED).toString();
+		}
+		if (!xml.equals(""))writeXMLtoFile(ConfigManager.getInstance().getString(CONFIG_FILELOCATION), xml);
+		
+	}
 	
 	private StreamSource getXSLStyesheetStream(String feedPath){
 		ClassLoader cl = this.getClass().getClassLoader();
@@ -73,5 +95,27 @@ public class SeedListService {
 		}
 		return writer;
 	}
+	
+	private void writeXMLtoFile(String fileLocation,String xml){
+		Writer writer = null;
+		File xmlFile = new File(fileLocation);
+		try {
+			writer = new BufferedWriter(new FileWriter(xmlFile));
+			writer.write(xml);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			if (writer!=null)
+				try {
+					writer.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+		
+	}
+	
 
 }
