@@ -79,8 +79,9 @@
 	    <form:hidden path="listMenuApp[${row.index}].app.appDesc" value="${appLst.app.appDesc}" />
 		<form:hidden path="listMenuApp[${row.index}].app.seqNo" value="${appLst.app.seqNo}" />
       	<form:hidden path="listMenuApp[${row.index}].app.appId" value="${appLst.app.appId}" />
+      	
 	<div class="acgc_quicklinks_link_body">
-	    <strong> <c:out value="${appLst.app.appName}"/> </strong>
+	    <strong> <c:out value="${appLst.app.appName}"/> </strong>  
 	     <p><c:out value="${appLst.app.appDesc}"/></p>
 	</div>
  

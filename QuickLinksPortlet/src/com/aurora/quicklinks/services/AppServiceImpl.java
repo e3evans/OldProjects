@@ -47,6 +47,9 @@ public class AppServiceImpl implements AppService {
 				app.setSeqNo(jsonobj.get("seqNo").toString());
 				app.setAppId(jsonobj.get("appId").toString());
 				app.setActiveCd((jsonobj.get("activeCd").toString()).trim());
+				if(jsonobj.get("flagDefault")!=null){
+			    app.setFlagDefault((jsonobj.get("flagDefault").toString()).trim());
+				}
 				appList.add(app);
 			}
 
@@ -84,7 +87,6 @@ public class AppServiceImpl implements AppService {
 	 * 
 	 */
 	public List<UserApplication> listAllUserAppByUserId(String userid) throws AppException {
-		System.out.println("getting user applist*********");
 		List<UserApplication> appList = null;
 		UserApplication app = null;
 		try {
@@ -104,6 +106,9 @@ public class AppServiceImpl implements AppService {
 				app.setSeqNo(jsonobj.get("seqNo").toString());
 				app.setAppId(jsonobj.get("appId").toString());
 				app.setActiveCd((jsonobj.get("activeCd").toString()).trim());
+				if(jsonobj.get("flagDefault")!=null){
+				app.setFlagDefault((jsonobj.get("flagDefault").toString()).trim());
+				}
 				appList.add(app);
 			}
 

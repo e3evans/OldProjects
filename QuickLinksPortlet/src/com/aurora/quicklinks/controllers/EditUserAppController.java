@@ -107,6 +107,7 @@ public class EditUserAppController {
 			}
 
 			for (UserApplication userApp2 : listUserApp) {
+				
 				boolean isInActive = true;
 				boolean toggleActive = false;
 				for (Application app2 : updateduserapp) {
@@ -119,7 +120,7 @@ public class EditUserAppController {
 
 					}
 				}
-
+				
 				if (isInActive) {
 					userApp2.setActiveCd("I");
 
@@ -135,11 +136,14 @@ public class EditUserAppController {
 			List<Application> createList = new ArrayList<Application>();
 			for (Application app2 : updateduserapp) {
 				boolean isCreate = true;
-				;
 				for (UserApplication userApp2 : listUserApp) {
-					if ((userApp2.getAppId() + userApp2.getSeqNo()).equals(app2
-							.getAppId() + app2.getSeqNo())) {
+					
+					if (((userApp2.getAppId() + userApp2.getSeqNo()).equals(app2
+							.getAppId() + app2.getSeqNo()))) {
+						
+						//if( userApp2.getFlagDefault().equals("true")){
 						isCreate = false;
+						//}
 
 					}
 				}
@@ -147,6 +151,7 @@ public class EditUserAppController {
 				if (isCreate) {
 					String appId = app2.getAppId().trim();
 					String seqNo = app2.getSeqNo().trim();
+					
 					appService.createUserApp(userid, appId, seqNo);
 				}
 			}

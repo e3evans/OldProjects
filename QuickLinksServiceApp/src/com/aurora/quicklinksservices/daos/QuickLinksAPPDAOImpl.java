@@ -90,12 +90,11 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		StringBuffer sql = new StringBuffer();
 	    sql.append("SELECT {app.*} ");
 	    sql.append("FROM S05DTDB.tpt2b_application app ");
-	    sql.append("WHERE pt2b_appid = '"+appid+"'");
-	    sql.append("AND pt2b_seq_no > 0 ");
-	    sql.append("AND pt2b_no_login_acc = 'D' ");
-        sql.append("AND pt2b_login_acc NOT IN ('E','N') ");
-        sql.append("AND pt2b_active_cd = 'A' ");
-	    sql.append("ORDER BY pt2b_seq_no ");
+	    sql.append("WHERE (app.pt2b_appid = 'EBINO' OR  app.pt2b_appid='EB092' OR  app.pt2b_appid='EB500'  OR  app.pt2b_appid='EBLIB'  OR  app.pt2b_appid='ahcom' ");
+	    sql.append("OR  app.pt2b_appid='EB122' OR  app.pt2b_appid='EB084'  OR  app.pt2b_appid='EB538'  OR  app.pt2b_appid='EB480'  OR  app.pt2b_appid='EB057'");  
+	    sql.append("OR app.pt2b_appid='PETR' OR  app.pt2b_appid='EB294' OR app.pt2b_appid='EB110 ' OR app.pt2b_appid='EB294' OR app.pt2b_appid='EB416')");
+        sql.append("AND app.pt2b_seq_no = 0");
+       	    
 	    List<App> defaultapplist =  session.createSQLQuery(sql.toString()).addEntity("app", App.class).list();
 
          if(null!=defaultapplist&&!(defaultapplist.isEmpty())){
@@ -106,6 +105,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		 bean.setAppUrl(app.getAppURL().trim());
 	     bean.setActiveCd(app.getActiveCd());
 		 bean.setSeqNo(app.getAppKey().getSeqNo().toString());
+		 bean.setFlagDefault("true");
 		 bean.setUserId(userid + "");
 	     listUserAppBean.add(bean);
 	}
@@ -142,6 +142,33 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		session.beginTransaction();
 		UserAppResponseBean bean = null;
 		List<UserAppResponseBean> listUserAppBean = new ArrayList<UserAppResponseBean>();
+		
+		StringBuffer sql = new StringBuffer();
+	    sql.append("SELECT {app.*} ");
+	    sql.append("FROM S05DTDB.tpt2b_application app ");
+	    sql.append("WHERE (app.pt2b_appid = 'EBINO' OR  app.pt2b_appid='EB092' OR  app.pt2b_appid='EB500'  OR  app.pt2b_appid='EBLIB'  OR  app.pt2b_appid='ahcom' ");
+	    sql.append("OR  app.pt2b_appid='EB122' OR  app.pt2b_appid='EB084'  OR  app.pt2b_appid='EB538'  OR  app.pt2b_appid='EB480'  OR  app.pt2b_appid='EB057'");  
+	    sql.append("OR app.pt2b_appid='PETR' OR  app.pt2b_appid='EB294' OR app.pt2b_appid='EB110 ' OR app.pt2b_appid='EB294' OR app.pt2b_appid='EB416')");
+        sql.append("AND app.pt2b_seq_no = 0");
+       	    
+	    List<App> defaultapplist =  session.createSQLQuery(sql.toString()).addEntity("app", App.class).list();
+
+         if(null!=defaultapplist&&!(defaultapplist.isEmpty())){
+	     for(App app : defaultapplist){
+		 bean = new UserAppResponseBean();
+		 bean.setAppId(app.getAppKey().getAppId());
+		 bean.setAppName(app.getAppName().trim());
+		 bean.setAppUrl(app.getAppURL().trim());
+	     bean.setActiveCd(app.getActiveCd());
+		 bean.setSeqNo(app.getAppKey().getSeqNo().toString());
+		 bean.setFlagDefault("true");
+		 bean.setUserId(userid + "");
+	     listUserAppBean.add(bean);
+	}
+}
+
+	
+		
 		List list =  session.createCriteria(UserApp.class).add(Expression.eq("userAppKey.userId", userid)).list();
         StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < list.size(); i++) {

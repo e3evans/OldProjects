@@ -15,6 +15,18 @@ public class UserApplication {
 	
 	private String activeCd;
 	
+	private String flagDefault;
+	
+	
+
+	public String getFlagDefault() {
+		return flagDefault;
+	}
+
+	public void setFlagDefault(String flagDefault) {
+		this.flagDefault = flagDefault;
+	}
+
 	private Integer dispSeq;
 	public static final String ACTIVE = "A";
 	public static final String INACTIVE = "I";
