@@ -29,6 +29,10 @@ public class MenuApp implements Serializable
   public boolean isAlreadyRegistered() {
     return (this.userApp != null) && (this.userApp.getActiveCd().equals("A"));
   }
+  
+  public boolean isDefaultApp() {
+	    return (this.userApp != null && this.userApp.getFlagDefault() != null && this.userApp.getFlagDefault().equals("true"));
+	  }
 
   public void setSubAppsAllAutoReg(boolean subAppsAllAutoReg) {
     this.subAppsAllAutoReg = subAppsAllAutoReg;

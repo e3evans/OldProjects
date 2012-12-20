@@ -9,7 +9,14 @@ public class UserAppResponseBean {
 	private String activeCd;
 	private Integer dispSeq;
 	private String seqNo;
+	private String flagDefault;
 	
+	public String getFlagDefault() {
+		return flagDefault;
+	}
+	public void setFlagDefault(String flagDefault) {
+		this.flagDefault = flagDefault;
+	}
 	public Integer getDispSeq() {
 		return dispSeq;
 	}

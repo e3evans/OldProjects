@@ -33,7 +33,7 @@ import com.aurora.quicklinks.services.AppService;
 
 @Controller(value = "editUserAppController")
 @RequestMapping(value = "VIEW")
-@SessionAttributes(types = UserApplication.class)
+@SessionAttributes(types = AppFormBean.class)
 public class EditUserAppController {
 
 	@Autowired
@@ -54,15 +54,16 @@ public class EditUserAppController {
 		String userid= (String) session.getAttribute("userId");
 		AppFormBean appFormBean = new AppFormBean();
 		try {
-			System.out.println("printing userid in EditUserAppController"+userid);
+			
 			appFormBean.setListMenuApp(retrieveAvailMenuApps("EMP", userid));
+		
 		} catch (AppException ae) {
 			System.out.println(ae.getExceptionDesc());
 			System.out.println(ae.getExceptionCode());
 			System.out.println(ae.getExceptionType());
 			System.out.println(ae.getExceptionMessage());
 		}
-
+		
 		return appFormBean;
 	}
 
@@ -75,38 +76,38 @@ public class EditUserAppController {
 
 	@ActionMapping(params = "action=updateUrl")
 	public void updateApp(@ModelAttribute AppFormBean appFormBean,
-			BindingResult bindingResult, ActionRequest request ,ActionResponse response,
-			SessionStatus sessionStatus) {
+			BindingResult bindingResult, ActionRequest request ,ActionResponse response, SessionStatus sessionStatus
+			) {
 		PortletSession session =request.getPortletSession();
 		String userid = (String) session.getAttribute("userId");
 		boolean update = false;
 		UserApplication userApp = null;
+		request.getPortletSession().setAttribute("flag", "true");
 		List<Application> updateduserapp = new ArrayList<Application>();
-		System.out.println("Inside updateUrl action method user="+userid);
 		try {
 			List<UserApplication> listUserApp = appService
 					.listAllUserAppByUserId(userid);
 			for (UserApplication app : listUserApp) {
-				System.out.println("App Info : " + app);
+				//System.out.println("App Info : " + app);
 			}
 			for (MenuApp menuapp : appFormBean.getListMenuApp()) {
 
 				Application bean = menuapp.getApp();
 				String appId = bean.getAppId().trim();
 				String seqNo = bean.getSeqNo().trim();
-
 				if (appId != null && seqNo != null) {
 
 					if (bean.isChecked()) {
 
 						updateduserapp.add(bean);
-
+   
 					}
 
 				}
 			}
 
 			for (UserApplication userApp2 : listUserApp) {
+				
 				boolean isInActive = true;
 				boolean toggleActive = false;
 				for (Application app2 : updateduserapp) {
@@ -119,7 +120,7 @@ public class EditUserAppController {
 
 					}
 				}
-
+				
 				if (isInActive) {
 					userApp2.setActiveCd("I");
 
@@ -127,6 +128,7 @@ public class EditUserAppController {
 				}
 				if (toggleActive) {
 					userApp2.setActiveCd("A");
+					
 
 					appService.updateUserApp(userApp2, userid);
 				}
@@ -134,11 +136,14 @@ public class EditUserAppController {
 			List<Application> createList = new ArrayList<Application>();
 			for (Application app2 : updateduserapp) {
 				boolean isCreate = true;
-				;
 				for (UserApplication userApp2 : listUserApp) {
-					if ((userApp2.getAppId() + userApp2.getSeqNo()).equals(app2
-							.getAppId() + app2.getSeqNo())) {
+					
+					if (((userApp2.getAppId() + userApp2.getSeqNo()).equals(app2
+							.getAppId() + app2.getSeqNo()))) {
+						
+						//if( userApp2.getFlagDefault().equals("true")){
 						isCreate = false;
+						//}
 
 					}
 				}
@@ -146,6 +151,7 @@ public class EditUserAppController {
 				if (isCreate) {
 					String appId = app2.getAppId().trim();
 					String seqNo = app2.getSeqNo().trim();
+					
 					appService.createUserApp(userid, appId, seqNo);
 				}
 			}
@@ -225,7 +231,7 @@ public class EditUserAppController {
 				if (!userApp.isActive()) {
 					userApp.setActiveCd("A");
 					userApp.setDispSeq((Integer.parseInt(userApp.getSeqNo())));
-					// userAppService.updateUserApp(userApp);
+				// userAppService.updateUserApp(userApp);
 				}
 			}
 	}

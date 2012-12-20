@@ -45,15 +45,14 @@ public class UserAppController {
 	@ModelAttribute(value = "urlList")
 	public List<UserApplication> getUserApplication(RenderRequest request,
 			RenderResponse response) {
-		Principal user=request.getUserPrincipal();
+	    Principal user=request.getUserPrincipal();
 		PortletSession session= request.getPortletSession();
 		session.setAttribute("userId", user.toString());
 		String userid = user.toString();
 		
 		List<UserApplication> listUserApp = new ArrayList<UserApplication>();
 		try {
-			System.out.println("printing useridin  UserAppController "+userid);
-			listUserApp = appService.listUserAppByUserId(userid);
+		  listUserApp = appService.listUserAppByUserId(userid);
 		} catch (AppException ae) {
 			System.out.println(ae.getExceptionDesc());
 			System.out.println(ae.getExceptionCode());
@@ -67,13 +66,14 @@ public class UserAppController {
 
 	@RenderMapping
 	public String showUserApplication(RenderRequest request) {
+		
 		String errorMsg = request.getParameter("errorMsg");
 		if(null!=errorMsg){
 			request.setAttribute("errorMsg", errorMsg);
 		}
 		
 		// request.setAttribute("urlList", urlService.listUrlBean("test"));
-		System.out.println("Exiting SelectController.showUserApplication()");
+		
 		return "userapp";
 	}
 

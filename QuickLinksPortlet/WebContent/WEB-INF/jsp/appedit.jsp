@@ -32,11 +32,7 @@
 						<span id="acgc_quicklinks_picker_show_selected_label">Show My Selected:</span>
 						&nbsp;
 						<span id="acgc_quicklinks_show_sites_trigger">
-							<input type="checkbox" name="acgc_show_sites" value="on" /> Sites
-						</span>
-						&nbsp;
-						<span id="acgc_quicklinks_show_apps_trigger">
-							<input type="checkbox" name="acgc_show_apps" value="on" /> Apps
+							<input type="checkbox" name="acgc_show_sites" value="on" /> Sites &amp; Apps
 						</span>
 					</div>
 					<div class="acgc_searchblock acgc_radius_5">
@@ -53,7 +49,7 @@
 	 
 	
 
-
+<%System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!inappedit.jsp");%>
 <form:form  commandName="appFormBean" method="post" name="editUrlForm" id="editUrlForm" action="${formAction}">
 
     <div class="acgc_overlay_body" id="acgc_quicklinks_picker_canvas">
@@ -62,8 +58,18 @@
    <c:forEach items="${appFormBean.listMenuApp}" var="appLst" varStatus="row">
  
     <c:set var="checked" value="${menuApp.alreadyRegistered}"/>
-     <div class="acgc_quicklinks_link_canvas acgc_relative">
+    <c:choose>
+    	<c:when test="${appLst.alreadyRegistered}">
+    	 	<div class="acgc_quicklinks_link_canvas acgc_relative site selected">
+    	</c:when>
+    	<c:otherwise>
+    		<div class="acgc_quicklinks_link_canvas acgc_relative site">
+    	</c:otherwise>
+    </c:choose>
         <c:choose>
+         <c:when test="${appLst.defaultApp}">
+        <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked" onclick="javascript:alert('This app is added for you by admin you can not remove this app');this.checked='checked';"/>
+        </c:when>
         <c:when test="${appLst.alreadyRegistered}">
         <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked"/>
         </c:when>
@@ -76,8 +82,9 @@
 	    <form:hidden path="listMenuApp[${row.index}].app.appDesc" value="${appLst.app.appDesc}" />
 		<form:hidden path="listMenuApp[${row.index}].app.seqNo" value="${appLst.app.seqNo}" />
       	<form:hidden path="listMenuApp[${row.index}].app.appId" value="${appLst.app.appId}" />
+      	
 	<div class="acgc_quicklinks_link_body">
-	    <strong> <c:out value="${appLst.app.appName}"/> </strong>
+	    <strong> <c:out value="${appLst.app.appName}"/> </strong>  
 	     <p><c:out value="${appLst.app.appDesc}"/></p>
 	</div>
  
