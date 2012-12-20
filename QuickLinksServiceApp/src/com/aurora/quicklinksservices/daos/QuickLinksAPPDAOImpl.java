@@ -17,6 +17,7 @@ import com.aurora.quicklinksservices.beans.User;
 import com.aurora.quicklinksservices.beans.UserApp;
 import com.aurora.quicklinksservices.beans.UserAppKey;
 import com.aurora.quicklinksservices.beans.UserAppResponseBean;
+import com.aurora.quicklinksservices.util.QuickLinksUtility;
 
 @Repository
 public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
@@ -83,6 +84,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	public List<UserAppResponseBean> findUserAppsByUser(Long userid) {
 		//userid = 43l;
 		String appid="ICONNECT";
+		String formatedurl="";
 		Session session = urlsessionFactory.openSession();
 		session.beginTransaction();
 		UserAppResponseBean bean = null;
@@ -97,12 +99,19 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
        	    
 	    List<App> defaultapplist =  session.createSQLQuery(sql.toString()).addEntity("app", App.class).list();
 
-         if(null!=defaultapplist&&!(defaultapplist.isEmpty())){
-	     for(App app : defaultapplist){
+		if (null != defaultapplist && !(defaultapplist.isEmpty())) {
+			for (App app : defaultapplist) {
+				if (app.getAppURL() != null) {
+					String url = app.getAppURL().trim();
+					QuickLinksUtility qlutility = new QuickLinksUtility();
+					formatedurl = qlutility.urlFormat(url);
+
+				}
+	    	 
 		 bean = new UserAppResponseBean();
 		 bean.setAppId(app.getAppKey().getAppId());
 		 bean.setAppName(app.getAppName().trim());
-		 bean.setAppUrl(app.getAppURL().trim());
+		 bean.setAppUrl(formatedurl);
 	     bean.setActiveCd(app.getActiveCd());
 		 bean.setSeqNo(app.getAppKey().getSeqNo().toString());
 		 bean.setFlagDefault("true");
@@ -117,10 +126,18 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 				.add(Restrictions.eq("activeCd", "A")).list();
         
 		for (int i = 0; i < list.size(); i++) {
+			
 			bean = new UserAppResponseBean();
 			UserApp temp = (UserApp) list.get(i);
+			
+			if (temp.getApplication().getAppURL() != null) {
+				String url = temp.getApplication().getAppURL().trim();
+				QuickLinksUtility qlutility = new QuickLinksUtility();
+				formatedurl = qlutility.urlFormat(url);
+
+			}
 		    bean.setAppName(temp.getApplication().getAppName().trim());
-			bean.setAppUrl(temp.getApplication().getAppURL().trim());
+			bean.setAppUrl(formatedurl);
 			bean.setAppId((temp.getApplication().getAppKey().getAppId()));
 			bean.setActiveCd(temp.getApplication().getActiveCd());
 			bean.setSeqNo(temp.getApplication().getAppKey().getSeqNo().toString());

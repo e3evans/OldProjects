@@ -67,6 +67,9 @@
     	</c:otherwise>
     </c:choose>
         <c:choose>
+         <c:when test="${appLst.defaultApp}">
+        <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked" onclick="javascript:alert('This app is added for you by admin you can not remove this app');this.checked='checked';"/>
+        </c:when>
         <c:when test="${appLst.alreadyRegistered}">
         <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked"/>
         </c:when>
