@@ -70,8 +70,8 @@ try{
     String ContentLibrary     = "CaregiverContentLibrary_en";
 	String DesignLib		  = "CaregiverDesignLibrary";
 	String sitePath			  = "/Caregiver/News";
-    String ascMenu			  = "AllNews_ASC_MNU";
-	String descMenu			  = "AllNews_DESC_MNU";   
+    String ascMenu			  = "SiteNews_ASC_MNU";
+	String descMenu			  = "SiteNews_DESC_MNU";   
  
     String componentName = "";
     DocumentId docId;
