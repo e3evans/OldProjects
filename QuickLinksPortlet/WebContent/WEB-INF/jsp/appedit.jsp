@@ -46,10 +46,6 @@
 
 
 
-	 
-	
-
-<%System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!inappedit.jsp");%>
 <form:form  commandName="appFormBean" method="post" name="editUrlForm" id="editUrlForm" action="${formAction}">
 
     <div class="acgc_overlay_body" id="acgc_quicklinks_picker_canvas">
