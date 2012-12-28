@@ -3,6 +3,11 @@
 <portlet:actionURL var="actionURL">
 	<portlet:param name="action" value="doSearch"/>
 </portlet:actionURL>
+<!-- styles -->
+<!-- link type="text/css" rel="stylesheet" href="http://7summitsclient.com/aurora/htmlsite/assets/css/common.css" />
+<link type="text/css" rel="stylesheet" href="http://7summitsclient.com/aurora/htmlsite/assets/css/fonts.css" />
+<link type="text/css" rel="stylesheet" href="http://7summitsclient.com/aurora/htmlsite/assets/css/styles.css" /--->
+
 <script>
 
 function jsonPTest(){
@@ -30,11 +35,7 @@ function jsonPTest(){
 
 
 </script>
-<input type="button" value="test1" onclick="jsonPTest()"/>
-<form:form method="post" action="${actionURL }" commandName="searchForm" id="searchForm">
-	<form:label path="searchString" cssClass="input"><span>INPUT SEARCH STRING:  </span><form:input path="searchString"/></form:label>
-	<hr/>
-	<input type="submit" value="SEARCH"/>
-</form:form>
+
+<c:out escapeXml="false" value="${searchForm.searchResults}"/>
 
 
