@@ -1,3 +1,4 @@
+<%@page import="com.aurora.controllers.ViewController"%>
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
 <script language="JavaScript" src='<%= renderResponse.encodeURL(renderRequest.getContextPath() + "/js/jquery.1.8.2.js") %>'></script>
 <portlet:actionURL var="actionURL">
@@ -12,43 +13,29 @@
 
 <script>
 
-function jsonPTest(){
-		var urltest = 'http://api.brightcove.com/services/library?command=find_video_by_id&video_id=2036398618001&video_fields=videoStillURL&token=5WKGSuWLq40X64Mspy9GIMfguxGRTbj61XoleDpZgP87tmDzMUGUYA..&callback=response&noCacheIE=1356544456844';
-		//$('#ajax-panel2').empty();
-		$.ajax({
-		  type: 'GET',
-		  dataType:'jsonp',
-		  async:false,
-		  jsonpCallback:'response',
-		  url: urltest,
-		  contentType:'application/json',
-		  beforeSend:function(){
-		    //$('#acgc_pollbox').html('<div class="loading"><img src="/images/loading.gif" alt="Loading..." /></div>');
-		    //acgcHandlePollSubmit();
-		  },
-		  success:function(data){
-		  	alert(data.videoStillURL);
-		  },
-		  error:function(){
-		  	alert('error');
-		  }
-		});	
+function searchGoogle(qTerm,endNum){
+	if (typeof(endNum)=='undefined')endNum = EN;
+	if (qTerm==''){
+		qTerm = Q;
+	}else{
+		Q=qTerm;
 	}
-
-function searchGoogle(){
+	if (SN=1)SN=SN-1;
 	var rUrl = '<%=search%>';
 	$.ajax({
 		  type: 'GET',
 		  dataType:'text',
 		  async:false,
 		  url: rUrl,
+		  data:{q:qTerm,sn:0,en:endNum},
 		  contentType:'text',
 		  beforeSend:function(){
-		    //$('#acgc_pollbox').html('<div class="loading"><img src="/images/loading.gif" alt="Loading..." /></div>');
-		    //acgcHandlePollSubmit();
+		  	$('#<%=ViewController.SEARCH_RESULTS_BOX%>').empty();
+		    $('#<%=ViewController.SEARCH_RESULTS_BOX%>').html('<div class="loading"><img src="<%= renderResponse.encodeURL(renderRequest.getContextPath() + "/images/ajax-loader.gif") %>" /></div>');
 		  },
 		  success:function(data){
-		  	alert('here');
+		  	$('#<%=ViewController.SEARCH_RESULTS_BOX%>').empty();
+		    $('#<%=ViewController.SEARCH_RESULTS_BOX%>').html(data.toString());
 		  },
 		  error:function(xhr,status,error){
 		  	alert(error);
@@ -58,7 +45,8 @@ function searchGoogle(){
 }
 
 </script>
-<input type="button" value="test" onclick="searchGoogle()"/>
+
+<!-- input type="button" value="test" onclick="searchGoogle('news')"/-->
 <c:out escapeXml="false" value="${searchForm.searchResults}"/>
 
 

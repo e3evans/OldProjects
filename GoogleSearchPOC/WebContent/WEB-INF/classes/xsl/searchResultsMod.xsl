@@ -1,6 +1,11 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  version="2.0">
 <xsl:output omit-xml-declaration="yes"/>
 <xsl:template match="/">
+		<script>
+			var SN = <xsl:value-of select="/GSP/RES/@SN"/>;
+			var EN = <xsl:value-of select="/GSP/RES/@EN"/>;
+			var Q = '<xsl:value-of select="/GSP/PARAM[@name='q']/@original_value"/>';
+		</script>
 		<div class="acgc_top_content_wrap">
 			<div class="acgc_top_content_box acgc_relative">
 			<h1><span class="acgc_top_content_small_txt">Showing </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt"> search results for </span>&quot;<xsl:value-of select="/GSP/PARAM[@name='q']/@original_value"/>&quot;</h1>
@@ -8,34 +13,32 @@
 		</div>
 		<xsl:call-template name="resultsBar"/>
 		<xsl:call-template name="searchResults"/>
-
-
 </xsl:template>
 
 <xsl:template name="resultsBar">
 <div id="acgc_recordsorter" class="acgc_relative">
 	<div class="acgc_sort_by">
-		Results Per Page: <span class="acgc_sort_by_focus">10 Results <img src="/AuroraTheme/themes/html/assets/images/arrow-down-small-header.png" alt="arrow" class="acgc_inline_icon" /></span>
+		Results Per Page: <span class="acgc_sort_by_focus" id="span_numofResults">10 Results <img src="/AuroraTheme/themes/html/assets/images/arrow-down-small-header.png" alt="arrow" class="acgc_inline_icon" /></span>
 		<div class="acgc_relative">
 			<div class="acgc_sort_by_holder">
 				<ul>
 					<li>
-						<a href="#newest" title="10 Results" onclick="javascript: $(this).children('input').prop('checked', 'checked'); this.form.submit(); return false;">
+						<a href="#newest" title="10 Results" onclick="javascript:searchGoogle('',10)">
 							<input name="selected" onclick="this.form.submit()" value="locations" checked="checked" type="radio"/>&#160; 10 Results
 						</a>
 					</li>
 					<li>
-						<a href="#oldest" title="20 Results" onclick="javascript: $(this).children('input').prop('checked', 'checked'); this.form.submit(); return false;">
+						<a href="#oldest" title="20 Results" onclick="javascript:searchGoogle('',20)">
 							<input name="selected" onclick="this.form.submit()" value="doctors" type="radio"/>&#160; 20 Results
 						</a>
 					</li>
 					<li>
-						<a href="#oldest" title="50 Results" onclick="javascript: $(this).children('input').prop('checked', 'checked'); this.form.submit(); return false;">
+						<a href="#oldest" title="50 Results" onclick="javascript:searchGoogle('',50)">
 							<input name="selected" onclick="this.form.submit()" value="healthinfo" type="radio"/>&#160; 50 Results
 						</a>
 					</li>
 					<li>
-						<a href="#oldest" title="100 Results" onclick="javascript: $(this).children('input').prop('checked', 'checked'); this.form.submit(); return false;">
+						<a href="#oldest" title="100 Results" onclick="javascript:searchGoogle('',100)">
 							<input name="selected" onclick="this.form.submit()" value="services" type="radio"/>&#160; 100 Results
 						</a>
 					</li>
@@ -48,10 +51,10 @@
 	<div class="acgc_pagination_block">
 		<a href=""><img src="/AuroraTheme/themes/html/assets/images/arrows-full-left.png" alt="First" /></a> &#160;
 		<a href=""><img src="/AuroraTheme/themes/html/assets/images/arrows-one-left.png" alt="Prev" /></a> &#160;
-		<a href="">1</a> &#160;
+		1 &#160;
 		<a href="">2</a> &#160;
 		<a href="">3</a> &#160;
-		4 &#160;
+		<a href="">4</a> &#160;
 		<a href="">8</a> &#160;
 		<a href="">9</a> &#160;
 		<a href=""><img src="/AuroraTheme/themes/html/assets/images/arrows-one-right.png" alt="Next" /></a> &#160;
@@ -116,8 +119,8 @@
 		</div>
 		<div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
 		<div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
-		<div class="acgc_search_results_main_column">
-					<xsl:call-template name="results"/>
+		<div class="acgc_search_results_main_column" id="searchResultsBox">
+			<xsl:call-template name="results"/>
 		</div>
 		<div class="acgc_clear">&#160;</div>
 		<div class="acgc_content_box_footer acgc_relative">

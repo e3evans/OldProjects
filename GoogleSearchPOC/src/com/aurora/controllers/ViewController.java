@@ -1,4 +1,4 @@
-package com.aurora.contorllers;
+package com.aurora.controllers;
 
 import java.io.InputStream;
 import java.io.StringReader;
@@ -9,6 +9,8 @@ import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
+import javax.portlet.ResourceRequest;
+import javax.portlet.ResourceResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -34,14 +36,15 @@ import com.aurora.webservice.client.GoogleServiceClient;
 public class ViewController {
 	
 	private static String TEST_URL = "http://google.aurora.org/search?site=default_collection&output=xml_no_dtd";
+	public static String SESS_SEARCH_TERM = "google.search.term";
+	public static String SEARCH_RESULTS_BOX = "searchResultsBox";
+	public static String SEARCH_NUM_RESULTS = "span_numofResults";
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping
 	public ModelAndView defaultView (RenderRequest request, RenderResponse responses, @SuppressWarnings("rawtypes") Map model,@ModelAttribute("searchForm")SearchForm form){
 		HttpServletRequest hsreq= com.ibm.ws.portletcontainer.portlet.PortletUtils.getHttpServletRequest(request);
-        System.out.println(hsreq.getParameter("q"));
-        
-        System.out.println(getSearchResultsHTML("xsl/searchResultsMod.xsl", TEST_URL+"&q="+hsreq.getParameter("q")));
+		request.getPortletSession().setAttribute(SESS_SEARCH_TERM, hsreq.getParameter("q"));
 		if (form == null)form = new SearchForm();
 		form.setSearchResults(getSearchResultsHTML("xsl/searchResultsMod.xsl", TEST_URL+"&q="+hsreq.getParameter("q")).toString());
 		model.put("searchForm", form);
@@ -56,10 +59,18 @@ public class ViewController {
 	}
 	
 	@ResourceMapping(value="search")
-	public void doSearch(){
+	public ModelAndView doSearch(ResourceRequest request, ResourceResponse responses, @SuppressWarnings("rawtypes") Map model,@ModelAttribute("searchForm")SearchForm form){
 		System.out.println("SEARCHING!!!");
-		//return "I am the very model of a moder major general.";
-		
+		if (form == null)form = new SearchForm();
+		String q = request.getParameter("q");
+		System.out.println(request.getParameter("q"));
+		System.out.println(request.getParameter("en"));
+		System.out.println(request.getParameter("sn"));
+		form.setSearchResults_frag(getSearchResultsHTML("xsl/searchResults_frag.xsl", TEST_URL+"&q=news"+
+				"&num="+request.getParameter("en")+"&start="+request.getParameter("sn")).toString());
+//		form.setSearchResults_frag(getSearchResultsHTML("xsl/searchResults_frag.xsl", TEST_URL+"&q="+request.getParameter("q")+
+//				"&EN="+request.getParameter("en")+"&SN="+request.getParameter("sn")).toString());
+		return new ModelAndView("search_frag","searchForm",form);
 	}
 	
 	private StreamSource getXSLStyesheetStream(String feedPath){
