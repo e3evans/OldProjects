@@ -1,7 +1,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  version="2.0">
 <xsl:output omit-xml-declaration="yes"/>
 <xsl:template match="/">
-	
 		<div class="acgc_top_content_wrap">
 			<div class="acgc_top_content_box acgc_relative">
 			<h1><span class="acgc_top_content_small_txt">Showing </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt"> search results for </span>&quot;<xsl:value-of select="/GSP/PARAM[@name='q']/@original_value"/>&quot;</h1>
@@ -9,7 +8,7 @@
 		</div>
 		<xsl:call-template name="resultsBar"/>
 		<xsl:call-template name="searchResults"/>
-	
+
 
 </xsl:template>
 
@@ -118,53 +117,7 @@
 		<div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
 		<div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
 		<div class="acgc_search_results_main_column">
-			<ul class="acgc_search_results_list">
-				<li class="even">
-					<strong>
-						<a href="" title="Maecenas nunc in justo rhoncus aliquam">
-							Maecenas nunc in justo rhoncus aliquam
-						</a>
-					</strong>
-					<p>Aliquam interdum pulvinar nibh. Maecenas nunc in justo rhoncus aliquam. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. as nunc in justo rhoncus aliquam. Lorem ipsum dolor sit amet, consectetuer adipiscing...</p>
-					<a href="" title="Visit http://caregiverconnect.aurora.org/link/to/page" target="_blank">http://caregiverconnect.aurora.org/link/to/page</a>
-				</li>
-				<li class="odd">
-					<strong>
-						<a href="" title="Maecenas nunc in justo rhoncus aliquam">
-							Maecenas nunc in justo rhoncus aliquam
-						</a>
-					</strong>
-					<p>Aliquam interdum pulvinar nibh. Maecenas nunc in justo rhoncus aliquam. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. as nunc in justo rhoncus aliquam. Lorem ipsum dolor sit amet, consectetuer adipiscing...</p>
-					<a href="" title="Visit http://caregiverconnect.aurora.org/link/to/page" target="_blank">http://caregiverconnect.aurora.org/link/to/page</a>
-				</li>
-				<li class="even">
-					<strong>
-						<a href="" title="Maecenas nunc in justo rhoncus aliquam">
-							Maecenas nunc in justo rhoncus aliquam
-						</a>
-					</strong>
-					<p>Aliquam interdum pulvinar nibh. Maecenas nunc in justo rhoncus aliquam. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. as nunc in justo rhoncus aliquam. Lorem ipsum dolor sit amet, consectetuer adipiscing...</p>
-					<a href="" title="Visit http://caregiverconnect.aurora.org/link/to/page" target="_blank">http://caregiverconnect.aurora.org/link/to/page</a>
-				</li>
-				<li class="odd">
-					<strong>
-						<a href="" title="Maecenas nunc in justo rhoncus aliquam">
-							Maecenas nunc in justo rhoncus aliquam
-						</a>
-					</strong>
-					<p>Aliquam interdum pulvinar nibh. Maecenas nunc in justo rhoncus aliquam. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. as nunc in justo rhoncus aliquam. Lorem ipsum dolor sit amet, consectetuer adipiscing...</p>
-					<a href="" title="Visit http://caregiverconnect.aurora.org/link/to/page" target="_blank">http://caregiverconnect.aurora.org/link/to/page</a>
-				</li>
-				<li class="even">
-					<strong>
-						<a href="" title="Maecenas nunc in justo rhoncus aliquam">
-							Maecenas nunc in justo rhoncus aliquam
-						</a>
-					</strong>
-					<p>Aliquam interdum pulvinar nibh. Maecenas nunc in justo rhoncus aliquam. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. as nunc in justo rhoncus aliquam. Lorem ipsum dolor sit amet, consectetuer adipiscing...</p>
-					<a href="" title="Visit http://caregiverconnect.aurora.org/link/to/page" target="_blank">http://caregiverconnect.aurora.org/link/to/page</a>
-				</li>
-			</ul>
+					<xsl:call-template name="results"/>
 		</div>
 		<div class="acgc_clear">&#160;</div>
 		<div class="acgc_content_box_footer acgc_relative">
@@ -190,7 +143,60 @@
 		&#160;
 	</div>	
 </div>
+</xsl:template>
 
+<xsl:template name="results">
+	<ul class="acgc_search_results_list">
+			
+		<xsl:for-each select="/GSP/RES/R">
+			<xsl:choose>
+			<xsl:when test="position() mod 2=1">
+				<li class="even">
+									<strong>
+						<a>
+						<xsl:attribute name="href"><xsl:value-of select="U"/></xsl:attribute>
+						<xsl:attribute name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:attribute>
+						<xsl:value-of select="T" disable-output-escaping="yes"/>
+						</a>
+					</strong>
+					<p>
+						<xsl:value-of select="S" disable-output-escaping="yes"/>
+					</p>
+					<a>
+						<xsl:attribute name="href"><xsl:value-of select="U"/></xsl:attribute>
+						<xsl:attribute name="title">Visit <xsl:value-of select="U"/>
+						</xsl:attribute>
+						<xsl:attribute name="target">_blank</xsl:attribute>
+						<xsl:value-of select="U"/>
+					</a>
+				</li>
+			</xsl:when>
+			<xsl:otherwise>
+				<li class="odd">
+									<strong>
+						<a>
+						<xsl:attribute name="href"><xsl:value-of select="U"/></xsl:attribute>
+						<xsl:attribute name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:attribute>
+						<xsl:value-of select="T" disable-output-escaping="yes"/>
+						</a>
+					</strong>
+					<p>
+						<xsl:value-of select="S" disable-output-escaping="yes"/>
+					</p>
+					<a>
+						<xsl:attribute name="href"><xsl:value-of select="U"/></xsl:attribute>
+						<xsl:attribute name="title">Visit <xsl:value-of select="U"/>
+						</xsl:attribute>
+						<xsl:attribute name="target">_blank</xsl:attribute>
+						<xsl:value-of select="U"/>
+					</a>
+				</li>
+			</xsl:otherwise>
+			</xsl:choose>
+
+		</xsl:for-each>
+	
+	</ul>
 
 </xsl:template>
 
@@ -198,6 +204,3 @@
 
 
 <!-- *** END OF STYLESHEET *** -->
-
-
-

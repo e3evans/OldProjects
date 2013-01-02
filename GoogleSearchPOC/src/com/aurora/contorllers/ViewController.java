@@ -56,8 +56,10 @@ public class ViewController {
 	}
 	
 	@ResourceMapping(value="search")
-	public ModelAndView doSearch(){
-		return null;
+	public void doSearch(){
+		System.out.println("SEARCHING!!!");
+		//return "I am the very model of a moder major general.";
+		
 	}
 	
 	private StreamSource getXSLStyesheetStream(String feedPath){
