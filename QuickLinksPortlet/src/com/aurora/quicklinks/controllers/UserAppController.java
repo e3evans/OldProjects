@@ -28,52 +28,19 @@ import com.aurora.quicklinks.services.AppService;
 @Controller
 @RequestMapping("VIEW")
 public class UserAppController {
+
 	private static Log log = LogFactory.getLog(UserAppController.class);
 
-	@Autowired
-	@Qualifier("appService")
-	private AppService appService;
-
-	public void setAppService(AppService urlService) {
-		this.appService = urlService;
-	}
-
-	public AppService getUrlService() {
-		return appService;
-	}
-
-	@ModelAttribute(value = "urlList")
-	public List<UserApplication> getUserApplication(RenderRequest request,
-			RenderResponse response) {
-	    Principal user=request.getUserPrincipal();
-		PortletSession session= request.getPortletSession();
-		session.setAttribute("userId", user.toString());
-		String userid = user.toString();
-		
-		List<UserApplication> listUserApp = new ArrayList<UserApplication>();
-		try {
-		  listUserApp = appService.listUserAppByUserId(userid);
-		} catch (AppException ae) {
-			System.out.println(ae.getExceptionDesc());
-			System.out.println(ae.getExceptionCode());
-			System.out.println(ae.getExceptionType());
-			System.out.println(ae.getExceptionMessage());
-			System.out.println("Exception in getUserApplication");
-		}
-		
-		return listUserApp;
-	}
-
+	
 	@RenderMapping
 	public String showUserApplication(RenderRequest request) {
-		
+		Principal user = request.getUserPrincipal();
+		PortletSession session = request.getPortletSession();
+		session.setAttribute("userId", user.toString());
 		String errorMsg = request.getParameter("errorMsg");
-		if(null!=errorMsg){
+		if (null != errorMsg) {
 			request.setAttribute("errorMsg", errorMsg);
 		}
-		
-		// request.setAttribute("urlList", urlService.listUrlBean("test"));
-		
 		return "userapp";
 	}
 
