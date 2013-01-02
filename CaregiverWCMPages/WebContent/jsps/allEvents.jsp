@@ -12,7 +12,7 @@ if(null!=request.getParameter("selected")){
  request.removeAttribute("selection");
  request.setAttribute("selection",selValue);
 }else{
- selValue="asc";
+ selValue="desc";
  request.getSession().setAttribute("selection",selValue);
 }
 //out.write("SELECTED:"+selValue);
@@ -23,34 +23,34 @@ if(null!=request.getParameter("selected")){
 <form id="sortChangeForm"  method="GET" name="sortChangeForm" >
 <div id="acgc_recordsorter" class="acgc_relative">
 	<div class="acgc_sort_by">
-		Sort By: <span class="acgc_sort_by_focus"> <% if("asc".equalsIgnoreCase(selValue)){ %>Newest First<%}else{%>Oldest First<%}%> &nbsp;<img src="/AuroraTheme/themes/html/assets/images/arrow-down-small-header.png" alt="arrow" class="acgc_inline_icon"/></span>
+		Sort By: <span class="acgc_sort_by_focus"> <% if("desc".equalsIgnoreCase(selValue)){ %>Newest First<%}else{%>Oldest First<%}%> &nbsp;<img src="/AuroraTheme/themes/html/assets/images/arrow-down-small-header.png" alt="arrow" class="acgc_inline_icon"/></span>
 		<div class="acgc_relative">
 			<div style="display: none;" class="acgc_sort_by_holder">
 				<ul>
 				   <% if ((null!=selValue) && ("asc".equalsIgnoreCase(selValue))) { %>
 					<li>
-					<a href="#newest" title="Newest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
-						<input name="selected" onclick="document.sortChangeForm.submit()" value="asc"  type="radio" checked class="acgc_hidden"><strong>Newest First</strong>
+					<a href="#newest" title="Oldest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
+						<input name="selected" onclick="document.sortChangeForm.submit()" value="asc"  type="radio" checked class="acgc_hidden"><strong>Oldest First</strong>
 					</a>
 					</li>
 					<% }else{%>
 					<li>
-						<a href="#newest" title="Newest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
-							<input name="selected" onclick="document.sortChangeForm.submit()" value="asc"  type="radio" class="acgc_hidden">Newest First
+						<a href="#newest" title="Oldest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
+							<input name="selected" onclick="document.sortChangeForm.submit()" value="asc"  type="radio" class="acgc_hidden">Oldest First
 						</a>
 					</li>
 					<%} 
 					if ((null!=selValue)&& ("desc".equalsIgnoreCase(selValue))) { %>
 					<li>
 						
-						<a href="#oldest" title="Oldest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
-							<input name="selected" onclick="document.sortChangeForm.submit()" value="desc" type="radio" checked class="acgc_hidden"><strong>Oldest First</strong>
+						<a href="#oldest" title="Newest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
+							<input name="selected" onclick="document.sortChangeForm.submit()" value="desc" type="radio" checked class="acgc_hidden"><strong>Newest First</strong>
 						</a>
 					</li>
 					<% }else{%>
 					<li>
-						<a href="#oldest" title="Oldest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
-							<input name="selected" onclick="document.sortChangeForm.submit()" value="desc" type="radio" class="acgc_hidden">Oldest First
+						<a href="#oldest" title="Newest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
+							<input name="selected" onclick="document.sortChangeForm.submit()" value="desc" type="radio" class="acgc_hidden">Newest First
 						</a>
 					</li>
 					<%} %>
@@ -67,7 +67,7 @@ try{
 
     String ContentLibrary     = "CaregiverContentLibrary_en";
 	String DesignLib		  = "CaregiverDesignLibrary";
-	String sitePath			  = "/Caregiver/Videos";
+	
     String ascMenu			  = "AllEvents_ASC_MNU";
 	String descMenu			  = "AllEvents_DESC_MNU";
     String componentName = "";
@@ -113,9 +113,7 @@ try{
         System.out.println("null renderingContext");
         rc =ws.createRenderingContext(request,response,new HashMap());
     }
-    // Set the path (Context) to the for the site area where the component will be rendered
-    rc.setRenderedContent(ContentLibrary + sitePath);
- 	
+    
  	while(docIdIter.hasNext()){
 	   
 	   	docId = (DocumentId)docIdIter.next();
