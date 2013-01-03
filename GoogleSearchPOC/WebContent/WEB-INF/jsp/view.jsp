@@ -43,10 +43,52 @@ function searchGoogle(qTerm,endNum){
 	});	
 	
 }
+function changePageSize(anchor,endNum){
+	EN=endNum;
+	var params={q:Q,sn:SN,en:endNum};
+	alert(anchor.className);
+	//document.getElementById("MyElement").className =
+	//	   document.getElementById("MyElement").className.replace
+	//	      ( /(?:^|\s)MyClass(?!\S)/g , '' )
+	
+	//callService(params);
+}
+
+function changePageNum(anchor,pageNum){
+	SN=(pageNum*EN)-1;
+	
+	var params={q:Q,sn:pageNum,en:EN};
+	callService(params);
+}
+
+function callService(params){
+	var rUrl = '<%=search%>';
+	$.ajax({
+		  type: 'GET',
+		  dataType:'text',
+		  async:false,
+		  url: rUrl,
+		  data:params,
+		  contentType:'text',
+		  beforeSend:function(){
+		  	$('#<%=ViewController.SEARCH_RESULTS_BOX%>').empty();
+		    $('#<%=ViewController.SEARCH_RESULTS_BOX%>').html('<div class="loading"><img src="<%= renderResponse.encodeURL(renderRequest.getContextPath() + "/images/ajax-loader.gif") %>" /></div>');
+		  },
+		  success:function(data){
+		  	$('#<%=ViewController.SEARCH_RESULTS_BOX%>').empty();
+		    $('#<%=ViewController.SEARCH_RESULTS_BOX%>').html(data.toString());
+		  },
+		  error:function(xhr,status,error){
+		  	alert(error);
+		  }
+	});	
+	
+}
 
 </script>
-
+<div id="<%=ViewController.SEARCH_RESULTS_BOX%>">
 <!-- input type="button" value="test" onclick="searchGoogle('news')"/-->
 <c:out escapeXml="false" value="${searchForm.searchResults}"/>
+</div>
 
 
