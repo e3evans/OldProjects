@@ -36,7 +36,7 @@ if(null!=request.getParameter("selected")){
 					<% }else{%>
 					<li>
 						<a href="#newest" title="Oldest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
-							<input name="selected" onclick="document.sortChangeForm.submit()" value="asc"  type="radio" class="acgc_hidden">oldest First
+							<input name="selected" onclick="document.sortChangeForm.submit()" value="asc"  type="radio" class="acgc_hidden">Oldest First
 						</a>
 					</li>
 					<%} 
