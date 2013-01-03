@@ -3,7 +3,7 @@
 <xsl:template match="/">
 		<script>
 			var SN = <xsl:value-of select="/GSP/RES/@SN"/>;
-			var EN = <xsl:value-of select="/GSP/RES/@EN"/>;
+			var PP = <xsl:value-of select="/GSP/PARAM[@name='num']/@original_value"/>;
 			var Q = '<xsl:value-of select="/GSP/PARAM[@name='q']/@original_value"/>';
 		</script>
 		<div class="acgc_top_content_wrap">
@@ -14,6 +14,7 @@
 		<xsl:call-template name="resultsBar"/>
 		<xsl:call-template name="searchResults"/>
 </xsl:template>
+<xsl:variable name="currentPage" select="/GSP/PARAM[@name='page']/@original_value"/>
 
 <xsl:template name="resultsBar">
 <div id="acgc_recordsorter" class="acgc_relative">
@@ -51,14 +52,15 @@
 	<div class="acgc_pagination_block">
 		<xsl:call-template name="paging">
 				<xsl:with-param name="numberOfItems" select="/GSP/RES/M"/>
-				<xsl:with-param name="currentPage"  select="/GSP/RES/@SN"/>
-				<xsl:with-param name="itemsPerPage"  select="/GSP/RES/@EN"/>					
+				<xsl:with-param name="currentPage"  select="$currentPage"/>
+				<xsl:with-param name="itemsPerPage"  select="/GSP/PARAM[@name='num']/@original_value"/>					
 		</xsl:call-template>
 	</div>
 </div>
 </xsl:template>
 
 <xsl:template name="searchResults">
+
 <div class="acgc_content_box">
 	<div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
 	<div class="acgc_content_box_body acgc_relative">
@@ -125,8 +127,8 @@
 			<div class="acgc_pagination_block">
 					<xsl:call-template name="paging">
 						<xsl:with-param name="numberOfItems" select="/GSP/RES/M"/>
-						<xsl:with-param name="currentPage"  select="/GSP/RES/@SN"/>
-						<xsl:with-param name="itemsPerPage"  select="/GSP/RES/@EN"/>					
+						<xsl:with-param name="currentPage"  select="$currentPage"/>
+						<xsl:with-param name="itemsPerPage"  select="/GSP/PARAM[@name='num']/@original_value"/>					
 					</xsl:call-template>
 			</div>
 		</div>
@@ -145,7 +147,7 @@
 			<xsl:choose>
 			<xsl:when test="position() mod 2=1">
 				<li class="even">
-									<strong>
+					<strong>
 						<a>
 						<xsl:attribute name="href"><xsl:value-of select="U"/></xsl:attribute>
 						<xsl:attribute name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:attribute>
@@ -166,7 +168,7 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<li class="odd">
-									<strong>
+					<strong>
 						<a>
 						<xsl:attribute name="href"><xsl:value-of select="U"/></xsl:attribute>
 						<xsl:attribute name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:attribute>
@@ -192,6 +194,7 @@
 	</ul>
 
 </xsl:template>
+
 <xsl:template name="paging">
 	<xsl:param name="numberOfItems"/>
 	<xsl:param name="currentPage"/>
@@ -219,7 +222,7 @@
 		</xsl:otherwise>
 	  </xsl:choose>
 	</xsl:variable>
-	<xsl:if test="$startPage > 1">
+	<xsl:if test="$currentPage > 1">
 		<a>
 			<xsl:attribute name="href">#</xsl:attribute>
 			<xsl:attribute name="onclick">changePageNum(this,'1');return false;</xsl:attribute>

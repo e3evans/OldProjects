@@ -46,7 +46,7 @@ public class ViewController {
 		HttpServletRequest hsreq= com.ibm.ws.portletcontainer.portlet.PortletUtils.getHttpServletRequest(request);
 		request.getPortletSession().setAttribute(SESS_SEARCH_TERM, hsreq.getParameter("q"));
 		if (form == null)form = new SearchForm();
-		form.setSearchResults(getSearchResultsHTML("xsl/searchResultsMod.xsl", TEST_URL+"&q="+hsreq.getParameter("q")+"&start=0").toString());
+		form.setSearchResults(getSearchResultsHTML("xsl/searchResultsMod.xsl", TEST_URL+"&q="+hsreq.getParameter("q")+"&start=0&page=1&num=10").toString());
 		model.put("searchForm", form);
 		return new ModelAndView("view","searchForm",form);
 	}
@@ -69,7 +69,7 @@ public class ViewController {
 //		form.setSearchResults_frag(getSearchResultsHTML("xsl/searchResults_frag.xsl", TEST_URL+"&q=news"+
 //				"&num="+request.getParameter("en")+"&start="+request.getParameter("sn")).toString());
 		form.setSearchResults_frag(getSearchResultsHTML("xsl/searchResultsMod.xsl", TEST_URL+"&q="+request.getParameter("q")+
-				"&num="+request.getParameter("en")+"&start="+request.getParameter("sn")).toString());
+				"&num="+request.getParameter("en")+"&start="+request.getParameter("sn")+"&page="+request.getParameter("page")).toString());
 		return new ModelAndView("search_frag","searchForm",form);
 	}
 	
