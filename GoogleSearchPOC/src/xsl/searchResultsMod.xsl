@@ -48,7 +48,6 @@
 	</div>
 </div>
 <div class="acgc_relative acgc_pagination_header_holder">
-	EEE--<xsl:select value="/GSP/RES/@SN"/>
 	<div class="acgc_pagination_block">
 		<xsl:call-template name="paging">
 				<xsl:with-param name="numberOfItems" select="/GSP/RES/M"/>
