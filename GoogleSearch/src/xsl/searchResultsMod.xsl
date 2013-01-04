@@ -25,22 +25,38 @@
 				<ul>
 					<li>
 						<a href="#newest" title="10 Results" onclick="javascript:changePageSize(10)">
-							<input name="selected" onclick="this.form.submit()" value="locations" checked="checked" type="radio"/>&#160; 10 Results
+							<input name="selected" onclick="this.form.submit()" value="locations" type="radio">
+							<xsl:if test="/GSP/PARAM[@name='num']/@original_value = 10">
+								<xsl:attribute name="checked">checked</xsl:attribute>
+							</xsl:if>
+							</input>&#160; 10 Results
 						</a>
 					</li>
 					<li>
 						<a href="#oldest" title="20 Results" onclick="javascript:changePageSize(20)">
-							<input name="selected" onclick="this.form.submit()" value="doctors" type="radio"/>&#160; 20 Results
+							<input name="selected" onclick="this.form.submit()" value="doctors" type="radio">
+							<xsl:if test="/GSP/PARAM[@name='num']/@original_value = 20">
+								<xsl:attribute name="checked">checked</xsl:attribute>
+							</xsl:if>
+							</input>&#160; 20 Results
 						</a>
 					</li>
 					<li>
 						<a href="#oldest" title="50 Results" onclick="javascript:changePageSize(50)">
-							<input name="selected" onclick="this.form.submit()" value="healthinfo" type="radio"/>&#160; 50 Results
+							<input name="selected" onclick="this.form.submit()" value="healthinfo" type="radio">
+							<xsl:if test="/GSP/PARAM[@name='num']/@original_value = 50">
+								<xsl:attribute name="checked">checked</xsl:attribute>
+							</xsl:if>
+							</input>&#160; 50 Results
 						</a>
 					</li>
 					<li>
 						<a href="#oldest" title="100 Results" onclick="javascript:changePageSize(100)">
-							<input name="selected" onclick="this.form.submit()" value="services" type="radio"/>&#160; 100 Results
+							<input name="selected" onclick="this.form.submit()" value="services" type="radio">
+							<xsl:if test="/GSP/PARAM[@name='num']/@original_value = 100">
+								<xsl:attribute name="checked">checked</xsl:attribute>
+							</xsl:if>
+							</input>&#160; 100 Results
 						</a>
 					</li>
 				</ul>
@@ -245,7 +261,7 @@
 		  <xsl:attribute name="onclick">changePageNum(this,'<xsl:value-of select="$currentPage + 6"/>');return false;</xsl:attribute>
 		  <img src="/AuroraTheme/themes/html/assets/images/arrows-one-right.png" alt="Next" />
 	  </a> &#160;
-		<a href="">
+		<a>
 		<xsl:attribute name="href">#</xsl:attribute>
 		<xsl:attribute name="onclick">changePageNum(this,'<xsl:value-of select="$currentPage + 100"/>');return false;</xsl:attribute>
 		<img src="/AuroraTheme/themes/html/assets/images/arrows-full-right.png" alt="Last" /></a>
@@ -261,12 +277,7 @@
   <xsl:choose>
     <xsl:when test="$number = $current">
       <!-- Show current page without a link -->
-	<a>
-		<xsl:attribute name="href">#</xsl:attribute>
-		<xsl:attribute name="onclick">changePageNum(this,'<xsl:value-of select="$number"/>');return false;</xsl:attribute>
-		<xsl:attribute name="class">selected</xsl:attribute>
-		<xsl:value-of select="$number"/>
-	</a>&#160;
+		<xsl:value-of select="$number"/>&#160;
     </xsl:when>
     <xsl:otherwise>
 	<a>

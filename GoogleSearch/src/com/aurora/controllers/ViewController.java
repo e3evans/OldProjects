@@ -35,7 +35,7 @@ public class ViewController {
 	private static String TEST_URL = "http://google.aurora.org/search?site=default_collection&output=xml_no_dtd";
 	public static String SESS_SEARCH_TERM = "google.search.term";
 	public static String SEARCH_RESULTS_BOX = "searchResultsBox";
-	public static String SEARCH_NUM_RESULTS = "span_numofResults";
+	//public static String SEARCH_NUM_RESULTS = "span_numofResults";
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping
@@ -55,9 +55,9 @@ public class ViewController {
 		System.out.println("SEARCHING!!!");
 		if (form == null)form = new SearchForm();
 //		String q = request.getParameter("q");
-		System.out.println(request.getParameter("q"));
-		System.out.println(request.getParameter("en"));
-		System.out.println(request.getParameter("sn"));
+//		System.out.println(request.getParameter("q"));
+//		System.out.println(request.getParameter("en"));
+//		System.out.println(request.getParameter("sn"));
 //		form.setSearchResults_frag(getSearchResultsHTML("xsl/searchResults_frag.xsl", TEST_URL+"&q=news"+
 //				"&num="+request.getParameter("en")+"&start="+request.getParameter("sn")).toString());
 		form.setSearchResults_frag(getSearchResultsHTML("xsl/searchResultsMod.xsl", TEST_URL+"&q="+request.getParameter("q")+
