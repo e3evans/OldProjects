@@ -46,10 +46,6 @@
 
 
 
-	 
-	
-
-<%System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!inappedit.jsp");%>
 <form:form  commandName="appFormBean" method="post" name="editUrlForm" id="editUrlForm" action="${formAction}">
 
     <div class="acgc_overlay_body" id="acgc_quicklinks_picker_canvas">
@@ -68,7 +64,7 @@
     </c:choose>
         <c:choose>
          <c:when test="${appLst.defaultApp}">
-        <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked" onclick="javascript:alert('This app is added for you by admin you can not remove this app');this.checked='checked';"/>
+        <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked" disabled="true"/>
         </c:when>
         <c:when test="${appLst.alreadyRegistered}">
         <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked"/>

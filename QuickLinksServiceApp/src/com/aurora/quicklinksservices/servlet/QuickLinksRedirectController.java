@@ -85,10 +85,9 @@ public class QuickLinksRedirectController  {
     		
     	}
     	
-    	
 		SSOManager.createSSOCookie(request, response, portalkeys ,empNo,
 	            "ICONNECT", "EMP", firstName, lastName,
-	            url, "10.46.21.57");
+	            "http://iconnect-test.aurora.org/portal/", "10.46.21.57");
 		
 		response.sendRedirect(response.encodeURL(url));
 	}
