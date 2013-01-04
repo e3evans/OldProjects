@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-	<display-name>QuQuickLinksPortletdisplay-name>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>QuickLinksPortlet</display-name>
 	<listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -9,12 +10,12 @@
 			org.springframework.web.servlet.ViewRendererServlet
 		</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>ViewRendererServlet</servlet-name>
 		<url-pattern>/WEB-INF/servlet/view</url-pattern>
 	</servlet-mapping>
-	
+
   
   <servlet>
     <servlet-name>appServlet</servlet-name>
@@ -25,4 +26,3 @@
     <url-pattern>/resource/*</url-pattern>
   </servlet-mapping>
 </web-app>
-

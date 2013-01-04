@@ -5,8 +5,6 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.Map;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.portlet.ResourceRequest;
@@ -25,10 +23,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.ModelAndView;
-import org.springframework.web.portlet.bind.annotation.ActionMapping;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
-import com.aurora.org.googlesearchpoc.forms.SearchForm;
+import com.aurora.org.googlesearch.forms.SearchForm;
 import com.aurora.webservice.client.GoogleServiceClient;
 
 @Controller
@@ -43,6 +40,7 @@ public class ViewController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping
 	public ModelAndView defaultView (RenderRequest request, RenderResponse responses, @SuppressWarnings("rawtypes") Map model,@ModelAttribute("searchForm")SearchForm form){
+
 		HttpServletRequest hsreq= com.ibm.ws.portletcontainer.portlet.PortletUtils.getHttpServletRequest(request);
 		request.getPortletSession().setAttribute(SESS_SEARCH_TERM, hsreq.getParameter("q"));
 		if (form == null)form = new SearchForm();
@@ -51,12 +49,6 @@ public class ViewController {
 		return new ModelAndView("view","searchForm",form);
 	}
 	
-	@ActionMapping(params = "action=doSearch")
-	public void doSearch(ActionRequest request, ActionResponse response,@ModelAttribute("searchForm")SearchForm form){
-		response.setRenderParameter("searchString", form.getSearchString());
-		System.out.println(form.getSearchString());
-		System.out.println("ACTION");
-	}
 	
 	@ResourceMapping(value="search")
 	public ModelAndView doSearch(ResourceRequest request, ResourceResponse responses, @SuppressWarnings("rawtypes") Map model,@ModelAttribute("searchForm")SearchForm form){

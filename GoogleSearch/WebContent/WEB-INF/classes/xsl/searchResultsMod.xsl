@@ -19,7 +19,7 @@
 <xsl:template name="resultsBar">
 <div id="acgc_recordsorter" class="acgc_relative">
 	<div class="acgc_sort_by">
-		Results Per Page: <span class="acgc_sort_by_focus" id="span_numofResults">10 Results <img src="/AuroraTheme/themes/html/assets/images/arrow-down-small-header.png" alt="arrow" class="acgc_inline_icon" /></span>
+		Results Per Page: <span class="acgc_sort_by_focus" id="span_numofResults"><xsl:value-of select="/GSP/PARAM[@name='num']/@original_value"/>&#160;Results <img src="/AuroraTheme/themes/html/assets/images/arrow-down-small-header.png" alt="arrow" class="acgc_inline_icon" /></span>
 		<div class="acgc_relative">
 			<div class="acgc_sort_by_holder">
 				<ul>

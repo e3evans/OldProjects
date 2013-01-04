@@ -1,4 +1,4 @@
-package com.aurora.org.googlesearchpoc.forms;
+package com.aurora.org.googlesearch.forms;
 
 public class SearchForm {
 	
