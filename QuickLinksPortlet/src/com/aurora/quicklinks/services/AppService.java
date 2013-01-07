@@ -2,7 +2,6 @@ package com.aurora.quicklinks.services;
 
 import java.util.List;
 
-import org.json.JSONObject;
 
 import com.aurora.exceptions.AppException;
 import com.aurora.quicklinks.beans.Application;

@@ -68,7 +68,6 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		List<User> appList = new ArrayList<User>();
 		StringBuffer sb = new StringBuffer();
 		if(null!=list){
-		System.out.println("TEST -- > " + list.size());
 		for (int i = 0; i < list.size(); i++) {
 			User temp = (User) list.get(i);
 			appList.add(temp);

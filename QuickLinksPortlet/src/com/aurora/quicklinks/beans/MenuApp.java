@@ -4,9 +4,15 @@ package com.aurora.quicklinks.beans;
 
 import java.io.Serializable;
 
+
+
 public class MenuApp implements Serializable
 {
-  private Application app;
+  /**
+	 * 
+	*/
+private static final long serialVersionUID = 2348136144495681544L;
+private Application app;
   private UserApplication userApp;
   private boolean subAppsAllAutoReg = true;
 

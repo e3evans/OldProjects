@@ -63,8 +63,7 @@ public class QuickLinksRedirectController  {
     	Long portalKey;
     	String portalkeys="";
     	String ip=request.getRemoteAddr();
-    	System.out.println("url printing"+url);
-    	System.out.println("userid"+LoginId);
+    	
     	
 		
     	List<User> list = quickLinksService.retrieveUserDetails("000282");
@@ -76,12 +75,7 @@ public class QuickLinksRedirectController  {
     		empNo="000282";
     		portalKey=user.getUserID();
     		portalkeys=Long.toString(portalKey);
-    		System.out.println("printing ip"+ip);
-    		System.out.println("printing empno"+empNo);
-    		System.out.println("printing portal keys"+portalkeys);
-            System.out.println("firstname"+firstName);
     		
-    		System.out.println("last"+lastName);
     		
     	}
     	
