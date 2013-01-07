@@ -157,6 +157,7 @@
 </xsl:template>
 
 <xsl:template name="results">
+	<xsl:variable name="portalServer">http://porporit1.ahc.root.loc:10039</xsl:variable>
 	<ul class="acgc_search_results_list">
 			
 		<xsl:for-each select="/GSP/RES/R">
@@ -165,7 +166,12 @@
 				<li class="even">
 					<strong>
 						<a>
-						<xsl:attribute name="href"><xsl:value-of select="U"/></xsl:attribute>
+						<xsl:attribute name="href">
+								<xsl:call-template name="formatWCMUrl">
+								<xsl:with-param name="portalServer" select="$portalServer"/>
+								<xsl:with-param name="googleUrl" select="U"/>
+							</xsl:call-template>
+						</xsl:attribute>
 						<xsl:attribute name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:attribute>
 						<xsl:value-of select="T" disable-output-escaping="yes"/>
 						</a>
@@ -174,10 +180,14 @@
 						<xsl:value-of select="S" disable-output-escaping="yes"/>
 					</p>
 					<a>
-						<xsl:attribute name="href"><xsl:value-of select="U"/></xsl:attribute>
+						<xsl:attribute name="href">
+							<xsl:call-template name="formatWCMUrl">
+								<xsl:with-param name="portalServer" select="$portalServer"/>
+								<xsl:with-param name="googleUrl" select="U"/>
+							</xsl:call-template>
+						</xsl:attribute>
 						<xsl:attribute name="title">Visit <xsl:value-of select="U"/>
 						</xsl:attribute>
-						<xsl:attribute name="target">_blank</xsl:attribute>
 						<xsl:value-of select="U"/>
 					</a>
 				</li>
@@ -186,7 +196,12 @@
 				<li class="odd">
 					<strong>
 						<a>
-						<xsl:attribute name="href"><xsl:value-of select="U"/></xsl:attribute>
+						<xsl:attribute name="href">
+							<xsl:call-template name="formatWCMUrl">
+								<xsl:with-param name="portalServer" select="$portalServer"/>
+								<xsl:with-param name="googleUrl" select="U"/>
+							</xsl:call-template>
+						</xsl:attribute>
 						<xsl:attribute name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:attribute>
 						<xsl:value-of select="T" disable-output-escaping="yes"/>
 						</a>
@@ -195,10 +210,14 @@
 						<xsl:value-of select="S" disable-output-escaping="yes"/>
 					</p>
 					<a>
-						<xsl:attribute name="href"><xsl:value-of select="U"/></xsl:attribute>
+						<xsl:attribute name="href">
+							<xsl:call-template name="formatWCMUrl">
+								<xsl:with-param name="portalServer" select="$portalServer"/>
+								<xsl:with-param name="googleUrl" select="U"/>
+							</xsl:call-template>						
+						</xsl:attribute>
 						<xsl:attribute name="title">Visit <xsl:value-of select="U"/>
 						</xsl:attribute>
-						<xsl:attribute name="target">_blank</xsl:attribute>
 						<xsl:value-of select="U"/>
 					</a>
 				</li>
@@ -210,7 +229,19 @@
 	</ul>
 
 </xsl:template>
-
+<xsl:template name="formatWCMUrl">
+	<xsl:param name="portalServer"/>
+	<xsl:param name="googleUrl"/>
+	<xsl:choose>
+		<xsl:when test="contains($googleUrl,$portalServer)">
+			<xsl:value-of select="$portalServer"/>/cgc/myportal/connect/?urile=wcm%3apath%3a<xsl:value-of select="substring-after($googleUrl,$portalServer)"/>
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:value-of select="$googleUrl"/>
+		</xsl:otherwise>
+	</xsl:choose>
+	
+</xsl:template>
 <xsl:template name="paging">
 	<xsl:param name="numberOfItems"/>
 	<xsl:param name="currentPage"/>
