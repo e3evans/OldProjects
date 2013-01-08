@@ -21,7 +21,11 @@ import javax.persistence.Table;
 @Table(name = "S05DTDB.TPT2J_USER_APP")
 public class UserApp implements Serializable
 {
-   // public static final String ACTIVE = "A";
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5649724987260236583L;
+// public static final String ACTIVE = "A";
    // public static final String INACTIVE = "I";
   public static final Integer NOTDISPLAYED = new Integer(0);
   private UserAppKey userAppKey;

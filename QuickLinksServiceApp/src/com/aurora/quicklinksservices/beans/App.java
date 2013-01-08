@@ -88,7 +88,7 @@ public class App
     private String displayLeftNav;
     private String windowWidth;
     private String windowHeight;
-    private Integer userCount;
+    
 
     public App()
     {

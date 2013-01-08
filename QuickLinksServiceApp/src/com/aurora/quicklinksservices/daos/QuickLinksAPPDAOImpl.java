@@ -3,14 +3,15 @@ package com.aurora.quicklinksservices.daos;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 import com.aurora.quicklinksservices.beans.App;
 import com.aurora.quicklinksservices.beans.User;
@@ -21,7 +22,7 @@ import com.aurora.quicklinksservices.util.QuickLinksUtility;
 
 @Repository
 public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
-
+	private Logger logger = Logger.getLogger(QuickLinksAPPDAOImpl.class);
 	@Autowired
 	private SessionFactory urlsessionFactory;
 
@@ -29,6 +30,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 
 	/* getting Available quicklinks list based on user role */
 
+	@SuppressWarnings("unchecked")
 	public List<App> findAvailAppListByRole(String roleCd) {
 		String rolecd="EMP";
 		StringBuffer sql = new StringBuffer();
@@ -54,6 +56,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 
 	/* Service for getting user details */
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findUserDetails(String loginid) {
 		// TODO Auto-generated method stub
@@ -66,7 +69,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 				.createQuery("from com.aurora.quicklinksservices.beans.User where loginId='"+loginid+"'");
 		List<User> list = query.list();
 		List<User> appList = new ArrayList<User>();
-		StringBuffer sb = new StringBuffer();
+		//StringBuffer sb = new StringBuffer();
 		if(null!=list){
 		for (int i = 0; i < list.size(); i++) {
 			User temp = (User) list.get(i);
@@ -80,9 +83,10 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 
 	/* Service for getting user saved quick links */
 
+	@SuppressWarnings("unchecked")
 	public List<UserAppResponseBean> findUserAppsByUser(Long userid) {
 		//userid = 43l;
-		String appid="ICONNECT";
+		//String appid="ICONNECT";
 		String formatedurl="";
 		Session session = urlsessionFactory.openSession();
 		session.beginTransaction();
@@ -120,7 +124,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 }
 
 		 
-		List list = session.createCriteria(UserApp.class)
+		List<UserApp> list = session.createCriteria(UserApp.class)
 				.add(Restrictions.eq("userAppKey.userId", userid))
 				.add(Restrictions.eq("activeCd", "A")).list();
         
@@ -153,6 +157,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	public List<UserAppResponseBean> findAllUserAppsByUser(Long userid) {
 		Session session = urlsessionFactory.openSession();
 		session.beginTransaction();
@@ -185,8 +190,8 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 
 	
 		
-		List list =  session.createCriteria(UserApp.class).add(Expression.eq("userAppKey.userId", userid)).list();
-        StringBuffer sb = new StringBuffer();
+		List<UserApp> list =  session.createCriteria(UserApp.class).add(Restrictions.eq("userAppKey.userId", userid)).list();
+        //StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < list.size(); i++) {
 			
 			bean = new UserAppResponseBean();
@@ -244,7 +249,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		session.save(userApp);
 		txn.commit();
 		} catch (Exception e) { 
-		    System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} finally {
 		    if (!txn.wasCommitted()) {
 		        txn.rollback();
@@ -258,6 +263,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	
 	
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<App> findAppMenuAutoList(String appId)
 	  {
@@ -291,7 +297,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
         session.update(userApp);
         txn.commit();
         }} catch (Exception e) {
-            System.out.println(e.getMessage());
+        	logger.error(e.getMessage());
         } finally {
             if (!txn.wasCommitted()) {
                 txn.rollback();
