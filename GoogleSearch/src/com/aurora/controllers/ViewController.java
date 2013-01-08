@@ -3,6 +3,8 @@ package com.aurora.controllers;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Map;
 
 import javax.portlet.RenderRequest;
@@ -44,7 +46,12 @@ public class ViewController {
 		HttpServletRequest hsreq= com.ibm.ws.portletcontainer.portlet.PortletUtils.getHttpServletRequest(request);
 		request.getPortletSession().setAttribute(SESS_SEARCH_TERM, hsreq.getParameter("q"));
 		if (form == null)form = new SearchForm();
-		form.setSearchResults(getSearchResultsHTML("xsl/searchResultsMod.xsl", TEST_URL+"&q="+hsreq.getParameter("q")+"&start=0&page=1&num=10").toString());
+		try {
+			form.setSearchResults(getSearchResultsHTML("xsl/searchResultsMod.xsl", TEST_URL+"&q="+URLEncoder.encode(hsreq.getParameter("q"),"ISO-8859-1")+"&start=0&page=1&num=10").toString());
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.put("searchForm", form);
 		return new ModelAndView("view","searchForm",form);
 	}
