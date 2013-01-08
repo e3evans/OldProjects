@@ -16,6 +16,7 @@
 </xsl:template>
 <xsl:variable name="currentPage" select="/GSP/PARAM[@name='page']/@original_value"/>
 
+
 <xsl:template name="resultsBar">
 <div id="acgc_recordsorter" class="acgc_relative">
 	<div class="acgc_sort_by">
@@ -117,16 +118,7 @@
 			<div class="acgc_related_searches">
 				<h3>Related Searches</h3>
 				<ul>
-					<li>
-						<a href="" title="Woman's Health">
-							Woman's Health
-						</a>
-					</li>
-					<li>
-						<a href="" title="Woman's Health">
-							Men's Health
-						</a>
-					</li>
+					<xsl:call-template name="clusterResults"/>
 				</ul>
 			</div>
 		</div>
@@ -156,6 +148,18 @@
 </div>
 </xsl:template>
 
+<xsl:template name="clusterResults">
+	<xsl:for-each select="/GSP/cluster/gcluster">
+		<li>
+			<a href="">
+				<xsl:attribute name="title"><xsl:value-of select="label/@data"/></xsl:attribute>
+				<xsl:attribute name="ctype">synonym</xsl:attribute>
+				<xsl:value-of select="label/@data"/>
+			</a>
+		</li>
+	</xsl:for-each>
+</xsl:template>
+
 <xsl:template name="results">
 	<xsl:variable name="portalServer">http://porporit1.ahc.root.loc:10039</xsl:variable>
 	<ul class="acgc_search_results_list">
@@ -172,6 +176,8 @@
 								<xsl:with-param name="googleUrl" select="U"/>
 							</xsl:call-template>
 						</xsl:attribute>
+						<xsl:attribute name="rank"><xsl:value-of select="@N"/></xsl:attribute>
+						<xsl:attribute name="ctype">c</xsl:attribute>
 						<xsl:attribute name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:attribute>
 						<xsl:value-of select="T" disable-output-escaping="yes"/>
 						</a>
@@ -186,6 +192,8 @@
 								<xsl:with-param name="googleUrl" select="U"/>
 							</xsl:call-template>
 						</xsl:attribute>
+						<xsl:attribute name="rank"><xsl:value-of select="@N"/></xsl:attribute>
+						<xsl:attribute name="ctype">c</xsl:attribute>
 						<xsl:attribute name="title">Visit <xsl:value-of select="U"/>
 						</xsl:attribute>
 						<xsl:value-of select="U"/>
@@ -202,6 +210,8 @@
 								<xsl:with-param name="googleUrl" select="U"/>
 							</xsl:call-template>
 						</xsl:attribute>
+						<xsl:attribute name="rank"><xsl:value-of select="@N"/></xsl:attribute>
+						<xsl:attribute name="ctype">c</xsl:attribute>
 						<xsl:attribute name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:attribute>
 						<xsl:value-of select="T" disable-output-escaping="yes"/>
 						</a>
@@ -216,6 +226,8 @@
 								<xsl:with-param name="googleUrl" select="U"/>
 							</xsl:call-template>						
 						</xsl:attribute>
+						<xsl:attribute name="rank"><xsl:value-of select="@N"/></xsl:attribute>
+						<xsl:attribute name="ctype">c</xsl:attribute>
 						<xsl:attribute name="title">Visit <xsl:value-of select="U"/>
 						</xsl:attribute>
 						<xsl:value-of select="U"/>
@@ -272,11 +284,13 @@
 	<xsl:if test="$currentPage > 1">
 		<a>
 			<xsl:attribute name="href">#</xsl:attribute>
+			<xsl:attribute name="ctype">nav.page</xsl:attribute>
 			<xsl:attribute name="onclick">changePageNum(this,'1');return false;</xsl:attribute>
 			<img src="/AuroraTheme/themes/html/assets/images/arrows-full-left.png" alt="First" />
 		</a> &#160;
 		<a>
 			<xsl:attribute name="href">#</xsl:attribute>
+			<xsl:attribute name="ctype">nav.prev</xsl:attribute>
 			<xsl:attribute name="onclick">changePageNum(this,'<xsl:value-of select="$currentPage - 1"/>');return false;</xsl:attribute>
 			<img src="/AuroraTheme/themes/html/assets/images/arrows-one-left.png" alt="Prev" />
 		</a> &#160;
@@ -289,11 +303,13 @@
 	 <xsl:if test="$currentPage + 5 &lt; $numberOfPages">
       <a>
 		  <xsl:attribute name="href">#</xsl:attribute>
+		  <xsl:attribute name="ctype">nav.next</xsl:attribute>
 		  <xsl:attribute name="onclick">changePageNum(this,'<xsl:value-of select="$currentPage + 6"/>');return false;</xsl:attribute>
 		  <img src="/AuroraTheme/themes/html/assets/images/arrows-one-right.png" alt="Next" />
 	  </a> &#160;
 		<a>
 		<xsl:attribute name="href">#</xsl:attribute>
+		<xsl:attribute name="ctype">nav.page</xsl:attribute>
 		<xsl:attribute name="onclick">changePageNum(this,'<xsl:value-of select="$currentPage + 100"/>');return false;</xsl:attribute>
 		<img src="/AuroraTheme/themes/html/assets/images/arrows-full-right.png" alt="Last" /></a>
 	</xsl:if>
@@ -313,6 +329,7 @@
     <xsl:otherwise>
 	<a>
 		<xsl:attribute name="href">#</xsl:attribute>
+		<xsl:attribute name="ctype">nav.page</xsl:attribute>
 		<xsl:attribute name="onclick">changePageNum(this,'<xsl:value-of select="$number"/>');return false;</xsl:attribute>
 		<xsl:value-of select="$number"/>
 	</a>&#160;
