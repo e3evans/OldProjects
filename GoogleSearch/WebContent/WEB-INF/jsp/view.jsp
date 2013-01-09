@@ -6,8 +6,9 @@
 </portlet:actionURL >
 
 <portlet:resourceURL var="search" id="search"/>
+<portlet:resourceURL var="googleClick" id="googleClick"/>
 <script>
-
+var clickUrl = '<%=googleClick%>';
 function changePageSize(perPage){
 	PP=perPage;
 	SN=0;

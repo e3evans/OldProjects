@@ -27,7 +27,6 @@ public class GoogleServiceClient {
     }
     
     public String doGet(String path, String queryParams) throws Exception {
-  
 		WebResource service = getWebResource (path) ;
 	    ClientResponse response = service.accept(MediaType.TEXT_XML).get(ClientResponse.class);
 		if (response.getStatus() != 200)
@@ -35,6 +34,13 @@ public class GoogleServiceClient {
 	    String output = response.getEntity(String.class);
 	    return output ;
 	}
+    
+    public void doGetNoContent(String path,String queryParams)throws Exception{
+    	WebResource service = getWebResource (path) ;
+	    ClientResponse response = service.accept(MediaType.TEXT_XML).get(ClientResponse.class);
+		if (response.getStatus() != 204)
+			throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
+    }
 	
 	public void doPost(String path, String input, String queryParams) throws Exception {
 		WebResource service = getWebResource (path) ;

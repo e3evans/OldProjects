@@ -1,10 +1,14 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  version="2.0">
 <xsl:output omit-xml-declaration="yes"/>
+<xsl:param name="contextPath"/>
 <xsl:template match="/">
 		<script>
 			var SN = <xsl:value-of select="/GSP/RES/@SN"/>;
 			var PP = <xsl:value-of select="/GSP/PARAM[@name='num']/@original_value"/>;
 			var Q = '<xsl:value-of select="/GSP/PARAM[@name='q']/@original_value"/>';
+			var page_query = '<xsl:value-of select="/GSP/PARAM[@name='q']/@original_value"/>';
+			var page_start = '<xsl:value-of select="/GSP/PARAM[@name='page']/@original_value"/>';
+			var page_site = '<xsl:value-of select="/GSP/PARAM[@name='site']/@original_value"/>';
 		</script>
 		<div class="acgc_top_content_wrap">
 			<div class="acgc_top_content_box acgc_relative">
@@ -13,9 +17,14 @@
 		</div>
 		<xsl:call-template name="resultsBar"/>
 		<xsl:call-template name="searchResults"/>
+		<script>
+			<xsl:attribute name="src"><xsl:value-of select="$contextPath"/>/js/clicklog.js</xsl:attribute>
+			<xsl:attribute name="language">JavaScript</xsl:attribute>
+			&#160;
+		</script>
 </xsl:template>
 <xsl:variable name="currentPage" select="/GSP/PARAM[@name='page']/@original_value"/>
-
+<xsl:variable name="portalServer">http://porporit1.ahc.root.loc:10039</xsl:variable>
 
 <xsl:template name="resultsBar">
 <div id="acgc_recordsorter" class="acgc_relative">
@@ -161,88 +170,75 @@
 </xsl:template>
 
 <xsl:template name="results">
-	<xsl:variable name="portalServer">http://porporit1.ahc.root.loc:10039</xsl:variable>
 	<ul class="acgc_search_results_list">
-			
 		<xsl:for-each select="/GSP/RES/R">
 			<xsl:choose>
 			<xsl:when test="position() mod 2=1">
 				<li class="even">
 					<strong>
-						<a>
-						<xsl:attribute name="href">
-								<xsl:call-template name="formatWCMUrl">
-								<xsl:with-param name="portalServer" select="$portalServer"/>
-								<xsl:with-param name="googleUrl" select="U"/>
-							</xsl:call-template>
-						</xsl:attribute>
-						<xsl:attribute name="rank"><xsl:value-of select="@N"/></xsl:attribute>
-						<xsl:attribute name="ctype">c</xsl:attribute>
-						<xsl:attribute name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:attribute>
-						<xsl:value-of select="T" disable-output-escaping="yes"/>
-						</a>
+					<xsl:call-template name="createUrl">
+							<xsl:with-param name="rank" select="@N"/>
+							<xsl:with-param name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:with-param>
+							<xsl:with-param name="linkvalue" ><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:with-param>
+							<xsl:with-param name="googleUrl" select="U"/>
+					</xsl:call-template>
 					</strong>
 					<p>
 						<xsl:value-of select="S" disable-output-escaping="yes"/>
 					</p>
-					<a>
-						<xsl:attribute name="href">
-							<xsl:call-template name="formatWCMUrl">
-								<xsl:with-param name="portalServer" select="$portalServer"/>
-								<xsl:with-param name="googleUrl" select="U"/>
-							</xsl:call-template>
-						</xsl:attribute>
-						<xsl:attribute name="rank"><xsl:value-of select="@N"/></xsl:attribute>
-						<xsl:attribute name="ctype">c</xsl:attribute>
-						<xsl:attribute name="title">Visit <xsl:value-of select="U"/>
-						</xsl:attribute>
-						<xsl:value-of select="U"/>
-					</a>
+					<xsl:call-template name="createUrl">
+							<xsl:with-param name="rank" select="@N"/>
+							<xsl:with-param name="title">Visit <xsl:value-of select="U"/></xsl:with-param>
+							<xsl:with-param name="linkvalue" select="U"/>
+							<xsl:with-param name="googleUrl" select="U"/>
+					</xsl:call-template>
 				</li>
 			</xsl:when>
 			<xsl:otherwise>
 				<li class="odd">
 					<strong>
-						<a>
-						<xsl:attribute name="href">
-							<xsl:call-template name="formatWCMUrl">
-								<xsl:with-param name="portalServer" select="$portalServer"/>
-								<xsl:with-param name="googleUrl" select="U"/>
-							</xsl:call-template>
-						</xsl:attribute>
-						<xsl:attribute name="rank"><xsl:value-of select="@N"/></xsl:attribute>
-						<xsl:attribute name="ctype">c</xsl:attribute>
-						<xsl:attribute name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:attribute>
-						<xsl:value-of select="T" disable-output-escaping="yes"/>
-						</a>
+					<xsl:call-template name="createUrl">
+							<xsl:with-param name="rank" select="@N"/>
+							<xsl:with-param name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:with-param>
+							<xsl:with-param name="linkvalue" ><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:with-param>
+							<xsl:with-param name="googleUrl" select="U"/>
+					</xsl:call-template>
 					</strong>
 					<p>
 						<xsl:value-of select="S" disable-output-escaping="yes"/>
 					</p>
-					<a>
-						<xsl:attribute name="href">
-							<xsl:call-template name="formatWCMUrl">
-								<xsl:with-param name="portalServer" select="$portalServer"/>
-								<xsl:with-param name="googleUrl" select="U"/>
-							</xsl:call-template>						
-						</xsl:attribute>
-						<xsl:attribute name="rank"><xsl:value-of select="@N"/></xsl:attribute>
-						<xsl:attribute name="ctype">c</xsl:attribute>
-						<xsl:attribute name="title">Visit <xsl:value-of select="U"/>
-						</xsl:attribute>
-						<xsl:value-of select="U"/>
-					</a>
+					<xsl:call-template name="createUrl">
+							<xsl:with-param name="rank" select="@N"/>
+							<xsl:with-param name="title">Visit <xsl:value-of select="U"/></xsl:with-param>
+							<xsl:with-param name="linkvalue" select="U"/>
+							<xsl:with-param name="googleUrl" select="U"/>
+					</xsl:call-template>
 				</li>
 			</xsl:otherwise>
 			</xsl:choose>
-
 		</xsl:for-each>
-	
 	</ul>
-
 </xsl:template>
+
+<xsl:template name="createUrl">
+	<xsl:param name="rank"/>
+	<xsl:param name="title"/>
+	<xsl:param name="linkvalue"/>
+	<xsl:param name="googleUrl"/>
+	<a>
+		<xsl:attribute name="href">
+			<xsl:call-template name="formatWCMUrl">
+				<xsl:with-param name="googleUrl" select="$googleUrl"/>
+			</xsl:call-template>						
+		</xsl:attribute>
+		<xsl:attribute name="rank"><xsl:value-of select="$rank"/></xsl:attribute>
+		<xsl:attribute name="ctype">c</xsl:attribute>
+		<xsl:attribute name="title"><xsl:value-of select="$title" disable-output-escaping="yes"/></xsl:attribute>
+		<xsl:value-of select="$linkvalue" disable-output-escaping="yes"/>
+	</a>
+</xsl:template>
+
 <xsl:template name="formatWCMUrl">
-	<xsl:param name="portalServer"/>
 	<xsl:param name="googleUrl"/>
 	<xsl:choose>
 		<xsl:when test="contains($googleUrl,$portalServer)">
@@ -252,8 +248,8 @@
 			<xsl:value-of select="$googleUrl"/>
 		</xsl:otherwise>
 	</xsl:choose>
-	
 </xsl:template>
+
 <xsl:template name="paging">
 	<xsl:param name="numberOfItems"/>
 	<xsl:param name="currentPage"/>

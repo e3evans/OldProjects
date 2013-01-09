@@ -6,6 +6,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Enumeration;
 import java.util.Map;
 
 import javax.portlet.RenderRequest;
@@ -48,7 +49,8 @@ import com.aurora.webservice.client.GoogleServiceClient;
 public class ViewController {
 	
 	private static String GOOGLE_SEARCH_URL = "http://google.aurora.org/search?site=default_collection&output=xml_no_dtd";
-	private static String GOOGLE_CLUSTER_URL = "http://google.aurora.org/cluster?site=default_collection&client=default_collection&coutput=xml"; //&q=
+	private static String GOOGLE_CLUSTER_URL = "http://google.aurora.org/cluster?site=default_collection&client=default_collection&coutput=xml";
+	private static String GOOGLE_CLICK_URL = "http://google.aurora.org/click?";
 	public static String SESS_SEARCH_TERM = "google.search.term";
 	public static String SEARCH_RESULTS_BOX = "searchResultsBox";
 
@@ -62,7 +64,7 @@ public class ViewController {
 		try {
 			form.setSearchResults(getSearchResultsHTML("xsl/searchResultsMod.xsl", 
 					GOOGLE_SEARCH_URL+"&q="+URLEncoder.encode(hsreq.getParameter("q"),"ISO-8859-1")+"&start=0&page=1&num=10",
-					GOOGLE_CLUSTER_URL+"&q="+URLEncoder.encode(hsreq.getParameter("q"),"ISO-8859-1")).toString());
+					GOOGLE_CLUSTER_URL+"&q="+URLEncoder.encode(hsreq.getParameter("q"),"ISO-8859-1"),request.getContextPath()).toString());
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,18 +75,27 @@ public class ViewController {
 	
 	
 	@ResourceMapping(value="search")
-	public ModelAndView doSearch(ResourceRequest request, ResourceResponse responses, @SuppressWarnings("rawtypes") Map model,@ModelAttribute("searchForm")SearchForm form) throws UnsupportedEncodingException{
+	public ModelAndView doSearch(ResourceRequest request, ResourceResponse response, @SuppressWarnings("rawtypes") Map model,@ModelAttribute("searchForm")SearchForm form) throws UnsupportedEncodingException{
 		if (form == null)form = new SearchForm();
-//		String q = request.getParameter("q");
-//		System.out.println(request.getParameter("q"));
-//		System.out.println(request.getParameter("en"));
-//		System.out.println(request.getParameter("sn"));
-//		form.setSearchResults_frag(getSearchResultsHTML("xsl/searchResults_frag.xsl", TEST_URL+"&q=news"+
-//				"&num="+request.getParameter("en")+"&start="+request.getParameter("sn")).toString());
 		form.setSearchResults_frag(getSearchResultsHTML("xsl/searchResultsMod.xsl", GOOGLE_SEARCH_URL+"&q="+URLEncoder.encode(request.getParameter("q"),"ISO-8859-1")+
 				"&num="+request.getParameter("en")+"&start="+request.getParameter("sn")+"&page="+request.getParameter("page")
-				,GOOGLE_CLUSTER_URL+"&q="+URLEncoder.encode(request.getParameter("q"),"ISO-8859-1")).toString());
+				,GOOGLE_CLUSTER_URL+"&q="+URLEncoder.encode(request.getParameter("q"),"ISO-8859-1"),request.getContextPath()).toString());
 		return new ModelAndView("search_frag","searchForm",form);
+	}
+	
+	@ResourceMapping(value="googleClick")
+	public void doGoogleClick(ResourceRequest request, ResourceResponse response) throws Exception{
+		Enumeration<String> e = request.getParameterNames();
+		
+		StringBuffer sb = new StringBuffer();
+		while (e.hasMoreElements()){
+			String temp = e.nextElement();
+			sb.append("&"+temp+"="+URLEncoder.encode(request.getParameter(temp),"ISO-8859-1"));
+//			System.out.println(temp + "--->"+request.getParameter(temp));
+		}
+//		System.out.println(sb.toString());
+		GoogleServiceClient.getInstance().doGetNoContent(GOOGLE_CLICK_URL+sb.toString(), "");
+		
 	}
 	
 	private StreamSource getXSLStyesheetStream(String feedPath){
@@ -93,26 +104,20 @@ public class ViewController {
 		return new StreamSource(in);
 	}
 	
-	private StringWriter getSearchResultsHTML(String xslStylesheet,String googleURL,String clusterURL){
+	private StringWriter getSearchResultsHTML(String xslStylesheet,String googleURL,String clusterURL,String contextPath){
 		StringWriter writer = new StringWriter();
 		try {
-//			System.out.println(googleURL);
-//			System.out.println(clusterURL);
-//			Source xmlSource = new StreamSource(new StringReader(GoogleServiceClient.getInstance().doGet(googleURL, "")));
-			System.out.println(GoogleServiceClient.getInstance().doGet(googleURL, ""));
+
 			StringReader searchResults = new StringReader(GoogleServiceClient.getInstance().doGet(googleURL, ""));
 			StringReader clusterResults = new StringReader(GoogleServiceClient.getInstance().doGet(clusterURL, ""));
 			
 			Source xsltSource = getXSLStyesheetStream(xslStylesheet);
 			Result result = new StreamResult(writer);
-			
 	
-			
 			TransformerFactory tf = TransformerFactory.newInstance();
 			Transformer transformer = tf.newTransformer(xsltSource);
-
+			transformer.setParameter("contextPath", contextPath);
 			transformer.transform(getMergedResultsDoc(searchResults,clusterResults), result);
-			System.out.println(result.toString());
 			
 		} catch (TransformerConfigurationException e) {
 			// TODO Auto-generated catch block
@@ -135,12 +140,9 @@ public class ViewController {
 			Document clusterDoc = null;
 			try {
 				builder = factory.newDocumentBuilder();
-//				searchDoc = builder.newDocument();
-//				clusterDoc = builder.newDocument();
 				/*
 				 * Create Search Results Document
 				 */
-				
 				InputSource searchResults = new InputSource();
 				searchResults.setCharacterStream(searchSource);
 				searchDoc = builder.parse(searchResults);
@@ -164,9 +166,8 @@ public class ViewController {
 				 */
 				Node searchRoot = searchDoc.getDocumentElement();
 				searchRoot.appendChild(searchDoc.importNode(cluster,true));
-				
 				resultsDom = new DOMSource(searchDoc);
-				
+//				printXML(resultsDom);
 			} catch (ParserConfigurationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -180,6 +181,9 @@ public class ViewController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally{
+				/*
+				 * Clear the docs from memory.
+				 */
 				clusterDoc=null;
 				searchDoc=null;
 			}
@@ -188,6 +192,28 @@ public class ViewController {
 			
 		return resultsDom;
 	}
+	/*
+	 * TEST METHOD FOR PRINTING OUT GENERATED XML DOC  **DELETE LATER**
+	 */
+//	private void printXML(DOMSource source){
+//		StringWriter writer = new StringWriter();
+//		StreamResult result = new StreamResult(writer);
+//		TransformerFactory tf = TransformerFactory.newInstance();
+//		Transformer transformer;
+//		try {
+//			transformer = tf.newTransformer();
+//			transformer.transform(source, result);
+//			System.out.println(writer.toString());
+//		} catch (TransformerConfigurationException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (TransformerException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		
+//	}
 	
 	
 }
