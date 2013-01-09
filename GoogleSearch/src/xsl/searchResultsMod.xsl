@@ -5,14 +5,14 @@
 		<script>
 			var SN = <xsl:value-of select="/GSP/RES/@SN"/>;
 			var PP = <xsl:value-of select="/GSP/PARAM[@name='num']/@original_value"/>;
-			var Q = '<xsl:value-of select="/GSP/PARAM[@name='q']/@original_value"/>';
-			var page_query = '<xsl:value-of select="/GSP/PARAM[@name='q']/@original_value"/>';
+			var Q = '<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>';
+			var page_query = '<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>';
 			var page_start = '<xsl:value-of select="/GSP/PARAM[@name='page']/@original_value"/>';
 			var page_site = '<xsl:value-of select="/GSP/PARAM[@name='site']/@original_value"/>';
 		</script>
 		<div class="acgc_top_content_wrap">
 			<div class="acgc_top_content_box acgc_relative">
-			<h1><span class="acgc_top_content_small_txt">Showing </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt"> search results for </span>&quot;<xsl:value-of select="/GSP/PARAM[@name='q']/@original_value"/>&quot;</h1>
+			<h1><span class="acgc_top_content_small_txt">Showing </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt"> search results for </span>&quot;<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>&quot;</h1>
 			</div>
 		</div>
 		<xsl:call-template name="resultsBar"/>
@@ -97,31 +97,9 @@
 			<div class="acgc_search_filter">
 				<h3>Refine Your Results</h3>
 				<ul>
-					<li>
-						<a href="#filter" title="All Results" onclick="javascript: $(this).children('input').prop('checked', 'checked'); /* Submit Form Here */ return false;">
-							<input type="radio" name="filter" value="all" checked="checked" /> All Results
-						</a>
-					</li>
-					<li>
-						<a href="#filter" title="Locations" onclick="javascript: $(this).children('input').prop('checked', 'checked'); /* Submit Form Here */ return false;">
-							<input type="radio" name="filter" value="locations" /> Locations
-						</a>
-					</li>
-					<li>
-						<a href="#filter" title="Doctors" onclick="javascript: $(this).children('input').prop('checked', 'checked'); /* Submit Form Here */ return false;">
-							<input type="radio" name="filter" value="doctors" /> Doctors
-						</a>
-					</li>
-					<li>
-						<a href="#filter" title="Health Information" onclick="javascript: $(this).children('input').prop('checked', 'checked'); /* Submit Form Here */ return false;">
-							<input type="radio" name="filter" value="healthinformation" /> Health Information
-						</a>
-					</li>
-					<li>
-						<a href="#filter" title="Services" onclick="javascript: $(this).children('input').prop('checked', 'checked'); /* Submit Form Here */ return false;">
-							<input type="radio" name="filter" value="services" /> Services
-						</a>
-					</li>
+					<xsl:call-template name="collections">
+						<xsl:with-param name="selected">default_collection</xsl:with-param>
+					</xsl:call-template>
 				</ul>
 			</div>
 			<div class="acgc_related_searches">
@@ -157,10 +135,33 @@
 </div>
 </xsl:template>
 
+<xsl:template name="collections">
+	<xsl:param name="selected"/>
+	<xsl:for-each select="/GSP/COLLECTION">
+		<li>
+			<xsl:choose>
+				<xsl:when test="$selected = @collectName">
+					<a href="#filter" onclick="javascript: $(this).children('input').prop('checked', 'checked'); /* Submit Form Here */ return false;">
+						<xsl:attribute name="title"><xsl:value-of select="@collectName"/></xsl:attribute>
+						<input type="radio" name="filter" value="all" checked="checked" /><xsl:value-of select="@displayName"/>
+					</a>
+				</xsl:when>
+				<xsl:otherwise>
+					<a href="#filter" onclick="javascript: $(this).children('input').prop('checked', 'checked'); /* Submit Form Here */ return false;">
+						<xsl:attribute name="title"><xsl:value-of select="@collectName"/></xsl:attribute>
+						<input type="radio" name="filter" value="all" /><xsl:value-of select="@displayName"/>
+					</a>
+				</xsl:otherwise>
+			</xsl:choose>
+		</li>
+	</xsl:for-each>
+</xsl:template>
+
 <xsl:template name="clusterResults">
 	<xsl:for-each select="/GSP/cluster/gcluster">
 		<li>
-			<a href="">
+			<a href="#self">
+				<xsl:attribute name="onclick">javascript:searchSynonym('<xsl:value-of select="label/@data"/>')</xsl:attribute>
 				<xsl:attribute name="title"><xsl:value-of select="label/@data"/></xsl:attribute>
 				<xsl:attribute name="ctype">synonym</xsl:attribute>
 				<xsl:value-of select="label/@data"/>

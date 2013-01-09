@@ -18,6 +18,16 @@
 			<short-title>GoogleSearch</short-title>
 			<keywords>GoogleSearch</keywords>
 		</portlet-info>
+		<portlet-preferences>
+			<preference>
+				<name>com.aurora.org.collections</name>
+				<value>All Results,default_collection</value>
+				<value>Locations,externalFacilityCollection</value>
+				<value>Doctors,externalPhysicianCollection</value>
+				<value>Health Information,caregiver_feed1</value>
+				<value>Services,externalServicesCollection</value>
+			</preference>
+		</portlet-preferences>
 	</portlet>
 	<custom-portlet-mode>
 		<portlet-mode>CONFIG</portlet-mode>

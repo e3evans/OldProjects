@@ -1,6 +1,6 @@
 <%@page import="com.aurora.controllers.ViewController"%>
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
-<!-- script language="JavaScript" src='<%= renderResponse.encodeURL(renderRequest.getContextPath() + "/js/jquery.1.8.2.js") %>'></script-->
+<script language="JavaScript" src='<%= renderResponse.encodeURL(renderRequest.getContextPath() + "/js/jquery.1.8.2.js") %>'></script>
 <portlet:actionURL var="actionURL">
 	<portlet:param name="action" value="doSearch"/>
 </portlet:actionURL >
@@ -12,14 +12,19 @@ var clickUrl = '<%=googleClick%>';
 function changePageSize(perPage){
 	PP=perPage;
 	SN=0;
-	var params={q:Q,sn:SN,en:PP,page:1};
+	var params={q:Q,start:SN,num:PP,page:1};
 	callService(params);
 }
 
 function changePageNum(anchor,pageNum){
 	SN=(pageNum*PP)-1;
 	if(pageNum==1)SN=0;
-	var params={q:Q,sn:SN,en:PP,page:pageNum};
+	var params={q:Q,start:SN,num:PP,page:pageNum};
+	callService(params);
+}
+
+function searchSynonym(synonym){
+	var params = {q:synonym,start:SN,num:PP,page:1}
 	callService(params);
 }
 
