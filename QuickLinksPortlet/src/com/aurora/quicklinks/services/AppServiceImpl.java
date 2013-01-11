@@ -1,9 +1,9 @@
 package com.aurora.quicklinks.services;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.commons.httpclient.HttpException;
+
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
 
 import com.aurora.exceptions.AppException;
 import com.aurora.quicklinks.beans.Application;
-import com.aurora.quicklinks.beans.UpdateUserAppBean;
 import com.aurora.quicklinks.beans.UserApplication;
+import com.aurora.quicklinks.controllers.EditUserAppController;
 import com.aurora.quicklinks.delegates.ServiceInterfaceDelegate;
 import com.aurora.quicklinks.util.ResourceUtil;
 
 @Service(value = "appService")
 public class AppServiceImpl implements AppService {
-
+	private Logger logger = Logger.getLogger(EditUserAppController.class);
 	@Autowired
 	private ServiceInterfaceDelegate serviceInterfaceDelegate;
 
@@ -34,9 +34,9 @@ public class AppServiceImpl implements AppService {
 		try {
 			appList = new ArrayList<UserApplication>();
 			String requestPath = ResourceUtil.getUserapplisturl()+userid;
-			 System.out.println("webservice call starts with request path "+requestPath);
+			logger.error("webservice call starts with request path "+requestPath);
 			JSONObject userAppJSON = new JSONObject(serviceInterfaceDelegate.processGetRestRequest(requestPath));
-			 System.out.println("webservice call ends with request path "+requestPath);
+			logger.error("webservice call ends with request path "+requestPath);
 			JSONArray jsonArray = userAppJSON.getJSONArray("userAppList");
 			for (int i = 0; i < jsonArray.length(); i++) {
 				app = new UserApplication();
@@ -58,7 +58,7 @@ public class AppServiceImpl implements AppService {
 			ae.setExceptionType("Service End Point");
 			ae.setExceptionCode("QLEXception 001");
 			ae.setExceptionMessage("Excetion in JSON PArsing Service Implmentation !!!!"+je);
-			System.out.println("Exception in listUserAppByUserId !!!  "+je);
+			logger.error("Exception in listUserAppByUserId !!!  "+je);
 			throw ae;
 			
 		}
@@ -70,7 +70,7 @@ public class AppServiceImpl implements AppService {
 			ae.setExceptionType("Service End Point");
 			ae.setExceptionCode("QLEXception 001");
 			ae.setExceptionMessage("Excetion in Service Implmentation !!!!"+e);
-			System.out.println("Exception in listUserAppByUserId !!!  "+e);
+			logger.error("Exception in listUserAppByUserId !!!  "+e);
 			throw ae;
 			
 		}
@@ -117,7 +117,7 @@ public class AppServiceImpl implements AppService {
 			ae.setExceptionType("Service End Point");
 			ae.setExceptionCode("QLEXception 001");
 			ae.setExceptionMessage("Excetion in JSON PArsing Service Implmentation !!!!"+je);
-			System.out.println("Exception in listUserAppByUserId !!!  "+je);
+			logger.error("Exception in listUserAppByUserId !!!  "+je);
 			throw ae;
 			
 		}
@@ -129,7 +129,7 @@ public class AppServiceImpl implements AppService {
 			ae.setExceptionType("Service End Point");
 			ae.setExceptionCode("QLEXception 001");
 			ae.setExceptionMessage("Excetion in Service Implmentation !!!!"+e);
-			System.out.println("Exception in listUserAppByUserId !!!  "+e);
+			logger.error("Exception in listUserAppByUserId !!!  "+e);
 			throw ae;
 			
 		}
@@ -184,7 +184,7 @@ public class AppServiceImpl implements AppService {
 			ae.setExceptionType("Service End Point");
 			ae.setExceptionCode("QLEXception 001");
 			ae.setExceptionMessage("Excetion in JSON PArsing Service Implmentation !!!!"+je);
-			System.out.println("Exception in listUserAppByUserId !!!  "+je);
+			logger.error("Exception in listUserAppByUserId !!!  "+je);
 			throw ae;
 			
 		}
@@ -196,7 +196,7 @@ public class AppServiceImpl implements AppService {
 			ae.setExceptionType("Service End Point");
 			ae.setExceptionCode("QLEXception 001");
 			ae.setExceptionMessage("Excetion in Service Implmentation !!!!"+e);
-			System.out.println("Exception in listApplication !!!  "+e);
+			logger.error("Exception in listApplication !!!  "+e);
 			throw ae;
 			
 		}
@@ -232,22 +232,17 @@ public class AppServiceImpl implements AppService {
 					app.setActiveCd(jsonobj.get("activeCd").toString());
 					app.setSeqNo(jsonobj.get("seqNo").toString());
 				}
-				// app.setDispSeq( jsonobj.get("dispSeq"));
-				System.out.println(jsonobj.get("userId"));
-				System.out.println(jsonobj.get("appName"));
-				System.out.println(jsonobj.get("appUrl"));
-				System.out.println(jsonobj.get("activeCd"));
-				System.out.println(jsonobj.get("dispSeq"));
+				
 			}
 
-			// }
+		
 
 		}catch (JSONException je) {
 			AppException ae = new AppException();
 			ae.setExceptionType("Service End Point");
 			ae.setExceptionCode("QLEXception 001");
 			ae.setExceptionMessage("Excetion in JSON PArsing Service Implmentation !!!!"+je);
-			System.out.println("Exception in listUserAppByUserId !!!  "+je);
+			logger.error("Exception in listUserAppByUserId !!!  "+je);
 			throw ae;
 			
 		} catch (AppException ae) {
@@ -258,7 +253,7 @@ public class AppServiceImpl implements AppService {
 			ae.setExceptionType("Service End Point");
 			ae.setExceptionCode("QLEXception 001");
 			ae.setExceptionMessage("Excetion in Service Implmentation !!!!"+e);
-			System.out.println("Exception in retrieveUserApp !!!  "+e);
+			logger.error("Exception in retrieveUserApp !!!  "+e);
 			throw ae;
 			
 		}
@@ -281,9 +276,9 @@ public class AppServiceImpl implements AppService {
 		try {
             String requestPath = ResourceUtil.getCreateuserappurl()+appId+"/"+seqNo+"/"+userid;
 			
-            System.out.println("webservice call starts with request path "+requestPath);
+            logger.error("webservice call starts with request path "+requestPath);
 			JSONObject jsonobj = new JSONObject(serviceInterfaceDelegate.processGetRestRequest(requestPath));
-			System.out.println("webservice call ends with request path "+requestPath);
+			logger.error("webservice call ends with request path "+requestPath);
 			
 			if (jsonobj.get("appId") != null
 					&& !jsonobj.get("appId").toString().trim()
@@ -305,7 +300,7 @@ public class AppServiceImpl implements AppService {
 			ae.setExceptionType("Service End Point");
 			ae.setExceptionCode("QLEXception 001");
 			ae.setExceptionMessage("Excetion in Service Implmentation !!!!"+e);
-			System.out.println("Exception in createUserApp !!!  "+e);
+			logger.error("Exception in createUserApp !!!  "+e);
 			throw ae;
 			
 		}
@@ -316,17 +311,17 @@ public class AppServiceImpl implements AppService {
 
 	}
 
-	public List retrieveAppMenuAutoList(String appId) throws AppException{
+	public List<Application> retrieveAppMenuAutoList(String appId) throws AppException{
 		List<Application> appList = null;
 		Application app = null;
 		try {
 			appList = new ArrayList<Application>();
 			String requestPath = ResourceUtil.getAppautolisturl()+appId;
-			 System.out.println("webservice call starts with request path "+requestPath);
+			logger.error("webservice call starts with request path "+requestPath);
 			JSONObject appAutoListJson = new JSONObject(
 					serviceInterfaceDelegate
 							.processGetRestRequest(requestPath));
-             System.out.println("webservice call starts with request path "+requestPath);
+			logger.error("webservice call starts with request path "+requestPath);
 			JSONArray jsonArray = appAutoListJson
 					.getJSONArray("applicationList");
 			for (int i = 0; i < jsonArray.length(); i++) {
@@ -347,7 +342,7 @@ public class AppServiceImpl implements AppService {
 			ae.setExceptionType("Service End Point");
 			ae.setExceptionCode("QLEXception 001");
 			ae.setExceptionMessage("Excetion in JSON PArsing Service Implmentation !!!!"+je);
-			System.out.println("Exception in listUserAppByUserId !!!  "+je);
+			logger.error("Exception in listUserAppByUserId !!!  "+je);
 			throw ae;
 			
 		} catch (AppException ae) {
@@ -358,7 +353,7 @@ public class AppServiceImpl implements AppService {
 			ae.setExceptionType("Service End Point");
 			ae.setExceptionCode("QLEXception 001");
 			ae.setExceptionMessage("Excetion in Service Implmentation !!!!"+e);
-			System.out.println("Exception in createUserApp !!!  "+e);
+			logger.error("Exception in createUserApp !!!  "+e);
 			throw ae;
 			
 		}
@@ -374,9 +369,9 @@ public class AppServiceImpl implements AppService {
 		try {
 
 			String requestPath = ResourceUtil.getUpdateuserappurl()+userApp.getAppId().trim()+"/"+userApp.getSeqNo().trim()+"/"+userId+"/"+userApp.getActiveCd().trim();
-			 System.out.println("webservice call starts with request path "+requestPath);
+			logger.error("webservice call starts with request path "+requestPath);
 			serviceInterfaceDelegate.processGetRestRequest(requestPath);
-			 System.out.println("webservice call starts with request path "+requestPath);
+			logger.error("webservice call starts with request path "+requestPath);
 		} catch (AppException ae) {
 			throw ae;
 			
@@ -385,7 +380,7 @@ public class AppServiceImpl implements AppService {
 			ae.setExceptionType("Service End Point");
 			ae.setExceptionCode("QLEXception 001");
 			ae.setExceptionMessage("Excetion in Service Implmentation !!!!"+e);
-			System.out.println("Exception in createUserApp !!!  "+e);
+			logger.error("Exception in createUserApp !!!  "+e);
 			throw ae;
 			
 		}

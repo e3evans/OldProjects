@@ -6,6 +6,7 @@ import java.net.URI;
 import javax.annotation.PostConstruct;
 
 import org.apache.commons.httpclient.HttpException;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.aurora.exceptions.AppException;
+import com.aurora.quicklinks.controllers.EditUserAppController;
 import com.aurora.quicklinks.util.QuickLinksConstants;
 import com.aurora.quicklinks.util.ResourceUtil;
 
@@ -27,7 +29,7 @@ import com.aurora.quicklinks.util.ResourceUtil;
 @Service
 public class ServiceInterfaceDelegate {
 
-	
+	private Logger logger = Logger.getLogger(EditUserAppController.class);
 	
 	@Autowired
 	private RestTemplate restTemplate;
@@ -87,7 +89,7 @@ public class ServiceInterfaceDelegate {
 			ae.setExceptionType("Service Call");
 			ae.setExceptionCode("QLEXception 001");
 			ae.setExceptionMessage("Excetion in Rest Service Call !!!!"+requestUrl);
-			System.out.println("Exception in processGetRestRequest !!!  "+e);
+			logger.error("Exception in processGetRestRequest !!!  "+e);
 			throw ae;
 			//logger.error("ProcessRequestCache Exception", e);
 		}

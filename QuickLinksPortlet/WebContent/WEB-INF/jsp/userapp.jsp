@@ -27,12 +27,12 @@
 		acgcAddQuicklinksHooks();
  
         }).error(function() {
-			alert('no buenoo - did not reach server?');
+			console.log("error in making ajax call");
     	});
     }
                         
 	$().ready(function(){
-		initQuickLinksMenu('test', 'test',"portlet");
+		initQuickLinksMenu("portlet");
 	});
 	                        
 </script> 

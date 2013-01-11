@@ -1,8 +1,8 @@
 
 package com.aurora.quicklinksservices.rest;
 
-import java.util.ArrayList;
 import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -79,7 +79,7 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 			@PathParam("loginId") String loginId) {
 		Long userId=null;
 	    userId = quickLinksService.retrieveUserId(loginId);
-		UserApplicationResponse userAppResponse = new UserApplicationResponse();
+		//UserApplicationResponse userAppResponse = new UserApplicationResponse();
 		UserAppResponseBean userApp = quickLinksService.retrieveUserApp(appId,
 				seqNo, userId);
 		return userApp;
@@ -92,7 +92,7 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 		Long userId=null;
 	    userId = quickLinksService.retrieveUserId(loginId);
 		quickLinksService.createUserApp(userId, appId, seqNo);
-		UserApplicationResponse userAppResponse = new UserApplicationResponse();
+		//UserApplicationResponse userAppResponse = new UserApplicationResponse();
 		UserAppResponseBean userApp = quickLinksService.retrieveUserApp(appId,
 				seqNo, userId);
 		return userApp;
