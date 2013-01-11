@@ -6,7 +6,6 @@ import java.net.UnknownHostException;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.aurora.quicklinksservices.beans.User;
-import com.aurora.quicklinksservices.daos.QuickLinksAPPDAOImpl;
 import com.aurora.quicklinksservices.services.QuickLinksService;
 import com.aurora.quicklinksservices.util.SSOManager;
 
@@ -37,8 +35,7 @@ public class QuickLinksRedirectController  {
 
 	
 	
-	private static final long serialVersionUID = 1L;
-//	private String testUrl = "https://lmsproxy.aurora.org/main_app.asp?main=app";
+	//	private String testUrl = "https://lmsproxy.aurora.org/main_app.asp?main=app";
 	public static String testUrl1 = "http://iconnect-test.aurora.org/ireq/servlet/IreqMain?command=eporthome&from=eportal&firsttime=Y";
 	public static String testUrl2 = "http://iconnect-test.aurora.org/portal-extensions/callJsp.do?actionForward=lmsForward&breakFrames=Y&actionUrl=https://lmsproxy.aurora.org/dologon.asp";
 	                                                                              
