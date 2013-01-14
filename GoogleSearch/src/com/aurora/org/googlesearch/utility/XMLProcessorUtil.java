@@ -80,41 +80,42 @@ public abstract class XMLProcessorUtil {
 			
 			try {
 				builder = factory.newDocumentBuilder();
+				XPathFactory xFactory = XPathFactory.newInstance();
+				XPath xpath = xFactory.newXPath();
 				/*
 				 * Create Search Results Document
 				 */
 				InputSource searchResults = new InputSource();
 				searchResults.setCharacterStream(searchSource);
 				searchDoc = builder.parse(searchResults);
-				/*
-				 * Create Cluster Results Document
-				 */
-				InputSource clusterResults = new InputSource();
-				clusterResults.setCharacterStream(clusterSource);
-				clusterDoc = builder.parse(clusterResults);
-				
-				XPathFactory xFactory = XPathFactory.newInstance();
-				XPath xpath = xFactory.newXPath();
-				/*
-				 * Extract the cluster results from the original Document
-				 */
-				Node cluster = (Node)xpath.evaluate("//toplevel/Response/cluster", clusterDoc,XPathConstants.NODE);
-				
-				/*
-				 * Append Root and clear out XML Document from memory.
-				 */
-				Node searchRoot = searchDoc.getDocumentElement();
-				searchRoot.appendChild(searchDoc.importNode(cluster,true));
-				/*
-				 * Append the various configured collections
-				 */
-				if (collections.length>0){
-					for (int i=0;i<collections.length;i++){
-						String [] temp = collections[i].split(",");
-						Element collectionElement = searchDoc.createElement("COLLECTION");
-						collectionElement.setAttribute("displayName", temp[0]);
-						collectionElement.setAttribute("collectName", temp[1]);
-						searchRoot.appendChild(collectionElement);
+				if (xpath.evaluate("//GSP/RES",searchDoc,XPathConstants.NODE)!=null){
+					/*
+					 * Create Cluster Results Document
+					 */
+					InputSource clusterResults = new InputSource();
+					clusterResults.setCharacterStream(clusterSource);
+					clusterDoc = builder.parse(clusterResults);
+					/*
+					 * Extract the cluster results from the original Document
+					 */
+					Node cluster = (Node)xpath.evaluate("//toplevel/Response/cluster", clusterDoc,XPathConstants.NODE);
+					
+					/*
+					 * Append Root and clear out XML Document from memory.
+					 */
+					Node searchRoot = searchDoc.getDocumentElement();
+					searchRoot.appendChild(searchDoc.importNode(cluster,true));
+					/*
+					 * Append the various configured collections
+					 */
+					if (collections.length>0){
+						for (int i=0;i<collections.length;i++){
+							String [] temp = collections[i].split(",");
+							Element collectionElement = searchDoc.createElement("COLLECTION");
+							collectionElement.setAttribute("displayName", temp[0]);
+							collectionElement.setAttribute("collectName", temp[1]);
+							searchRoot.appendChild(collectionElement);
+						}
 					}
 				}
 				resultsDom = new DOMSource(searchDoc);

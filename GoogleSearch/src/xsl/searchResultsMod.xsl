@@ -2,26 +2,41 @@
 <xsl:output omit-xml-declaration="yes"/>
 <xsl:param name="contextPath"/>
 <xsl:template match="/">
-		<script>
-			var SN = <xsl:value-of select="/GSP/RES/@SN"/>;
-			var PP = <xsl:value-of select="/GSP/PARAM[@name='num']/@original_value"/>;
-			var Q = '<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>';
-			var page_query = '<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>';
-			var page_start = '<xsl:value-of select="/GSP/PARAM[@name='page']/@original_value"/>';
-			var page_site = '<xsl:value-of select="/GSP/PARAM[@name='site']/@original_value"/>';
-		</script>
-		<div class="acgc_top_content_wrap">
-			<div class="acgc_top_content_box acgc_relative">
-			<h1><span class="acgc_top_content_small_txt">Showing </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt"> search results for </span>&quot;<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>&quot;</h1>
+	<xsl:choose>
+		<xsl:when test="/GSP/RES">
+			<script>
+				var SN = <xsl:value-of select="/GSP/RES/@SN"/>;
+				var PP = <xsl:value-of select="/GSP/PARAM[@name='num']/@original_value"/>;
+				var Q = '<xsl:value-of select="/GSP/PARAM[@name='q']/@original_value"/>';
+				var page_query = '<xsl:value-of select="/GSP/PARAM[@name='q']/@original_value"/>';
+				var page_start = '<xsl:value-of select="/GSP/PARAM[@name='page']/@original_value"/>';
+				var page_site = '<xsl:value-of select="/GSP/PARAM[@name='site']/@original_value"/>';
+			</script>
+			<div class="acgc_top_content_wrap">
+				<div class="acgc_top_content_box acgc_relative">
+				<h1><span class="acgc_top_content_small_txt">Showing </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt"> search results for </span>&quot;<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>&quot;</h1>
+				</div>
 			</div>
-		</div>
-		<xsl:call-template name="resultsBar"/>
-		<xsl:call-template name="searchResults"/>
-		<script>
-			<xsl:attribute name="src"><xsl:value-of select="$contextPath"/>/js/clicklog.js</xsl:attribute>
-			<xsl:attribute name="language">JavaScript</xsl:attribute>
-			&#160;
-		</script>
+			
+				<xsl:call-template name="resultsBar"/>
+				<xsl:call-template name="searchResults"/>
+				<script>
+					<xsl:attribute name="src"><xsl:value-of select="$contextPath"/>/js/clicklog.js</xsl:attribute>
+					<xsl:attribute name="language">JavaScript</xsl:attribute>
+					&#160;
+				</script>
+		</xsl:when>
+		<xsl:otherwise>
+			<div class="acgc_top_content_wrap">
+				<div class="acgc_top_content_box acgc_relative">
+				<h1><span class="acgc_top_content_small_txt">No results </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt">found for </span>&quot;<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>&quot;</h1>
+				</div>
+			</div>
+			<div class="acgc_relative" id="acgc_recordsorter"></div>
+			<div class="acgc_relative acgc_pagination_header_holder"> </div>
+			<div class="acgc_content_box">	<div class="acgc_spacer_10 acgc_bg_white"><!-- spacer --></div>	<div class="acgc_content_box_body acgc_relative">		<div class="acgc_spacer_10 acgc_bg_white"><!-- spacer --></div>		<div class="acgc_no_search_results">			<p>Your search - <strong><xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/></strong> - did not match any documents.</p>			<p>Suggestions:</p>			<ul>				<li>Make sure all words are spelled correctly.</li>				<li>Try different keywords.</li>				<li>Try more general keywords.</li>				<li>Try fewer keywords.</li>			</ul>		</div>		<div class="acgc_clear"><!-- clear --></div>		<div class="acgc_content_box_footer acgc_relative">			<!-- footer -->		</div><!--		<div class="acgc_float_right" style="margin-top: -5px;">			<div class="acgc_pagination_block">				<a href=""><img src="/aurora/htmlsite/assets/images/arrows-full-left.png" alt="First" /></a> &nbsp;				<a href=""><img src="/aurora/htmlsite/assets/images/arrows-one-left.png" alt="Prev" /></a> &nbsp;				<a href="">1</a> &nbsp;				<a href="">2</a> &nbsp;				<a href="">3</a> &nbsp;				4 &nbsp;				<a href="">8</a> &nbsp;				<a href="">9</a> &nbsp;				<a href="">10</a> &nbsp;				<a href=""><img src="/aurora/htmlsite/assets/images/arrows-one-right.png" alt="Next" /></a> &nbsp;				<a href=""><img src="/aurora/htmlsite/assets/images/arrows-full-right.png" alt="Last" /></a>			</div>		</div>-->		<div class="acgc_clear"><!-- clear --></div>	</div>	<div class="acgc_content_box_bottom_decal">		<!-- decal -->	</div>	</div>
+		</xsl:otherwise>
+	</xsl:choose>
 </xsl:template>
 <xsl:variable name="currentPage" select="/GSP/PARAM[@name='page']/@original_value"/>
 <xsl:variable name="portalServer">http://porporit1.ahc.root.loc:10039</xsl:variable>
@@ -141,14 +156,12 @@
 		<li>
 			<xsl:choose>
 				<xsl:when test="$selected = @collectName">
-					<a href="#filter" onclick="javascript: $(this).children('input').prop('checked', 'checked'); /* Submit Form Here */ return false;">
-						<xsl:attribute name="title"><xsl:value-of select="@collectName"/></xsl:attribute>
+					<a href="#filter" title="All Results" onclick="javascript: $(this).children('input').prop('checked', 'checked'); /* Submit Form Here */ return false;">
 						<input type="radio" name="filter" value="all" checked="checked" /><xsl:value-of select="@displayName"/>
 					</a>
 				</xsl:when>
 				<xsl:otherwise>
-					<a href="#filter" onclick="javascript: $(this).children('input').prop('checked', 'checked'); /* Submit Form Here */ return false;">
-						<xsl:attribute name="title"><xsl:value-of select="@collectName"/></xsl:attribute>
+					<a href="#filter" title="All Results" onclick="javascript: $(this).children('input').prop('checked', 'checked'); /* Submit Form Here */ return false;">
 						<input type="radio" name="filter" value="all" /><xsl:value-of select="@displayName"/>
 					</a>
 				</xsl:otherwise>
