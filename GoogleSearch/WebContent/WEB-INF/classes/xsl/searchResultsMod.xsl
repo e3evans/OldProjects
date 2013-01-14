@@ -27,14 +27,33 @@
 				</script>
 		</xsl:when>
 		<xsl:otherwise>
-			<div class="acgc_top_content_wrap">
-				<div class="acgc_top_content_box acgc_relative">
-				<h1><span class="acgc_top_content_small_txt">No results </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt">found for </span>&quot;<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>&quot;</h1>
-				</div>
+		
+		<div class="acgc_top_content_wrap">
+	<div class="acgc_top_content_box acgc_relative">
+		<h1><span class="acgc_top_content_small_txt">No results </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt">found for </span>&quot;<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>&quot;</h1>
+	</div>
+</div>
+<div class="acgc_relative" id="acgc_recordsorter">&#160;</div>
+	<div class="acgc_content_box">
+		<div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
+		<div class="acgc_content_box_body acgc_relative">
+			<div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
+			<div class="acgc_no_search_results">
+				<p>Your search - <strong><xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/></strong> - did not match any documents.</p>
+				<p>Suggestions:</p>
+				<ul>
+					<li>Make sure all words are spelled correctly.</li>
+					<li>Try different keywords.</li>
+					<li>Try more general keywords.</li>
+					<li>Try fewer keywords.</li>
+				</ul>
 			</div>
-			<div class="acgc_relative" id="acgc_recordsorter"></div>
-			<div class="acgc_relative acgc_pagination_header_holder"> </div>
-			<div class="acgc_content_box">	<div class="acgc_spacer_10 acgc_bg_white"><!-- spacer --></div>	<div class="acgc_content_box_body acgc_relative">		<div class="acgc_spacer_10 acgc_bg_white"><!-- spacer --></div>		<div class="acgc_no_search_results">			<p>Your search - <strong><xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/></strong> - did not match any documents.</p>			<p>Suggestions:</p>			<ul>				<li>Make sure all words are spelled correctly.</li>				<li>Try different keywords.</li>				<li>Try more general keywords.</li>				<li>Try fewer keywords.</li>			</ul>		</div>		<div class="acgc_clear"><!-- clear --></div>		<div class="acgc_content_box_footer acgc_relative">			<!-- footer -->		</div><!--		<div class="acgc_float_right" style="margin-top: -5px;">			<div class="acgc_pagination_block">				<a href=""><img src="/aurora/htmlsite/assets/images/arrows-full-left.png" alt="First" /></a> &nbsp;				<a href=""><img src="/aurora/htmlsite/assets/images/arrows-one-left.png" alt="Prev" /></a> &nbsp;				<a href="">1</a> &nbsp;				<a href="">2</a> &nbsp;				<a href="">3</a> &nbsp;				4 &nbsp;				<a href="">8</a> &nbsp;				<a href="">9</a> &nbsp;				<a href="">10</a> &nbsp;				<a href=""><img src="/aurora/htmlsite/assets/images/arrows-one-right.png" alt="Next" /></a> &nbsp;				<a href=""><img src="/aurora/htmlsite/assets/images/arrows-full-right.png" alt="Last" /></a>			</div>		</div>-->		<div class="acgc_clear"><!-- clear --></div>	</div>	<div class="acgc_content_box_bottom_decal">		<!-- decal -->	</div>	</div>
+			<div class="acgc_clear">&#160;</div>
+			<div class="acgc_content_box_footer acgc_relative">&#160;</div>
+			<div class="acgc_clear">&#160;</div>
+		</div>
+		<div class="acgc_content_box_bottom_decal">&#160;</div>
+</div>	
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
