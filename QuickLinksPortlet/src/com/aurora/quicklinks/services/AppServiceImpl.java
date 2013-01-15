@@ -13,13 +13,13 @@ import org.springframework.stereotype.Service;
 import com.aurora.exceptions.AppException;
 import com.aurora.quicklinks.beans.Application;
 import com.aurora.quicklinks.beans.UserApplication;
-import com.aurora.quicklinks.controllers.EditUserAppController;
+import com.aurora.quicklinks.controllers.UserAppController;
 import com.aurora.quicklinks.delegates.ServiceInterfaceDelegate;
 import com.aurora.quicklinks.util.ResourceUtil;
 
 @Service(value = "appService")
 public class AppServiceImpl implements AppService {
-	private Logger logger = Logger.getLogger(EditUserAppController.class);
+	private Logger logger = Logger.getLogger(UserAppController.class);
 	@Autowired
 	private ServiceInterfaceDelegate serviceInterfaceDelegate;
 

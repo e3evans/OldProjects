@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.aurora.exceptions.AppException;
-import com.aurora.quicklinks.controllers.EditUserAppController;
+import com.aurora.quicklinks.controllers.UserAppController;
 import com.aurora.quicklinks.util.QuickLinksConstants;
 import com.aurora.quicklinks.util.ResourceUtil;
 
@@ -29,7 +29,7 @@ import com.aurora.quicklinks.util.ResourceUtil;
 @Service
 public class ServiceInterfaceDelegate {
 
-	private Logger logger = Logger.getLogger(EditUserAppController.class);
+	private Logger logger = Logger.getLogger(UserAppController.class);
 	
 	@Autowired
 	private RestTemplate restTemplate;
