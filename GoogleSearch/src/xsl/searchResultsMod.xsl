@@ -17,7 +17,6 @@
 				<h1><span class="acgc_top_content_small_txt">Showing </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt"> search results for </span>&quot;<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>&quot;</h1>
 				</div>
 			</div>
-			
 				<xsl:call-template name="resultsBar"/>
 				<xsl:call-template name="searchResults"/>
 				<script>
