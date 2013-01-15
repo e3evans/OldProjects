@@ -9,8 +9,6 @@ import com.aurora.quicklinksservices.beans.*;
 
 public class UserApplicationResponse {
 	
-	private static final long serialVersionUID = -4358317667109242403L;
-
 	private Collection<UserAppResponseBean> userAppList;
 	
 	

@@ -55,7 +55,7 @@ public class ViewController {
 		/*
 		 * If Poll has never been taken show poll entry
 		 */
-		
+		if (null==lastPoll)lastPoll="EMPTY";
 		if ("EMPTY".equals(lastPoll)|| !poll.getDateString().equals(lastPoll)){
 			ModelAndView modelAndView = new ModelAndView("view");
 			modelAndView.addObject("pollForm",pollForm);

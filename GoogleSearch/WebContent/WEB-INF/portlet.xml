@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" id="com.aurora.org.googlesearchpoc.GoogleSearchPOCPortlet.7561ccf8b3">
+	<portlet>
+		<portlet-name>GoogleSearch</portlet-name>
+		<display-name xml:lang="en">GoogleSearchPOC</display-name>
+		<display-name>GoogleSearch</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+			<portlet-mode>EDIT</portlet-mode>
+			<portlet-mode>CONFIG</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<resource-bundle>com.aurora.org.googlesearch.nl.GoogleSearchPortletResource</resource-bundle>
+		<portlet-info>
+			<title>GoogleSearch</title>
+			<short-title>GoogleSearch</short-title>
+			<keywords>GoogleSearch</keywords>
+		</portlet-info>
+		<portlet-preferences>
+			<preference>
+				<name>com.aurora.org.collections</name>
+				<value>All Results,default_collection</value>
+				<value>Locations,externalFacilityCollection</value>
+				<value>Doctors,externalPhysicianCollection</value>
+				<value>Health Information,caregiver_feed1</value>
+				<value>Services,externalServicesCollection</value>
+			</preference>
+		</portlet-preferences>
+	</portlet>
+	<custom-portlet-mode>
+		<portlet-mode>CONFIG</portlet-mode>
+	</custom-portlet-mode>
+	<default-namespace>http://GoogleSearch/</default-namespace>
+</portlet-app>
