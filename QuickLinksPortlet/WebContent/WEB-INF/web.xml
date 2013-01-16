@@ -10,12 +10,12 @@
 			org.springframework.web.servlet.ViewRendererServlet
 		</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>ViewRendererServlet</servlet-name>
 		<url-pattern>/WEB-INF/servlet/view</url-pattern>
 	</servlet-mapping>
-	
+
   
   <servlet>
     <servlet-name>appServlet</servlet-name>
@@ -26,4 +26,3 @@
     <url-pattern>/resource/*</url-pattern>
   </servlet-mapping>
 </web-app>
-

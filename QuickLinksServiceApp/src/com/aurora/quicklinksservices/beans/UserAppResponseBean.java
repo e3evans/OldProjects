@@ -6,6 +6,29 @@ public class UserAppResponseBean {
 	private String appName;
 	private String appUrl;
 	private String appId;
+	private String activeCd;
+	private Integer dispSeq;
+	private String seqNo;
+	private String flagDefault;
+	
+	public String getFlagDefault() {
+		return flagDefault;
+	}
+	public void setFlagDefault(String flagDefault) {
+		this.flagDefault = flagDefault;
+	}
+	public Integer getDispSeq() {
+		return dispSeq;
+	}
+	public void setDispSeq(Integer dispSeq) {
+		this.dispSeq = dispSeq;
+	}
+	public String getActiveCd() {
+		return activeCd;
+	}
+	public void setActiveCd(String activeCd) {
+		this.activeCd = activeCd;
+	}
 	public String getAppId() {
 	    return appId;
 	}
@@ -18,7 +41,7 @@ public class UserAppResponseBean {
 	public void setSeqNo(String seqNo) {
 		this.seqNo = seqNo;
 	}
-	private String seqNo;
+	
 	public String getUserId() {
 		return userId;
 	}

@@ -1,17 +1,15 @@
 package com.aurora.quicklinksservices.beans;
 
-import java.io.*;
-import java.net.URLEncoder;
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 // Referenced classes of package org.aurora.portalCommon.beans:
 //            AppKey
@@ -21,7 +19,11 @@ public class Application
     implements Serializable
 {
 
-   /* public static final String ACTIVE = "A";
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6474446490685183138L;
+	/* public static final String ACTIVE = "A";
     public static final String INACTIVE = "I";
     public static final String BOTH = "B";
     public static final String NO_NON_EMPLOYEES = "N";
@@ -84,7 +86,7 @@ public class Application
     private String displayLeftNav;
     private String windowWidth;
     private String windowHeight;
-    private Integer userCount;
+    //private Integer userCount;
 
     public Application()
     {
