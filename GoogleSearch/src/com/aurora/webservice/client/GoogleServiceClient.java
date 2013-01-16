@@ -68,7 +68,6 @@ public class GoogleServiceClient {
     private WebResource getWebResource (String url) throws Exception {
 		ClientConfig config = new DefaultClientConfig();
 		Client client = Client.create(config);
-		//String url = appendSuffix(SERVICE_NAME, path, queryParams) ; 
 	    WebResource service = client.resource(url);
 	    return service ;
 	}

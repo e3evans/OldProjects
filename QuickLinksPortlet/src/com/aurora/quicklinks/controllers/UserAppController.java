@@ -36,8 +36,8 @@ import com.aurora.quicklinks.services.AppService;
 @Controller(value = "editUserAppController")
 @RequestMapping(value = "VIEW")
 @SessionAttributes(types = AppFormBean.class)
-public class EditUserAppController {
-	private Logger logger = Logger.getLogger(EditUserAppController.class);
+public class UserAppController {
+	private Logger logger = Logger.getLogger(UserAppController.class);
 
 	@Autowired
 	@Qualifier("appService")
