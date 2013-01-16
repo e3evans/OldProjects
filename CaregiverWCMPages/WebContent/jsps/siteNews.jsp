@@ -13,7 +13,7 @@ if(null!=request.getParameter("selected")){
  request.setAttribute("selection",selValue);
 }else{
  selValue="desc";
- request.getSession().setAttribute("selection",selValue);
+ request.getSession().setAttribute("selection","desc");
 }
 //out.write("SELECTED:"+selValue);
 
@@ -27,7 +27,7 @@ if(null!=request.getParameter("selected")){
 		<div class="acgc_relative">
 			<div style="display: none;" class="acgc_sort_by_holder">
 				<ul>
-				   <% if ((null!=selValue)&& ("asc".equalsIgnoreCase(selValue))) { %>
+				   <% if ((null!=selValue) && ("asc".equalsIgnoreCase(selValue))) { %>
 					<li>
 					<a href="#newest" title="Oldest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
 						<input name="selected" onclick="document.sortChangeForm.submit()" value="asc"  type="radio" checked class="acgc_hidden"><strong>Oldest First</strong>
@@ -40,7 +40,7 @@ if(null!=request.getParameter("selected")){
 						</a>
 					</li>
 					<%} 
-					if ((null!=selValue) && ("desc".equalsIgnoreCase(selValue))) { %>
+					if ((null!=selValue)&& ("desc".equalsIgnoreCase(selValue))) { %>
 					<li>
 						
 						<a href="#oldest" title="Newest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
@@ -49,7 +49,7 @@ if(null!=request.getParameter("selected")){
 					</li>
 					<% }else{%>
 					<li>
-					<a href="#oldest" title="Newest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
+						<a href="#oldest" title="Newest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
 							<input name="selected" onclick="document.sortChangeForm.submit()" value="desc" type="radio" class="acgc_hidden">Newest First
 						</a>
 					</li>
@@ -61,20 +61,23 @@ if(null!=request.getParameter("selected")){
 </div>
 </form>
 
+
+
 <%
 
 try{ 
 
-    String ContentLibrary	  = "CaregiverContentLibrary_en";
+    String ContentLibrary     = "CaregiverContentLibrary_en";
 	String DesignLib		  = "CaregiverDesignLibrary";
 	
-    String ascMenu			  = "AllVideos_ASC_MNU";
-	String descMenu			  = "AllVideos_DESC_MNU";
+    String ascMenu			  = "SiteNews_ASC_MNU";
+	String descMenu			  = "SiteNews_DESC_MNU";   
+ 
     String componentName = "";
     DocumentId docId;
  	LibraryComponent component;
  
-   	//Creating a workspace 
+	//Creating a workspace 
 	Workspace ws = (Workspace) pageContext.getAttribute(Workspace.WCM_WORKSPACE_KEY);
                                        
     if (ws == null)
@@ -112,8 +115,7 @@ try{
         System.out.println("null renderingContext");
         rc =ws.createRenderingContext(request,response,new HashMap());
     }
-     	
- 	while(docIdIter.hasNext()){
+    while(docIdIter.hasNext()){
 	   
 	   	docId = (DocumentId)docIdIter.next();
 		component = (LibraryComponent) ws.getById(docId);
@@ -127,14 +129,11 @@ try{
        	
 	}catch(Exception ex){
  
- 	System.out.println("Exception in AllNews.jsp :"+ ex.getMessage());
-   // out.println("Exception in AllNews.jsp :"+ ex.getMessage());
+	 	System.out.println("Exception in AllNews.jsp :"+ ex.getMessage());
+	   // out.println("Exception in AllNews.jsp :"+ ex.getMessage());
 
-    }
+	}
 
 
 
- 
 %>
-
-

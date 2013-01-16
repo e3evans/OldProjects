@@ -13,7 +13,7 @@ if(null!=request.getParameter("selected")){
  request.setAttribute("selection",selValue);
 }else{
  selValue="desc";
- request.getSession().setAttribute("selection",selValue);
+ request.getSession().setAttribute("selection","desc");
 }
 //out.write("SELECTED:"+selValue);
 
@@ -49,7 +49,7 @@ if(null!=request.getParameter("selected")){
 					</li>
 					<% }else{%>
 					<li>
-					<a href="#oldest" title="Newest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
+						<a href="#oldest" title="Oldest First" onclick="javascript: $(this).children('input').prop('checked', 'checked'); document.sortChangeForm.submit(); return false;">
 							<input name="selected" onclick="document.sortChangeForm.submit()" value="desc" type="radio" class="acgc_hidden">Newest First
 						</a>
 					</li>
@@ -67,9 +67,8 @@ try{
 
     String ContentLibrary	  = "CaregiverContentLibrary_en";
 	String DesignLib		  = "CaregiverDesignLibrary";
-	
-    String ascMenu			  = "AllVideos_ASC_MNU";
-	String descMenu			  = "AllVideos_DESC_MNU";
+	String ascMenu			  = "SiteVideos_ASC_MNU";
+	String descMenu			  = "SiteVideos_DESC_MNU";
     String componentName = "";
     DocumentId docId;
  	LibraryComponent component;
@@ -112,8 +111,7 @@ try{
         System.out.println("null renderingContext");
         rc =ws.createRenderingContext(request,response,new HashMap());
     }
-     	
- 	while(docIdIter.hasNext()){
+   	while(docIdIter.hasNext()){
 	   
 	   	docId = (DocumentId)docIdIter.next();
 		component = (LibraryComponent) ws.getById(docId);
