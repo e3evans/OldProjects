@@ -8,8 +8,8 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 			<portlet-mode>VIEW</portlet-mode>
-			<portlet-mode>EDIT</portlet-mode>
 			<portlet-mode>CONFIG</portlet-mode>
+			<portlet-mode>edit_defaults</portlet-mode>
 		</supports>
 		<supported-locale>en</supported-locale>
 		<resource-bundle>com.aurora.org.googlesearch.nl.GoogleSearchPortletResource</resource-bundle>
@@ -27,8 +27,15 @@
 				<value>Health Information,caregiver_feed1</value>
 				<value>Services,externalServicesCollection</value>
 			</preference>
+			<preference>
+				<name>com.aurora.org.search_environment</name>
+				<value>http://porporit1.ahc.root.loc:10039</value>
+			</preference>
 		</portlet-preferences>
 	</portlet>
+	<custom-portlet-mode>
+		<portlet-mode>edit_defaults</portlet-mode>
+	</custom-portlet-mode>
 	<custom-portlet-mode>
 		<portlet-mode>CONFIG</portlet-mode>
 	</custom-portlet-mode>

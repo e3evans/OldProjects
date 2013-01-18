@@ -29,6 +29,7 @@ import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import com.aurora.controllers.EditController;
 import com.aurora.controllers.ViewController;
 import com.aurora.webservice.client.GoogleServiceClient;
 
@@ -48,6 +49,7 @@ public abstract class XMLProcessorUtil {
 			TransformerFactory tf = TransformerFactory.newInstance();
 			Transformer transformer = tf.newTransformer(xsltSource);
 			transformer.setParameter("contextPath", contextPath);
+			transformer.setParameter("search_env", prefs.getValue(EditController.PREF_SEARCH_ENV, "NOTSET"));
 			transformer.transform(getMergedResultsDoc(searchResults,clusterResults,prefs), result);
 			
 		} catch (TransformerConfigurationException e) {

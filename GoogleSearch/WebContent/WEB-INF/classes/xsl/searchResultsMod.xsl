@@ -1,6 +1,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  version="2.0">
 <xsl:output omit-xml-declaration="yes"/>
 <xsl:param name="contextPath"/>
+<xsl:param name="search_env"/>
 <xsl:template match="/">
 	<xsl:choose>
 		<xsl:when test="/GSP/RES">
@@ -57,7 +58,7 @@
 	</xsl:choose>
 </xsl:template>
 <xsl:variable name="currentPage" select="/GSP/PARAM[@name='page']/@original_value"/>
-<xsl:variable name="portalServer">http://porporit1.ahc.root.loc:10039</xsl:variable>
+<xsl:variable name="portalServer"><xsl:value-of select="$search_env"/></xsl:variable>
 
 <xsl:template name="resultsBar">
 <div id="acgc_recordsorter" class="acgc_relative">
