@@ -21,7 +21,9 @@ import com.aurora.org.googlesearch.forms.EditForm;
 @Controller
 @RequestMapping("edit_defaults")
 public class EditController {
-	
+	/*
+	 * Preference has to match the URL that is coming back from the GSA so WCM content indexed by the GSA will open in the correct context.
+	 */
 	public static String PREF_SEARCH_ENV = "com.aurora.org.search_environment";
 
 	@RequestMapping
