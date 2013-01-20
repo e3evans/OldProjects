@@ -18,10 +18,10 @@
 			<short-title>CaregiverLogin</short-title>
 			<keywords>CaregiverLogin</keywords>
 		</portlet-info>
-		<container-runtime-option>
+		<!-- container-runtime-option>
 		   <name>com.ibm.portal.public.session</name>
 		   <value>true</value>
-		</container-runtime-option>
+		</container-runtime-option-->
 	</portlet>
 	<custom-portlet-mode>
 		<portlet-mode>edit_defaults</portlet-mode>

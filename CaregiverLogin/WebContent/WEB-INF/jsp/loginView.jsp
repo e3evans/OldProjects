@@ -1,3 +1,4 @@
+<%@ page session="false" %>
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
 <portlet:actionURL var="loginUrl" name="doLogin"/>
 <form:form action="${loginUrl}" method="post" commandName="loginForm" id="loginForm">

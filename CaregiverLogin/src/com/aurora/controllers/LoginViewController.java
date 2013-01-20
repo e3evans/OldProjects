@@ -33,6 +33,10 @@ import com.ibm.portal.portlet.service.PortletServiceUnavailableException;
 import com.ibm.portal.portlet.service.login.LoginHome;
 import com.ibm.portal.portlet.service.login.LoginService;
 import com.ibm.websphere.security.WSSecurityException;
+import com.ibm.workplace.wcm.api.WCM_API;
+import com.ibm.workplace.wcm.api.Workspace;
+import com.ibm.workplace.wcm.api.exceptions.OperationFailedException;
+import com.ibm.workplace.wcm.api.exceptions.ServiceNotAvailableException;
 
 
 
@@ -61,6 +65,17 @@ public class LoginViewController {
 	@RequestMapping
 	public ModelAndView defaultView (RenderRequest request, RenderResponse responses, @SuppressWarnings("rawtypes") Map model,@ModelAttribute("loginForm")LoginForm form) throws UnsupportedEncodingException{
 	
+		try {
+			Workspace workspace = WCM_API.getRepository().getWorkspace("waslocal", "waslocal");
+			System.out.println(workspace);
+		} catch (ServiceNotAvailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (OperationFailedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		if (form==null)form = new LoginForm();
 		
 		return new ModelAndView("loginView","loginForm",form);
