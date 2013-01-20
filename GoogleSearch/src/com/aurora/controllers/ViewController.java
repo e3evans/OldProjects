@@ -5,6 +5,7 @@ import java.net.URLEncoder;
 import java.util.Enumeration;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.portlet.ResourceRequest;
@@ -33,6 +34,13 @@ public class ViewController {
 	public static String SEARCH_RESULTS_BOX = "searchResultsBox";
 	public static String PREF_COLLECTIONS = "com.aurora.org.collections";
 
+	@PostConstruct
+	public void init(){
+		
+		System.out.println("THIS IS A TEST!!");
+	}
+	
+	
 	@SuppressWarnings("unchecked")
 	@RequestMapping
 	public ModelAndView defaultView (RenderRequest request, RenderResponse responses, @SuppressWarnings("rawtypes") Map model,@ModelAttribute("searchForm")SearchForm form) throws UnsupportedEncodingException{
