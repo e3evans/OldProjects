@@ -21,25 +21,21 @@
 		<portlet-preferences>
 			<preference>
 				<name>wcm.path</name>
-				<value>Web Content/Articles</value>
-			</preference>
-			<preference>
-				<name>wcm.WebAppPath</name>
-				<value>http://localhost:10039/wps/wcm</value>
-			</preference>
-			<preference>
-				<name>wcm.servletPath</name>
-				<value>/myconnect</value>
+				<value>CaregiverContentLibrary_en/Caregiver/News</value>
 			</preference>
 			<preference>
 				<name>wcm.menuComponent</name>
-				<value>Articles List</value>
+				<value>Feature_News_MNU</value>
+			</preference>
+			<preference>
+				<name>wcm.library</name>
+				<value>CareGiverDesignLibrary</value>
 			</preference>
 		</portlet-preferences>
 		<!-- container-runtime-option>
 		   <name>com.ibm.portal.public.session</name>
 		   <value>true</value>
-		</container-runtime-option-->
+		</container-runtime-option -->
 	</portlet>
 	<custom-portlet-mode>
 		<portlet-mode>edit_defaults</portlet-mode>

@@ -42,11 +42,10 @@ public class LoginViewController {
 	
 	public static String ENV_USERPASSWORD = "com.aurora.seedlist.userpassword";
 	public static String PREF_WCM_PATH = "wcm.path";
-	public static String PREF_WCM_WEBAPP = "wcm.WebAppPath";
 	public static String PREF_WCM_COMPONENT ="wcm.menuComponent";
-	public static String PREF_WCM_SERVLET = "wcm.servletPath";
+	public static String PRED_WCM_LIB = "wcm.library";
 	
-	private static LoginHome loginHome;
+	LoginHome loginHome;
 	@PostConstruct
 	public void init(){
 		try {

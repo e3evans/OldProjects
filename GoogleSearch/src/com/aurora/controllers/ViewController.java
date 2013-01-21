@@ -34,12 +34,7 @@ public class ViewController {
 	public static String SEARCH_RESULTS_BOX = "searchResultsBox";
 	public static String PREF_COLLECTIONS = "com.aurora.org.collections";
 
-	@PostConstruct
-	public void init(){
-		
-		System.out.println("THIS IS A TEST!!");
-	}
-	
+
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping
