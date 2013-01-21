@@ -18,6 +18,24 @@
 			<short-title>CaregiverLogin</short-title>
 			<keywords>CaregiverLogin</keywords>
 		</portlet-info>
+		<portlet-preferences>
+			<preference>
+				<name>wcm.path</name>
+				<value>Web Content/Articles</value>
+			</preference>
+			<preference>
+				<name>wcm.WebAppPath</name>
+				<value>http://localhost:10039/wps/wcm</value>
+			</preference>
+			<preference>
+				<name>wcm.servletPath</name>
+				<value>/myconnect</value>
+			</preference>
+			<preference>
+				<name>wcm.menuComponent</name>
+				<value>Articles List</value>
+			</preference>
+		</portlet-preferences>
 		<!-- container-runtime-option>
 		   <name>com.ibm.portal.public.session</name>
 		   <value>true</value>

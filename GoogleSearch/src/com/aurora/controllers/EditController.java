@@ -37,7 +37,7 @@ public class EditController {
 	
 	@ActionMapping("doSavePrefs")
 	public void savePrefs(ActionRequest request, ActionResponse response,@ModelAttribute("editForm")EditForm editForm){
-		System.out.println(editForm.getSearch_environment());
+
 		if (null!=editForm.getSearch_environment()){
 			try {
 				request.getPreferences().setValue(PREF_SEARCH_ENV, editForm.getSearch_environment());
