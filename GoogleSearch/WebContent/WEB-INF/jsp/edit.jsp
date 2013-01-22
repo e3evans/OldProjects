@@ -1,3 +1,5 @@
+<%@page import="com.aurora.controllers.ViewController"%>
+<%@page import="javax.portlet.PortletPreferences"%>
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
 <portlet:actionURL var="actionURL" name="doSavePrefs"/>
 

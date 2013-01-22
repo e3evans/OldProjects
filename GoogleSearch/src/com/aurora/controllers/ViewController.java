@@ -5,7 +5,6 @@ import java.net.URLEncoder;
 import java.util.Enumeration;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.portlet.ResourceRequest;
