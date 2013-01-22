@@ -4,6 +4,7 @@
 				 com.ibm.workplace.wcm.api.*"%>
 
 <%@taglib uri="/WEB-INF/tld/wcm.tld" prefix="wcm"%>
+
 <%
 //String selection=null;
 String selValue=null;
@@ -20,7 +21,7 @@ if(null!=request.getParameter("selected")){
 
 
 %>
-<form id="sortChangeForm"  method="GET" name="sortChangeForm" >
+<form id="sortChangeForm"  method="GET" class="sortChangeForm" name="sortChangeForm" >
 <div id="acgc_recordsorter" class="acgc_relative">
 	<div class="acgc_sort_by">
 		Sort By: <span class="acgc_sort_by_focus"> <% if("desc".equalsIgnoreCase(selValue)){ %>Newest First<%}else{%>Oldest First<%}%> &nbsp;<img src="/AuroraTheme/themes/html/assets/images/arrow-down-small-header.png" alt="arrow" class="acgc_inline_icon"/></span>

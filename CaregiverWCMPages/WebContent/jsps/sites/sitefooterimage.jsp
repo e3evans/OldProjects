@@ -23,8 +23,10 @@ String SID="";
 String sitepath="";
 String siteRelpath="";
 String	siteName="";
+LibraryComponent component;
+String DesignLib		  = "CaregiverDesignLibrary";
 try{ 
-    //Creating a workspace 
+    
 	Workspace ws = (Workspace) pageContext.getAttribute(Workspace.WCM_WORKSPACE_KEY);
     
     if (ws == null)
@@ -41,66 +43,33 @@ try{
         System.out.println("null renderingContext");
         rc =ws.createRenderingContext(request,response,new HashMap());
     }
-    
+    ws.setCurrentDocumentLibrary(ws.getDocumentLibrary(DesignLib)); 
     sitepath=rc.getPath();
     
     DocumentIdIterator iterator= ws.findByPath(sitepath,Workspace.WORKFLOWSTATUS_ALL);
-       	ws.findComponentByName()
+       	
 	while(iterator.hasNext()){
 		DocumentId sid=iterator.nextId();
 		if(sid.getType().toString().equalsIgnoreCase(DocumentTypes.SiteArea.toString())){
 			   SID=sid.getId();
-			   siteName=ws.getById(ws.createDocumentId(SID)).getTitle();
-			    System.out.println("pageTitle:"+siteName);
-			   
-			  // request.getSession().setAttribute("siteName",siteName);
-			   
-		 	 }
+			   siteName=ws.getById(ws.createDocumentId(SID)).getName();
+			 }
     }
-     /*Context ctx = new InitialContext();
-     NavigationSelectionModelHome home = (NavigationSelectionModelHome) ctx.lookup("portal:service/model/NavigationSelectionModel");
-     if (home != null) {
-        NavigationSelectionModelProvider provider =  home.getNavigationSelectionModelProvider();
-        NavigationSelectionModel model =  provider.getNavigationSelectionModel(request,response);
-        System.out.println("lOC:"+model.getSelectedNode());
-       
-       
-        NavigationNode selectedNode = (NavigationNode) model.getSelectedNode();
-		String pageTitle = selectedNode.getTitle(Locale.ENGLISH); 
-        System.out.println("pageTitle:"+pageTitle);
-       
-       
-        
-        for (java.util.Iterator i = model.iterator(); i.hasNext(); ) 
-        {
-            NavigationNode node = (NavigationNode) i.next();
-            if (i.hasNext()) {
-             System.out.println("node :"+ node.getTitle(Locale.ENGLISH));
-            }
-            
-         }
-         
-          qs="&sa=<//siteName //>&un=${wp.selectionModel.selected.objectID.uniqueName}";  
-         
-         
-      }*/
+    iterator= ws.findComponentByName(siteName);
+    while(iterator.hasNext()){
+        DocumentId sid=iterator.nextId();
+		if(sid.getType().toString().equalsIgnoreCase(DocumentTypes.LibraryImageComponent.toString())){
+		  component = (LibraryComponent) ws.getById(sid);
+		  String renderedContent = ws.render(rc, component);
+   		  out.write(renderedContent);
+   		}
+		
+	}
+     
+     
      ws.logout();
 }catch(Exception ex){
  	 	System.out.println("Exception in AllNews.jsp :"+ ex.getMessage());
 }
 
 %>
-<script>
- 
-  $(document).ready(function() {
-    qs="&sa=<%=siteName%>&un=${wp.selectionModel.selected.objectID.uniqueName}";  
-   
-    
-   $("a.sitelanding").each(function() {
-   		var _href = $(this).attr("href"); 
-   		$(this).attr("href", _href + qs);
-	});
-   
-});
-
-</script>
