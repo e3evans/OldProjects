@@ -60,8 +60,8 @@
         <!-- Feed logging configuration.
              TODO: [Issue 163] These should be moved to logging.properties.
         -->
-        <!-- prop key="feed.logging.FileHandler.pattern">C:/temp/logs/google-connectors.feed%g.log</prop-->
-        <prop key="feed.logging.FileHandler.pattern">/opt/IBM/WebSphere/V70/wp_profile/logs/google/google-connectors.feed%g.log</prop>
+        <prop key="feed.logging.FileHandler.pattern">C:/temp/logs/google-connectors.feed%g.log</prop>
+        <!-- prop key="feed.logging.FileHandler.pattern">/opt/IBM/WebSphere/V70/wp_profile/logs/google/google-connectors.feed%g.log</prop-->
         <prop key="feed.logging.FileHandler.limit">52428800</prop>
         <prop key="feed.logging.FileHandler.count">10</prop>
 

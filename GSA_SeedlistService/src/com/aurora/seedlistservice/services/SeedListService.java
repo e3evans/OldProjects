@@ -81,6 +81,18 @@ public class SeedListService {
 			Source xmlSource = new StreamSource(new StringReader(SeedListClient.getInstance().getSeedListFeed()));
 			Source xsltSource = getXSLStyesheetStream(xslStylesheet);
 			Result result = new StreamResult(writer);
+			/*
+			 * BEGIN TEST CLASS FOR CONNECTOR DEV
+			 * 
+			 * 
+			 */
+			
+			
+			
+			/*
+			 * 
+			 * END TEST CLASS FOR CONNECTOR DEV
+			 */
 			
 			TransformerFactory tf = TransformerFactory.newInstance();
 			Transformer transformer = tf.newTransformer(xsltSource);
