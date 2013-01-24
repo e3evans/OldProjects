@@ -1,6 +1,18 @@
 package com.aurora.org.connector;
 
-import com.aurora.seedlistservice.remoterestclient.SeedListClient;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import com.aurora.seedlistservice.remoterestclient.SeedListObjectsService;
+import com.aurora.xml.GSAFeed;
+import com.aurora.xml.Meta;
+import com.aurora.xml.Record;
 import com.google.enterprise.connector.spi.AuthenticationIdentity;
 import com.google.enterprise.connector.spi.AuthenticationManager;
 import com.google.enterprise.connector.spi.AuthenticationResponse;
@@ -17,17 +29,11 @@ import com.google.enterprise.connector.spi.SpiConstants;
 import com.google.enterprise.connector.spi.TraversalManager;
 import com.google.enterprise.connector.spi.Value;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
 public class WCMConnector implements Connector {
+	private static final String XSL_ATOMFEED = "xsl/seedlist.xsl";
 
+	
+	
   public Session login() {
     return new WCMSession();
   }
@@ -74,34 +80,53 @@ public class WCMConnector implements Connector {
       if (startDocId > MAX_DOCID) {
         return null;  // No more documents.
       }
-      System.out.println("******START********");
-      System.out.println(SeedListClient.getInstance().getSeedListFeed());
-      System.out.println("******END******");
+
       Calendar cal = Calendar.getInstance();
 
       List<Document> docList = new ArrayList<Document>(batchHint);
-
-      int endDocId = Math.min(startDocId + batchHint - 1, MAX_DOCID);
-
-      for (int i = startDocId; i <= endDocId; i++) {
-        cal.setTimeInMillis(10 * 1000); // Each doc has the curretn timestamp
-        Map<String, List<Value>>properties;
-        properties = new HashMap<String, List<Value>>();
-
-        properties.put(SpiConstants.PROPNAME_DOCID,
-            asList(Value.getStringValue(Integer.toString(i))));
-
-        properties.put(SpiConstants.PROPNAME_LASTMODIFIED,
-            asList(Value.getDateValue(cal)));
-
-        properties.put(SpiConstants.PROPNAME_DISPLAYURL,
-            asList(Value.getStringValue("http://www.example.com/?docid=" + i)));
-
-        properties.put(SpiConstants.PROPNAME_CONTENT,
-            asList(Value.getBinaryValue("WCM World!".getBytes())));
-
-        docList.add(new SimpleDocument(properties));
+      GSAFeed gFeed = SeedListObjectsService.getInstance().getSeedListXSL(XSL_ATOMFEED);
+      ArrayList<Record> records = gFeed.getGroup();
+      for (int i = 0;i<records.size();i++){
+    	  cal.setTimeInMillis(10 * 1000); // Each doc has the curretn timestamp
+    	  Map<String, List<Value>>properties;
+    	  properties = new HashMap<String, List<Value>>();
+    	  Record temp = records.get(i);
+    	  properties.put(SpiConstants.PROPNAME_LASTMODIFIED,asList(Value.getDateValue(cal)));
+    	  properties.put(SpiConstants.PROPNAME_DISPLAYURL, asList(Value.getStringValue(temp.getDisplayurl())));
+    	  properties.put(SpiConstants.PROPNAME_SEARCHURL, asList(Value.getStringValue(temp.getUrl())));
+    	  properties.put(SpiConstants.PROPNAME_MIMETYPE, asList(Value.getStringValue(temp.getMimetype())));
+    	  
+    	  /*
+    	   * Add Meta Data
+    	   */
+    	  ArrayList<Meta> meta = temp.getMetadata();
+    	  for (int x = 0;x<meta.size();x++){
+    		  Meta tag = meta.get(x);
+    		  properties.put(tag.getName(), asList(Value.getStringValue(tag.getContent())));
+    	  }
+    	  docList.add(new SimpleDocument(properties));
       }
+//      int endDocId = Math.min(startDocId + batchHint - 1, MAX_DOCID);
+//
+//      for (int i = startDocId; i <= endDocId; i++) {
+//        cal.setTimeInMillis(10 * 1000); // Each doc has the curretn timestamp
+//        Map<String, List<Value>>properties;
+//        properties = new HashMap<String, List<Value>>();
+//       
+//        properties.put(SpiConstants.PROPNAME_DOCID,
+//            asList(Value.getStringValue(Integer.toString(i))));
+//
+//        properties.put(SpiConstants.PROPNAME_LASTMODIFIED,
+//            asList(Value.getDateValue(cal)));
+//
+//        properties.put(SpiConstants.PROPNAME_DISPLAYURL,
+//            asList(Value.getStringValue("http://www.example.com/?docid=" + i)));
+//
+//        properties.put(SpiConstants.PROPNAME_CONTENT,
+//            asList(Value.getBinaryValue("WCM World!".getBytes())));
+//
+//        docList.add(new SimpleDocument(properties));
+//      }
 
       return new WCMDocumentList(docList);
     }
