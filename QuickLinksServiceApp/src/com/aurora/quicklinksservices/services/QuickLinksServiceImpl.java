@@ -1,5 +1,6 @@
 package com.aurora.quicklinksservices.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.aurora.quicklinksservices.beans.App;
+import com.aurora.quicklinksservices.beans.AppCategory;
 import com.aurora.quicklinksservices.beans.User;
 import com.aurora.quicklinksservices.beans.UserApp;
 import com.aurora.quicklinksservices.beans.UserAppKey;
@@ -23,7 +25,16 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
 	@Autowired
 	private QuickLinksAPPDAO quickLinksAPPDAO;
 	public List<App> retrieveAvailAppListByRole(String roleCd) {
-		return quickLinksAPPDAO.findAvailAppListByRole(roleCd);
+		List<App> appListFormatURL = new ArrayList<App>();
+		List<App> appList= quickLinksAPPDAO.findAvailAppListByRole(roleCd);
+		if(null!=appList && !appList.isEmpty()){
+			for(App app : appList){
+				app.setAppURL(QuickLinksUtility.urlFormat(app.getAppURL()));
+				appListFormatURL.add(app);
+			}
+		}
+		
+		return appListFormatURL;
 	}
 	
 	
@@ -93,5 +104,44 @@ public class QuickLinksServiceImpl  extends SpringBeanAutowiringSupport implemen
        
 	
 }
+
+
+	@Override
+	public List<AppCategory> findAppCategories() {
+		
+		return quickLinksAPPDAO.findAppCategories();
+	}
+
+
+	@Override
+	public List<App> findAvailAppListByCategory(String categoryId) {
+		List<App> appListFormatURL = new ArrayList<App>();
+		List<App> appList = quickLinksAPPDAO.findAvailAppListByCategory(categoryId);
+		if(null!=appList && !appList.isEmpty()){
+			for(App app : appList){
+				app.setAppURL(QuickLinksUtility.urlFormat(app.getAppURL()));
+				appListFormatURL.add(app);
+			}
+			
+		}
+		
+		return appListFormatURL;
+	}
+	
+	@Override
+	public List<App> findPopularAppListByCategory(String categoryId) {
+		List<App> appListFormatURL = new ArrayList<App>();
+		List<App> appList=quickLinksAPPDAO.findPopularAppListByCategory(categoryId);
+		if(null!=appList && !appList.isEmpty()){
+			for(App app : appList){
+				app.setAppURL(QuickLinksUtility.urlFormat(app.getAppURL()));
+				appListFormatURL.add(app);
+			}
+		}
+		
+		return appListFormatURL;
+	}
+	
+	
 	
 }

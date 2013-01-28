@@ -14,7 +14,7 @@ public static Timestamp getCurrentTime()
 }
 
 
-public String urlFormat(String url){
+public static String urlFormat(String url){
 	/* DEV */
 	String baseUrl = "http://iconnect-test.aurora.org";
 	/* PROD */

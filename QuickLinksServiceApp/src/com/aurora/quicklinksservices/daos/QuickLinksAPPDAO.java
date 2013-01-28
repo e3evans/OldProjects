@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import com.aurora.quicklinksservices.beans.App;
+import com.aurora.quicklinksservices.beans.AppCategory;
 import com.aurora.quicklinksservices.beans.User;
 import com.aurora.quicklinksservices.beans.UserApp;
 import com.aurora.quicklinksservices.beans.UserAppKey;
@@ -19,5 +20,8 @@ public interface QuickLinksAPPDAO {
 	public List<App> findAppMenuAutoList(String paramString);
 	public void updateUserApp( UserAppKey userAppKey , String activecd);
 	public List<UserAppResponseBean> findAllUserAppsByUser(Long userid);
+	public List<AppCategory> findAppCategories();
+	public List<App> findAvailAppListByCategory(String categoryId);
+	public List<App> findPopularAppListByCategory(String categoryId);
 
 }

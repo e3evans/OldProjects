@@ -19,7 +19,7 @@ import com.aurora.quicklinks.util.ResourceUtil;
 
 @Service(value = "appService")
 public class AppServiceImpl implements AppService {
-	private Logger logger = Logger.getLogger(UserAppController.class);
+	private Logger logger = Logger.getLogger(AppServiceImpl.class);
 	@Autowired
 	private ServiceInterfaceDelegate serviceInterfaceDelegate;
 
