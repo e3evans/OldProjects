@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +31,7 @@ import com.aurora.sitesapps.beans.Application;
 import com.aurora.sitesapps.exception.AppException;
 import com.aurora.sitesapps.services.AppService;
 import com.aurora.sitesapps.util.AppComparator;
+
 
 
 @Controller(value = "sitesAppsController")
@@ -62,6 +64,7 @@ public class CategorySortController {
 		List<Application> listPopularApplication = null;
 		List<AppCategory> listAppCategory;
 		List<AppCategory> listApplicationCategory;
+		List<List<Application>> listAllApplication = new LinkedList<List<Application>>();
 		AppCategory applicationCategory = null;
 		AppComparator appComparator = new AppComparator();
 		try {
@@ -80,6 +83,8 @@ public class CategorySortController {
 
 				} else {
 					listApplication = appService.listApplication(appCategory.getCategoryId());
+					listAllApplication.add(listApplication);
+					session.setAttribute("listAllApplication", listAllApplication);
 					if (null != listApplication && !listApplication.isEmpty()) {
 						Collections.sort(listApplication, appComparator);
 						applicationCategory.setAppList(listApplication);
@@ -114,6 +119,7 @@ public class CategorySortController {
 	
 	
 	
+	@SuppressWarnings("unchecked")
 	@ResourceMapping(value = "sitesappsalphabeticalsort")
 	public ModelAndView showQuickLinkForm(ResourceRequest request,ResourceResponse response) {
 		PortletSession session = request.getPortletSession();
@@ -123,7 +129,14 @@ public class CategorySortController {
 		try {
 			String[] alphabates = new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 			List<Application> listApplication = new ArrayList<Application>();
-			List<Application> availAppsList = appService.listApplication();
+			//List<Application> availAppsList = appService.listApplication();
+			List<Application> availAppsList= new ArrayList<Application>();
+			List<List<Application>> availAppsList1= (List<List<Application>>) session.getAttribute("listAllApplication");
+			for(List<Application> availAppsList2:availAppsList1 ){
+				
+				
+				availAppsList.addAll(availAppsList2);
+			}
 			Collections.sort(availAppsList, new AppComparator());
 			
 		
@@ -137,7 +150,7 @@ public class CategorySortController {
 				}else if(j==0){
 					listApplication.add(app);
 					
-				}else{
+			    }else{
 				    map.put(alphabates[i],listApplication);
 					i++;
 					listApplication = new ArrayList<Application>();
@@ -145,9 +158,9 @@ public class CategorySortController {
 				}
 				
 			}
-			session.setAttribute("availAppsMap", map);
+			
 			mav.addObject("availAppsMap", map);
-	      } catch (AppException e) {
+	      } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

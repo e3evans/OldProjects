@@ -7,11 +7,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@page import="javax.portlet.PortletRequest"%>
 <portlet:defineObjects/>
-<%
-PortletRequest pResquest = (PortletRequest)request;
-pageContext.setAttribute("availAppsMap", pResquest.getPortletSession().getAttribute("availAppsMap"), PageContext.REQUEST_SCOPE);
 
- %>
 
 <c:forEach items="${appFormBean.listAppCategory}" var="appCategory">
 
@@ -36,16 +32,28 @@ pageContext.setAttribute("availAppsMap", pResquest.getPortletSession().getAttrib
 </c:choose>
 
 </c:forEach>
+<%
 
+PortletRequest pResquest = (PortletRequest)request;
+
+ %>
 
 
 <script type="text/javascript">
 
+var userid='<%=pResquest.getPortletSession().getAttribute("userId")%>';
+
+	
+	function urlFormat(url){
+	    document.getElementById("sitesapps_form_url").value=url;
+		document.getElementById("sitesapps_form_userid").value=userid;
+		document.sitesapps_form.submit();	
+	}
 
 
 function sitesAppsAlphabeticalSort(){
 
-		$("#acgc_sites_apps_alpha_list").html('<div id="searchResultsBox"><div class="loading"><img src="assets/images/ajax-loader.gif" alt="loader" /></div></div>');
+	//	$("#acgc_sites_apps_alpha_list").html('<div id="searchResultsBox"><div class="loading"><img src="assets/images/ajax-loader.gif" alt="loader" /></div></div>');
 
 		// make ajax call to retrieve upcoming page
         $.get("<portlet:resourceURL id='sitesappsalphabeticalsort'/>?param=resource", {
@@ -104,6 +112,11 @@ function sitesAppsAlphabeticalSort(){
 
 </script>
 
+<form name="sitesapps_form" action="/QuickLinksServiceApp/QuickLinksRedirect/redirect" method="get" target="_blank">
+	<input id="sitesapps_form_url" type="hidden" name="url"   value="">
+	<input id="sitesapps_form_userid" type="hidden" name="userId" value="" >
+
+</form> 
 
 
 <div class="acgc_theme_wrapper acgc_relative acgc_striped_bg">
@@ -148,7 +161,7 @@ function sitesAppsAlphabeticalSort(){
 			<a href="#strategic-plan" title="Strategic Plan">Strategic Plan</a>
 		</div>
 
-		<div id="acgc_sites_apps_alpha_jump" class="acgc_jump_to_section" style="display: none;">
+		 <div id="acgc_sites_apps_alpha_jump" class="acgc_jump_to_section" style="display: none;">
 			<strong>Jump To: </strong>&nbsp; 
 			<a href="#alpha-a" title="A">A</a>&nbsp;&nbsp; 
 			<a href="#alpha-b" title="B">B</a>&nbsp;&nbsp; 
@@ -175,9 +188,8 @@ function sitesAppsAlphabeticalSort(){
 			<a href="#alpha-w" title="W">W</a>&nbsp;&nbsp; 
 			<a href="#alpha-x" title="X">X</a>&nbsp;&nbsp; 
 			<span title="Y">Y</span>&nbsp;&nbsp; 
-			<span title="Y">Z</span>&nbsp;&nbsp; 
-			
-		</div>
+			<span title="Z">Z</span>&nbsp;&nbsp; 
+		</div> 
 
 	</div>
 </div>
@@ -197,7 +209,7 @@ function sitesAppsAlphabeticalSort(){
 				<ul class="acgc_content_inner_box_list">
 				<c:forEach items="${mostpopular.popularapplist}" var="application" varStatus="row">
 				 <li>
-					<a href="${application.appURL}" title="${application.appName}" target="_blank">
+					<a href="javascript:urlFormat('${application.appURL}')"; title="${application.appName}">
 						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
 					</a>
 				</li>
@@ -233,7 +245,7 @@ function sitesAppsAlphabeticalSort(){
 				
 				<c:forEach items="${clinical.appList}" var="application" varStatus="row">
 				 <li>
-					<a href="${application.appURL}"  title="${application.appName}" target="_blank">
+					<a href=href="javascript:urlFormat("${application.appURL}")";  title="${application.appName}" target="_blank">
 						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
 					</a>
 				</li>
