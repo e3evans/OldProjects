@@ -86,6 +86,7 @@ public class WCMConnector implements Connector {
       List<Document> docList = new ArrayList<Document>(batchHint);
       GSAFeed gFeed = SeedListObjectsService.getInstance().getSeedListXSL(XSL_ATOMFEED);
       ArrayList<Record> records = gFeed.getGroup();
+    
       for (int i = 0;i<records.size();i++){
     	  cal.setTimeInMillis(10 * 1000); // Each doc has the curretn timestamp
     	  Map<String, List<Value>>properties;

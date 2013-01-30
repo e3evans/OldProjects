@@ -14,7 +14,7 @@
     <!-- Default values for some properties -->
     <property name="properties">
       <props>
-        <prop key="feedLoggingLevel">OFF</prop>
+        <prop key="feedLoggingLevel">ALL</prop>
 
         <!-- Default Feeder gate URL protocol on a GSA. -->
         <prop key="gsa.feed.protocol"></prop>
