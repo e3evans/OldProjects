@@ -22,10 +22,6 @@ public class AppServiceImpl implements AppService {
 	
 	
 	
-	
-	
-	
-	
 	/**
 	 * 
 	 * This method Get the all available Application by Category Id.

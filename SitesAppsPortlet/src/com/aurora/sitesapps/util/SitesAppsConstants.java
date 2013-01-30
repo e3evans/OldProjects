@@ -8,8 +8,8 @@ package com.aurora.sitesapps.util;
  */
 public class SitesAppsConstants {
 
-	public static final String ENVIRONMENTKEY = "quicklinksportlet.services.environment";
-	public static final String PROXYHOSTURLKEY = "quicklinksportlet.services.proxyhosturl";
+	public static final String ENVIRONMENTKEY = "sitesappsportlet.services.environment";
+	public static final String PROXYHOSTURLKEY = "sitesappsportlet.services.proxyhosturl";
 	public static final String CATEGORYLISTKEY ="sitesappsportlet.services.categorylist";
 	public static final String APPLISTBYCATEGORYKEY="sitesappsportlet.services.applistcategorykey";
 	public static final String SERVICE_ERROR_MESSAGE = "{'ERROR_OBJ':{'ERROR_CODE':'errors.system'}}";

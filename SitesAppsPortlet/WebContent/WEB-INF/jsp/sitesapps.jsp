@@ -186,7 +186,7 @@ function sitesAppsAlphabeticalSort(){
 			<a href="#alpha-u" title="U">U</a>&nbsp;&nbsp; 
 			<a href="#alpha-v" title="V">V</a>&nbsp;&nbsp; 
 			<a href="#alpha-w" title="W">W</a>&nbsp;&nbsp; 
-			<a href="#alpha-x" title="X">X</a>&nbsp;&nbsp; 
+			<span title="X">X</span>&nbsp;&nbsp; 
 			<span title="Y">Y</span>&nbsp;&nbsp; 
 			<span title="Z">Z</span>&nbsp;&nbsp; 
 		</div> 
@@ -245,7 +245,7 @@ function sitesAppsAlphabeticalSort(){
 				
 				<c:forEach items="${clinical.appList}" var="application" varStatus="row">
 				 <li>
-					<a href=href="javascript:urlFormat("${application.appURL}")";  title="${application.appName}" target="_blank">
+					<a href="javascript:urlFormat('${application.appURL}')";  title="${application.appName}">
 						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
 					</a>
 				</li>
@@ -279,7 +279,7 @@ function sitesAppsAlphabeticalSort(){
 			<ul class="acgc_content_inner_box_list">
 				<c:forEach items="${Bussiness.appList}" var="application" varStatus="row">
 				 <li>
-					<a href="${application.appURL}" title="${application.appName}" target="_blank">
+					<a href="javascript:urlFormat('${application.appURL}')"; title="${application.appName}" >
 						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
 					</a>
 				</li>
@@ -312,7 +312,7 @@ function sitesAppsAlphabeticalSort(){
 			<ul class="acgc_content_inner_box_list">
 				<c:forEach items="${locations.appList}" var="application" varStatus="row">
 				 <li>
-					<a href="${application.appURL}" title="${application.appName}" target="_blank">
+					<a href="javascript:urlFormat('${application.appURL}')"; title="${application.appName}">
 						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
 					</a>
 				</li>
@@ -345,7 +345,7 @@ function sitesAppsAlphabeticalSort(){
 			<ul class="acgc_content_inner_box_list">
 				<c:forEach items="${strategicplan.appList}" var="application" varStatus="row">
 				 <li>
-					<a href="${application.appURL}" title="${application.appName}" target="_blank">
+					<a href="javascript:urlFormat('${application.appURL}')"; title="${application.appName}">
 						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
 					</a>
 				</li>

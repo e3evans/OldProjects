@@ -37,7 +37,6 @@ import com.aurora.sitesapps.util.AppComparator;
 @Controller(value = "sitesAppsController")
 @RequestMapping(value = "VIEW")
 @SessionAttributes(types = AppFormBean.class)
-// @SessionAttributes(types = AppFormBean.class)
 public class CategorySortController {
 	private Logger logger = Logger.getLogger(CategorySortController.class);
 
@@ -74,7 +73,7 @@ public class CategorySortController {
 				applicationCategory = new AppCategory();
 				if (appCategory.getCategoryName().equalsIgnoreCase("Most Popular")) {
 					listPopularApplication = appService.listPopularApplication(appCategory.getCategoryId());
-					if (null != listPopularApplication && !listPopularApplication.isEmpty()) {
+				 if (null != listPopularApplication && !listPopularApplication.isEmpty()) {
 						Collections.sort(listPopularApplication, appComparator);
 						applicationCategory.setPopularapplist(listPopularApplication);
 						applicationCategory.setCategoryName(appCategory.getCategoryName());
@@ -131,7 +130,9 @@ public class CategorySortController {
 			List<Application> listApplication = new ArrayList<Application>();
 			//List<Application> availAppsList = appService.listApplication();
 			List<Application> availAppsList= new ArrayList<Application>();
+		
 			List<List<Application>> availAppsList1= (List<List<Application>>) session.getAttribute("listAllApplication");
+			
 			for(List<Application> availAppsList2:availAppsList1 ){
 				
 				
@@ -141,6 +142,7 @@ public class CategorySortController {
 			
 		
 			Map<String,List<Application>> map= new HashMap<String,List<Application>>();
+	
 			for(Application app:availAppsList){
 				
 				if(app.getAppName().toUpperCase().indexOf(alphabates[i])==0){
@@ -158,9 +160,9 @@ public class CategorySortController {
 				}
 				
 			}
-			
+				
 			mav.addObject("availAppsMap", map);
-	      } catch (Exception e) {
+			} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
