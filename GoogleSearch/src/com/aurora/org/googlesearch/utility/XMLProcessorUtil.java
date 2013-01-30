@@ -101,15 +101,16 @@ public abstract class XMLProcessorUtil {
 					 * Extract the cluster results from the original Document
 					 */
 					Node cluster = (Node)xpath.evaluate("//toplevel/Response/cluster", clusterDoc,XPathConstants.NODE);
-					
+//					System.out.println("HERE!!" + collections.length);
 					/*
 					 * Append Root and clear out XML Document from memory.
 					 */
 					Node searchRoot = searchDoc.getDocumentElement();
-					searchRoot.appendChild(searchDoc.importNode(cluster,true));
+					if (cluster!=null)searchRoot.appendChild(searchDoc.importNode(cluster,true));
 					/*
 					 * Append the various configured collections
 					 */
+					
 					if (collections.length>0){
 						for (int i=0;i<collections.length;i++){
 							String [] temp = collections[i].split(",");

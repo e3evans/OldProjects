@@ -21,11 +21,9 @@
 		<portlet-preferences>
 			<preference>
 				<name>com.aurora.org.collections</name>
-				<value>All Results,default_collection</value>
-				<value>Locations,externalFacilityCollection</value>
-				<value>Doctors,externalPhysicianCollection</value>
-				<value>Health Information,caregiver_feed1</value>
-				<value>Services,externalServicesCollection</value>
+				<value>All Results,caregiver_wcm</value>
+				<value>Content,default_collection</value>
+				<value>Library,elib</value>
 			</preference>
 			<preference>
 				<name>com.aurora.org.search_environment</name>
