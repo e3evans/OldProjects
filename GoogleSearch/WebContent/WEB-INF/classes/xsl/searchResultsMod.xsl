@@ -273,9 +273,7 @@
 	<xsl:param name="googleUrl"/>
 	<a>
 		<xsl:attribute name="href">
-			<xsl:call-template name="formatWCMUrl">
-				<xsl:with-param name="googleUrl" select="$googleUrl"/>
-			</xsl:call-template>						
+			<xsl:value-of select="$googleUrl"/>					
 		</xsl:attribute>
 		<xsl:attribute name="rank"><xsl:value-of select="$rank"/></xsl:attribute>
 		<xsl:attribute name="ctype">c</xsl:attribute>

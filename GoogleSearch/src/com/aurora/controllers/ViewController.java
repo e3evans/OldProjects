@@ -35,13 +35,7 @@ public class ViewController {
 	public static String SESS_DEF_COLLECT = "google.default.collection";
 	public static String SEARCH_RESULTS_BOX = "searchResultsBox";
 	public static String PREF_COLLECTIONS = "com.aurora.org.collections";
-//	String selectedCollection = "";
 
-
-//	@PostConstruct
-//	public void init(){
-//		
-//	}
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping
@@ -55,7 +49,6 @@ public class ViewController {
 			collections = prefs.getValues(PREF_COLLECTIONS, collections);
 			request.getPortletSession().setAttribute(SESS_DEF_COLLECT, collections[0].split(",")[1]);
 		}
-//		selectedCollection = (String) request.getPortletSession().getAttribute(SESS_DEF_COLLECT);
 		HttpServletRequest hsreq= com.ibm.ws.portletcontainer.portlet.PortletUtils.getHttpServletRequest(request);
 		request.getPortletSession().setAttribute(SESS_SEARCH_TERM, hsreq.getParameter("q"));
 		if (form == null)form = new SearchForm();
