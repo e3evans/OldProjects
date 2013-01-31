@@ -1,5 +1,6 @@
 package com.aurora.controllers;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
@@ -75,8 +76,10 @@ public class LoginViewController {
 	public void doLogin(ActionRequest request, ActionResponse response,@ModelAttribute("loginForm")LoginForm loginForm){
 		LoginService loginService = loginHome.getLoginService(request, response);
 		Map contextMap = new HashMap();
+		
 		try {
 			loginService.login(loginForm.getUserName(), loginForm.getPassword().toCharArray(), contextMap, null);
+			response.sendRedirect("/cgc/myportal/connect/home");
 		} catch (PasswordInvalidException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -108,6 +111,9 @@ public class LoginViewController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (com.ibm.portal.auth.exceptions.LoginException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
