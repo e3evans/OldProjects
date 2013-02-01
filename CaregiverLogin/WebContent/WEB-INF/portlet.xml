@@ -25,7 +25,7 @@
 			</preference>
 			<preference>
 				<name>wcm.menuComponent</name>
-				<value>Feature_News_MNU</value>
+				<value>LoginNews_MNU</value>
 			</preference>
 			<preference>
 				<name>wcm.library</name>

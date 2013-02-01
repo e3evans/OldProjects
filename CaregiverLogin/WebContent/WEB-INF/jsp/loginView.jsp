@@ -13,21 +13,13 @@
   String libCmpnt = prefs.getValue(LoginViewController.PREF_WCM_COMPONENT,"");
   String lib = prefs.getValue(LoginViewController.PRED_WCM_LIB,"");
 %>
+<portlet:resourceURL id="renderSecureImage" var="renderImage"/>
 <portlet:actionURL var="loginUrl" name="doLogin"/>
-<!-- wcm:initworkspace username="<%=userPassword[0] %>" password="<%=userPassword[1] %>"/-->
-<!-- wcm:setExplicitContext path="<%=path%>" /-->
-<!-- wcm:libraryComponent library="<%=lib%>" name="<%=libCmpnt %>"/ -->
+<wcm:initworkspace username="<%=userPassword[0] %>" password="<%=userPassword[1] %>"/>
+<wcm:setExplicitContext path="<%=path%>" />
 
-<% 
-/*
-GET AND CLOSE THE WCM WORKSPACE WHEN WE ARE DONE WITH IT.
-*/
-InitialContext ctx = new InitialContext();
-WebContentService wcs = (WebContentService)ctx.lookup("portal:service/wcm/WebContentService");
-Repository repo = wcs.getRepository();
-repo.endWorkspace();
 
-%>
+<img src="${renderImage }"/>
 <div class="acgc_theme_wrapper acgc_relative acgc_striped_bg">
 <div class="acgc_content_box">
 	<div class="acgc_spacer_10 acgc_bg_white"><!-- spacer --></div>
@@ -76,11 +68,7 @@ repo.endWorkspace();
 
 
 <!-- START WCM -->
-		<div class="acgc_content_box_blog_small">
-			<img style="width: 269px; height: 150px;" alt="" src="/aurora/htmlsite/assets/images/placeholder-image.jpg">
-			<h4>Launch ACO Plan Featuring Premium Guarantee</h4>
-			<p>Aliquam interdum pulvinar nibh. Maecenas nunc in justo rhoncus aliquam. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>
-		</div>
+	<wcm:libraryComponent library="<%=lib%>" name="<%=libCmpnt %>"/>
 <!-- END WCM -->
 		<div class="acgc_content_login_links">
 			<p><strong>NOTE:</strong> Please login to read full articles and gain access to all material</p>
@@ -113,4 +101,13 @@ $("#acgc_login_form input").keypress(function(event) {
 });
 </script>
 
+<% 
+/*
+GET AND CLOSE THE WCM WORKSPACE WHEN WE ARE DONE WITH IT.
+*/
+InitialContext ctx = new InitialContext();
+WebContentService wcs = (WebContentService)ctx.lookup("portal:service/wcm/WebContentService");
+Repository repo = wcs.getRepository();
+repo.endWorkspace();
 
+%>
