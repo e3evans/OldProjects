@@ -12,7 +12,6 @@ import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
-import javax.security.auth.login.LoginException;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,19 +20,10 @@ import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.bind.annotation.ActionMapping;
 
 import com.aurora.org.caregiverlogin.forms.LoginForm;
-import com.ibm.portal.auth.exceptions.AuthenticationException;
-import com.ibm.portal.auth.exceptions.AuthenticationFailedException;
-import com.ibm.portal.auth.exceptions.PasswordInvalidException;
-import com.ibm.portal.auth.exceptions.PortletLoginDisabledException;
-import com.ibm.portal.auth.exceptions.SessionTimeOutException;
-import com.ibm.portal.auth.exceptions.SystemLoginException;
-import com.ibm.portal.auth.exceptions.UserAlreadyLoggedInException;
-import com.ibm.portal.auth.exceptions.UserIDInvalidException;
 import com.ibm.portal.portlet.service.PortletServiceHome;
 import com.ibm.portal.portlet.service.PortletServiceUnavailableException;
 import com.ibm.portal.portlet.service.login.LoginHome;
 import com.ibm.portal.portlet.service.login.LoginService;
-import com.ibm.websphere.security.WSSecurityException;
 
 
 
@@ -45,6 +35,7 @@ public class LoginViewController {
 	public static String PREF_WCM_PATH = "wcm.path";
 	public static String PREF_WCM_COMPONENT ="wcm.menuComponent";
 	public static String PRED_WCM_LIB = "wcm.library";
+	public boolean BAD_LOGIN = false;
 	
 	LoginHome loginHome;
 	@PostConstruct
@@ -67,55 +58,24 @@ public class LoginViewController {
 	public ModelAndView defaultView (RenderRequest request, RenderResponse responses, @SuppressWarnings("rawtypes") Map model,@ModelAttribute("loginForm")LoginForm form) throws UnsupportedEncodingException{
 	   
 		if (form==null)form = new LoginForm();
-		
+		form.setBadLogin(BAD_LOGIN);
 		return new ModelAndView("loginView","loginForm",form);
 	}
 	
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@ActionMapping("doLogin")
-	public void doLogin(ActionRequest request, ActionResponse response,@ModelAttribute("loginForm")LoginForm loginForm){
+	public void doLogin(ActionRequest request, ActionResponse response,@ModelAttribute("loginForm")LoginForm loginForm) throws IOException{
 		LoginService loginService = loginHome.getLoginService(request, response);
 		Map contextMap = new HashMap();
-		
+        contextMap.put(LoginService.DO_RESUME_SESSION_KEY, new Boolean(false));
+
+		BAD_LOGIN=false;
 		try {
 			loginService.login(loginForm.getUserName(), loginForm.getPassword().toCharArray(), contextMap, null);
-			response.sendRedirect("/cgc/myportal/connect/home");
-		} catch (PasswordInvalidException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UserIDInvalidException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (AuthenticationFailedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (AuthenticationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SessionTimeOutException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (PortletLoginDisabledException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UserAlreadyLoggedInException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SystemLoginException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (LoginException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (WSSecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (com.ibm.portal.auth.exceptions.LoginException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e){
+			BAD_LOGIN=true;
+		}finally{
+			if (!BAD_LOGIN)response.sendRedirect("/cgc/myportal/connect/home");
 		}
 		
 	}

@@ -44,6 +44,11 @@ repo.endWorkspace();
 
 
 <form:form action="${loginUrl}" method="post" commandName="loginForm" id="acgc_login_form">
+	<c:if test="${loginForm.badLogin}">
+		<div class="acgc_error">
+			<p>Invalid Username or Password. Please try again.</p>
+		</div>
+	</c:if>
 	<div class="acgc_large_form_field">
 		<label>Username</label>
 		<form:input path="userName" cssClass="acgc_title_swap" title="Enter username"/>
@@ -99,4 +104,13 @@ repo.endWorkspace();
 	</div>
 </div>
 </div>
+<script type="text/javascript">
+$("#acgc_login_form input").keypress(function(event) {
+    if (event.which == 13) {
+        event.preventDefault();
+        $("#acgc_login_form").submit();
+    }
+});
+</script>
+
 

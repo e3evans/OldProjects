@@ -55,7 +55,6 @@ function callService(params){
 }
 
 </script>
-
 <div id="<%=ViewController.SEARCH_RESULTS_BOX%>">
 <!-- input type="button" value="test" onclick="searchGoogle('news')"/-->
 <c:out escapeXml="false" value="${searchForm.searchResults}"/>
