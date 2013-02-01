@@ -32,8 +32,6 @@ import com.aurora.sitesapps.exception.AppException;
 import com.aurora.sitesapps.services.AppService;
 import com.aurora.sitesapps.util.AppComparator;
 
-
-
 @Controller(value = "sitesAppsController")
 @RequestMapping(value = "VIEW")
 @SessionAttributes(types = AppFormBean.class)
@@ -71,23 +69,31 @@ public class CategorySortController {
 			listAppCategory = appService.listAppCategory();
 			for (AppCategory appCategory : listAppCategory) {
 				applicationCategory = new AppCategory();
-				if (appCategory.getCategoryName().equalsIgnoreCase("Most Popular")) {
-					listPopularApplication = appService.listPopularApplication(appCategory.getCategoryId());
-				 if (null != listPopularApplication && !listPopularApplication.isEmpty()) {
+				if (appCategory.getCategoryName().equalsIgnoreCase(
+						"Most Popular")) {
+					listPopularApplication = appService
+							.listPopularApplication(appCategory.getCategoryId());
+					if (null != listPopularApplication
+							&& !listPopularApplication.isEmpty()) {
 						Collections.sort(listPopularApplication, appComparator);
-						applicationCategory.setPopularapplist(listPopularApplication);
-						applicationCategory.setCategoryName(appCategory.getCategoryName());
+						applicationCategory
+								.setPopularapplist(listPopularApplication);
+						applicationCategory.setCategoryName(appCategory
+								.getCategoryName());
 						listApplicationCategory.add(applicationCategory);
 					}
 
 				} else {
-					listApplication = appService.listApplication(appCategory.getCategoryId());
+					listApplication = appService.listApplication(appCategory
+							.getCategoryId());
 					listAllApplication.add(listApplication);
-					session.setAttribute("listAllApplication", listAllApplication);
+					session.setAttribute("listAllApplication",
+							listAllApplication);
 					if (null != listApplication && !listApplication.isEmpty()) {
 						Collections.sort(listApplication, appComparator);
 						applicationCategory.setAppList(listApplication);
-						applicationCategory.setCategoryName(appCategory.getCategoryName());
+						applicationCategory.setCategoryName(appCategory
+								.getCategoryName());
 						listApplicationCategory.add(applicationCategory);
 					}
 
@@ -96,7 +102,7 @@ public class CategorySortController {
 				listPopularApplication = null;
 			}
 			appFormBean.setListAppCategory(listApplicationCategory);
-			
+
 		} catch (AppException ae) {
 			logger.error(ae.getExceptionDesc());
 			logger.error(ae.getExceptionCode());
@@ -115,62 +121,86 @@ public class CategorySortController {
 		}
 		return "sitesapps";
 	}
-	
-	
-	
+
 	@SuppressWarnings("unchecked")
 	@ResourceMapping(value = "sitesappsalphabeticalsort")
-	public ModelAndView showQuickLinkForm(ResourceRequest request,ResourceResponse response) {
+	public ModelAndView showQuickLinkForm(ResourceRequest request,
+			ResourceResponse response) {
 		PortletSession session = request.getPortletSession();
 		ModelAndView mav = new ModelAndView();
 		int i = 0;
 		int j = 0;
 		try {
-			String[] alphabates = new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+			String[] alphabates = new String[] { "A", "B", "C", "D", "E", "F",
+					"G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
+					"S", "T", "U", "V", "W", "X", "Y", "Z" };
 			List<Application> listApplication = new ArrayList<Application>();
-			//List<Application> availAppsList = appService.listApplication();
-			List<Application> availAppsList= new ArrayList<Application>();
-		
-			List<List<Application>> availAppsList1= (List<List<Application>>) session.getAttribute("listAllApplication");
-			
-			for(List<Application> availAppsList2:availAppsList1 ){
-				
-				
+			List<Application> availAppsList = new ArrayList<Application>();
+
+			List<List<Application>> availAppsList1 = (List<List<Application>>) session
+					.getAttribute("listAllApplication");
+
+			for (List<Application> availAppsList2 : availAppsList1) {
+
 				availAppsList.addAll(availAppsList2);
 			}
 			Collections.sort(availAppsList, new AppComparator());
-			
-		
-			Map<String,List<Application>> map= new HashMap<String,List<Application>>();
-	
-			for(Application app:availAppsList){
-				
-				if(app.getAppName().toUpperCase().indexOf(alphabates[i])==0){
+
+			Map<String, List<Application>> map = new HashMap<String, List<Application>>();
+
+			for (Application app : availAppsList) {
+
+				if (app.getAppName().trim().toUpperCase()
+						.indexOf(alphabates[i]) == 0) {
 					listApplication.add(app);
-					j=1;
-					
-				}else if(j==0){
+					j = 1;
+
+				} else if (j == 0) {
+					for (int k = 0; k < alphabates.length; k++) {
+
+						if (app.getAppName().trim().toUpperCase()
+								.indexOf(alphabates[k]) == 0) {
+
+							i = k;
+
+							j = 1;
+							break;
+
+						}
+
+					}
 					listApplication.add(app);
-					
-			    }else{
-				    map.put(alphabates[i],listApplication);
-					i++;
+
+				} else {
+
+					if (listApplication.size() > 0) {
+
+						map.put(alphabates[i], listApplication);
+					}
+
+					// i++;
 					listApplication = new ArrayList<Application>();
-					listApplication.add(app);
+					for (int l = 0; l < alphabates.length; l++) {
+						if (app.getAppName().trim().toUpperCase()
+								.indexOf(alphabates[l]) == 0) {
+							listApplication.add(app);
+							i = l;
+							break;
+						}
+					}
+
 				}
-				
+
 			}
-				
+
 			mav.addObject("availAppsMap", map);
-			} catch (Exception e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 		mav.setViewName("sitesappsalphabeticalsort");
 		return mav;
 	}
-
 
 }

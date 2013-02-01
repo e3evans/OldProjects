@@ -179,7 +179,7 @@ function sitesAppsAlphabeticalSort(){
 			<a href="#alpha-n" title="N">N</a>&nbsp;&nbsp; 
 			<a href="#alpha-o" title="O">O</a>&nbsp;&nbsp; 
 			<a href="#alpha-p" title="P">P</a>&nbsp;&nbsp; 
-			<a href="#alpha-q" title="Q">Q</a>&nbsp;&nbsp; 
+			<span title="Q">Q</span>&nbsp;&nbsp; 
 			<a href="#alpha-r" title="R">R</a>&nbsp;&nbsp; 
 			<a href="#alpha-s" title="S">S</a>&nbsp;&nbsp; 
 			<a href="#alpha-t" title="S">T</a>&nbsp;&nbsp;
