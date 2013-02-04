@@ -1,25 +1,26 @@
-<%@page import="com.ibm.workplace.wcm.api.Repository"%>
-<%@page import="com.ibm.workplace.wcm.api.WebContentService"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.portlet.PortletPreferences"%>
 <%@page import="com.aurora.controllers.LoginViewController"%>
-<%@page import="com.ibm.workplace.wcm.api.RenderingContext"%>
-<%@page import="com.ibm.workplace.wcm.api.Workspace"%>
+<%@page import="com.ibm.workplace.wcm.api.*" %>
 <%@ page session="false" %>
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
-<%String userPassword[] = System.getProperty(LoginViewController.ENV_USERPASSWORD).split(":");
+<%
   PortletPreferences prefs = renderRequest.getPreferences();
   String path = prefs.getValue(LoginViewController.PREF_WCM_PATH,"");
   String libCmpnt = prefs.getValue(LoginViewController.PREF_WCM_COMPONENT,"");
-  String lib = prefs.getValue(LoginViewController.PRED_WCM_LIB,"");
+  String lib = prefs.getValue(LoginViewController.PRED_WCM_LIB,""); 
 %>
-<portlet:resourceURL id="renderSecureImage" var="renderImage"/>
+
 <portlet:actionURL var="loginUrl" name="doLogin"/>
-<wcm:initworkspace username="<%=userPassword[0] %>" password="<%=userPassword[1] %>"/>
+<wcm:initworkspace />
 <wcm:setExplicitContext path="<%=path%>" />
+<%
+	Workspace ws = (Workspace)pageContext.getAttribute(Workspace.WCM_WORKSPACE_KEY);
+	ws.useUserAccess(false);
+ %>
 
 
-<img src="${renderImage }"/>
 <div class="acgc_theme_wrapper acgc_relative acgc_striped_bg">
 <div class="acgc_content_box">
 	<div class="acgc_spacer_10 acgc_bg_white"><!-- spacer --></div>
