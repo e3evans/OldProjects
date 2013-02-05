@@ -29,7 +29,7 @@ import com.aurora.quicklinks.util.ResourceUtil;
 @Service
 public class ServiceInterfaceDelegate {
 
-	private Logger logger = Logger.getLogger(UserAppController.class);
+	private Logger logger = Logger.getLogger(ServiceInterfaceDelegate.class);
 	
 	@Autowired
 	private RestTemplate restTemplate;

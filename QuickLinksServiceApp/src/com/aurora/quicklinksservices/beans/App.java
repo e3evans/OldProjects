@@ -88,6 +88,8 @@ public class App
     private String displayLeftNav;
     private String windowWidth;
     private String windowHeight;
+    private Integer primaryCategoryId;
+    private Integer secondaryCategoryId;
     
 
     public App()
@@ -657,6 +659,22 @@ public class App
     {
         this.windowHeight = windowHeight;
     }
+    @Column(name = "PT2B_PRIMARY_CATEGORY_ID",  updatable = true)
+	public Integer getPrimaryCategoryId() {
+		return primaryCategoryId;
+	}
+    
+	public void setPrimaryCategoryId(Integer primaryCategoryId) {
+		this.primaryCategoryId = primaryCategoryId;
+	}
+	@Column(name = "PT2B_SECONDARY_CATEGORY_ID",  updatable = true)
+	public Integer getSecondaryCategoryId() {
+		return secondaryCategoryId;
+	}
+
+	public void setSecondaryCategoryId(Integer secondaryCategoryId) {
+		this.secondaryCategoryId = secondaryCategoryId;
+	}
    
     /*public Integer getUserCount()
     {
@@ -667,4 +685,6 @@ public class App
     {
         this.userCount = userCount;
     }*/
+    
+    
 }
