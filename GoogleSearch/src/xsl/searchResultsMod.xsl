@@ -29,33 +29,45 @@
 				</script>
 		</xsl:when>
 		<xsl:otherwise>
-		
 		<div class="acgc_top_content_wrap">
-	<div class="acgc_top_content_box acgc_relative">
-		<h1><span class="acgc_top_content_small_txt">No results </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt">found for </span>&quot;<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>&quot;</h1>
-	</div>
+      <div class="acgc_top_content_box acgc_relative">
+            <h1><span class="acgc_top_content_small_txt">No results </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt">found for </span>&quot;<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>&quot;</h1>
+      </div>
 </div>
-<div class="acgc_relative" id="acgc_recordsorter">&#160;</div>
-	<div class="acgc_content_box">
-		<div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
-		<div class="acgc_content_box_body acgc_relative">
-			<div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
-			<div class="acgc_no_search_results">
-				<p>Your search - <strong><xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/></strong> - did not match any documents.</p>
-				<p>Suggestions:</p>
-				<ul>
-					<li>Make sure all words are spelled correctly.</li>
-					<li>Try different keywords.</li>
-					<li>Try more general keywords.</li>
-					<li>Try fewer keywords.</li>
-				</ul>
-			</div>
-			<div class="acgc_clear">&#160;</div>
-			<div class="acgc_content_box_footer acgc_relative">&#160;</div>
-			<div class="acgc_clear">&#160;</div>
-		</div>
-		<div class="acgc_content_box_bottom_decal">&#160;</div>
-</div>	
+<div class="acgc_content_box">
+      <div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
+      <div class="acgc_content_box_body acgc_relative">
+            <div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
+            <div class="acgc_search_results_left_column">
+              <div class="acgc_search_filter">
+                <h3>Refine Your Results</h3>
+                <ul>
+                 	<xsl:call-template name="collections">
+						<xsl:with-param name="selected">default_collection</xsl:with-param>
+					</xsl:call-template>
+                </ul>
+              </div>
+            </div>
+            <div class="acgc_spacer_10 acgc_bg_white"><!-- spacer --></div>
+            <div class="acgc_spacer_10 acgc_bg_white"><!-- spacer --></div>
+            <div class="acgc_search_results_main_column">
+              <div class="acgc_no_search_results">
+                  <p>Your search - <strong><xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/></strong> - did not match any documents.</p>
+                  <p>Suggestions:</p>
+                  <ul>
+                        <li>Make sure all words are spelled correctly.</li>
+                        <li>Try different keywords.</li>
+                        <li>Try more general keywords.</li>
+                        <li>Try fewer keywords.</li>
+                  </ul>
+              </div>
+              <div class="acgc_clear">&#160;</div>
+            </div>
+            <div class="acgc_content_box_footer acgc_relative">&#160;</div>
+            <div class="acgc_clear">&#160;</div>
+      </div>
+      <div class="acgc_content_box_bottom_decal">&#160;</div>
+</div>
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>

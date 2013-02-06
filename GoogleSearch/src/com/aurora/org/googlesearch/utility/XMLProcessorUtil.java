@@ -120,6 +120,17 @@ public abstract class XMLProcessorUtil {
 							searchRoot.appendChild(collectionElement);
 						}
 					}
+				}else{
+					Node searchRoot = searchDoc.getDocumentElement();
+					if (collections.length>0){
+						for (int i=0;i<collections.length;i++){
+							String [] temp = collections[i].split(",");
+							Element collectionElement = searchDoc.createElement("COLLECTION");
+							collectionElement.setAttribute("displayName", temp[0]);
+							collectionElement.setAttribute("collectName", temp[1]);
+							searchRoot.appendChild(collectionElement);
+						}
+					}
 				}
 				resultsDom = new DOMSource(searchDoc);
 //				printXML(resultsDom);
