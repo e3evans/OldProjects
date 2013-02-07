@@ -11,7 +11,15 @@ public class AppKey
     {
 
     
-	private static final long serialVersionUID = -3738158384549499012L;
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8529886211840887944L;
+	/**
+	 * 
+	 */
 	
 	@Column(name="PT2B_APPID")
 	private String appId;

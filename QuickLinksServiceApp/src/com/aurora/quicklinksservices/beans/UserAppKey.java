@@ -10,7 +10,11 @@ import javax.persistence.Embeddable;
 public class UserAppKey
   implements Serializable
 {
-  @Column(name="PT2J_USERID" )
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1263942178955855089L;
+@Column(name="PT2J_USERID" )
   private Long userId;
   @Column(name="PT2J_APPID")
   private String appId;

@@ -1,17 +1,16 @@
+
 package com.aurora.quicklinksservices.beans;
 
-import java.io.*;
-import java.net.URLEncoder;
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 // Referenced classes of package org.aurora.portalCommon.beans:
 //            AppKey
@@ -21,7 +20,12 @@ public class App
     implements Serializable
 {
 
-   /* public static final String ACTIVE = "A";
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1183612050348742148L;
+	/*
+	 * public static final String ACTIVE = "A";
     public static final String INACTIVE = "I";
     public static final String BOTH = "B";
     public static final String NO_NON_EMPLOYEES = "N";
@@ -84,7 +88,9 @@ public class App
     private String displayLeftNav;
     private String windowWidth;
     private String windowHeight;
-    private Integer userCount;
+    private Integer primaryCategoryId;
+    private Integer secondaryCategoryId;
+    
 
     public App()
     {
@@ -653,6 +659,22 @@ public class App
     {
         this.windowHeight = windowHeight;
     }
+    @Column(name = "PT2B_PRIMARY_CATEGORY_ID",  updatable = true)
+	public Integer getPrimaryCategoryId() {
+		return primaryCategoryId;
+	}
+    
+	public void setPrimaryCategoryId(Integer primaryCategoryId) {
+		this.primaryCategoryId = primaryCategoryId;
+	}
+	@Column(name = "PT2B_SECONDARY_CATEGORY_ID",  updatable = true)
+	public Integer getSecondaryCategoryId() {
+		return secondaryCategoryId;
+	}
+
+	public void setSecondaryCategoryId(Integer secondaryCategoryId) {
+		this.secondaryCategoryId = secondaryCategoryId;
+	}
    
     /*public Integer getUserCount()
     {
@@ -663,4 +685,6 @@ public class App
     {
         this.userCount = userCount;
     }*/
+    
+    
 }
