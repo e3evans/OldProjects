@@ -5,6 +5,7 @@ public class LoginForm {
 	private String userName;
 	private String password;
 	private boolean badLogin;
+	private boolean badSession;
 	
 	public String getUserName() {
 		return userName;
@@ -23,6 +24,12 @@ public class LoginForm {
 	}
 	public void setBadLogin(boolean badLogin) {
 		this.badLogin = badLogin;
+	}
+	public boolean isBadSession() {
+		return badSession;
+	}
+	public void setBadSession(boolean badSession) {
+		this.badSession = badSession;
 	}
 	
 	

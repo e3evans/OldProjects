@@ -42,6 +42,11 @@
 			<p>Invalid Username or Password. Please try again.</p>
 		</div>
 	</c:if>
+	<c:if test="${loginForm.badSession}">
+		<div class="acgc_error">
+			<p>For security reasons, your Caregiver Connect session has timed out. Please log back in to restore your access.</p>
+		</div>
+	</c:if>
 	<div class="acgc_large_form_field">
 		<label>Username</label>
 		<form:input path="userName" cssClass="acgc_title_swap" title="Enter username"/>

@@ -12,6 +12,7 @@ import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -36,7 +37,9 @@ public class LoginViewController {
 	public static String PREF_WCM_PATH = "wcm.path";
 	public static String PREF_WCM_COMPONENT ="wcm.menuComponent";
 	public static String PRED_WCM_LIB = "wcm.library";
+	public static String PARAM_BAD_SESSION = "SESSIONTIMEOUT";
 	public boolean BAD_LOGIN = false;
+	public boolean BAD_SESSION = false;
 	
 	LoginHome loginHome;
 	@PostConstruct
@@ -57,9 +60,15 @@ public class LoginViewController {
 
 	@RequestMapping
 	public ModelAndView defaultView (RenderRequest request, RenderResponse responses, @SuppressWarnings("rawtypes") Map model,@ModelAttribute("loginForm")LoginForm form) throws UnsupportedEncodingException{
-	   
+		HttpServletRequest hsreq= com.ibm.ws.portletcontainer.portlet.PortletUtils.getHttpServletRequest(request);
+		if (null!=hsreq.getParameter(PARAM_BAD_SESSION) && !BAD_LOGIN){
+			BAD_SESSION=true;
+		}else{
+			BAD_SESSION=false;
+		}
 		if (form==null)form = new LoginForm();
 		form.setBadLogin(BAD_LOGIN);
+		form.setBadSession(BAD_SESSION);
 		return new ModelAndView("loginView","loginForm",form);
 	}
 	
