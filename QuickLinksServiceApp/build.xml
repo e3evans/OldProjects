@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<project name="QuickLinksServiceApp" basedir="." default="release">
+	<property file="build.properties" />
+	<tstamp>
+		<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+	</tstamp>
+	<condition property="bamboo.shared.portal" value="../wps_sharedPortalLib/WebContent/WEB-INF/lib">
+		<not>
+			<isset property="bamboo.shared.portal" />
+		</not>
+	</condition>
+	<condition property="bamboo.shared.spring" value="../wps_sharedSpringLib/WebContent/WEB-INF/lib">
+		<not>
+			<isset property="bamboo.shared.spring" />
+		</not>
+	</condition>
+	<condition property="bamboo.server.libs" value="">
+		<not>
+			<isset property="bamboo.server.libs" />
+		</not>
+	</condition>
+
+	<!-- Set up java.class.path -->
+	<path id="project.class.path">
+		<!-- <fileset dir="./WebContent/WEB-INF/lib">
+			<include name="**/*.jar" />
+		</fileset> -->
+		<fileset dir="${bamboo.shared.portal}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${bamboo.shared.spring}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${bamboo.server.libs}">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement path="${java.class.path}" />
+	</path>
+
+	<property name="build.dir" value="out/build" />
+	<property name="dist.dir" value="out/dist" />
+
+	<target name="init" description="initializes of project paths, vars, etc">
+		<property name="web.dir" value="WebContent" />
+		<property name="src.dir" value="src" />
+		<property name="web.build.dir" value="${build.dir}/WebContent" />
+		<property name="webinf.build.dir" value="${build.dir}/WebContent/WEB-INF" />
+		<property name="webinf.build.dir.lib" value="${webinf.build.dir}/lib" />
+	</target>
+
+	<target name="prepare_build" depends="init" description="">
+		<mkdir dir="${web.build.dir}" />
+		<mkdir dir="${webinf.build.dir.lib}" />
+	</target>
+
+	<target name="prepare_dist" depends="init" description="">
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<target name="clean" description="cleans build and dist">
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<target name="build" depends="clean, init, prepare_build, prepare_dist">
+		<echo>Building app for **${platform}** environment.</echo>
+
+		<copy todir="${webinf.build.dir}/classes" overwrite="true">
+			<fileset dir="${src.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+
+		<!-- Copy over web resources that don't require filtering -->
+		<copy todir="${web.build.dir}">
+			<fileset dir="${web.dir}">
+				<exclude name="**/*.properties" />
+				<exclude name="**/*.xml" />
+			</fileset>
+		</copy>
+
+		<copy todir="${webinf.build.dir.lib}">
+			<fileset dir="${webinf.build.dir.lib}">
+				<!-- exclude jars required locally -->
+			</fileset>
+		</copy>
+
+		<!-- copy over web resources that require filtering -->
+		<copy todir="${web.build.dir}" overwrite="true">
+			<fileset dir="${web.dir}">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+			</fileset>
+			<filterset>
+				<filter token="BUILD_NUM" value="${bamboo.buildNumber}" />
+				<filter token="BUILD_VER" value="${bamboo.buildKey}" />
+				<filter token="APP_NAME" value="${ant.project.name}" />
+				<filter token="EAR_PROJECT" value="${ear.file.name}" />
+				<filter token="MODULE_WAR_FILE" value="${war.file.name}.war" />
+				<filter token="APP_CONTEXT_ROOT" value="${context.root}" />
+				<!--<filtersfile file="config/filters/${platform}.filter"/>-->
+			</filterset>
+		</copy>
+
+		<!--compile project-->
+		<property name="myclasspath" refid="project.class.path" />
+		<echo>Classpath: ${myclasspath}</echo>
+		<echo>Using Java version ${ant.java.version}.</echo>
+		<javac destdir="${webinf.build.dir}/classes" deprecation="true" debug="true" classpathref="project.class.path">
+			<src path="${src.dir}" />
+		</javac>
+	</target>
+
+	<target name="package" depends="build" description="Packages the build in a war">
+		<echo level="info">Packaging Project **${ant.project.name}** for **${platform}** environment.</echo>
+		<echo level="debug">Bamboo Build Number: ${bamboo.buildNumber}</echo>
+		<echo level="debug">Bamboo Name: ${bamboo.name}</echo>
+		<echo level="debug">Bamboo Plan Key: ${bamboo.buildKey}</echo>
+
+		<jar jarfile="${build.dir}/${war.file.name}.war" basedir="${web.build.dir}" excludes="application.xml">
+			<manifest>
+				<attribute name="Built-By" value="${bamboo.name}" />
+				<attribute name="Revision" value="${bamboo.buildKey}-${bamboo.buildNumber}" />
+				<attribute name="Build-Time" value="${TODAY}" />
+				<attribute name="Environment" value="${platform}" />
+				<section name="com/aurora">
+					<attribute name="Specification-Title" value="${ant.project.name}" />
+					<attribute name="Specification-Version" value="1.0" />
+					<attribute name="Specification-Vendor" value="Aurora Health Care, Inc." />
+					<attribute name="Implementation-Title" value="com.aurora" />
+					<attribute name="Implementation-Version" value="${bamboo.buildNumber}" />
+					<attribute name="Implementation-Vendor" value="Aurora Health Care, Inc." />
+				</section>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="release" depends="package" description="Releases the packaged war">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="${build.dir}">
+				<include name="**/*.war" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="javadoc" description="Produces javadoc for the project.">
+		<echo level="info">Generates javadoc for project.</echo>
+		<tstamp>
+			<format property="year" pattern="yyyy" />
+		</tstamp>
+
+		<mkdir dir="${javadoc.dir}" />
+		<javadoc packagenames="org.aurora.*" defaultexcludes="yes" destdir="${javadoc.dir}" source="${compile.version}" author="true" version="true" use="true" windowtitle="${ant.project.name} API">
+			<packageset dir="${src.dir}" />
+			<classpath refid="project.class.path" />
+			<doctitle>
+				<![CDATA[<h1>${ant.project.name} ${jira.version}.${bamboo.buildNumber}</h1>]]></doctitle>
+		<bottom>
+			<![CDATA[<i>Copyright &#169; ${year} Aurora Healthcare. All Rights Reserved.</i> ${ant.project.name} ${jira.version}.${bamboo.buildNumber}]]></bottom>
+	<tag name="todo" scope="all" description="To do:" />
+	<link href="http://java.sun.com/j2se/1.6.0/docs/api/" />
+	<link href="http://java.sun.com/j2se/1.5.0/docs/api/" />
+	<link href="http://java.sun.com/j2ee/1.4/docs/api/" />
+</javadoc>
+
+<mkdir dir="${bamboo.javadoc}/${ant.project.name}" description="Build project specific javadoc directory." />
+<copy todir="${bamboo.javadoc}/${ant.project.name}" overwrite="true" description="Copies javadoc to public directory">
+	<fileset dir="${javadoc.dir}" />
+</copy>
+</target>
+</project>
