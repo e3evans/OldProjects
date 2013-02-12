@@ -48,8 +48,8 @@
                 </ul>
               </div>
             </div>
-            <div class="acgc_spacer_10 acgc_bg_white"><!-- spacer --></div>
-            <div class="acgc_spacer_10 acgc_bg_white"><!-- spacer --></div>
+            <div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
+            <div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
             <div class="acgc_search_results_main_column">
               <div class="acgc_no_search_results">
                   <p>Your search - <strong><xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/></strong> - did not match any documents.</p>
