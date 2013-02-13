@@ -1,6 +1,7 @@
 package com.aurora.formemail.services;
 
-import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -8,68 +9,82 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MultivaluedMap;
 
 @Path("/email")
+@Produces("text/xml")
 public class FormEmailService {
 
 	private static final String DEFAULT_MAIL_SERVER = "xx";
-	private static final String MAIL_FROM = "xx";
-	private static final String MAIL_TO = "xx";
 	private static final String MAIL_SUBJECT = "xx";
+	private static final String FIRST_NAME = "acgc_share_name";	
+	private static final String LAST_NAME = "acgc_share_lastname";
+	private static final String LOCATION = "acgc_share_location";
+	private static final String PHONE="acgc_share_phone";
+	private static final String TITLE="acgc_share_title";
+	private static final String COMMENT = "acgc_share_comment";
+	private static final String SENDTO = "acgc_send_to";
+	private static final String SENDFROM = "acgc_send_from";
 	
 	@POST
-	public void sendEmail(HttpServletRequest request,HttpServletResponse response) throws IOException{
-		
-		java.io.PrintWriter out = response.getWriter();
-		try {
+	@Path("/connectwithus")
+	public void sendEmail(MultivaluedMap<String, String> form){
 
+		try {
 			// Get system properties
-			String txtmsg="";
+			StringBuffer textmsg = new StringBuffer();
 			Properties properties = System.getProperties();
 
-			properties.setProperty("mail.smtp.host", DEFAULT_MAIL_SERVER);
+			properties.setProperty("mail.aurora.org", DEFAULT_MAIL_SERVER);
 
 			Session session = Session.getDefaultInstance(properties);
 
-			MimeMessage message = new MimeMessage(session);
-
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(MAIL_TO));
-
-			String fromAddr=request.getParameter("mail_from");
-			String senderName=request.getParameter("sender_name");
-			txtmsg = request.getParameter("mail_text");
-			String userID= request.getParameter("userID");
+			MimeMessage message = new MimeMessage(session);			
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(decodeUTF8(form.getFirst(SENDTO))));
+			String fromAddr=decodeUTF8(form.getFirst(SENDFROM));
+			String senderName="caregiverPortal@aurora.org";
+			
+			String userID= form.getFirst(LAST_NAME)+", "+form.getFirst(FIRST_NAME);
 			
 				
-			if (null != fromAddr) {
-				message.setFrom((new InternetAddress(fromAddr)));
-			} else {
-				message.setFrom((new InternetAddress(MAIL_FROM)));
-			}
+		
+			message.setFrom((new InternetAddress(fromAddr)));
+			
             
             if ((null == senderName) || (" " == senderName)||("Name".equalsIgnoreCase(senderName))) {
-            	message.setSubject(MAIL_SUBJECT + " from store#- "+userID);
+            	message.setSubject(MAIL_SUBJECT + " from - "+userID);
 			} else {
-				message.setSubject(MAIL_SUBJECT + " from store#- "+userID+" by -"+senderName);
+				message.setSubject(MAIL_SUBJECT + " "+form.getFirst(TITLE)+"from - "+userID+" by -"+senderName);
 			}
 
-			if ((null == txtmsg) || (" " == txtmsg)||("Enter message here".equalsIgnoreCase(txtmsg))) {
-				message.setText(" ");
+			if ((null == form.getFirst(COMMENT)) || (" " == form.getFirst(COMMENT))||("Enter message here".equalsIgnoreCase(form.getFirst(COMMENT)))) {
+				message.setText("No message Entered");
 			} else{
-				message.setText(txtmsg);
+				textmsg.append(form.getFirst(LOCATION));
+				textmsg.append(form.getFirst(PHONE));
+				textmsg.append(form.getFirst(COMMENT));
+				message.setText(textmsg.toString());
 			}
 			// Send message
 			Transport.send(message);
-			out.write("The message is sent successfully.");
+
 
 		} catch (Exception ex) {
-			//out.write("The message failed to send.");
 			ex.printStackTrace();
 		}
+	}
+	
+	private String decodeUTF8(String input){	
+		try {
+			input =URLDecoder.decode(input, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return input; 
 		
 	}
 }
