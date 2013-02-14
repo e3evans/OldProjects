@@ -174,7 +174,7 @@
 		</jar>
 	</target>
 
-	<target name="javadoc" description="Produces javadoc for the project.">
+	<!--<target name="javadoc" description="Produces javadoc for the project.">
 		<echo level="info">Generates javadoc for project.</echo>
 		<tstamp>
 			<format property="year" pattern="yyyy" />
@@ -186,17 +186,17 @@
 			<classpath refid="project.class.path" />
 			<doctitle>
 				<![CDATA[<h1>${ant.project.name} ${jira.version}.${bamboo.buildNumber}</h1>]]></doctitle>
-		<bottom>
-			<![CDATA[<i>Copyright &#169; ${year} Aurora Healthcare. All Rights Reserved.</i> ${ant.project.name} ${jira.version}.${bamboo.buildNumber}]]></bottom>
-	<tag name="todo" scope="all" description="To do:" />
-	<link href="http://java.sun.com/j2se/1.6.0/docs/api/" />
-	<link href="http://java.sun.com/j2se/1.5.0/docs/api/" />
-	<link href="http://java.sun.com/j2ee/1.4/docs/api/" />
-</javadoc>
+			<bottom>
+				<![CDATA[<i>Copyright &#169; ${year} Aurora Healthcare. All Rights Reserved.</i> ${ant.project.name} ${jira.version}.${bamboo.buildNumber}]]></bottom>
+			<tag name="todo" scope="all" description="To do:" />
+			<link href="http://java.sun.com/j2se/1.6.0/docs/api/" />
+			<link href="http://java.sun.com/j2se/1.5.0/docs/api/" />
+			<link href="http://java.sun.com/j2ee/1.4/docs/api/" />
+  		</javadoc>
 
-<mkdir dir="${bamboo.javadoc}/${ant.project.name}" description="Build project specific javadoc directory." />
-<copy todir="${bamboo.javadoc}/${ant.project.name}" overwrite="true" description="Copies javadoc to public directory">
-	<fileset dir="${javadoc.dir}" />
-</copy>
-</target>
+		<mkdir dir="${bamboo.javadoc}/${ant.project.name}" description="Build project specific javadoc directory." />
+		<copy todir="${bamboo.javadoc}/${ant.project.name}" overwrite="true" description="Copies javadoc to public directory">
+			<fileset dir="${javadoc.dir}" />
+		</copy>
+	</target>-->
 </project>
