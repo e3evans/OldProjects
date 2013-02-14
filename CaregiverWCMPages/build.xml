@@ -174,7 +174,7 @@
 		</jar>
 	</target>
 
-	<!--<target name="javadoc" description="Produces javadoc for the project.">
+	<target name="javadoc" description="Produces javadoc for the project.">
 		<echo level="info">Generates javadoc for project.</echo>
 		<tstamp>
 			<format property="year" pattern="yyyy" />
@@ -198,5 +198,5 @@
 		<copy todir="${bamboo.javadoc}/${ant.project.name}" overwrite="true" description="Copies javadoc to public directory">
 			<fileset dir="${javadoc.dir}" />
 		</copy>
-	</target>-->
+	</target>
 </project>
