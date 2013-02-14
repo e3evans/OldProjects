@@ -45,7 +45,7 @@
 
 	<target name="init" description="initializes of project paths, vars, etc">
 		<property name="web.dir" value="WebContent" />
-		<property name="src.dir" value="src" />
+		<!--<property name="src.dir" value="src" />-->
 		<property name="web.build.dir" value="${build.dir}/WebContent" />
 		<property name="webinf.build.dir" value="${build.dir}/WebContent/WEB-INF" />
 		<property name="webinf.build.dir.lib" value="${webinf.build.dir}/lib" />
