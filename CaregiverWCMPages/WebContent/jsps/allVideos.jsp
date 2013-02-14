@@ -75,11 +75,10 @@ try{
  	LibraryComponent component;
  
    	//Creating a workspace 
-	Workspace ws = (Workspace) pageContext.getAttribute(Workspace.WCM_WORKSPACE_KEY);
+	Workspace ws = (Workspace) pageContext.getAttribute(Workspace.WCM_WORKSPACE_KEY);//this is cached call so improves performance
                                        
-    if (ws == null)
-    {
-        if (request.getUserPrincipal() != null)
+    if (null == ws  ){
+    	if ( null !=request.getUserPrincipal() )
             ws = WCM_API.getRepository().getWorkspace(request.getUserPrincipal());
         else
             ws = WCM_API.getRepository().getAnonymousWorkspace();

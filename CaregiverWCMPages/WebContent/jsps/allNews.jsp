@@ -4,6 +4,7 @@
 				 com.ibm.workplace.wcm.api.*"%>
 
 <%@taglib uri="/WEB-INF/tld/wcm.tld" prefix="wcm"%>
+
 <%
 //String selection=null;
 String selValue=null;
@@ -20,7 +21,7 @@ if(null!=request.getParameter("selected")){
 
 
 %>
-<form id="sortChangeForm"  method="GET" name="sortChangeForm" >
+<form id="sortChangeForm"  method="GET" class="sortChangeForm" name="sortChangeForm" >
 <div id="acgc_recordsorter" class="acgc_relative">
 	<div class="acgc_sort_by">
 		Sort By: <span class="acgc_sort_by_focus"> <% if("desc".equalsIgnoreCase(selValue)){ %>Newest First<%}else{%>Oldest First<%}%> &nbsp;<img src="/AuroraTheme/themes/html/assets/images/arrow-down-small-header.png" alt="arrow" class="acgc_inline_icon"/></span>
@@ -78,11 +79,10 @@ try{
  	LibraryComponent component;
  
 	//Creating a workspace 
-	Workspace ws = (Workspace) pageContext.getAttribute(Workspace.WCM_WORKSPACE_KEY);
+	Workspace ws = (Workspace) pageContext.getAttribute(Workspace.WCM_WORKSPACE_KEY);//this is cached call so improves performance
                                        
-    if (ws == null)
-    {
-        if (request.getUserPrincipal() != null)
+    if (null == ws  ){
+       if ( null !=request.getUserPrincipal() )
             ws = WCM_API.getRepository().getWorkspace(request.getUserPrincipal());
         else
             ws = WCM_API.getRepository().getAnonymousWorkspace();
