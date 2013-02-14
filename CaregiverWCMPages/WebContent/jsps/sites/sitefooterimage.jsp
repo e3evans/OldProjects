@@ -27,19 +27,17 @@ LibraryComponent component;
 String DesignLib		  = "CaregiverDesignLibrary";
 try{ 
     
-	Workspace ws = (Workspace) pageContext.getAttribute(Workspace.WCM_WORKSPACE_KEY);
+	Workspace ws = (Workspace) pageContext.getAttribute(Workspace.WCM_WORKSPACE_KEY);//this is cached call so improves performance
     
-    if (ws == null)
-    {
-        if (request.getUserPrincipal() != null)
+    if (null == ws  ){
+       if ( null !=request.getUserPrincipal() )
             ws = WCM_API.getRepository().getWorkspace(request.getUserPrincipal());
         else
             ws = WCM_API.getRepository().getAnonymousWorkspace();
     }
     
     RenderingContext rc = (RenderingContext)pageContext.getRequest().getAttribute(ws.WCM_RENDERINGCONTEXT_KEY);
-    if (rc == null)
-    {
+    if (rc == null){
         System.out.println("null renderingContext");
         rc =ws.createRenderingContext(request,response,new HashMap());
     }
@@ -55,19 +53,20 @@ try{
 			   siteName=ws.getById(ws.createDocumentId(SID)).getName();
 			 }
     }
-    iterator= ws.findComponentByName(siteName);
-    while(iterator.hasNext()){
-        DocumentId sid=iterator.nextId();
-		if(sid.getType().toString().equalsIgnoreCase(DocumentTypes.LibraryImageComponent.toString())){
-		  component = (LibraryComponent) ws.getById(sid);
-		  String renderedContent = ws.render(rc, component);
-   		  out.write(renderedContent);
-   		}
-		
-	}
+    if(null!=siteName){
+	    iterator= ws.findComponentByName(siteName);
+	    while(iterator.hasNext()){
+	        DocumentId sid=iterator.nextId();
+			if(sid.getType().toString().equalsIgnoreCase(DocumentTypes.LibraryImageComponent.toString())){
+			  component = (LibraryComponent) ws.getById(sid);
+			  String renderedContent = ws.render(rc, component);
+	   		  out.write(renderedContent);
+	   		}
+			
+		}
+    } 
      
-     
-     ws.logout();
+    ws.logout();
 }catch(Exception ex){
  	 	System.out.println("Exception in AllNews.jsp :"+ ex.getMessage());
 }

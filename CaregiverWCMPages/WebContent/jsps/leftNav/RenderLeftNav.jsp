@@ -61,18 +61,18 @@
    * Render item tag for current item
    */
   // check if highlighting current content or site area
-  String highlightStr = request.getParameter(PARAM_HIGHLIGHT);
-  boolean highlightContent = (highlightStr != null && highlightStr.equals("content"));
+ // String highlightStr = request.getParameter(PARAM_HIGHLIGHT);
+  //boolean highlightContent = (highlightStr != null && highlightStr.equals("content"));
 
   // check if this is an item on the current path
   String currPath = ws.getPathById(rc.getContent().getId(), false, false);
-  boolean isSelected = (highlightContent && path.equals(currPath)) || (!highlightContent && path.equals(currPath.substring(0, currPath.lastIndexOf('/'))));
+  boolean isSelected = (path.equals(currPath)) || (path.equals(currPath.substring(0, currPath.lastIndexOf('/'))));
   boolean isSelectedPath = currPath.startsWith(path);
- if(docId.isOfType(DocumentTypes.Content)){
+if(docId.isOfType(DocumentTypes.Content)){
    isSelectedPath=false;
- }
+}
   // render list item tag, marking with styles for "first" and "selected"
-  out.print("<li class=\"item" + (isSelected ? " selected" : (isSelectedPath ? " selectedPath" : "")) + (docId.isOfType(DocumentTypes.Content) ? " content" : "") + "\">");
+  out.print("<li class=\"" + (isSelected ? " selected" : (isSelectedPath ? " selectedPath" : "")) + (docId.isOfType(DocumentTypes.Content) ? " content" : "") + "\">");
 
   /*
    * Save current state
