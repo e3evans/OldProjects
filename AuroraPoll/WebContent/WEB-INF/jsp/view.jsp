@@ -51,15 +51,12 @@ function getPollResults(){
 
 </script>
 
-
-
-
 <div id="acgc_bottom_content_box_split_3" class="acgc_float_left">
      <div class="acgc_content_box_top_decal acgc_bg_align_right_top">
                      <!-- decal -->
      </div>
      <div class="acgc_content_box_body acgc_relative acgc_poll" style="height: 280px;" id="acgc_pollbox">
-              <p>POLL - TEST BUILD</p>
+              <p>POLL</p>
               <h3><c:out value="${pollForm.poll.question}"/></h3>
               <portlet:actionURL var="submitPoll">
               	<portlet:param name="action" value="submitPoll"/>
