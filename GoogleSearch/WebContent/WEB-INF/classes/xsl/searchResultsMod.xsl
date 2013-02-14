@@ -1,6 +1,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  version="2.0">
 <xsl:output omit-xml-declaration="yes"/>
 <xsl:param name="contextPath"/>
+<xsl:param name="search_env"/>
+<xsl:variable name="collection" select="/GSP/PARAM[@name='site']/@original_value"/>
 <xsl:template match="/">
 	<xsl:choose>
 		<xsl:when test="/GSP/RES">
@@ -12,6 +14,7 @@
 				var page_start = '<xsl:value-of select="/GSP/PARAM[@name='page']/@original_value"/>';
 				var page_site = '<xsl:value-of select="/GSP/PARAM[@name='site']/@original_value"/>';
 			</script>
+			
 			<div class="acgc_top_content_wrap">
 				<div class="acgc_top_content_box acgc_relative">
 				<h1><span class="acgc_top_content_small_txt">Showing </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt"> search results for </span>&quot;<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>&quot;</h1>
@@ -26,38 +29,50 @@
 				</script>
 		</xsl:when>
 		<xsl:otherwise>
-		
 		<div class="acgc_top_content_wrap">
-	<div class="acgc_top_content_box acgc_relative">
-		<h1><span class="acgc_top_content_small_txt">No results </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt">found for </span>&quot;<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>&quot;</h1>
-	</div>
+      <div class="acgc_top_content_box acgc_relative">
+            <h1><span class="acgc_top_content_small_txt">No results </span><xsl:value-of select="/GSP/RES/M"/><span class="acgc_top_content_small_txt">found for </span>&quot;<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>&quot;</h1>
+      </div>
 </div>
-<div class="acgc_relative" id="acgc_recordsorter">&#160;</div>
-	<div class="acgc_content_box">
-		<div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
-		<div class="acgc_content_box_body acgc_relative">
-			<div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
-			<div class="acgc_no_search_results">
-				<p>Your search - <strong><xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/></strong> - did not match any documents.</p>
-				<p>Suggestions:</p>
-				<ul>
-					<li>Make sure all words are spelled correctly.</li>
-					<li>Try different keywords.</li>
-					<li>Try more general keywords.</li>
-					<li>Try fewer keywords.</li>
-				</ul>
-			</div>
-			<div class="acgc_clear">&#160;</div>
-			<div class="acgc_content_box_footer acgc_relative">&#160;</div>
-			<div class="acgc_clear">&#160;</div>
-		</div>
-		<div class="acgc_content_box_bottom_decal">&#160;</div>
-</div>	
+<div class="acgc_content_box">
+      <div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
+      <div class="acgc_content_box_body acgc_relative">
+            <div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
+            <div class="acgc_search_results_left_column">
+              <div class="acgc_search_filter">
+                <h3>Refine Your Results</h3>
+                <ul>
+                 	<xsl:call-template name="collections">
+						<xsl:with-param name="selected">default_collection</xsl:with-param>
+					</xsl:call-template>
+                </ul>
+              </div>
+            </div>
+            <div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
+            <div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
+            <div class="acgc_search_results_main_column">
+              <div class="acgc_no_search_results">
+                  <p>Your search - <strong><xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/></strong> - did not match any documents.</p>
+                  <p>Suggestions:</p>
+                  <ul>
+                        <li>Make sure all words are spelled correctly.</li>
+                        <li>Try different keywords.</li>
+                        <li>Try more general keywords.</li>
+                        <li>Try fewer keywords.</li>
+                  </ul>
+              </div>
+              <div class="acgc_clear">&#160;</div>
+            </div>
+            <div class="acgc_content_box_footer acgc_relative">&#160;</div>
+            <div class="acgc_clear">&#160;</div>
+      </div>
+      <div class="acgc_content_box_bottom_decal">&#160;</div>
+</div>
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
 <xsl:variable name="currentPage" select="/GSP/PARAM[@name='page']/@original_value"/>
-<xsl:variable name="portalServer">http://porporit1.ahc.root.loc:10039</xsl:variable>
+<xsl:variable name="portalServer"><xsl:value-of select="$search_env"/></xsl:variable>
 
 <xsl:template name="resultsBar">
 <div id="acgc_recordsorter" class="acgc_relative">
@@ -136,10 +151,9 @@
 				</ul>
 			</div>
 			<div class="acgc_related_searches">
-				<h3>Related Searches</h3>
-				<ul>
-					<xsl:call-template name="clusterResults"/>
-				</ul>
+				
+				<xsl:call-template name="clusterResults"/>
+
 			</div>
 		</div>
 		<div class="acgc_spacer_10 acgc_bg_white">&#160;</div>
@@ -173,13 +187,15 @@
 	<xsl:for-each select="/GSP/COLLECTION">
 		<li>
 			<xsl:choose>
-				<xsl:when test="$selected = @collectName">
-					<a href="#filter" title="All Results" onclick="javascript: $(this).children('input').prop('checked', 'checked'); /* Submit Form Here */ return false;">
+				<xsl:when test="@collectName = $collection">
+					<a href="#filter" title="All Results">
+						<xsl:attribute name="onclick">javascript:switchCollection('<xsl:value-of select="@displayName"/>','<xsl:value-of select="@collectName"/>')</xsl:attribute>
 						<input type="radio" name="filter" value="all" checked="checked" /><xsl:value-of select="@displayName"/>
 					</a>
 				</xsl:when>
 				<xsl:otherwise>
-					<a href="#filter" title="All Results" onclick="javascript: $(this).children('input').prop('checked', 'checked'); /* Submit Form Here */ return false;">
+					<a href="#filter" title="All Results">
+						<xsl:attribute name="onclick">javascript:switchCollection('<xsl:value-of select="@displayName"/>','<xsl:value-of select="@collectName"/>')</xsl:attribute>
 						<input type="radio" name="filter" value="all" /><xsl:value-of select="@displayName"/>
 					</a>
 				</xsl:otherwise>
@@ -189,16 +205,26 @@
 </xsl:template>
 
 <xsl:template name="clusterResults">
-	<xsl:for-each select="/GSP/cluster/gcluster">
-		<li>
-			<a href="#self">
-				<xsl:attribute name="onclick">javascript:searchSynonym('<xsl:value-of select="label/@data"/>')</xsl:attribute>
-				<xsl:attribute name="title"><xsl:value-of select="label/@data"/></xsl:attribute>
-				<xsl:attribute name="ctype">synonym</xsl:attribute>
-				<xsl:value-of select="label/@data"/>
-			</a>
-		</li>
-	</xsl:for-each>
+	<xsl:choose>
+		<xsl:when test="/GSP/cluster/gcluster">
+			<h3>Related Searches</h3>
+			<ul>
+			<xsl:for-each select="/GSP/cluster/gcluster">
+				<li>
+					<a href="#self">
+						<xsl:attribute name="onclick">javascript:searchSynonym('<xsl:value-of select="label/@data"/>')</xsl:attribute>
+						<xsl:attribute name="title"><xsl:value-of select="label/@data"/></xsl:attribute>
+						<xsl:attribute name="ctype">synonym</xsl:attribute>
+						<xsl:value-of select="label/@data"/>
+					</a>
+				</li>
+			</xsl:for-each>
+			</ul>
+		</xsl:when>
+		<xsl:otherwise>
+		 &#160;
+		</xsl:otherwise>
+	</xsl:choose>
 </xsl:template>
 
 <xsl:template name="results">
@@ -259,9 +285,7 @@
 	<xsl:param name="googleUrl"/>
 	<a>
 		<xsl:attribute name="href">
-			<xsl:call-template name="formatWCMUrl">
-				<xsl:with-param name="googleUrl" select="$googleUrl"/>
-			</xsl:call-template>						
+			<xsl:value-of select="$googleUrl"/>					
 		</xsl:attribute>
 		<xsl:attribute name="rank"><xsl:value-of select="$rank"/></xsl:attribute>
 		<xsl:attribute name="ctype">c</xsl:attribute>

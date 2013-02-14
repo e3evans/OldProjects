@@ -19,7 +19,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "S05DTDB.TPT28_POLL_ANSWER")
+@Table(name = "TPT28_POLL_ANSWER")
 public class PollOption implements java.io.Serializable {
 
     /**

@@ -21,7 +21,7 @@
 			<value>com.aurora.quicklinksservices.beans.User</value>
 			<value>com.aurora.quicklinksservices.beans.UserApp</value>
 			<value>com.aurora.quicklinksservices.beans.UserAppKey</value>
-			<value>com.aurora.quicklinksservices.beans.Application</value>
+			<value>com.aurora.quicklinksservices.beans.AppCategory</value>
 			</list>
 		</property>
 

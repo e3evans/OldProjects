@@ -96,6 +96,7 @@ public class QuickLinksRedirectController  {
 	            "ICONNECT", "EMP", firstName, lastName,
 	            "http://iconnect-test.aurora.org/portal/", ipaddress);
 		
+		
 		response.sendRedirect(response.encodeURL(url));
 	}
 

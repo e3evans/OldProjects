@@ -14,11 +14,13 @@ public static Timestamp getCurrentTime()
 }
 
 
-public String urlFormat(String url){
+public static String urlFormat(String url){
 	/* DEV */
-	String baseUrl = "http://iconnect-test.aurora.org";
+	//String baseUrl = "http://iconnect-test.aurora.org";
 	/* PROD */
-	// String baseUrl = "http://iconnect.aurora.org";
+	
+	
+	String baseUrl = "http://iconnect.aurora.org";
 	String firstsubStringurl = null ;
 	if(url.indexOf("actionUrl")!=-1){
 	 firstsubStringurl = url.substring(0, url.indexOf("actionUrl"));
@@ -30,13 +32,14 @@ public String urlFormat(String url){
 	} 
 	else if (url.indexOf("https") == -1 && url.indexOf("http") == -1) {
 
-		url = "https://" + url;
+		url = "http://" + url;
+		url = url.replaceAll("////", "//");
 	}
 	else if (firstsubStringurl != null && firstsubStringurl.indexOf(".org") == -1) {
 		url = baseUrl + url;
 	}
 	
-	
+   
  return url;
 	
 	

@@ -29,6 +29,7 @@ import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import com.aurora.controllers.EditController;
 import com.aurora.controllers.ViewController;
 import com.aurora.webservice.client.GoogleServiceClient;
 
@@ -48,6 +49,7 @@ public abstract class XMLProcessorUtil {
 			TransformerFactory tf = TransformerFactory.newInstance();
 			Transformer transformer = tf.newTransformer(xsltSource);
 			transformer.setParameter("contextPath", contextPath);
+			transformer.setParameter("search_env", prefs.getValue(EditController.PREF_SEARCH_ENV, "NOTSET"));
 			transformer.transform(getMergedResultsDoc(searchResults,clusterResults,prefs), result);
 			
 		} catch (TransformerConfigurationException e) {
@@ -99,15 +101,27 @@ public abstract class XMLProcessorUtil {
 					 * Extract the cluster results from the original Document
 					 */
 					Node cluster = (Node)xpath.evaluate("//toplevel/Response/cluster", clusterDoc,XPathConstants.NODE);
-					
+//					System.out.println("HERE!!" + collections.length);
 					/*
 					 * Append Root and clear out XML Document from memory.
 					 */
 					Node searchRoot = searchDoc.getDocumentElement();
-					searchRoot.appendChild(searchDoc.importNode(cluster,true));
+					if (cluster!=null)searchRoot.appendChild(searchDoc.importNode(cluster,true));
 					/*
 					 * Append the various configured collections
 					 */
+					
+					if (collections.length>0){
+						for (int i=0;i<collections.length;i++){
+							String [] temp = collections[i].split(",");
+							Element collectionElement = searchDoc.createElement("COLLECTION");
+							collectionElement.setAttribute("displayName", temp[0]);
+							collectionElement.setAttribute("collectName", temp[1]);
+							searchRoot.appendChild(collectionElement);
+						}
+					}
+				}else{
+					Node searchRoot = searchDoc.getDocumentElement();
 					if (collections.length>0){
 						for (int i=0;i<collections.length;i++){
 							String [] temp = collections[i].split(",");

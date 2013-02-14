@@ -81,6 +81,7 @@ public class SeedListService {
 			Source xmlSource = new StreamSource(new StringReader(SeedListClient.getInstance().getSeedListFeed()));
 			Source xsltSource = getXSLStyesheetStream(xslStylesheet);
 			Result result = new StreamResult(writer);
+
 			
 			TransformerFactory tf = TransformerFactory.newInstance();
 			Transformer transformer = tf.newTransformer(xsltSource);
@@ -93,6 +94,7 @@ public class SeedListService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return writer;
 	}
 	

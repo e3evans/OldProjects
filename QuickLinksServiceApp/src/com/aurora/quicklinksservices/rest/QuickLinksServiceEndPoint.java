@@ -1,4 +1,3 @@
-
 package com.aurora.quicklinksservices.rest;
 
 import java.util.List;
@@ -13,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.aurora.quicklinksservices.beans.App;
+import com.aurora.quicklinksservices.beans.AppCategory;
 import com.aurora.quicklinksservices.beans.User;
 import com.aurora.quicklinksservices.beans.UserAppResponseBean;
 import com.aurora.quicklinksservices.services.QuickLinksService;
@@ -40,11 +40,12 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 
 	@GET
 	@Path("/userresults/{loginId}")
-	public ApplicationResponse getUserDetails(@PathParam("loginId") String loginId) {
-		
+	public ApplicationResponse getUserDetails(
+			@PathParam("loginId") String loginId) {
+
 		ApplicationResponse appResponse = new ApplicationResponse();
 		List<User> list = quickLinksService.retrieveUserDetails(loginId);
-	    appResponse.setUserList(list);
+		appResponse.setUserList(list);
 		return appResponse;
 	}
 
@@ -52,11 +53,12 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 	@Path("/alluserapplist/{loginId}")
 	public UserApplicationResponse getAllUserAppDetails(
 			@PathParam("loginId") String loginId) {
-		Long userId=null;
-	    userId = quickLinksService.retrieveUserId(loginId);
+		Long userId = null;
+		userId = quickLinksService.retrieveUserId(loginId);
 		UserApplicationResponse userAppResponse = new UserApplicationResponse();
-		List<UserAppResponseBean> userAppList = quickLinksService.findAllUserAppsByUser(userId);
-	    userAppResponse.setUserAppList(userAppList);
+		List<UserAppResponseBean> userAppList = quickLinksService
+				.findAllUserAppsByUser(userId);
+		userAppResponse.setUserAppList(userAppList);
 		return userAppResponse;
 	}
 
@@ -64,10 +66,11 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 	@Path("/userapplist/{loginId}")
 	public UserApplicationResponse getUserAppDetails(
 			@PathParam("loginId") String loginId) {
-		Long userId=null;
-	    userId = quickLinksService.retrieveUserId(loginId);
-        UserApplicationResponse userAppResponse = new UserApplicationResponse();
-		List<UserAppResponseBean> userAppList = quickLinksService.findUserAppsByUser(userId);
+		Long userId = null;
+		userId = quickLinksService.retrieveUserId(loginId);
+		UserApplicationResponse userAppResponse = new UserApplicationResponse();
+		List<UserAppResponseBean> userAppList = quickLinksService
+				.findUserAppsByUser(userId);
 		userAppResponse.setUserAppList(userAppList);
 		return userAppResponse;
 	}
@@ -77,9 +80,10 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 	public UserAppResponseBean retrieveUserApp(
 			@PathParam("appId") String appId, @PathParam("seqNo") String seqNo,
 			@PathParam("loginId") String loginId) {
-		Long userId=null;
-	    userId = quickLinksService.retrieveUserId(loginId);
-		//UserApplicationResponse userAppResponse = new UserApplicationResponse();
+		Long userId = null;
+		userId = quickLinksService.retrieveUserId(loginId);
+		// UserApplicationResponse userAppResponse = new
+		// UserApplicationResponse();
 		UserAppResponseBean userApp = quickLinksService.retrieveUserApp(appId,
 				seqNo, userId);
 		return userApp;
@@ -88,11 +92,13 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 	@GET
 	@Path("/createuserapp/{appId}/{seqNo}/{loginId}")
 	public UserAppResponseBean createUserApp(@PathParam("appId") String appId,
-			@PathParam("seqNo") String seqNo, @PathParam("loginId") String loginId) {
-		Long userId=null;
-	    userId = quickLinksService.retrieveUserId(loginId);
+			@PathParam("seqNo") String seqNo,
+			@PathParam("loginId") String loginId) {
+		Long userId = null;
+		userId = quickLinksService.retrieveUserId(loginId);
 		quickLinksService.createUserApp(userId, appId, seqNo);
-		//UserApplicationResponse userAppResponse = new UserApplicationResponse();
+		// UserApplicationResponse userAppResponse = new
+		// UserApplicationResponse();
 		UserAppResponseBean userApp = quickLinksService.retrieveUserApp(appId,
 				seqNo, userId);
 		return userApp;
@@ -114,11 +120,39 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 			@PathParam("seqNo") String seqNo,
 			@PathParam("loginId") String loginId,
 			@PathParam("activecd") String activecd) {
-		Long userId=null;
-	    userId = quickLinksService.retrieveUserId(loginId);
+		Long userId = null;
+		userId = quickLinksService.retrieveUserId(loginId);
 		quickLinksService.updateUserApp(userId, appId, seqNo, activecd);
 		UserAppResponseBean userAppResponse = new UserAppResponseBean();
 		return userAppResponse;
 	}
+
+	@GET
+	@Path("/appcategorylist")
+	public CategoryResponse getAppCategoryList() {
+		CategoryResponse categoryResponse = new CategoryResponse();
+		List<AppCategory> list = quickLinksService.findAppCategories();
+		categoryResponse.setAppCategoryList(list);
+		return categoryResponse;
+	}
+	
+	@GET
+	@Path("/applistbycategory/{categoryId}")
+	public ApplicationResponse getAppListByCategory(@PathParam("categoryId") String categoryId) {
+		ApplicationResponse appResponse = new ApplicationResponse();
+		List<App> list = quickLinksService.findAvailAppListByCategory(categoryId);
+		appResponse.setApplicationList(list);
+		return appResponse;
+	}
+	
+	@GET
+	@Path("/popularlistbycategory/{categoryId}")
+	public ApplicationResponse getPopularAppListByCategory(@PathParam("categoryId") String categoryId) {
+		ApplicationResponse appResponse = new ApplicationResponse();
+		List<App> list = quickLinksService.findPopularAppListByCategory(categoryId);
+		appResponse.setApplicationList(list);
+		return appResponse;
+	}
+	
 
 }

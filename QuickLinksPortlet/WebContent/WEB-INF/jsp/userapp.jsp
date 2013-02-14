@@ -37,6 +37,49 @@
 	                        
 </script> 
 
+<div class="acgc_content_box">
+<ul class="acgc_content_box_tabs">
+                <li class="acgc_content_box_tabs_tab" style="width:465px">
+			<a href="/cgc/myportal/connect/home" title="" class="acgc_content_box_tabs_tab_link">
+				<span class="acgc_title">
+					Aurora
+				</span>
+				<span class="acgc_desc">
+					Official news,<br />blogs &amp; events
+				</span>
+			</a>
+		</li>
+		<li class="acgc_content_box_tabs_tab_spacer">
+			<!-- spacer -->
+		</li>
+		<li class="acgc_content_box_tabs_tab selected" style="width:464px">
+			<a href="/cgc/myportal/connect/home/me"  class="acgc_content_box_tabs_tab_link">
+				<span class="acgc_title">
+					Me
+				</span>
+				<span class="acgc_desc">
+					My quick links <br/>& news
+				</span>
+			</a>
+		</li>
+		<li class="acgc_content_box_tabs_tab_spacer">
+			<!-- spacer -->
+		</li>
+		
+		<!--<li class="acgc_content_box_tabs_tab" style="width:465px">
+			<a href="/cgc/myportal/connect/Home/Team"  class="acgc_content_box_tabs_tab_link">
+				<span class="acgc_title">
+					Team
+				</span>
+				<span class="acgc_desc">
+					My team news,<br />projects &amp; events
+				</span>
+			</a>
+		</li>-->
+	</ul>
+</div>
+
+<div class="acgc_spacer_10 acgc_bg_white"><!-- spacer --></div>
 
 <div class="acgc_ui_overlay_mast">
 	<div class="acgc_ui_overlay_base">

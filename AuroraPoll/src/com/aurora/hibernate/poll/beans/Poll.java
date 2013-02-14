@@ -24,7 +24,7 @@ import javax.persistence.Transient;
  */
 
 @Entity
-@Table(name = "S05DTDB.TPT27_POLL_QUESTION")
+@Table(name = "TPT27_POLL_QUESTION")
 public class Poll implements java.io.Serializable {
 
     /**

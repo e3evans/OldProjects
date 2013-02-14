@@ -3,6 +3,7 @@ package com.aurora.quicklinksservices.services;
 import java.util.List;
 
 import com.aurora.quicklinksservices.beans.App;
+import com.aurora.quicklinksservices.beans.AppCategory;
 import com.aurora.quicklinksservices.beans.User;
 import com.aurora.quicklinksservices.beans.UserAppResponseBean;
 
@@ -18,6 +19,9 @@ public interface QuickLinksService {
 	public void updateUserApp(Long userid, String appId, String seqNo,String activecd);
 	public List<UserAppResponseBean> findAllUserAppsByUser(Long userid);
 	public Long retrieveUserId(String loginid);
+	public List<AppCategory> findAppCategories();
+	public List<App> findAvailAppListByCategory(String categoryId);
+	List<App> findPopularAppListByCategory(String categoryId);
 
 
 }
