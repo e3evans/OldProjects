@@ -1,4 +1,4 @@
-package com.aurora.formemail.services;
+package org.aurora.formemail.services;
 
 import java.util.HashSet;
 import java.util.Set;

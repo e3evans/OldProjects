@@ -14,7 +14,7 @@
 		<servlet-class>com.ibm.websphere.jaxrs.server.IBMRestServlet</servlet-class>
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>com.aurora.formemail.services.RestServiceDispatcher</param-value>
+			<param-value>org.aurora.formemail.services.RestServiceDispatcher</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

@@ -2,16 +2,17 @@
 <!DOCTYPE project>
 
 <project name="FormEmailService" basedir="." default="release">
+	<property file="user.properties" />
 	<property file="build.properties" />
 	<tstamp>
 		<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
 	</tstamp>
-	<condition property="bamboo.shared.portal" value="../wps_sharedPortalLib/WebContent/WEB-INF/lib">
+	<condition property="bamboo.shared.was" value="">
 		<not>
-			<isset property="bamboo.shared.portal" />
+			<isset property="bamboo.shared.was" />
 		</not>
 	</condition>
-	<condition property="bamboo.shared.spring" value="../wps_sharedSpringLib/WebContent/WEB-INF/lib">
+	<condition property="bamboo.shared.spring" value="">
 		<not>
 			<isset property="bamboo.shared.spring" />
 		</not>
@@ -27,7 +28,7 @@
 		<!-- <fileset dir="./WebContent/WEB-INF/lib">
 			<include name="**/*.jar" />
 		</fileset> -->
-		<fileset dir="${bamboo.shared.portal}">
+		<fileset dir="${bamboo.shared.was}">
 			<include name="**/*.jar" />
 		</fileset>
 		<fileset dir="${bamboo.shared.spring}">
@@ -125,11 +126,11 @@
 				<attribute name="Revision" value="${bamboo.buildKey}-${bamboo.buildNumber}" />
 				<attribute name="Build-Time" value="${TODAY}" />
 				<attribute name="Environment" value="${platform}" />
-				<section name="com/aurora">
+				<section name="org/aurora/${base.package}">
 					<attribute name="Specification-Title" value="${ant.project.name}" />
 					<attribute name="Specification-Version" value="1.0" />
 					<attribute name="Specification-Vendor" value="Aurora Health Care, Inc." />
-					<attribute name="Implementation-Title" value="com.aurora" />
+					<attribute name="Implementation-Title" value="org.aurora.${base.package}" />
 					<attribute name="Implementation-Version" value="${bamboo.buildNumber}" />
 					<attribute name="Implementation-Vendor" value="Aurora Health Care, Inc." />
 				</section>
@@ -137,12 +138,40 @@
 		</jar>
 	</target>
 
-	<target name="release" depends="package" description="Releases the packaged war">
-		<copy todir="${dist.dir}" overwrite="true">
-			<fileset dir="${build.dir}">
-				<include name="**/*.war" />
-			</fileset>
-		</copy>
+	<target name="release" depends="init">
+
+		<echo>${bamboo.build.dir}</echo>
+
+		<antcall target="package">
+			<param name="platform" value="was" />
+		</antcall>
+
+		<ear destfile="${dist.dir}/${ear.file.name}.ear" appxml="${web.build.dir}/application.xml">
+			<fileset dir="${build.dir}" includes="*.war" />
+		</ear>
+
+		<antcall target="build-client" />
+	</target>
+
+	<target name="build-client" description="Builds a service client JAR">
+		<echo level="info">Compiling Jar-Service-Client: version:${compile.version} deprecation:${compile.deprecation} debug:${compile.debug}</echo>
+
+		<jar jarfile="${dist.dir}/${client.jar.name}.jar" basedir="${webinf.build.dir}/classes">
+			<include name="**/beans/*" />
+			<manifest>
+				<attribute name="Built-By" value="${bamboo.name}" />
+				<attribute name="Revision" value="${bamboo.buildKey}-${bamboo.buildNumber}" />
+				<attribute name="Build-Time" value="${TODAY}" />
+				<section name="org/aurora/${base.package}">
+					<attribute name="Specification-Title" value="${ant.project.name}" />
+					<attribute name="Specification-Version" value="1.0" />
+					<attribute name="Specification-Vendor" value="Aurora Health Care, Inc." />
+					<attribute name="Implementation-Title" value="org.aurora.${base.package}" />
+					<attribute name="Implementation-Version" value="${bamboo.buildNumber}" />
+					<attribute name="Implementation-Vendor" value="Aurora Health Care, Inc." />
+				</section>
+			</manifest>
+		</jar>
 	</target>
 
 	<target name="javadoc" description="Produces javadoc for the project.">
@@ -157,17 +186,17 @@
 			<classpath refid="project.class.path" />
 			<doctitle>
 				<![CDATA[<h1>${ant.project.name} ${jira.version}.${bamboo.buildNumber}</h1>]]></doctitle>
-		<bottom>
-			<![CDATA[<i>Copyright &#169; ${year} Aurora Healthcare. All Rights Reserved.</i> ${ant.project.name} ${jira.version}.${bamboo.buildNumber}]]></bottom>
-	<tag name="todo" scope="all" description="To do:" />
-	<link href="http://java.sun.com/j2se/1.6.0/docs/api/" />
-	<link href="http://java.sun.com/j2se/1.5.0/docs/api/" />
-	<link href="http://java.sun.com/j2ee/1.4/docs/api/" />
-</javadoc>
+			<bottom>
+				<![CDATA[<i>Copyright &#169; ${year} Aurora Healthcare. All Rights Reserved.</i> ${ant.project.name} ${jira.version}.${bamboo.buildNumber}]]></bottom>
+			<tag name="todo" scope="all" description="To do:" />
+			<link href="http://java.sun.com/j2se/1.6.0/docs/api/" />
+			<link href="http://java.sun.com/j2se/1.5.0/docs/api/" />
+			<link href="http://java.sun.com/j2ee/1.4/docs/api/" />
+  		</javadoc>
 
-<mkdir dir="${bamboo.javadoc}/${ant.project.name}" description="Build project specific javadoc directory." />
-<copy todir="${bamboo.javadoc}/${ant.project.name}" overwrite="true" description="Copies javadoc to public directory">
-	<fileset dir="${javadoc.dir}" />
-</copy>
-</target>
+		<mkdir dir="${bamboo.javadoc}/${ant.project.name}" description="Build project specific javadoc directory." />
+		<copy todir="${bamboo.javadoc}/${ant.project.name}" overwrite="true" description="Copies javadoc to public directory">
+			<fileset dir="${javadoc.dir}" />
+		</copy>
+	</target>
 </project>

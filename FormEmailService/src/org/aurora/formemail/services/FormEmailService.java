@@ -1,4 +1,4 @@
-package com.aurora.formemail.services;
+package org.aurora.formemail.services;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
