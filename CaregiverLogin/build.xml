@@ -5,36 +5,20 @@
 	<tstamp>
 		<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
 	</tstamp>
-	<condition property="bamboo.shared.portal" value="../wps_sharedPortalLib/WebContent/WEB-INF/lib">
-		<not>
-			<isset property="bamboo.shared.portal" />
-		</not>
-	</condition>
-	<condition property="bamboo.shared.spring" value="../wps_sharedSpringLib/WebContent/WEB-INF/lib">
-		<not>
-			<isset property="bamboo.shared.spring" />
-		</not>
-	</condition>
-	<condition property="bamboo.server.libs" value="">
+	<!--<condition property="bamboo.server.libs" value="">
 		<not>
 			<isset property="bamboo.server.libs" />
 		</not>
-	</condition>
+	</condition>-->
 
 	<!-- Set up java.class.path -->
 	<path id="project.class.path">
-		<!-- <fileset dir="./WebContent/WEB-INF/lib">
+		<fileset dir="./WebContent/WEB-INF/lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<!-- <fileset dir="${bamboo.server.libs}">
 			<include name="**/*.jar" />
 		</fileset> -->
-		<fileset dir="${bamboo.shared.portal}">
-			<include name="**/*.jar" />
-		</fileset>
-		<fileset dir="${bamboo.shared.spring}">
-			<include name="**/*.jar" />
-		</fileset>
-		<fileset dir="${bamboo.server.libs}">
-			<include name="**/*.jar" />
-		</fileset>
 		<pathelement path="${java.class.path}" />
 	</path>
 
@@ -123,7 +107,6 @@
 				<attribute name="Built-By" value="${bamboo.name}" />
 				<attribute name="Revision" value="${bamboo.buildKey}-${bamboo.buildNumber}" />
 				<attribute name="Build-Time" value="${TODAY}" />
-				<attribute name="Environment" value="${platform}" />
 				<section name="com/aurora">
 					<attribute name="Specification-Title" value="${ant.project.name}" />
 					<attribute name="Specification-Version" value="1.0" />

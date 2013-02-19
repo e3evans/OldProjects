@@ -1,11 +1,14 @@
+*.class
+user.properties
+out/
 
 #################
 ## Eclipse
 #################
 
 *.pydevproject
-.class
-.project
+#.class
+#.project
 .metadata
 bin/**
 tmp/**
@@ -15,7 +18,7 @@ tmp/**/*
 *.swp
 *~.nib
 local.properties
-.classpath
+#.classpath
 .settings/
 .loadpath
 
