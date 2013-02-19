@@ -98,11 +98,12 @@ public class LoginViewController {
 		}finally{
 			if (!BAD_LOGIN){
 				String loginId = loginForm.getUserName();
+//				loginId="000282";
 				User ssoUser = loginDAO.findUserDetails(loginId);
 				PortletPreferences prefs = request.getPreferences();
 				if (ssoUser != null){
 					SSOManager.createSSOCookie(request, response, Long.toString(ssoUser.getUserID()) ,loginId,
-				            "ICONNECT", "EMP", ssoUser.getFirstName(), ssoUser.getLastName(),
+				            "ICONNECT", "EMP", ssoUser.getLastName(), ssoUser.getFirstName(),
 				            prefs.getValue(PREF_COOKIE_ENV, "NOT SET"), InetAddress.getLocalHost().getHostAddress());
 				}
 				response.sendRedirect("/cgc/myportal/connect/home");
