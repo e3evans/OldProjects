@@ -40,7 +40,7 @@ public class PortalUser implements Serializable {
   private String portalUrl;
   private String clientIP;
 
-  private Collection permissions;
+  private Collection<AppAuthInfo> permissions;
   private boolean permissionsExceptionThrown;
 
   /**
@@ -206,7 +206,7 @@ public class PortalUser implements Serializable {
   public boolean hasPermission(final String appAuthName, final String appId, final Integer seqNo)
         throws PermissionsUnavailableException {
       if (this.permissions != null) {
-          final Iterator iter = this.permissions.iterator();
+          final Iterator<AppAuthInfo> iter = this.permissions.iterator();
           while (iter.hasNext()) {
               AppAuthInfo appAuth = (AppAuthInfo) iter.next();
               boolean hasPermission = appAuthName.equalsIgnoreCase(appAuth.getAppAuthName());
@@ -239,7 +239,7 @@ public class PortalUser implements Serializable {
    * {@link #hasPermission(String)} method should be used instead.
    * @param appAuthInfos The permissions.
    */
-  public void setPermissions(final Collection appAuthInfos) {
+  public void setPermissions(final Collection<AppAuthInfo> appAuthInfos) {
     this.permissions = appAuthInfos;
     this.permissionsExceptionThrown = false;
   }

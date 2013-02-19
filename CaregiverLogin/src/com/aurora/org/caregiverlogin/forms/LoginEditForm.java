@@ -9,6 +9,7 @@ public class LoginEditForm {
 	private String wcm_path;
 	private String wcm_library;
 	private String wcm_menuComponent;
+	private String cookie_env;
 	
 	public String getWcm_path() {
 		return wcm_path;
@@ -35,7 +36,14 @@ public class LoginEditForm {
 		prefs.put(LoginViewController.PREF_WCM_COMPONENT, getWcm_menuComponent());
 		prefs.put(LoginViewController.PREF_WCM_PATH, getWcm_path());
 		prefs.put(LoginViewController.PRED_WCM_LIB, getWcm_library());
+		prefs.put(LoginViewController.PREF_COOKIE_ENV, getCookie_env());
 		return prefs;
+	}
+	public String getCookie_env() {
+		return cookie_env;
+	}
+	public void setCookie_env(String cookie_env) {
+		this.cookie_env = cookie_env;
 	}
 	
 }
