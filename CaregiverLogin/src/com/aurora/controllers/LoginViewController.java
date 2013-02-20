@@ -92,7 +92,7 @@ public class LoginViewController {
 		try {
 			loginService.login(loginForm.getUserName(), loginForm.getPassword()
 					.toCharArray(), contextMap, null);
-			log.info(loginForm.getUserName());
+			log.warn(loginForm.getUserName());
 		} catch (Exception e) {
 			BAD_LOGIN = true;
 			log.error("Exception in doLogin", e);
