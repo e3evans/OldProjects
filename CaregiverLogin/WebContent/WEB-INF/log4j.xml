@@ -15,18 +15,18 @@
 	<appender name="logfile_logins" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="File" value="/aurora/logs/logins.log" />
 		<param name="DatePattern" value="'.'yyyy-MM" />
-		<param name="MaxBackupIndex" value="30" />
+		<param name="MaxBackupIndex" value="60" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%p %d [%c] - %m%n" />
 		</layout>
 	</appender>
 
-	<logger name="com.aurora.controllers.LoginViewController">
+	<logger name="com.aurora.controllers.LoginViewController" level="info"
+		additivity="false">
 		<appender-ref ref="logfile_logins" />
 	</logger>
 
-	<root>
-		<level value="WARN" />
+	<root level="info">
 		<appender-ref ref="logfile" />
 	</root>
 
