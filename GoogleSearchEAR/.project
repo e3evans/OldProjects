@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>QuickLinksServiceAppEAR</name>
+	<name>GoogleSearchEAR</name>
 	<comment></comment>
 	<projects>
-		<project>QuickLinksServiceApp</project>
+		<project>GoogleSearch</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

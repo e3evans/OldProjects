@@ -9,7 +9,7 @@
 			<script>
 				var SN = <xsl:value-of select="/GSP/RES/@SN"/>;
 				var PP = <xsl:value-of select="/GSP/PARAM[@name='num']/@original_value"/>;
-				var Q = '<xsl:value-of select="/GSP/PARAM[@name='q']/@original_value"/>';
+				var Q = '<xsl:value-of select="translate(/GSP/PARAM[@name='q']/@original_value,'+',' ')"/>';
 				var page_query = '<xsl:value-of select="/GSP/PARAM[@name='q']/@original_value"/>';
 				var page_start = '<xsl:value-of select="/GSP/PARAM[@name='page']/@original_value"/>';
 				var page_site = '<xsl:value-of select="/GSP/PARAM[@name='site']/@original_value"/>';

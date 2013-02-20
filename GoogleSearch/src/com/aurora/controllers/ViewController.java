@@ -83,6 +83,8 @@ public class ViewController {
 		if (request.getParameter("site")==null)sb.append("&site="+session.getAttribute(SESS_DEF_COLLECT));
 		while (e.hasMoreElements()){
 			String temp = e.nextElement();
+			System.out.println("START");
+			System.out.println("PARM: "+request.getParameter(temp));
 			sb.append("&"+temp+"="+URLEncoder.encode(request.getParameter(temp),"ISO-8859-1"));
 		}
 		return sb.toString();
@@ -94,6 +96,7 @@ public class ViewController {
 		if (request.getParameter("site")==null)sb.append("&site="+session.getAttribute(SESS_DEF_COLLECT));
 		while (e.hasMoreElements()){
 			String temp = e.nextElement();
+			System.out.println("PARM: *"+request.getParameter(temp));
 			sb.append("&"+temp+"="+URLEncoder.encode(request.getParameter(temp),"ISO-8859-1"));
 		}
 		return sb.toString();
