@@ -2,6 +2,7 @@ package com.aurora.controllers;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,10 +11,13 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
+import javax.portlet.PortletPreferences;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.aurora.portalSSO.util.SSOManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.bind.annotation.ActionMapping;
 
+import com.aurora.hibernate.login.beans.User;
+import com.aurora.hibernate.login.dao.LoginDAO;
 import com.aurora.org.caregiverlogin.forms.LoginForm;
 import com.ibm.portal.portlet.service.PortletServiceHome;
 import com.ibm.portal.portlet.service.PortletServiceUnavailableException;
@@ -30,6 +36,8 @@ import com.ibm.portal.portlet.service.login.LoginService;
 @Controller
 @RequestMapping("VIEW")
 public class LoginViewController {
+	@Autowired
+	private LoginDAO loginDAO;
 
 	protected static final Logger log = Logger
 			.getLogger(LoginViewController.class.getSimpleName());
@@ -38,6 +46,7 @@ public class LoginViewController {
 	public static String PREF_WCM_PATH = "wcm.path";
 	public static String PREF_WCM_COMPONENT = "wcm.menuComponent";
 	public static String PRED_WCM_LIB = "wcm.library";
+	public static String PREF_COOKIE_ENV = "cookie.env";
 	public static String PARAM_BAD_SESSION = "SESSIONTIMEOUT";
 	public boolean BAD_LOGIN = false;
 	public boolean BAD_SESSION = false;
@@ -97,8 +106,23 @@ public class LoginViewController {
 			BAD_LOGIN = true;
 			log.error("Exception in doLogin", e);
 		} finally {
-			if (!BAD_LOGIN)
+			if (!BAD_LOGIN) {
+				String loginId = loginForm.getUserName();
+				// loginId="000282";
+				User ssoUser = loginDAO.findUserDetails(loginId);
+				PortletPreferences prefs = request.getPreferences();
+				if (ssoUser != null) {
+					SSOManager.createSSOCookie(request, response,
+							Long.toString(ssoUser.getUserID()), loginId,
+							"ICONNECT", "EMP", ssoUser.getLastName(),
+							ssoUser.getFirstName(),
+							prefs.getValue(PREF_COOKIE_ENV, "NOT SET"),
+							InetAddress.getLocalHost().getHostAddress());
+				}
 				response.sendRedirect("/cgc/myportal/connect/home");
+			}
 		}
+
 	}
+
 }

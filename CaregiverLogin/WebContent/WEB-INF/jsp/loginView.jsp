@@ -58,10 +58,7 @@
 	<div class="acgc_login_utils">
 		<ul>
 			<li>
-				<a title="Forgot your username?" href="">Forgot your username?</a>
-			</li>
-			<li>
-				<a title="Forgot your password?" href="">Forgot your password?</a>
+				<a id="inline" title="Forgot your username or password?" href="#data">Forgot your username or password?</a>
 			</li>
 		</ul>
 	</div>
@@ -77,7 +74,7 @@
 	<wcm:libraryComponent library="<%=lib%>" name="<%=libCmpnt %>"/>
 <!-- END WCM -->
 		<div class="acgc_content_login_links">
-			<p><strong>NOTE:</strong> Please login to read full articles and gain access to all material</p>
+			<p><strong>NOTE:</strong> Please log in to read full articles and gain access to all material</p>
 			<div class="acgc_content_login_quicklinks">
 				<h3>Quick Links:</h3>
 				<ul>
@@ -105,7 +102,21 @@ $("#acgc_login_form input").keypress(function(event) {
         $("#acgc_login_form").submit();
     }
 });
+
+$(document).ready(function(){
+	$("a#inline").fancybox({
+		'hideOnContentClick':true
+	});
+
+});
+
 </script>
+
+<div style="display:none;">
+	<div id="data">To log into the beta Caregiver Connect release, be sure to use your Windows log in credentials (also used to log into your computer).
+	<br/><br/>If you do not remember your username or password, please contact the IS Service Desk at 414-647-3520 or 800-889-9677 outside of Milwaukee.
+	</div>
+</div>
 
 <% 
 /*

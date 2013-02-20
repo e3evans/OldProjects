@@ -1,13 +1,11 @@
-*.class
-user.properties
-out/
 
 #################
 ## Eclipse
 #################
 
 *.pydevproject
-#.class
+.class
+*.class
 #.project
 .metadata
 bin/**

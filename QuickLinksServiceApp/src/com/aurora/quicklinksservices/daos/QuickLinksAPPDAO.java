@@ -2,7 +2,6 @@ package com.aurora.quicklinksservices.daos;
 
 import java.util.List;
 
-
 import com.aurora.quicklinksservices.beans.App;
 import com.aurora.quicklinksservices.beans.AppCategory;
 import com.aurora.quicklinksservices.beans.User;

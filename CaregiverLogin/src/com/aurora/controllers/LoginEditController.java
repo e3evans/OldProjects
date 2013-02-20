@@ -35,13 +35,11 @@ public class LoginEditController {
 		if (editForm == null)
 			editForm = new LoginEditForm();
 		PortletPreferences prefs = request.getPreferences();
-		editForm.setWcm_menuComponent(prefs.getValue(
-				LoginViewController.PREF_WCM_COMPONENT, ""));
-		editForm.setWcm_path(prefs.getValue(LoginViewController.PREF_WCM_PATH,
-				""));
-		editForm.setWcm_library(prefs.getValue(
-				LoginViewController.PRED_WCM_LIB, ""));
-		return new ModelAndView("loginEdit", "editForm", editForm);
+		editForm.setWcm_menuComponent(prefs.getValue(LoginViewController.PREF_WCM_COMPONENT, ""));
+		editForm.setWcm_path(prefs.getValue(LoginViewController.PREF_WCM_PATH, ""));
+		editForm.setWcm_library(prefs.getValue(LoginViewController.PRED_WCM_LIB, ""));
+	
+		return new ModelAndView("loginEdit","editForm",editForm);
 	}
 
 	@ActionMapping("doSavePrefs")

@@ -31,6 +31,10 @@
 				<name>wcm.library</name>
 				<value>CareGiverDesignLibrary</value>
 			</preference>
+			<preference>
+				<name>cookie.env</name>
+				<value>http://iconnect-test.aurora.org/portal/</value>
+			</preference>
 		</portlet-preferences>
 		<!-- container-runtime-option>
 		   <name>com.ibm.portal.public.session</name>
