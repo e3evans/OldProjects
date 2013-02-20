@@ -4,7 +4,6 @@
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
 	<appender name="logfile" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="Threshold" value="warn" />
 		<param name="File" value="/aurora/logs/CaregiverLogin.log" />
 		<param name="DatePattern" value="'.'yyyy-MM" />
 		<param name="MaxBackupIndex" value="15" />
@@ -14,7 +13,6 @@
 	</appender>
 
 	<appender name="logfile_logins" class="org.apache.log4j.FileAppender">
-		<param name="Threshold" value="info" />
 		<param name="File" value="/aurora/logs/logins.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%p %d [%c] - %m%n" />
