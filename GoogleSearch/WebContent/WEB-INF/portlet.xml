@@ -22,8 +22,8 @@
 			<preference>
 				<name>com.aurora.org.collections</name>
 				<value>All Results,caregiver_all_qa</value>
-				<value>E-Library (ALIS),caregiver_elib</value>
-				<value>Caregiver Connect,caregiver_wcm_qa</value>
+				<value>E-Library,caregiver_elib</value>
+				<value>Content,caregiver_wcm_qa</value>
 				<value>iConnect,dnn_all</value>
 			</preference>
 			<preference>
