@@ -98,7 +98,7 @@ public class LoginViewController {
 		}finally{
 			if (!BAD_LOGIN){
 				String loginId = loginForm.getUserName();
-				loginId="000282";
+				//loginId="000282";
 				User ssoUser = loginDAO.findUserDetails(loginId);
 				PortletPreferences prefs = request.getPreferences();
 				if (ssoUser != null){
