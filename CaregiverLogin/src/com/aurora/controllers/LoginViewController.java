@@ -74,8 +74,7 @@ public class LoginViewController {
 			@ModelAttribute("loginForm") LoginForm form)
 			throws UnsupportedEncodingException {
 		HttpServletRequest hsreq = com.ibm.ws.portletcontainer.portlet.PortletUtils
-				.getHttpServletRequest(request);
-		
+				.getHttpServletRequest(request);		
 		if (null != hsreq.getParameter(PARAM_BAD_SESSION) && !BAD_LOGIN) {
 			BAD_SESSION = true;
 		} else {
@@ -114,12 +113,18 @@ public class LoginViewController {
 				User ssoUser = loginDAO.findUserDetails(loginId);
 				PortletPreferences prefs = request.getPreferences();
 				if (ssoUser != null) {
+//					SSOManager.createSSOCookie(request, response,
+//							Long.toString(ssoUser.getUserID()), loginId,
+//							"ICONNECT", "EMP", ssoUser.getLastName(),
+//							ssoUser.getFirstName(),
+//							prefs.getValue(PREF_COOKIE_ENV, "NOT SET"),
+//							InetAddress.getLocalHost().getHostAddress());
 					SSOManager.createSSOCookie(request, response,
 							Long.toString(ssoUser.getUserID()), loginId,
 							"ICONNECT", "EMP", ssoUser.getLastName(),
 							ssoUser.getFirstName(),
 							prefs.getValue(PREF_COOKIE_ENV, "NOT SET"),
-							InetAddress.getLocalHost().getHostAddress());
+							"10.46.9.19");
 				}
 				response.sendRedirect("/cgc/myportal/connect/home");
 			}
