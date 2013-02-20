@@ -16,9 +16,9 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.aurora.portalSSO.util.SSOManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -75,6 +75,7 @@ public class LoginViewController {
 			throws UnsupportedEncodingException {
 		HttpServletRequest hsreq = com.ibm.ws.portletcontainer.portlet.PortletUtils
 				.getHttpServletRequest(request);
+		
 		if (null != hsreq.getParameter(PARAM_BAD_SESSION) && !BAD_LOGIN) {
 			BAD_SESSION = true;
 		} else {
@@ -99,6 +100,7 @@ public class LoginViewController {
 
 		BAD_LOGIN = false;
 		try {
+			
 			loginService.login(loginForm.getUserName(), loginForm.getPassword()
 					.toCharArray(), contextMap, null);
 			log.info(loginForm.getUserName());
@@ -124,5 +126,6 @@ public class LoginViewController {
 		}
 
 	}
+
 
 }
