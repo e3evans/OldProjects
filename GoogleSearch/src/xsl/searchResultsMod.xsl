@@ -334,6 +334,7 @@
 	  </xsl:choose>
 	</xsl:variable>
 	<xsl:if test="$currentPage > 1">
+
 		<a>
 			<xsl:attribute name="href">#</xsl:attribute>
 			<xsl:attribute name="ctype">nav.page</xsl:attribute>
@@ -356,13 +357,13 @@
       <a>
 		  <xsl:attribute name="href">#</xsl:attribute>
 		  <xsl:attribute name="ctype">nav.next</xsl:attribute>
-		  <xsl:attribute name="onclick">changePageNum(this,'<xsl:value-of select="$currentPage + 6"/>');return false;</xsl:attribute>
+		  <xsl:attribute name="onclick">changePageNum(this,'<xsl:value-of select="$currentPage + 1"/>');return false;</xsl:attribute>
 		  <img src="/AuroraTheme/themes/html/assets/images/arrows-one-right.png" alt="Next" />
 	  </a> &#160;
 		<a>
 		<xsl:attribute name="href">#</xsl:attribute>
 		<xsl:attribute name="ctype">nav.page</xsl:attribute>
-		<xsl:attribute name="onclick">changePageNum(this,'<xsl:value-of select="$currentPage + 100"/>');return false;</xsl:attribute>
+		<xsl:attribute name="onclick">changePageNum(this,'<xsl:value-of select="$currentPage + 1"/>');return false;</xsl:attribute>
 		<img src="/AuroraTheme/themes/html/assets/images/arrows-full-right.png" alt="Last" /></a>
 	</xsl:if>
 	

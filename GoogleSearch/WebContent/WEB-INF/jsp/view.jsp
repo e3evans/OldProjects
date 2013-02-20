@@ -13,8 +13,8 @@ function changePageSize(perPage){
 }
 
 function changePageNum(anchor,pageNum){
-	SN=(pageNum*PP)-1;
-	if(pageNum==1)SN=0;
+	SN=((pageNum-1)*PP)-1;
+	if(pageNum==1 || SN<0)SN=0;
 	var params={q:Q,start:SN,num:PP,page:pageNum,site:page_site};
 	callService(params);
 }
