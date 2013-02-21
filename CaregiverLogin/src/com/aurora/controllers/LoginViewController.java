@@ -75,7 +75,7 @@ public class LoginViewController {
 			throws UnsupportedEncodingException {
 		HttpServletRequest hsreq = com.ibm.ws.portletcontainer.portlet.PortletUtils
 				.getHttpServletRequest(request);
-		
+
 		if (null != hsreq.getParameter(PARAM_BAD_SESSION) && !BAD_LOGIN) {
 			BAD_SESSION = true;
 		} else {
@@ -97,20 +97,18 @@ public class LoginViewController {
 				.getLoginService(request, response);
 		Map contextMap = new HashMap();
 		contextMap.put(LoginService.DO_RESUME_SESSION_KEY, new Boolean(false));
-
 		BAD_LOGIN = false;
 		try {
-			
 			loginService.login(loginForm.getUserName(), loginForm.getPassword()
 					.toCharArray(), contextMap, null);
-			log.info(loginForm.getUserName());
+			log.warn(loginForm.getUserName());
 		} catch (Exception e) {
 			BAD_LOGIN = true;
 			log.error("Exception in doLogin", e);
 		} finally {
 			if (!BAD_LOGIN) {
 				String loginId = loginForm.getUserName();
-				loginId="000282";
+				loginId = "000282";
 				User ssoUser = loginDAO.findUserDetails(loginId);
 				PortletPreferences prefs = request.getPreferences();
 				if (ssoUser != null) {
@@ -124,8 +122,5 @@ public class LoginViewController {
 				response.sendRedirect("/cgc/myportal/connect/home");
 			}
 		}
-
 	}
-
-
 }
