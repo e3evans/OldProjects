@@ -2,7 +2,6 @@ package com.aurora.controllers;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -74,7 +73,8 @@ public class LoginViewController {
 			@ModelAttribute("loginForm") LoginForm form)
 			throws UnsupportedEncodingException {
 		HttpServletRequest hsreq = com.ibm.ws.portletcontainer.portlet.PortletUtils
-				.getHttpServletRequest(request);		
+				.getHttpServletRequest(request);	
+		System.out.println("REMOTE ADDRESS:  "+hsreq.getRemoteAddr());
 		if (null != hsreq.getParameter(PARAM_BAD_SESSION) && !BAD_LOGIN) {
 			BAD_SESSION = true;
 		} else {
