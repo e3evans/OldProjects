@@ -3,29 +3,16 @@
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-	<appender name="logfile" class="org.apache.log4j.DailyRollingFileAppender">
+	<appender name="logfile"
+		class="com.aurora.org.caregiverlogin.utils.LogLevelFilterFileAppender">
 		<param name="File" value="/aurora/logs/CaregiverLogin.log" />
-		<param name="DatePattern" value="'.'yyyy-MM" />
-		<param name="MaxBackupIndex" value="15" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%p %d [%c] - %m%n" />
 		</layout>
 	</appender>
-
-	<appender name="logfile_logins" class="org.apache.log4j.FileAppender">
-		<param name="File" value="/aurora/logs/logins.log" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%p %d [%c] - %m%n" />
-		</layout>
-	</appender>
-
-	<logger name="com.aurora.controllers.LoginViewController"
-		additivity="false">
-		<appender-ref ref="logfile_logins" />
-	</logger>
 
 	<root>
-		<level value="info" />
+		<level value="warn" />
 		<appender-ref ref="logfile" />
 	</root>
 

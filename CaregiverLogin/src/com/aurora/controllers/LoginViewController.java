@@ -74,7 +74,8 @@ public class LoginViewController {
 			@ModelAttribute("loginForm") LoginForm form)
 			throws UnsupportedEncodingException {
 		HttpServletRequest hsreq = com.ibm.ws.portletcontainer.portlet.PortletUtils
-				.getHttpServletRequest(request);	
+				.getHttpServletRequest(request);
+		
 		if (null != hsreq.getParameter(PARAM_BAD_SESSION) && !BAD_LOGIN) {
 			BAD_SESSION = true;
 		} else {
@@ -100,10 +101,9 @@ public class LoginViewController {
 				.getHttpServletRequest(request);
 		BAD_LOGIN = false;
 		try {
-			
 			loginService.login(loginForm.getUserName(), loginForm.getPassword()
 					.toCharArray(), contextMap, null);
-			log.info(loginForm.getUserName());
+			log.warn(loginForm.getUserName());
 		} catch (Exception e) {
 			BAD_LOGIN = true;
 			log.error("Exception in doLogin", e);
@@ -123,8 +123,5 @@ public class LoginViewController {
 				response.sendRedirect("/cgc/myportal/connect/home");
 			}
 		}
-
 	}
-
-
 }
