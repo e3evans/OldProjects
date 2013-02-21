@@ -47,6 +47,7 @@ public class LoginViewController {
 	public static String PRED_WCM_LIB = "wcm.library";
 	public static String PREF_COOKIE_ENV = "cookie.env";
 	public static String PARAM_BAD_SESSION = "SESSIONTIMEOUT";
+	public static String REQ_HEADER_FORWARD_IP = "X-Forwarded-For";
 	public boolean BAD_LOGIN = false;
 	public boolean BAD_SESSION = false;
 
@@ -74,7 +75,6 @@ public class LoginViewController {
 			throws UnsupportedEncodingException {
 		HttpServletRequest hsreq = com.ibm.ws.portletcontainer.portlet.PortletUtils
 				.getHttpServletRequest(request);	
-		System.out.println("REMOTE ADDRESS:  "+hsreq.getRemoteAddr());
 		if (null != hsreq.getParameter(PARAM_BAD_SESSION) && !BAD_LOGIN) {
 			BAD_SESSION = true;
 		} else {
@@ -96,7 +96,8 @@ public class LoginViewController {
 				.getLoginService(request, response);
 		Map contextMap = new HashMap();
 		contextMap.put(LoginService.DO_RESUME_SESSION_KEY, new Boolean(false));
-
+		HttpServletRequest hsreq = com.ibm.ws.portletcontainer.portlet.PortletUtils
+				.getHttpServletRequest(request);
 		BAD_LOGIN = false;
 		try {
 			
@@ -109,22 +110,15 @@ public class LoginViewController {
 		} finally {
 			if (!BAD_LOGIN) {
 				String loginId = loginForm.getUserName();
-				loginId="000282";
 				User ssoUser = loginDAO.findUserDetails(loginId);
 				PortletPreferences prefs = request.getPreferences();
 				if (ssoUser != null) {
-//					SSOManager.createSSOCookie(request, response,
-//							Long.toString(ssoUser.getUserID()), loginId,
-//							"ICONNECT", "EMP", ssoUser.getLastName(),
-//							ssoUser.getFirstName(),
-//							prefs.getValue(PREF_COOKIE_ENV, "NOT SET"),
-//							InetAddress.getLocalHost().getHostAddress());
 					SSOManager.createSSOCookie(request, response,
 							Long.toString(ssoUser.getUserID()), loginId,
 							"ICONNECT", "EMP", ssoUser.getLastName(),
 							ssoUser.getFirstName(),
 							prefs.getValue(PREF_COOKIE_ENV, "NOT SET"),
-							"10.46.9.19");
+							hsreq.getHeader(REQ_HEADER_FORWARD_IP));
 				}
 				response.sendRedirect("/cgc/myportal/connect/home");
 			}
