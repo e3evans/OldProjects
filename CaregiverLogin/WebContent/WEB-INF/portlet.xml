@@ -33,7 +33,7 @@
 			</preference>
 			<preference>
 				<name>cookie.env</name>
-				<value>http://iconnect-test.aurora.org/portal/</value>
+				<value>http://caregiverconnect-dev.aurora.org</value>
 			</preference>
 		</portlet-preferences>
 		<!-- container-runtime-option>
