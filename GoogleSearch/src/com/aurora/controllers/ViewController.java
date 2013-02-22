@@ -85,18 +85,21 @@ public class ViewController {
 			String temp = e.nextElement();
 			sb.append("&"+temp+"="+URLEncoder.encode(request.getParameter(temp),"ISO-8859-1"));
 		}
-		return sb.toString();
+		
+		sb.append("&filter=0");
+		return sb.toString()+"&filter=0";
 	}
 	private String createURLwithParams(String urlIn, ResourceRequest request,PortletSession session) throws UnsupportedEncodingException{
 		Enumeration<String> e = request.getParameterNames();
 		StringBuffer sb = new StringBuffer();
 		sb.append(urlIn);
-		if (request.getParameter("site")==null)sb.append("&site="+session.getAttribute(SESS_DEF_COLLECT));
+		if (request.getParameter("site")==null)sb.append("&site="+session.getAttribute(SESS_DEF_COLLECT)+"&filter=0");
 		while (e.hasMoreElements()){
 			String temp = e.nextElement();
 			sb.append("&"+temp+"="+URLEncoder.encode(request.getParameter(temp),"ISO-8859-1"));
 		}
-		return sb.toString();
+		sb.append("&filter=0");
+		return sb.toString()+"&filter=0";
 	}
 	
 }
