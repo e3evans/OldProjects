@@ -32,15 +32,15 @@ public class QuickLinksRedirectController {
 			HttpServletResponse response) throws IOException {
 		// get url from request
 		String url = request.getParameter("url");
-		log.warn("Entered QuickLinksRedirectController redirectURL with url: "
-				+ url);
+//		log.warn("Entered QuickLinksRedirectController redirectURL with url: "
+//				+ url);
 
 		// move cookie from request to response
 		Cookie[] cookies = request.getCookies();
 		for (int i = 0; i < cookies.length; i++) {
 			Cookie cookie = cookies[i];
 			if ("auroraSSO".equals(cookie.getName())) {
-				log.warn("Found auroraSSO cookie");
+//				log.warn("Found auroraSSO cookie");
 				response.addCookie(cookie);
 			}
 		}
