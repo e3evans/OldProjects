@@ -180,12 +180,12 @@ public class AppServiceImpl implements AppService {
 
 			String requestPath = AVAILABLE_APP_LIST;
 
-			System.out.println("webservice call starts with request path "
+			logger.info("webservice call starts with request path "
 					+ requestPath);
 			JSONObject allAvailAppJson = new JSONObject(
 					serviceInterfaceDelegate.processGetRestRequest(requestPath));
 
-			System.out.println("webservice call ends starts with request path "
+			logger.info("webservice call ends starts with request path "
 					+ requestPath);
 			JSONArray jsonArray = allAvailAppJson
 					.getJSONArray("applicationList");
@@ -243,17 +243,17 @@ public class AppServiceImpl implements AppService {
 	public UserApplication retrieveUserApp(String userid, String appId,
 			String seqNo) throws AppException {
 
-		System.out.println("getting userapp *");
+		logger.info("getting userapp *");
 
 		UserApplication app = null;
 		try {
 			String requestPath = RETRIEVE_USER_APP + appId + "/" + seqNo + "/"
 					+ userid;
-			System.out.println("webservice call starts with request path "
+			logger.info("webservice call starts with request path "
 					+ requestPath);
 			JSONObject jsonobj = new JSONObject(
 					serviceInterfaceDelegate.processGetRestRequest(requestPath));
-			System.out.println("webservice call ends with request path "
+			logger.info("webservice call ends with request path "
 					+ requestPath);
 			if (jsonobj.get("appId") != null
 					&& !jsonobj.get("appId").toString().trim()

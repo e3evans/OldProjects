@@ -66,11 +66,11 @@ public class ServiceInterfaceDelegate {
 		HttpEntity<String> requestEntity = new HttpEntity<String>(entityHeaders);
 		try {
 			URI requestURI = new URI(requestUrl);
-			System.out.println("web service call start with request path : "
+			logger.info("web service call start with request path : "
 					+ requestUrl);
 			ResponseEntity<String> result = restTemplate.exchange(requestURI,
 					HttpMethod.GET, requestEntity, String.class);
-			System.out.println("web service call end with request path : "
+			logger.info("web service call end with request path : "
 					+ requestUrl);
 			responseText = result.getBody();
 		} catch (Exception e) {
@@ -92,7 +92,7 @@ public class ServiceInterfaceDelegate {
 	 */
 	@PostConstruct
 	public void initService() {
-		System.out.println("In Init Service !!!!!!!!!!");
+		logger.info("*** In Init Service ***");
 
 		entityHeaders = createAuthenticationHeader();
 		// requestEntity = new HttpEntity<String>(entityHeaders);
