@@ -210,7 +210,8 @@ function sitesAppsAlphabeticalSort(){
 				<c:forEach items="${mostpopular.popularapplist}" var="application" varStatus="row">
 				 <li>
 					<a href="javascript:urlFormat('${application.appURL}')"; title="${application.appName}">
-						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
+						${application.appName}
+						<!-- <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout"> -->
 					</a>
 				</li>
 				</c:forEach>
@@ -246,7 +247,8 @@ function sitesAppsAlphabeticalSort(){
 				<c:forEach items="${clinical.appList}" var="application" varStatus="row">
 				 <li>
 					<a href="javascript:urlFormat('${application.appURL}')";  title="${application.appName}">
-						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
+						${application.appName}
+						<!-- <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout"> -->
 					</a>
 				</li>
 				</c:forEach>
@@ -280,7 +282,8 @@ function sitesAppsAlphabeticalSort(){
 				<c:forEach items="${Bussiness.appList}" var="application" varStatus="row">
 				 <li>
 					<a href="javascript:urlFormat('${application.appURL}')"; title="${application.appName}" >
-						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
+						${application.appName}
+						<!-- <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout"> -->
 					</a>
 				</li>
 				</c:forEach>
@@ -313,7 +316,8 @@ function sitesAppsAlphabeticalSort(){
 				<c:forEach items="${locations.appList}" var="application" varStatus="row">
 				 <li>
 					<a href="javascript:urlFormat('${application.appURL}')"; title="${application.appName}">
-						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
+						${application.appName}
+						<!-- <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout"> -->
 					</a>
 				</li>
 				</c:forEach>
@@ -346,7 +350,8 @@ function sitesAppsAlphabeticalSort(){
 				<c:forEach items="${strategicplan.appList}" var="application" varStatus="row">
 				 <li>
 					<a href="javascript:urlFormat('${application.appURL}')"; title="${application.appName}">
-						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
+						${application.appName}
+						<!-- <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout"> -->
 					</a>
 				</li>
 				</c:forEach>
