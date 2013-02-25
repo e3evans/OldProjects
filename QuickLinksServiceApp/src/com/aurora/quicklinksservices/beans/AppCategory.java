@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "S05DTDB.TPT2Z_APP_CATEGORY")
+@Table(name = "TPT2Z_APP_CATEGORY")
 public class AppCategory  implements Serializable {
 	
 	@Id

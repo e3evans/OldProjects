@@ -46,7 +46,7 @@ public class ExceltoDB2 {
 //        	 i++;
 //			Statement stmt = con.createStatement();
 //			StringBuffer sql = new StringBuffer();
-//			sql.append("INSERT INTO S05DTDB.tpt2e_app_role (PT2E_ROLE_CD, PT2E_APPID, PT2E_SEQ_NO)  VALUES('EMP','");
+//			sql.append("INSERT INTO tpt2e_app_role (PT2E_ROLE_CD, PT2E_APPID, PT2E_SEQ_NO)  VALUES('EMP','");
 //			sql.append(i + "',");
 //			sql.append(0);
 //			sql.append(")");

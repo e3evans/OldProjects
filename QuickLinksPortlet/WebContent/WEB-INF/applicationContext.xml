@@ -4,24 +4,17 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-	<context:component-scan base-package="com.aurora.quicklinks.beans" />
-	<!--<context:component-scan base-package="com.aurora.quicklinks.dao" />-->
-	<context:component-scan base-package="com.aurora.quicklinks.delegates" />
-    <context:component-scan base-package="com.aurora.quicklinks.services" />
-    <context:component-scan base-package="com.aurora.quicklinks.controllers" />
-	<context:component-scan base-package="com.aurora.quicklinks.rest" />
-	
-	
-	
-	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-   		<property name="basenames">
-   			<list>
-   				<value>com.aurora.quicklinks.nl.QuickLinksPortletResource</value>
-   			</list>
-   		</property>
- 	</bean>
-	
-	<bean id="viewResolver"	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>com.aurora.quicklinks.nl.QuickLinksPortletResource</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass">
 			<value>org.springframework.web.servlet.view.JstlView</value>
 		</property>
@@ -31,8 +24,8 @@
 		<property name="suffix">
 			<value>.jsp</value>
 		</property>
-	</bean> 
-	
+	</bean>
+
 	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
 		<property name="messageConverters">
 			<list>
@@ -40,6 +33,13 @@
 					class="org.springframework.http.converter.StringHttpMessageConverter" />
 			</list>
 		</property>
-	</bean>       
+	</bean>
 
-	</beans>
+	<context:annotation-config />
+	<context:component-scan base-package="com.aurora.quicklinks.beans" />
+	<context:component-scan base-package="com.aurora.quicklinks.delegates" />
+	<context:component-scan base-package="com.aurora.quicklinks.services" />
+	<context:component-scan base-package="com.aurora.quicklinks.controllers" />
+	<context:component-scan base-package="com.aurora.quicklinks.rest" />
+
+</beans>

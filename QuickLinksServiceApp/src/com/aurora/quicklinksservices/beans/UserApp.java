@@ -18,7 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "S05DTDB.TPT2J_USER_APP")
+@Table(name = "TPT2J_USER_APP")
 public class UserApp implements Serializable
 {
    /**

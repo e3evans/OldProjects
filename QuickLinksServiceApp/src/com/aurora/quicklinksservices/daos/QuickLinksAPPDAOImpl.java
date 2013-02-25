@@ -36,8 +36,8 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 		String rolecd = "EMP";
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT {app.*} ");
-		sql.append("FROM S05DTDB.tpt2b_application app, S05DTDB.tpt2b_application parent, ");
-		sql.append("S05DTDB.tpt2e_app_role approle ");
+		sql.append("FROM tpt2b_application app, tpt2b_application parent, ");
+		sql.append("tpt2e_app_role approle ");
 		sql.append("WHERE app.pt2b_appid = approle.pt2e_appid ");
 		sql.append("AND app.pt2b_seq_no = approle.pt2e_seq_no ");
 		sql.append("AND app.pt2b_appid = parent.pt2b_appid ");
@@ -92,7 +92,7 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 		List<UserAppResponseBean> listUserAppBean = new ArrayList<UserAppResponseBean>();
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT {app.*} ");
-		sql.append("FROM S05DTDB.tpt2b_application app ");
+		sql.append("FROM tpt2b_application app ");
 		sql.append("WHERE (app.pt2b_appid = 'EBINO' OR  app.pt2b_appid='EB092' OR  app.pt2b_appid='EB500'  OR  app.pt2b_appid='EBLIB'  OR  app.pt2b_appid='ahcom' ");
 		sql.append("OR  app.pt2b_appid='EB122' OR  app.pt2b_appid='EB084'  OR  app.pt2b_appid='EB538'  OR  app.pt2b_appid='EB480'  OR  app.pt2b_appid='EB057'");
 		sql.append("OR app.pt2b_appid='PETR' OR  app.pt2b_appid='EB294' OR app.pt2b_appid='EB110 ' OR app.pt2b_appid='EB294' OR app.pt2b_appid='EB416')");
@@ -160,7 +160,7 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT {app.*} ");
-		sql.append("FROM S05DTDB.tpt2b_application app ");
+		sql.append("FROM tpt2b_application app ");
 		sql.append("WHERE (app.pt2b_appid = 'EBINO' OR  app.pt2b_appid='EB092' OR  app.pt2b_appid='EB500'  OR  app.pt2b_appid='EBLIB'  OR  app.pt2b_appid='ahcom' ");
 		sql.append("OR  app.pt2b_appid='EB122' OR  app.pt2b_appid='EB084'  OR  app.pt2b_appid='EB538'  OR  app.pt2b_appid='EB480'  OR  app.pt2b_appid='EB057'");
 		sql.append("OR app.pt2b_appid='PETR' OR  app.pt2b_appid='EB294' OR app.pt2b_appid='EB110 ' OR app.pt2b_appid='EB294' OR app.pt2b_appid='EB416')");
@@ -261,7 +261,7 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT {app.*} ");
-		sql.append("FROM S05DTDB.tpt2b_application app ");
+		sql.append("FROM tpt2b_application app ");
 		sql.append("WHERE pt2b_appid ='" + appId + "'");
 		sql.append("AND pt2b_auto_reg = 'Y' ");
 		sql.append("AND pt2b_login_acc NOT IN ('E','N') ");
@@ -335,8 +335,8 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 		String rolecd = "EMP";
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT {app.*} ");
-		sql.append("FROM S05DTDB.tpt2b_application app, S05DTDB.tpt2b_application parent, ");
-		sql.append("S05DTDB.tpt2e_app_role approle ");
+		sql.append("FROM tpt2b_application app, tpt2b_application parent, ");
+		sql.append("tpt2e_app_role approle ");
 		sql.append("WHERE app.pt2b_appid = approle.pt2e_appid ");
 		sql.append("AND app.pt2b_seq_no = approle.pt2e_seq_no ");
 		sql.append("AND app.pt2b_appid = parent.pt2b_appid ");
@@ -367,8 +367,8 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 		String rolecd = "EMP";
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT {app.*} ");
-		sql.append("FROM S05DTDB.tpt2b_application app, S05DTDB.tpt2b_application parent, ");
-		sql.append("S05DTDB.tpt2e_app_role approle ");
+		sql.append("FROM tpt2b_application app, tpt2b_application parent, ");
+		sql.append("tpt2e_app_role approle ");
 		sql.append("WHERE app.pt2b_appid = approle.pt2e_appid ");
 		sql.append("AND app.pt2b_seq_no = approle.pt2e_seq_no ");
 		sql.append("AND app.pt2b_appid = parent.pt2b_appid ");

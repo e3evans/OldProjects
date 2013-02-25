@@ -15,7 +15,7 @@ import javax.persistence.Table;
 // Referenced classes of package org.aurora.portalCommon.beans:
 //            AppKey
 @Entity
-@Table(name = "S05DTDB.TPT2B_APPLICATION")
+@Table(name = "TPT2B_APPLICATION")
 public class App
     implements Serializable
 {
