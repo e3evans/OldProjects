@@ -25,7 +25,9 @@
 			<ul class="acgc_content_inner_box_list">
 			<c:forEach var="sitesapps" items="${sitesappsList.value}">
 			
-				<li><a href="javascript:urlFormat('${sitesapps.appURL}')"; title="Title of Application Here">${sitesapps.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout" /></a></li>
+				<li><a href="javascript:urlFormat('${sitesapps.appURL}')"; title="Title of Application Here">${sitesapps.appName}
+				<!-- <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout" /> -->
+				</a></li>
 				</c:forEach>
 			</ul>
 			<span class="acgc_legend">

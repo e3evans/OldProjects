@@ -18,11 +18,14 @@ import com.aurora.quicklinksservices.beans.User;
 import com.aurora.quicklinksservices.beans.UserApp;
 import com.aurora.quicklinksservices.beans.UserAppKey;
 import com.aurora.quicklinksservices.beans.UserAppResponseBean;
+import com.aurora.quicklinksservices.services.BaseQuickLinksService;
 import com.aurora.quicklinksservices.util.QuickLinksUtility;
 
 @Repository
-public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
-	private Logger logger = Logger.getLogger(QuickLinksAPPDAOImpl.class);
+public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
+		QuickLinksAPPDAO {
+	protected static final Logger logger = Logger
+			.getLogger(QuickLinksAPPDAOImpl.class.getSimpleName());
 	@Autowired
 	private SessionFactory urlsessionFactory;
 
@@ -100,12 +103,8 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 
 		if (null != defaultapplist && !(defaultapplist.isEmpty())) {
 			for (App app : defaultapplist) {
-				if (app.getAppURL() != null) {
-					String url = app.getAppURL().trim();
-					QuickLinksUtility qlutility = new QuickLinksUtility();
-					formatedurl = qlutility.urlFormat(url);
-
-				}
+				formatedurl = QuickLinksUtility.urlFormat(BASE_ICONNECT_URL,
+						app.getAppURL());
 
 				bean = new UserAppResponseBean();
 				bean.setAppId(app.getAppKey().getAppId());
@@ -128,10 +127,9 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 			bean = new UserAppResponseBean();
 			UserApp temp = (UserApp) list.get(i);
 
-			if (temp.getApplication().getAppURL() != null) {
-				String url = temp.getApplication().getAppURL().trim();
-				QuickLinksUtility qlutility = new QuickLinksUtility();
-				formatedurl = qlutility.urlFormat(url);
+			if (temp.getApplication() != null) {
+				formatedurl = QuickLinksUtility.urlFormat(BASE_ICONNECT_URL,
+						temp.getApplication().getAppURL());
 
 			}
 			bean.setAppName(temp.getApplication().getAppName().trim());
@@ -142,7 +140,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 					.toString());
 			bean.setUserId(userid + "");
 			listUserAppBean.add(bean);
-			}
+		}
 
 		session.close();
 
@@ -187,7 +185,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 
 		List<UserApp> list = session.createCriteria(UserApp.class)
 				.add(Restrictions.eq("userAppKey.userId", userid)).list();
-		
+
 		for (int i = 0; i < list.size(); i++) {
 
 			bean = new UserAppResponseBean();
@@ -256,9 +254,6 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		}
 
 	}
-	
-	
-
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -309,6 +304,7 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 	/**
 	 * Service for Getting All App Categories
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<AppCategory> findAppCategories() {
 		Session session = null;
@@ -319,22 +315,23 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 					.createQuery("from com.aurora.quicklinksservices.beans.AppCategory");
 			appCategoryList = query.list();
 		} catch (Exception ex) {
-			System.out.print("exception in findAppCategories"+ex);
+			System.out.print("exception in findAppCategories" + ex);
 			logger.error("Excpetion in findAppCategories" + ex);
-		}finally{
-		session.flush();
-		session.close();
+		} finally {
+			session.flush();
+			session.close();
 		}
-		
+
 		return appCategoryList;
 	}
 
 	/**
 	 * Service for getting Available App List by Category Id
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<App> findAvailAppListByCategory(String categoryId) {
-		
+
 		String rolecd = "EMP";
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT {app.*} ");
@@ -347,50 +344,47 @@ public class QuickLinksAPPDAOImpl implements QuickLinksAPPDAO {
 		sql.append("AND approle.pt2e_role_cd ='" + rolecd + "'");
 		sql.append("AND app.pt2b_login_acc NOT IN ('E','N') ");
 		sql.append("AND app.pt2b_active_cd = 'A' ");
-		sql.append("AND app.pt2b_primary_category_id = "+categoryId +" ");
+		sql.append("AND app.pt2b_primary_category_id = " + categoryId + " ");
 		sql.append("AND parent.pt2b_active_cd = 'A' ");
 		sql.append("ORDER BY parent.pt2b_app_name, app.pt2b_seq_no ");
 		Session session = urlsessionFactory.openSession();
 		List<App> list = session.createSQLQuery(sql.toString())
-			   .addEntity("app", "com.aurora.quicklinksservices.beans.App")
+				.addEntity("app", "com.aurora.quicklinksservices.beans.App")
 				.list();
 		session.flush();
 		session.close();
-		
-		return list;
-	}
-	
-	
-	
-	/**
-	 * Service for getting Available App List by Category Id
-	 */
-	@Override
-	public List<App> findPopularAppListByCategory(String categoryId) {
-		
-		String rolecd = "EMP";
-		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT {app.*} ");
-		sql.append("FROM S05DTDB.tpt2b_application app, S05DTDB.tpt2b_application parent, ");
-		sql.append("S05DTDB.tpt2e_app_role approle ");
-		sql.append("WHERE app.pt2b_appid = approle.pt2e_appid ");
-		sql.append("AND app.pt2b_seq_no = approle.pt2e_seq_no ");
-		sql.append("AND app.pt2b_appid = parent.pt2b_appid ");
-		sql.append("AND parent.pt2b_seq_no = 0 ");
-		sql.append("AND approle.pt2e_role_cd ='" + rolecd + "'");
-		sql.append("AND app.pt2b_login_acc NOT IN ('E','N') ");
-		sql.append("AND app.pt2b_active_cd = 'A' ");
-		sql.append("AND app.PT2B_SECONDARY_CATEGORY_ID = "+categoryId +" ");
-		sql.append("AND parent.pt2b_active_cd = 'A' ");
-		sql.append("ORDER BY parent.pt2b_app_name, app.pt2b_seq_no ");
-		Session session = urlsessionFactory.openSession();
-		List<App> list = session.createSQLQuery(sql.toString())
-			   .addEntity("app", "com.aurora.quicklinksservices.beans.App")
-				.list();
-		session.flush();
-		session.close();
-		
+
 		return list;
 	}
 
+	/**
+	 * Service for getting Available App List by Category Id
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<App> findPopularAppListByCategory(String categoryId) {
+
+		String rolecd = "EMP";
+		StringBuffer sql = new StringBuffer();
+		sql.append("SELECT {app.*} ");
+		sql.append("FROM S05DTDB.tpt2b_application app, S05DTDB.tpt2b_application parent, ");
+		sql.append("S05DTDB.tpt2e_app_role approle ");
+		sql.append("WHERE app.pt2b_appid = approle.pt2e_appid ");
+		sql.append("AND app.pt2b_seq_no = approle.pt2e_seq_no ");
+		sql.append("AND app.pt2b_appid = parent.pt2b_appid ");
+		sql.append("AND parent.pt2b_seq_no = 0 ");
+		sql.append("AND approle.pt2e_role_cd ='" + rolecd + "'");
+		sql.append("AND app.pt2b_login_acc NOT IN ('E','N') ");
+		sql.append("AND app.pt2b_active_cd = 'A' ");
+		sql.append("AND app.PT2B_SECONDARY_CATEGORY_ID = " + categoryId + " ");
+		sql.append("AND parent.pt2b_active_cd = 'A' ");
+		sql.append("ORDER BY parent.pt2b_app_name, app.pt2b_seq_no ");
+		Session session = urlsessionFactory.openSession();
+		List<App> list = session.createSQLQuery(sql.toString())
+				.addEntity("app", "com.aurora.quicklinksservices.beans.App")
+				.list();
+		session.flush();
+		session.close();
+		return list;
+	}
 }

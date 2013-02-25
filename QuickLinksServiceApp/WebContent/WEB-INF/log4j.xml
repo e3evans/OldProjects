@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="logfile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/aurora/logs/QuickLinksServiceApp.log" />
+		<param name="DatePattern" value="'.'yyyy-MM" />
+		<param name="MaxBackupIndex" value="15" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%p %d [%c] - %m%n" />
+		</layout>
+	</appender>
+
+	<root>
+		<level value="WARN" />
+		<appender-ref ref="logfile" />
+	</root>
+
+</log4j:configuration>
