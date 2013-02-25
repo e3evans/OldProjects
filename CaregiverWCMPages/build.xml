@@ -14,9 +14,9 @@
 
 	<!-- Set up java.class.path -->
 	<path id="project.class.path">
-		<fileset dir="./WebContent/WEB-INF/lib">
+		<!-- <fileset dir="./WebContent/WEB-INF/lib">
 			<include name="**/*.jar" />
-		</fileset>
+		</fileset> -->
 		<fileset dir="${bamboo.server.libs}">
 			<include name="**/*.jar" />
 		</fileset>
