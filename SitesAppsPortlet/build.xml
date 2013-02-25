@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE project>
-
-<project name="AuroraPoll" basedir="." default="release">
+<project name="SitesAppsPortlet" basedir="." default="release">
 	<property file="build.properties" />
 	<tstamp>
 		<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />

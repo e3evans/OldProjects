@@ -2,21 +2,10 @@
 <!DOCTYPE project>
 
 <project name="CaregiverWCMPages" basedir="." default="release">
-	<property file="user.properties" />
 	<property file="build.properties" />
 	<tstamp>
 		<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
 	</tstamp>
-	<condition property="bamboo.shared.was" value="">
-		<not>
-			<isset property="bamboo.shared.was" />
-		</not>
-	</condition>
-	<condition property="bamboo.shared.spring" value="">
-		<not>
-			<isset property="bamboo.shared.spring" />
-		</not>
-	</condition>
 	<condition property="bamboo.server.libs" value="">
 		<not>
 			<isset property="bamboo.server.libs" />
@@ -28,12 +17,6 @@
 		<!-- <fileset dir="./WebContent/WEB-INF/lib">
 			<include name="**/*.jar" />
 		</fileset> -->
-		<fileset dir="${bamboo.shared.was}">
-			<include name="**/*.jar" />
-		</fileset>
-		<fileset dir="${bamboo.shared.spring}">
-			<include name="**/*.jar" />
-		</fileset>
 		<fileset dir="${bamboo.server.libs}">
 			<include name="**/*.jar" />
 		</fileset>
@@ -125,8 +108,7 @@
 				<attribute name="Built-By" value="${bamboo.name}" />
 				<attribute name="Revision" value="${bamboo.buildKey}-${bamboo.buildNumber}" />
 				<attribute name="Build-Time" value="${TODAY}" />
-				<attribute name="Environment" value="${platform}" />
-				<section name="org/aurora/${base.package}">
+				<section name="com/aurora">
 					<attribute name="Specification-Title" value="${ant.project.name}" />
 					<attribute name="Specification-Version" value="1.0" />
 					<attribute name="Specification-Vendor" value="Aurora Health Care, Inc." />
