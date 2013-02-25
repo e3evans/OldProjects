@@ -133,7 +133,7 @@
 			<fileset dir="${build.dir}" includes="*.war" />
 		</ear>
 
-		<antcall target="build-client" />
+		<!--<antcall target="build-client" />-->
 	</target>
 
 	<target name="build-client" description="Builds a service client JAR">
