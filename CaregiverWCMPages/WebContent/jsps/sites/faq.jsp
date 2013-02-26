@@ -92,5 +92,8 @@ try {
 	         <p class="acgc_chooser">
 		       View Questions for: <select class="u188" name="u188" id="u188" onchange="this.form.submit()">
                <option value='#'>No Results</option>
+              
   
-<%}%>
+<%
+    System.out.println("Error in FAQ.jsp:"+ex.getMessage());
+}%>
