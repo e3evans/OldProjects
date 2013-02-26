@@ -3,12 +3,7 @@ package com.aurora.quicklinksservices.util;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import com.ibm.wcp.runtime.feedback.lm.util.Logger;
-
 public class QuickLinksUtility {
-
-	protected static final Logger log = Logger
-			.getLogger(QuickLinksUtility.class.getSimpleName());
 
 	public static final Integer NOTDISPLAYED = new Integer(0);
 
