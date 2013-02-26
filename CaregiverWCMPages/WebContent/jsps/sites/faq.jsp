@@ -13,7 +13,6 @@ try {
 	if (null != request.getParameter("u188")) {
 		selValue = request.getParameter("u188");
 		optionStr =(String)request.getSession().getAttribute("optionStr");
-		System.out.println("selValue:"+selValue);
 		fetch=false;
 	 } else {// TODO
 	
@@ -55,12 +54,8 @@ try {
 				DocumentId sid = iterator.nextId();
 				if ((DocumentTypes.SiteArea.toString()).equalsIgnoreCase(sid.getType().toString())) {
 					SiteArea sitearea = (SiteArea) ws.getById(sid);
-	                System.out.println("..:"+sitearea.getName());
-									
-					DocumentIdIterator siteiterator=sitearea.getAllDirectChildren();
-	                System.out.println("CHILD SITES Count::"+ siteiterator.getCount());
-	               
-					while (siteiterator.hasNext()) {
+	                DocumentIdIterator siteiterator=sitearea.getAllDirectChildren();
+	                while (siteiterator.hasNext()) {
 						DocumentId chid = siteiterator.nextId();
 					 
 						 if ((DocumentTypes.SiteArea.toString()).equalsIgnoreCase(chid.getType().toString())) {
@@ -77,7 +72,6 @@ try {
 		
 	} 
 	else{
-	 System.out.println("Getting from Session");
 	 out.write(optionStr);
 	}
 %>
