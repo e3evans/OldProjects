@@ -46,6 +46,7 @@ public class LoginViewController {
 	public static String PREF_WCM_COMPONENT = "wcm.menuComponent";
 	public static String PRED_WCM_LIB = "wcm.library";
 	public static String PREF_COOKIE_ENV = "cookie.env";
+	public static String SYS_COOKIE_ENV = "org.aurora.cookie.url";
 	public static String PARAM_BAD_SESSION = "SESSIONTIMEOUT";
 	public static String REQ_HEADER_FORWARD_IP = "X-Forwarded-For";
 	public boolean BAD_LOGIN = false;
@@ -117,7 +118,7 @@ public class LoginViewController {
 							Long.toString(ssoUser.getUserID()), loginId,
 							"ICONNECT", "EMP", ssoUser.getLastName(),
 							ssoUser.getFirstName(),
-							prefs.getValue(PREF_COOKIE_ENV, "NOT SET"),
+							System.getProperty(SYS_COOKIE_ENV, "NOT SET"),
 							hsreq.getHeader(REQ_HEADER_FORWARD_IP));
 				}
 				response.sendRedirect("/cgc/myportal/connect/home");
