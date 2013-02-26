@@ -53,16 +53,13 @@ public class UserAppController {
 
 	@ModelAttribute("appFormBean")
 	public AppFormBean getCommandObject(PortletRequest request) {
-
 		Principal user = request.getUserPrincipal();
 		PortletSession session = request.getPortletSession();
 		session.setAttribute("userId", user.toString());
-
 		String userid = user.toString();
 		AppFormBean appFormBean = new AppFormBean();
 		try {
-			appFormBean.setListMenuApp(retrieveAvailMenuApps(request, "EMP",
-					userid));
+			appFormBean.setListMenuApp(retrieveAvailMenuApps("EMP", userid));
 		} catch (AppException ae) {
 			logger.error(ae.getExceptionDesc());
 			logger.error(ae.getExceptionCode());
@@ -71,7 +68,6 @@ public class UserAppController {
 		} catch (Exception e) {
 			logger.error("Exception in getCommandObject", e);
 		}
-
 		return appFormBean;
 	}
 
@@ -103,25 +99,17 @@ public class UserAppController {
 		try {
 			List<UserApplication> listUserApp = appService
 					.listAllUserAppByUserId(userid);
-
 			for (MenuApp menuapp : appFormBean.getListMenuApp()) {
-
 				Application bean = menuapp.getApp();
 				String appId = bean.getAppId().trim();
 				String seqNo = bean.getSeqNo().trim();
 				if (appId != null && seqNo != null) {
-
 					if (bean.isChecked()) {
-
 						updateduserapp.add(bean);
-
 					}
-
 				}
 			}
-
 			for (UserApplication userApp2 : listUserApp) {
-
 				boolean isInActive = true;
 				boolean toggleActive = false;
 				for (Application app2 : updateduserapp) {
@@ -131,18 +119,14 @@ public class UserAppController {
 						if (!userApp2.isActive()) {
 							toggleActive = true;
 						}
-
 					}
 				}
-
 				if (isInActive) {
 					userApp2.setActiveCd("I");
-
 					appService.updateUserApp(userApp2, userid);
 				}
 				if (toggleActive) {
 					userApp2.setActiveCd("A");
-
 					appService.updateUserApp(userApp2, userid);
 				}
 			}
@@ -150,25 +134,19 @@ public class UserAppController {
 			for (Application app2 : updateduserapp) {
 				boolean isCreate = true;
 				for (UserApplication userApp2 : listUserApp) {
-
 					if (((userApp2.getAppId() + userApp2.getSeqNo())
 							.equals(app2.getAppId() + app2.getSeqNo()))) {
-
 						// if( userApp2.getFlagDefault().equals("true")){
 						isCreate = false;
 						// }
-
 					}
 				}
-
 				if (isCreate) {
 					String appId = app2.getAppId().trim();
 					String seqNo = app2.getSeqNo().trim();
-
 					appService.createUserApp(userid, appId, seqNo);
 				}
 			}
-
 		} catch (AppException ae) {
 			logger.error(ae.getExceptionDesc());
 			logger.error(ae.getExceptionCode());
@@ -179,23 +157,20 @@ public class UserAppController {
 			logger.error("Exception in updateApp");
 			response.setRenderParameter("error", "");
 		}
-
 		// urlService.updateUrl(listUrlBean);
 		response.setRenderParameter("action", "list");
 		sessionStatus.setComplete();
 
 	}
 
-	public List<MenuApp> retrieveAvailMenuApps(PortletRequest request,
-			String roleCd, String userid) throws Exception {
+	public List<MenuApp> retrieveAvailMenuApps(String roleCd, String userid)
+			throws Exception {
 		List<MenuApp> menuAppsList = new ArrayList<MenuApp>();
-
 		List<Application> availAppsList = appService.listApplication();
 		List<UserApplication> userAppsList;
 		Iterator<Application> i$;
 		if ((availAppsList != null) && (!availAppsList.isEmpty())) {
 			userAppsList = appService.listUserAppByUserId(userid);
-
 			for (i$ = availAppsList.iterator(); i$.hasNext();) {
 				Object anAvailAppsList = i$.next();
 				Application app = (Application) anAvailAppsList;
@@ -212,16 +187,12 @@ public class UserAppController {
 							break;
 						}
 					}
-
 				if ((!app.getLoggedInAccess().equals("R"))
 						|| (menuApp.getUserApp() != null)) {
-
 					menuAppsList.add(menuApp);
-
 				}
 			}
 		}
-
 		return menuAppsList;
 	}
 
