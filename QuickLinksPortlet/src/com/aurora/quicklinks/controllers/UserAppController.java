@@ -50,33 +50,31 @@ public class UserAppController {
 	public AppService getAppService() {
 		return appService;
 	}
-	
-
 
 	@ModelAttribute("appFormBean")
 	public AppFormBean getCommandObject(PortletRequest request) {
-	
-		
+
 		Principal user = request.getUserPrincipal();
 		PortletSession session = request.getPortletSession();
 		session.setAttribute("userId", user.toString());
-		
-		String userid= user.toString();
+
+		String userid = user.toString();
 		AppFormBean appFormBean = new AppFormBean();
 		try {
-			
-			appFormBean.setListMenuApp(retrieveAvailMenuApps("EMP", userid));
-		
+			appFormBean.setListMenuApp(retrieveAvailMenuApps(request, "EMP",
+					userid));
 		} catch (AppException ae) {
 			logger.error(ae.getExceptionDesc());
 			logger.error(ae.getExceptionCode());
 			logger.error(ae.getExceptionType());
 			logger.error(ae.getExceptionMessage());
+		} catch (Exception e) {
+			logger.error("Exception in getCommandObject", e);
 		}
-		
+
 		return appFormBean;
 	}
-	
+
 	@RenderMapping
 	public String showUserApplication(RenderRequest request) {
 		String errorMsg = request.getParameter("errorMsg");
@@ -85,7 +83,6 @@ public class UserAppController {
 		}
 		return "userapp";
 	}
-
 
 	@ResourceMapping(value = "quicklinksEditList")
 	public ModelAndView showQuickLinkForm(ResourceResponse response) {
@@ -96,17 +93,17 @@ public class UserAppController {
 
 	@ActionMapping(params = "action=updateUrl")
 	public void updateApp(@ModelAttribute AppFormBean appFormBean,
-			BindingResult bindingResult, ActionRequest request ,ActionResponse response, SessionStatus sessionStatus
-			) {
-		PortletSession session =request.getPortletSession();
+			BindingResult bindingResult, ActionRequest request,
+			ActionResponse response, SessionStatus sessionStatus) {
+		PortletSession session = request.getPortletSession();
 		String userid = (String) session.getAttribute("userId");
-		//UserApplication userApp = null;
+		// UserApplication userApp = null;
 		request.getPortletSession().setAttribute("flag", "true");
 		List<Application> updateduserapp = new ArrayList<Application>();
 		try {
 			List<UserApplication> listUserApp = appService
 					.listAllUserAppByUserId(userid);
-			
+
 			for (MenuApp menuapp : appFormBean.getListMenuApp()) {
 
 				Application bean = menuapp.getApp();
@@ -117,14 +114,14 @@ public class UserAppController {
 					if (bean.isChecked()) {
 
 						updateduserapp.add(bean);
-   
+
 					}
 
 				}
 			}
 
 			for (UserApplication userApp2 : listUserApp) {
-				
+
 				boolean isInActive = true;
 				boolean toggleActive = false;
 				for (Application app2 : updateduserapp) {
@@ -137,7 +134,7 @@ public class UserAppController {
 
 					}
 				}
-				
+
 				if (isInActive) {
 					userApp2.setActiveCd("I");
 
@@ -145,22 +142,21 @@ public class UserAppController {
 				}
 				if (toggleActive) {
 					userApp2.setActiveCd("A");
-					
 
 					appService.updateUserApp(userApp2, userid);
 				}
 			}
-			//List<Application> createList = new ArrayList<Application>();
+			// List<Application> createList = new ArrayList<Application>();
 			for (Application app2 : updateduserapp) {
 				boolean isCreate = true;
 				for (UserApplication userApp2 : listUserApp) {
-					
-					if (((userApp2.getAppId() + userApp2.getSeqNo()).equals(app2
-							.getAppId() + app2.getSeqNo()))) {
-						
-						//if( userApp2.getFlagDefault().equals("true")){
+
+					if (((userApp2.getAppId() + userApp2.getSeqNo())
+							.equals(app2.getAppId() + app2.getSeqNo()))) {
+
+						// if( userApp2.getFlagDefault().equals("true")){
 						isCreate = false;
-						//}
+						// }
 
 					}
 				}
@@ -168,7 +164,7 @@ public class UserAppController {
 				if (isCreate) {
 					String appId = app2.getAppId().trim();
 					String seqNo = app2.getSeqNo().trim();
-					
+
 					appService.createUserApp(userid, appId, seqNo);
 				}
 			}
@@ -190,9 +186,8 @@ public class UserAppController {
 
 	}
 
-	
-	public List<MenuApp> retrieveAvailMenuApps(String roleCd, String userid)
-			throws AppException {
+	public List<MenuApp> retrieveAvailMenuApps(PortletRequest request,
+			String roleCd, String userid) throws Exception {
 		List<MenuApp> menuAppsList = new ArrayList<MenuApp>();
 
 		List<Application> availAppsList = appService.listApplication();
@@ -207,7 +202,8 @@ public class UserAppController {
 				MenuApp menuApp = new MenuApp();
 				menuApp.setApp(app);
 				if (userAppsList != null)
-					for (Iterator<UserApplication> i = userAppsList.iterator(); i.hasNext();) {
+					for (Iterator<UserApplication> i = userAppsList.iterator(); i
+							.hasNext();) {
 						Object anUserAppsList = i.next();
 						UserApplication userApp = (UserApplication) anUserAppsList;
 						if ((userApp.getAppId().equals(app.getAppId()))
@@ -229,29 +225,31 @@ public class UserAppController {
 		return menuAppsList;
 	}
 
-	public void enrollAutoRegSubApps(String userid, String appId)
-			throws AppException {
-
-		List<Application> appList = appService.retrieveAppMenuAutoList(appId);
-		Iterator<Application> i$;
-		if ((appList != null) && (!appList.isEmpty()))
-			for (i$ = appList.iterator(); i$.hasNext();) {
-				Object anAppList = i$.next();
-				Application app = (Application) anAppList;
-				UserApplication userApp = appService.retrieveUserApp(userid,
-						app.getAppId(), app.getSeqNo());
-
-				if (userApp == null) {
-					appService.createUserApp(userid, app.getAppId(),
-							app.getSeqNo());
-
-				}
-				if (!userApp.isActive()) {
-					userApp.setActiveCd("A");
-					userApp.setDispSeq((Integer.parseInt(userApp.getSeqNo())));
-				// userAppService.updateUserApp(userApp);
-				}
-			}
-	}
-
+	// TODO: is this method used???
+	// public void enrollAutoRegSubApps(PortletRequest request, String userid,
+	// String appId) throws Exception {
+	//
+	// List<Application> appList = appService.retrieveAppMenuAutoList(
+	// getBaseUrl(request), appId);
+	// Iterator<Application> i$;
+	// if ((appList != null) && (!appList.isEmpty()))
+	// for (i$ = appList.iterator(); i$.hasNext();) {
+	// Object anAppList = i$.next();
+	// Application app = (Application) anAppList;
+	// UserApplication userApp = appService.retrieveUserApp(
+	// getBaseUrl(request), userid, app.getAppId(),
+	// app.getSeqNo());
+	//
+	// if (userApp == null) {
+	// appService.createUserApp(getBaseUrl(request), userid,
+	// app.getAppId(), app.getSeqNo());
+	//
+	// }
+	// if (!userApp.isActive()) {
+	// userApp.setActiveCd("A");
+	// userApp.setDispSeq((Integer.parseInt(userApp.getSeqNo())));
+	// // userAppService.updateUserApp(userApp);
+	// }
+	// }
+	// }
 }

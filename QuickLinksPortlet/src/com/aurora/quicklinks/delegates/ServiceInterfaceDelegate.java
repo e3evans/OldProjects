@@ -60,28 +60,26 @@ public class ServiceInterfaceDelegate {
 	 * @throws IOException
 	 */
 	public String processGetRestRequest(String requestPath) throws AppException {
-
-		String requestUrl = requestPath;
+		String urlPath = System.getProperty("org.aurora.cookie.url") + requestPath; 
 		String responseText = QuickLinksConstants.SERVICE_ERROR_MESSAGE;
 		HttpEntity<String> requestEntity = new HttpEntity<String>(entityHeaders);
 		try {
-			URI requestURI = new URI(requestUrl);
-			logger.info("web service call start with request path : "
-					+ requestUrl);
+			URI requestURI = new URI(urlPath);
+			logger.warn("web service call start with request path : "
+					+ urlPath);
 			ResponseEntity<String> result = restTemplate.exchange(requestURI,
 					HttpMethod.GET, requestEntity, String.class);
-			logger.info("web service call end with request path : "
-					+ requestUrl);
+			logger.warn("web service call end with request path : "
+					+ urlPath);
 			responseText = result.getBody();
 		} catch (Exception e) {
 			AppException ae = new AppException();
 			ae.setExceptionType("Service Call");
 			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in Rest Service Call !!!!"
-					+ requestUrl);
-			logger.error("Exception in processGetRestRequest !!!  " + e);
+			ae.setExceptionMessage("Excetion in Rest Service Call - "
+					+ urlPath);
+			logger.error("Exception in processGetRestRequest" + e);
 			throw ae;
-			// logger.error("ProcessRequestCache Exception", e);
 		}
 		return responseText;
 	}
