@@ -10,6 +10,7 @@
 			<portlet-mode>VIEW</portlet-mode>
 			<portlet-mode>EDIT</portlet-mode>
 			<portlet-mode>HELP</portlet-mode>
+			<portlet-mode>edit_defaults</portlet-mode>
 		</supports>
 		<supported-locale>en</supported-locale>
 		<resource-bundle>com.aurora.quicklinks.nl.QuickLinksPortletResource</resource-bundle>
@@ -19,5 +20,8 @@
 			<keywords>QuickLinksPortlet</keywords>
 		</portlet-info>
 	</portlet>
+	<custom-portlet-mode>
+		<portlet-mode>edit_defaults</portlet-mode>
+	</custom-portlet-mode>
 	<default-namespace>http://QuickLinksPortlet/</default-namespace>
 </portlet-app>

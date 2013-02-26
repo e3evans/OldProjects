@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
+import javax.portlet.PortletPreferences;
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletSession;
 import javax.portlet.RenderRequest;
@@ -37,7 +38,8 @@ import com.aurora.quicklinks.services.AppService;
 @RequestMapping(value = "VIEW")
 @SessionAttributes(types = AppFormBean.class)
 public class UserAppController {
-	private Logger logger = Logger.getLogger(UserAppController.class);
+
+	protected final Logger logger = Logger.getLogger(UserAppController.class);
 
 	@Autowired
 	@Qualifier("appService")
@@ -161,6 +163,57 @@ public class UserAppController {
 		response.setRenderParameter("action", "list");
 		sessionStatus.setComplete();
 
+	}
+
+	@ActionMapping(params = "action=updateFeaturedApp")
+	public void updateFeaturedApp(ActionRequest request,
+			ActionResponse response, SessionStatus sessionStatus) {
+		PortletSession session = request.getPortletSession();
+		String userid = (String) session.getAttribute("userId");
+		request.getPortletSession().setAttribute("flag", "true");
+		try {
+			List<UserApplication> listUserApp = appService
+					.listAllUserAppByUserId(userid);
+			String appId = null;
+			String seqNo = null;
+			PortletPreferences pf = request.getPreferences();
+			appId = pf.getValue("appID", "Not Set").trim();
+			seqNo = pf.getValue("seqNO", "Not Set").trim();
+			boolean toggleActive = false;
+			boolean isCreate = true;
+			if (appId == "Not Set" && seqNo == "Not Set") {
+				isCreate = false;
+			}
+			for (UserApplication userApp2 : listUserApp) {
+				if ((userApp2.getAppId().trim() + userApp2.getSeqNo().trim())
+						.equals(appId + seqNo)) {
+					isCreate = false;
+					if (!userApp2.isActive()) {
+						toggleActive = true;
+					}
+				}
+				if (toggleActive) {
+					toggleActive = false;
+					userApp2.setActiveCd("A");
+					appService.updateUserApp(userApp2, userid);
+				}
+			}
+			if (isCreate) {
+				appService.createUserApp(userid, appId, seqNo);
+			}
+
+		} catch (AppException ae) {
+			logger.error(ae.getExceptionDesc());
+			logger.error(ae.getExceptionCode());
+			logger.error(ae.getExceptionType());
+			logger.error(ae.getExceptionMessage());
+			response.setRenderParameter("errorMsg", ae.getExceptionMessage());
+		} catch (Exception ex) {
+			logger.error("Exception in updateApp", ex);
+			response.setRenderParameter("error", "");
+		}
+		response.setRenderParameter("action", "list");
+		sessionStatus.setComplete();
 	}
 
 	public List<MenuApp> retrieveAvailMenuApps(String roleCd, String userid)
