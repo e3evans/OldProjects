@@ -109,7 +109,10 @@
 			<div class="acgc_app_callout_box">Featured Site:</div>
 			<div class="acgc_app_title_box">
 				<%=portletPreferences.getValue("appName", "Not set")%>
-				<br /> <a title="App Category" href=""><%=portletPreferences.getValue("appCategory", "Not set")%></a>
+				<br />
+				<!-- <a title="App Category" href=""> -->
+				<%=portletPreferences.getValue("appCategory", "Not set")%>
+				<!-- </a> -->
 			</div>
 			<div class="acgc_app_text_box"><%= portletPreferences.getValue("appDesc", "Not set") %></div>
 			<div class="acgc_app_bttn_box">
