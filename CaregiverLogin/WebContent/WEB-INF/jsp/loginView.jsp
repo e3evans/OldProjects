@@ -49,11 +49,13 @@
 	</c:if>
 	<div class="acgc_large_form_field">
 		<label>Username</label>
-		<form:input path="userName" cssClass="acgc_title_swap" title="Enter username"/>
+		<label for="userName" class="infield">Enter Username:</label>
+		<form:input path="userName" cssClass="infield" title="Enter username"/>
 	</div>
 	<div class="acgc_large_form_field">
 		<label>Password</label>
-		<form:password path="password" cssClass="acgc_title_swap acgc_this_was_password" title="Enter password"/>
+		<label for="password" class="infield">Enter Password:</label>
+		<form:password path="password" cssClass="infield" title="Enter password"/>
 	</div>
 	<div class="acgc_login_utils">
 		<ul>
@@ -107,10 +109,11 @@
  http://docs.jquery.com/License
 
 */
-(function(d){d.InFieldLabels=function(e,b,f){var a=this;a.$label=d(e);a.label=e;a.$field=d(b);a.field=b;a.$label.data("InFieldLabels",a);a.showing=true;a.init=function(){a.options=d.extend({},d.InFieldLabels.defaultOptions,f);if(a.$field.val()!==""){a.$label.hide();a.showing=false}a.$field.focus(function(){a.fadeOnFocus()}).blur(function(){a.checkForEmpty(true)}).bind("keydown.infieldlabel",function(c){a.hideOnChange(c)}).bind("paste",function(){a.setOpacity(0)}).change(function(){a.checkForEmpty()}).bind("onPropertyChange",
-function(){a.checkForEmpty()})};a.fadeOnFocus=function(){a.showing&&a.setOpacity(a.options.fadeOpacity)};a.setOpacity=function(c){a.$label.stop().animate({opacity:c},a.options.fadeDuration);a.showing=c>0};a.checkForEmpty=function(c){if(a.$field.val()===""){a.prepForShow();a.setOpacity(c?1:a.options.fadeOpacity)}else a.setOpacity(0)};a.prepForShow=function(){if(!a.showing){a.$label.css({opacity:0}).show();a.$field.bind("keydown.infieldlabel",function(c){a.hideOnChange(c)})}};a.hideOnChange=function(c){if(!(c.keyCode===
-16||c.keyCode===9)){if(a.showing){a.$label.hide();a.showing=false}a.$field.unbind("keydown.infieldlabel")}};a.init()};d.InFieldLabels.defaultOptions={fadeOpacity:0.5,fadeDuration:300};d.fn.inFieldLabels=function(e){return this.each(function(){var b=d(this).attr("for");if(b){b=d("input#"+b+"[type='text'],input#"+b+"[type='search'],input#"+b+"[type='tel'],input#"+b+"[type='url'],input#"+b+"[type='email'],input#"+b+"[type='password'],textarea#"+b);b.length!==0&&new d.InFieldLabels(this,b[0],e)}})}})(jQuery);
-
+(function($){$.InFieldLabels=function(label,field,options){var base=this;base.$label=$(label);base.label=label;base.$field=$(field);base.field=field;base.$label.data("InFieldLabels",base);base.showing=true;base.init=function(){base.options=$.extend({},$.InFieldLabels.defaultOptions,options);setTimeout(function(){if(base.$field.val()!==""){base.$label.hide();base.showing=false;}},200);base.$field.focus(function(){base.fadeOnFocus();}).blur(function(){base.checkForEmpty(true);}).bind('keydown.infieldlabel',function(e){base.hideOnChange(e);}).bind('paste',function(e){base.setOpacity(0.0);}).change(function(e){base.checkForEmpty();}).bind('onPropertyChange',function(){base.checkForEmpty();}).bind('keyup.infieldlabel',function(){base.checkForEmpty()});setInterval(function(){if(base.$field.val()!=""){base.$label.hide();base.showing=false;};},100);};base.fadeOnFocus=function(){if(base.showing){base.setOpacity(base.options.fadeOpacity);}};base.setOpacity=function(opacity){base.$label.stop().animate({opacity:opacity},base.options.fadeDuration);base.showing=(opacity>0.0);};base.checkForEmpty=function(blur){if(base.$field.val()===""){base.prepForShow();base.setOpacity(blur?1.0:base.options.fadeOpacity);}else{base.setOpacity(0.0);}};base.prepForShow=function(e){if(!base.showing){base.$label.css({opacity:0.0}).show();base.$field.bind('keydown.infieldlabel',function(e){base.hideOnChange(e);});}};base.hideOnChange=function(e){if((e.keyCode===16)||(e.keyCode===9)){return;}
+if(base.showing){base.$label.hide();base.showing=false;}
+base.$field.unbind('keydown.infieldlabel');};base.init();};$.InFieldLabels.defaultOptions={fadeOpacity:0.5,fadeDuration:300};$.fn.inFieldLabels=function(options){return this.each(function(){var for_attr=$(this).attr('for'),$field;if(!for_attr){return;}
+$field=$("input#"+for_attr+"[type='text'],"+"input#"+for_attr+"[type='search'],"+"input#"+for_attr+"[type='tel'],"+"input#"+for_attr+"[type='url'],"+"input#"+for_attr+"[type='email'],"+"input#"+for_attr+"[type='password'],"+"textarea#"+for_attr);if($field.length===0){return;}
+(new $.InFieldLabels(this,$field[0],options));});};}(jQuery));
 
 $("label.infield").inFieldLabels({
 	fadeOpacity:  0, 
