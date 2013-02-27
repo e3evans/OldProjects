@@ -40,14 +40,17 @@ PortletRequest pResquest = (PortletRequest)request;
 
 
 <script type="text/javascript">
-
+		var firstAlpha = true;
+		
 var userid='<%=pResquest.getPortletSession().getAttribute("userId")%>';
 
 	
-	function urlFormat(url){
+	function sitesAppUrlFormat(url){
+	
+	
 	    document.getElementById("sitesapps_form_url").value=url;
 		document.getElementById("sitesapps_form_userid").value=userid;
-		document.sitesapps_form.submit();	
+		document.sitesappsform.submit();	
 	}
 
 
@@ -61,12 +64,17 @@ function sitesAppsAlphabeticalSort(){
         }).success(function(data) {
    
 		  $("#acgc_sites_apps_alpha_list").html(data);
- 		$('#acgc_sites_apps_alpha_list .acgc_content_inner_box_list').easyListSplitter({ 
+ 		  $('#acgc_sites_apps_alpha_list .acgc_content_inner_box_list').easyListSplitter({ 
 			colNumber: 4
-		});		
+		  });
+		  
+		  if(firstAlpha == true) {
+		    firstAlpha = false;
+		    $('#acgc_sites_apps_alpha_jump').clone().appendTo('#acgc_recordsorter .acgc_sort_by').show();
+		  }
  
         }).error(function() {
-			console.log("error in making ajax call");
+			//console.log("error in making ajax call");
     	});
     }
 
@@ -80,6 +88,7 @@ function sitesAppsAlphabeticalSort(){
 		$categoryList = $('#acgc_sites_apps_category_list');
 		$alphaList    = $('#acgc_sites_apps_alpha_list');
 		$controls     = $('.acgc_sort_by_holder a');
+		var searchlabel       = $('.acgc_top_content_box .acgc_searchinput').val();
 
 		// Now set up the page by hiding the alpha lists
 		$alphaList.hide();
@@ -87,6 +96,7 @@ function sitesAppsAlphabeticalSort(){
 		$('.acgc_content_inner_box_list').easyListSplitter({ 
 			colNumber: 4
 		});
+		
 
 		// When you click one of the controls, show/hide the appropriate section
 		$controls.click(function(e) {
@@ -99,20 +109,74 @@ function sitesAppsAlphabeticalSort(){
 			$('.acgc_sort_by_focus .text').html($(this).find('label').html());
 			
 			
-
 			// Show/hide the jump links
-			$jumps.hide();
+			$('.acgc_jump_to_section').hide();
 			$(jump).fadeIn();
 
+			
 			// Show/hide the lists at the bottom of the page
 			$lists.hide();
 			$(list).fadeIn();
+
+			$('.acgc_sites_apps_list .acgc_content_box').show();
+			$('.acgc_sites_apps_list .acgc_content_inner_box_list').show().find('li').show();
+			$('.acgc_top_content_box .acgc_searchinput').val(searchlabel);
 		});
+
+		// Do a "Quick Search" when entering in content in the search box
+		$('.acgc_top_content_box .acgc_searchinput').live('keyup', function(){
+
+			//get temp string
+			var tempString  = $(this).val();
+			var match_regex = new RegExp(tempString, 'gi');
+			var $searchlists      = $('.acgc_sites_apps_list .acgc_content_inner_box_list');
+			var $searchlistitems  = $('.acgc_sites_apps_list .acgc_content_inner_box_list li');
+			var $searchboxes      = $('.acgc_sites_apps_list .acgc_content_box');
+
+			//keep track of links found
+			var links_found = false;
+
+			//go through link canvas and show items that match what's typed in. Hide items that don't
+			$searchlistitems.each(function(){
+				if( $(this).text().match(match_regex) ){
+					// If you find a search result
+					$(this).show().parent('ul').show().parents('.acgc_content_box').show();
+					links_found = true;
+				}else{
+					// if you don't find a search result
+					$(this).hide();
+				}
+			});
+
+			// Go through $lists and check if empty or not
+			$searchlists.each(function(){
+				if( $(this).children(':visible').length == 0 ) {
+					$(this).hide();
+				}
+			});
+
+			// Go through sections and check if empty or not
+			$searchboxes.each(function(){
+				if( $(this).find('.acgc_content_inner_box_list').children(':visible').length == 0 ) {
+					$(this).hide();
+				}
+			});
+
+			//remove old holder .. if it's there
+			$('.acgc_picker_no_results_holder').remove();
+
+			//handle none found
+			if(links_found === false){
+				$('.acgc_sites_apps_list').append('<div class="acgc_picker_no_results_holder" id="acgc_picker_no_results_holder" style="background-color: #fff;padding: 25px;margin: 10px 10px 0ds;">Your search for "' + tempString + '" did not return results.</div>');
+			}
+
+		});
+
 	});
 
 </script>
 
-<form name="sitesapps_form" action="/QuickLinksServiceApp/QuickLinksRedirect/redirect" method="get" target="_blank">
+<form name="sitesappsform" id="sitesappsform" action="/QuickLinksServiceApp/QuickLinksRedirect/redirect" method="get" target="_blank">
 	<input id="sitesapps_form_url" type="hidden" name="url"   value="">
 	<input id="sitesapps_form_userid" type="hidden" name="userId" value="" >
 
@@ -126,7 +190,6 @@ function sitesAppsAlphabeticalSort(){
 		<div class="acgc_searchblock acgc_radius_5">
 			<form action="" method="get" class="acgc_relative">
 				<input type="text" name="q" value="" title="Search Sites &amp; Apps..." class="acgc_searchinput" />
-				<input type="submit" name="go" value="go" class="acgc_searchsubmit acgc_radius_3" />
 			</form>
 		</div>
 	</div>
@@ -161,35 +224,6 @@ function sitesAppsAlphabeticalSort(){
 			<a href="#strategic-plan" title="Strategic Plan">Strategic Plan</a>
 		</div>
 
-		 <div id="acgc_sites_apps_alpha_jump" class="acgc_jump_to_section" style="display: none;">
-			<strong>Jump To: </strong>&nbsp; 
-			<a href="#alpha-a" title="A">A</a>&nbsp;&nbsp; 
-			<a href="#alpha-b" title="B">B</a>&nbsp;&nbsp; 
-			<a href="#alpha-c" title="C">C</a>&nbsp;&nbsp; 
-			<a href="#alpha-d" title="D">D</a>&nbsp;&nbsp; 
-			<a href="#alpha-e" title="E">E</a>&nbsp;&nbsp; 
-			<a href="#alpha-f" title="F">F</a>&nbsp;&nbsp; 
-			<a href="#alpha-g" title="G">G</a>&nbsp;&nbsp; 
-			<a href="#alpha-h" title="H">H</a>&nbsp;&nbsp; 
-			<a href="#alpha-i" title="I">I</a>&nbsp;&nbsp; 
-			<a href="#alpha-j" title="J">J</a>&nbsp;&nbsp; 
-			<a href="#alpha-k" title="J">K</a>&nbsp;&nbsp; 
-			<a href="#alpha-l" title="L">L</a>&nbsp;&nbsp; 
-			<a href="#alpha-m" title="M">M</a>&nbsp;&nbsp; 
-			<a href="#alpha-n" title="N">N</a>&nbsp;&nbsp; 
-			<a href="#alpha-o" title="O">O</a>&nbsp;&nbsp; 
-			<a href="#alpha-p" title="P">P</a>&nbsp;&nbsp; 
-			<span title="Q">Q</span>&nbsp;&nbsp; 
-			<a href="#alpha-r" title="R">R</a>&nbsp;&nbsp; 
-			<a href="#alpha-s" title="S">S</a>&nbsp;&nbsp; 
-			<a href="#alpha-t" title="S">T</a>&nbsp;&nbsp;
-			<a href="#alpha-u" title="U">U</a>&nbsp;&nbsp; 
-			<a href="#alpha-v" title="V">V</a>&nbsp;&nbsp; 
-			<a href="#alpha-w" title="W">W</a>&nbsp;&nbsp; 
-			<span title="X">X</span>&nbsp;&nbsp; 
-			<span title="Y">Y</span>&nbsp;&nbsp; 
-			<span title="Z">Z</span>&nbsp;&nbsp; 
-		</div> 
 
 	</div>
 </div>
@@ -209,9 +243,8 @@ function sitesAppsAlphabeticalSort(){
 				<ul class="acgc_content_inner_box_list">
 				<c:forEach items="${mostpopular.popularapplist}" var="application" varStatus="row">
 				 <li>
-					<a href="javascript:urlFormat('${application.appURL}')"; title="${application.appName}">
-						${application.appName}
-						<!-- <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout"> -->
+					<a href="javascript:sitesAppUrlFormat('${application.appURL}')"; title="${application.appName}">
+						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
 					</a>
 				</li>
 				</c:forEach>
@@ -219,7 +252,7 @@ function sitesAppsAlphabeticalSort(){
 			</div>
 
 		<span class="acgc_legend">
-			<img src="/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout" /> External Website
+			<img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout" /> External Website
 		</span>
 		<div class="acgc_spacer_10"><!-- spacer --></div>
 	</div>
@@ -246,16 +279,15 @@ function sitesAppsAlphabeticalSort(){
 				
 				<c:forEach items="${clinical.appList}" var="application" varStatus="row">
 				 <li>
-					<a href="javascript:urlFormat('${application.appURL}')";  title="${application.appName}">
-						${application.appName}
-						<!-- <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout"> -->
+					<a href="javascript:sitesAppUrlFormat('${application.appURL}')";  title="${application.appName}">
+						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
 					</a>
 				</li>
 				</c:forEach>
 			</ul>
 		</div>
 		<span class="acgc_legend">
-			<img src="/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout" /> External Website
+			<img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout" /> External Website
 		</span>
 		<div class="acgc_spacer_10"><!-- spacer --></div>
 
@@ -281,16 +313,15 @@ function sitesAppsAlphabeticalSort(){
 			<ul class="acgc_content_inner_box_list">
 				<c:forEach items="${Bussiness.appList}" var="application" varStatus="row">
 				 <li>
-					<a href="javascript:urlFormat('${application.appURL}')"; title="${application.appName}" >
-						${application.appName}
-						<!-- <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout"> -->
+					<a href="javascript:sitesAppUrlFormat('${application.appURL}')"; title="${application.appName}" >
+						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
 					</a>
 				</li>
 				</c:forEach>
 			</ul>
 		</div>
 		<span class="acgc_legend">
-			<img src="/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout" /> External Website
+			<img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout" /> External Website
 		</span>
 		<div class="acgc_spacer_10"><!-- spacer --></div>
 	</div>
@@ -315,16 +346,15 @@ function sitesAppsAlphabeticalSort(){
 			<ul class="acgc_content_inner_box_list">
 				<c:forEach items="${locations.appList}" var="application" varStatus="row">
 				 <li>
-					<a href="javascript:urlFormat('${application.appURL}')"; title="${application.appName}">
-						${application.appName}
-						<!-- <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout"> -->
+					<a href="javascript:sitesAppUrlFormat('${application.appURL}')"; title="${application.appName}">
+						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
 					</a>
 				</li>
 				</c:forEach>
 			</ul>
 		</div>
 		<span class="acgc_legend">
-			<img src="/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout" /> External Website
+			<img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout" /> External Website
 		</span>
 		<div class="acgc_spacer_10"><!-- spacer --></div>
 	</div>
@@ -349,16 +379,15 @@ function sitesAppsAlphabeticalSort(){
 			<ul class="acgc_content_inner_box_list">
 				<c:forEach items="${strategicplan.appList}" var="application" varStatus="row">
 				 <li>
-					<a href="javascript:urlFormat('${application.appURL}')"; title="${application.appName}">
-						${application.appName}
-						<!-- <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout"> -->
+					<a href="javascript:sitesAppUrlFormat('${application.appURL}')"; title="${application.appName}">
+						${application.appName} <img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout">
 					</a>
 				</li>
 				</c:forEach>
 			</ul>
 		</div>															
 		<span class="acgc_legend">
-			<img src="/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout" /> External Website
+			<img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout" /> External Website
 		</span>
 		<div class="acgc_spacer_10"><!-- spacer --></div>
 	</div>

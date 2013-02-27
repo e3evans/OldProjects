@@ -2,6 +2,7 @@ package com.aurora.sitesapps.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -192,7 +193,8 @@ public class CategorySortController {
 				}
 
 			}
-
+			mav.addObject("alphabateskeys", new ArrayList(map.keySet()));
+			mav.addObject("alphabates", Arrays.asList(alphabates));
 			mav.addObject("availAppsMap", map);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
