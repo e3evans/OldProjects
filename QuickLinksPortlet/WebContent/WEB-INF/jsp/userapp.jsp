@@ -67,10 +67,6 @@
 	</ul>
 </div>
 
-<div class="acgc_spacer_10 acgc_bg_white">
-	<!-- spacer -->
-</div>
-
 <div class="acgc_ui_overlay_mast">
 	<div class="acgc_ui_overlay_base">
 		<div class="acgc_ui_overlay_canvas acgc_striped_bg">
