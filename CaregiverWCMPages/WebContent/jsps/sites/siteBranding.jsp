@@ -15,14 +15,14 @@
 	String mediaRedirect="";
 	String siteName,pageUniqueName ="";
 	String pth=null;
+	if(null!=request.getParameter("sa"))
+		siteName=request.getParameter("sa");
+	if(null!=request.getParameter("un"))
+		pageUniqueName=request.getParameter("un");
 	
-	siteName=request.getParameter("sa");
-	pageUniqueName=request.getParameter("un");
-	
-	if(null!=request.getParameter("pth")){
+	if(null!=request.getParameter("pth"))
 	   pth=request.getParameter("pth");
-     }
-    
+         
 	if((null!=siteName)&& (null!=pageUniqueName)){
 	  logo="true";
 	  pageContext.setAttribute("pageUniqueName",pageUniqueName);
@@ -33,7 +33,7 @@
 	
 	
 	
-	if(null==pth){ //execute this block only when branding is required
+	if(("true".equalsIgnoreCase(logo)||(null==pth)){ //execute this block only when branding is required
 		try{ 
 		  //Creating a workspace 
 			Workspace ws = (Workspace) pageContext.getAttribute(Workspace.WCM_WORKSPACE_KEY); //this is cached call, so improves performance
@@ -50,8 +50,7 @@
 	      		 rc =ws.createRenderingContext(request,response,new HashMap());
     		 }
 		    
-		    
-		    //the below links NEVER change, hence they need not be maintained in props files.
+		     //the below links NEVER change, hence they need not be maintained in props files.
 		    
 		    if(rc.getPath().contains("/News/"))
 		      mediaRedirect="/CaregiverContentLibrary_en/Caregiver/News/"+siteName+"/";
@@ -135,7 +134,7 @@
 	             	$('#sortChangeForm').append(insertElementsStr); // for better performance- doing a bulk insert instead of each one.
 	           }
 	           
-	           $("a.allmedia").each(function() {
+	           $("a.allmedia, .acgc_pagination_block a").each(function() {
 			   		var _href = $(this).attr("href"); 
 			   		var _JSmediaredirect ="<%=pth%>";
 			   		if(_JSmediaredirect.length >0){
@@ -149,12 +148,8 @@
 			   		var _href = $(this).attr("href"); 
 			   		var _hrefNew='?uri=nm:oid:${nodeID}';
 			   		$(this).attr("href", _hrefNew);
-			   		
-			   		
-				});
-            
-		  	 
-		   
+			   	});
+				
 		});
 		
 </script>
