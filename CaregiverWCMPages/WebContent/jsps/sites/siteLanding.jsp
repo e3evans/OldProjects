@@ -86,14 +86,14 @@ try{
    		$(this).attr("href", _href + qs);
 	});
 	
-	 $("a.allmedianews").each(function() {
+	 $("a.allmedianews, a.sitelandingnews").each(function() {
 		   		var _href = $(this).attr("href"); 
 		   		if(_Jsite.length >0){
 		   			$(this).attr("href", _href + '&pth=/CaregiverContentLibrary_en/Caregiver/News/'+ _Jsite);
      	   		}
 		   		
 		});
-	$("a.allmediavideos").each(function() {
+	$("a.allmediavideos, a.sitelandingvideos").each(function() {
 		   		var _href = $(this).attr("href"); 
 		   		if(_Jsite.length >0){
 		   			$(this).attr("href", _href + '&pth=/CaregiverContentLibrary_en/Caregiver/Videos/'+ _Jsite);
@@ -101,14 +101,14 @@ try{
 		   		
 		});
 		
-	$("a.allmediaevents").each(function() {
+	$("a.allmediaevents, a.sitelandingevents").each(function() {
 		   		var _href = $(this).attr("href"); 
 		   		if(_Jsite.length >0){
 		   			$(this).attr("href", _href + '&pth=/CaregiverContentLibrary_en/Caregiver/Events/'+ _Jsite);
      	   		}
 		   		
 		});
-	$("a.allmediadocuments").each(function() {
+	$("a.allmediadocuments, a.sitelandingdocuments").each(function() {
 		   		var _href = $(this).attr("href"); 
 		   		if(_Jsite.length >0){
 		   			$(this).attr("href", _href + '&pth=/CaregiverContentLibrary_en/Caregiver/Documents/'+ _Jsite);
@@ -117,37 +117,7 @@ try{
 		});
 	
 	
-	// provision to add any customizations later to individual media links, hence they are different from above links.
 	
-	 $("a.sitelandingnews").each(function() {
-		   		var _href = $(this).attr("href"); 
-		   		if(_Jsite.length >0){
-		   			$(this).attr("href", _href + '&pth=/CaregiverContentLibrary_en/Caregiver/News/'+ _Jsite);
-     	   		}
-		   		
-		});
-	$("a.sitelandingvideos").each(function() {
-		   		var _href = $(this).attr("href"); 
-		   		if(_Jsite.length >0){
-		   			$(this).attr("href", _href + '&pth=/CaregiverContentLibrary_en/Caregiver/Videos/'+ _Jsite);
-     	   		}
-		   		
-		});
-		
-	$("a.sitelandingevents").each(function() {
-		   		var _href = $(this).attr("href"); 
-		   		if(_Jsite.length >0){
-		   			$(this).attr("href",_href + '&pth=/CaregiverContentLibrary_en/Caregiver/Events/'+ _Jsite);
-     	   		}
-		   		
-		});
-	$("a.sitelandingdocuments").each(function() {
-		   		var _href = $(this).attr("href"); 
-		   		if(_Jsite.length >0){
-		   			$(this).attr("href", _href + '&pth=/CaregiverContentLibrary_en/Caregiver/Documents/'+ _Jsite);
-     	   		}
-		   		
-		});
    
 });
 
