@@ -49,11 +49,13 @@
 	</c:if>
 	<div class="acgc_large_form_field">
 		<label>Username</label>
-		<form:input path="userName" cssClass="acgc_title_swap" title="Enter username"/>
+		<label for="userName" class="infield">Enter Username:</label>
+		<form:input path="userName" cssClass="infield" title="Enter username"/>
 	</div>
 	<div class="acgc_large_form_field">
 		<label>Password</label>
-		<form:password path="password" cssClass="acgc_title_swap acgc_this_was_password" title="Enter password"/>
+		<label for="password" class="infield">Enter Password:</label>
+		<form:password path="password" cssClass="infield" title="Enter password"/>
 	</div>
 	<div class="acgc_login_utils">
 		<ul>
