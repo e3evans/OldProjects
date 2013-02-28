@@ -8,7 +8,7 @@
 <%@page import="javax.portlet.PortletRequest"%>
 <portlet:defineObjects/>
 
-<c:forEach items="${appFormBean.listAppCategory}" var="appCategory">
+<c:forEach items="${appFormBean.appCategoryList}" var="appCategory">
 <c:choose>
 <c:when test="${fn:containsIgnoreCase(appCategory.categoryName,'Most Popular') }">
 <c:set var="mostpopular" value="${appCategory}"/>

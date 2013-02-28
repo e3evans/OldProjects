@@ -7,9 +7,7 @@ import org.apache.log4j.Logger;
 import org.aurora.quicklinks.beans.Application;
 import org.aurora.quicklinks.beans.UserApplication;
 import org.aurora.quicklinks.delegates.ServiceInterfaceDelegate;
-import org.aurora.quicklinks.exceptions.AppException;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,12 +28,9 @@ public class AppServiceImpl implements AppService {
 	protected String APP_AUTO_LIST = SERVICE_URL + "appautolist/";
 	protected String AVAILABLE_APP_LIST = SERVICE_URL + "results";
 
-	public List<UserApplication> listUserAppByUserId(String userid)
-			throws AppException {
-		List<UserApplication> appList = null;
-		UserApplication app = null;
+	public List<UserApplication> listUserAppByUserId(String userid) {
+		List<UserApplication> appList = new ArrayList<UserApplication>();
 		try {
-			appList = new ArrayList<UserApplication>();
 			String requestPath = USER_APP_LIST + userid;
 			logger.info("webservice call starts with request path "
 					+ requestPath);
@@ -44,7 +39,7 @@ public class AppServiceImpl implements AppService {
 			logger.info("webservice call ends with request path " + requestPath);
 			JSONArray jsonArray = userAppJSON.getJSONArray("userAppList");
 			for (int i = 0; i < jsonArray.length(); i++) {
-				app = new UserApplication();
+				UserApplication app = new UserApplication();
 				JSONObject jsonobj = jsonArray.getJSONObject(i);
 				app.setUserid(jsonobj.get("userId").toString().trim());
 				app.setAppName(jsonobj.get("appName").toString().trim());
@@ -58,53 +53,27 @@ public class AppServiceImpl implements AppService {
 				}
 				appList.add(app);
 			}
-
-		} catch (JSONException je) {
-			AppException ae = new AppException();
-			ae.setExceptionType("Service End Point");
-			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in JSON PArsing Service Implmentation - "
-					+ je);
-			logger.error("Exception in listUserAppByUserId", je);
-			throw ae;
-
-		} catch (AppException ae) {
-			throw ae;
-
 		} catch (Exception e) {
-			AppException ae = new AppException();
-			ae.setExceptionType("Service End Point");
-			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in Service Implmentation - " + e);
 			logger.error("Exception in listUserAppByUserId", e);
-			throw ae;
-
 		}
-
 		return appList;
-
 	}
 
 	/**
 	 * This method gets all active and inactive user saved quick links.
 	 */
-	public List<UserApplication> listAllUserAppByUserId(String userid)
-			throws AppException {
-		List<UserApplication> appList = null;
-		UserApplication app = null;
+	public List<UserApplication> listAllUserAppByUserId(String userid) {
+		List<UserApplication> appList = new ArrayList<UserApplication>();
 		try {
-			appList = new ArrayList<UserApplication>();
 			String requestPath = USER_APP_LIST + userid;
-
 			logger.info("webservice call starts with request path "
 					+ requestPath);
 			JSONObject userAppJSON = new JSONObject(
 					serviceInterfaceDelegate.processGetRestRequest(requestPath));
 			logger.info("webservice call ends with request path " + requestPath);
-
 			JSONArray jsonArray = userAppJSON.getJSONArray("userAppList");
 			for (int i = 0; i < jsonArray.length(); i++) {
-				app = new UserApplication();
+				UserApplication app = new UserApplication();
 				JSONObject jsonobj = jsonArray.getJSONObject(i);
 				app.setUserid(jsonobj.get("userId").toString().trim());
 				app.setAppName(jsonobj.get("appName").toString().trim());
@@ -118,61 +87,35 @@ public class AppServiceImpl implements AppService {
 				}
 				appList.add(app);
 			}
-
-		} catch (JSONException je) {
-			AppException ae = new AppException();
-			ae.setExceptionType("Service End Point");
-			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in JSON PArsing Service Implmentation - "
-					+ je);
-			logger.error("Exception in listUserAppByUserId", je);
-			throw ae;
-
-		} catch (AppException ae) {
-			throw ae;
-
 		} catch (Exception e) {
-			AppException ae = new AppException();
-			ae.setExceptionType("Service End Point");
-			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in Service Implmentation - " + e);
 			logger.error("Exception in listUserAppByUserId", e);
-			throw ae;
-
 		}
-
 		return appList;
-
 	}
 
 	/**
 	 * This method gets all available quick links.
 	 */
-	public List<Application> listApplication() throws AppException {
-		List<Application> appList = null;
-		Application app = null;
+	public List<Application> listApplication() {
+		List<Application> appList = new ArrayList<Application>();
 		try {
-			appList = new ArrayList<Application>();
 			String requestPath = AVAILABLE_APP_LIST;
 			logger.info("webservice call starts with request path "
 					+ requestPath);
 			JSONObject allAvailAppJson = new JSONObject(
 					serviceInterfaceDelegate.processGetRestRequest(requestPath));
-
 			logger.info("webservice call ends starts with request path "
 					+ requestPath);
 			JSONArray jsonArray = allAvailAppJson
 					.getJSONArray("applicationList");
 			for (int i = 0; i < jsonArray.length(); i++) {
-				app = new Application();
+				Application app = new Application();
 				JSONObject jsonobj = jsonArray.getJSONObject(i);
 
 				String description = jsonobj.get("appDesc").toString();
 				if (description.length() > 50) {
 					description = description.substring(0, 50) + "...";
-
 				}
-
 				app.setSeqNo(jsonobj.getJSONObject("appKey").get("seqNo")
 						.toString());
 				app.setAppId(jsonobj.getJSONObject("appKey").get("appId")
@@ -184,195 +127,112 @@ public class AppServiceImpl implements AppService {
 						.trim());
 				appList.add(app);
 			}
-
-		} catch (JSONException je) {
-			AppException ae = new AppException();
-			ae.setExceptionType("Service End Point");
-			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in JSON PArsing Service Implmentation - "
-					+ je);
-			logger.error("Exception in listUserAppByUserId", je);
-			throw ae;
-
-		} catch (AppException ae) {
-			throw ae;
-
 		} catch (Exception e) {
-			AppException ae = new AppException();
-			ae.setExceptionType("Service End Point");
-			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in Service Implmentation - " + e);
 			logger.error("Exception in listApplication", e);
-			throw ae;
-
 		}
-
 		return appList;
-
 	}
 
 	/**
 	 * Retrieve user app (sub apps)
 	 */
-	public UserApplication retrieveUserApp(String userid, String appId,
-			String seqNo) throws AppException {
-
-		logger.info("getting userapp *");
-
-		UserApplication app = null;
-		try {
-			String requestPath = RETRIEVE_USER_APP + appId + "/" + seqNo + "/"
-					+ userid;
-			logger.info("webservice call starts with request path "
-					+ requestPath);
-			JSONObject jsonobj = new JSONObject(
-					serviceInterfaceDelegate.processGetRestRequest(requestPath));
-			logger.info("webservice call ends with request path " + requestPath);
-			if (jsonobj.get("appId") != null
-					&& !jsonobj.get("appId").toString().trim()
-							.equalsIgnoreCase("null")) {
-				app = new UserApplication();
-				app.setUserid(jsonobj.get("userId").toString().trim());
-				app.setAppName(jsonobj.get("appName").toString().trim());
-				app.setAppId((jsonobj.get("appId").toString()).trim());
-				if (jsonobj.get("activeCd") != null) {
-					app.setActiveCd(jsonobj.get("activeCd").toString());
-					app.setSeqNo(jsonobj.get("seqNo").toString());
-				}
-
-			}
-
-		} catch (JSONException je) {
-			AppException ae = new AppException();
-			ae.setExceptionType("Service End Point");
-			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in JSON PArsing Service Implmentation - "
-					+ je);
-			logger.error("Exception in listUserAppByUserId", je);
-			throw ae;
-
-		} catch (AppException ae) {
-			throw ae;
-
-		} catch (Exception e) {
-			AppException ae = new AppException();
-			ae.setExceptionType("Service End Point");
-			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in Service Implmentation - " + e);
-			logger.error("Exception in retrieveUserApp", e);
-			throw ae;
-
-		}
-
-		return app;
-
-	}
+	// public UserApplication retrieveUserApp(String userid, String appId,
+	// String seqNo) {
+	// try {
+	// String requestPath = RETRIEVE_USER_APP + appId + "/" + seqNo + "/"
+	// + userid;
+	// logger.info("webservice call starts with request path "
+	// + requestPath);
+	// JSONObject jsonobj = new JSONObject(
+	// serviceInterfaceDelegate.processGetRestRequest(requestPath));
+	// logger.info("webservice call ends with request path " + requestPath);
+	// if (jsonobj.get("appId") != null
+	// && !jsonobj.get("appId").toString().trim()
+	// .equalsIgnoreCase("null")) {
+	// UserApplication app = new UserApplication();
+	// app.setUserid(jsonobj.get("userId").toString().trim());
+	// app.setAppName(jsonobj.get("appName").toString().trim());
+	// app.setAppId((jsonobj.get("appId").toString()).trim());
+	// if (jsonobj.get("activeCd") != null) {
+	// app.setActiveCd(jsonobj.get("activeCd").toString());
+	// app.setSeqNo(jsonobj.get("seqNo").toString());
+	// }
+	// }
+	// return app;
+	// } catch (Exception e) {
+	// logger.error("Exception in retrieveUserApp", e);
+	// }
+	// return null;
+	// }
 
 	/**
 	 * Retrieving userapp
 	 */
 
 	public UserApplication createUserApp(String userid, String appId,
-			String seqNo) throws AppException {
-		UserApplication app = null;
+			String seqNo) {
 		try {
 			String requestPath = CREATE_USER_APP + appId + "/" + seqNo + "/"
 					+ userid;
-
 			logger.info("webservice call starts with request path "
 					+ requestPath);
 			JSONObject jsonobj = new JSONObject(
 					serviceInterfaceDelegate.processGetRestRequest(requestPath));
 			logger.info("webservice call ends with request path " + requestPath);
-
+			UserApplication app = new UserApplication();
 			if (jsonobj.get("appId") != null
 					&& !jsonobj.get("appId").toString().trim()
 							.equalsIgnoreCase("null")) {
-				app = new UserApplication();
 				app.setUserid(jsonobj.get("userId").toString().trim());
 				app.setAppName(jsonobj.get("appName").toString().trim());
 				app.setAppId((jsonobj.get("appId").toString()).trim());
 				app.setActiveCd(jsonobj.get("activeCd").toString());
 				app.setSeqNo(jsonobj.get("seqNo").toString());
-
 			}
-
-		} catch (AppException ae) {
-			throw ae;
-
+			return app;
 		} catch (Exception e) {
-			AppException ae = new AppException();
-			ae.setExceptionType("Service End Point");
-			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in Service Implmentation - " + e);
 			logger.error("Exception in createUserApp", e);
-			throw ae;
-
 		}
-
-		return app;
-
+		return null;
 	}
 
-	public List<Application> retrieveAppMenuAutoList(String appId)
-			throws AppException {
-		List<Application> appList = null;
-		Application app = null;
-		try {
-			appList = new ArrayList<Application>();
-			String requestPath = APP_AUTO_LIST + appId;
-			logger.info("webservice call starts with request path "
-					+ requestPath);
-			JSONObject appAutoListJson = new JSONObject(
-					serviceInterfaceDelegate.processGetRestRequest(requestPath));
-			logger.info("webservice call starts with request path "
-					+ requestPath);
-			JSONArray jsonArray = appAutoListJson
-					.getJSONArray("applicationList");
-			for (int i = 0; i < jsonArray.length(); i++) {
-				app = new Application();
-				JSONObject jsonobj = jsonArray.getJSONObject(i);
-				app.setSeqNo(jsonobj.getJSONObject("appKey").get("seqNo")
-						.toString());
-				app.setAppId(jsonobj.getJSONObject("appKey").get("appId")
-						.toString());
-				app.setAppDesc(jsonobj.get("appDesc").toString().trim());
-				app.setAppName(jsonobj.get("appName").toString().trim());
-				app.setAppURL((jsonobj.get("appURL").toString()).trim());
-				app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString())
-						.trim());
-				appList.add(app);
-			}
-
-		} catch (JSONException je) {
-			AppException ae = new AppException();
-			ae.setExceptionType("Service End Point");
-			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in JSON PArsing Service Implmentation - "
-					+ je);
-			logger.error("Exception in listUserAppByUserId", je);
-			throw ae;
-
-		} catch (AppException ae) {
-			throw ae;
-
-		} catch (Exception e) {
-			AppException ae = new AppException();
-			ae.setExceptionType("Service End Point");
-			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in Service Implmentation - " + e);
-			logger.error("Exception in createUserApp", e);
-			throw ae;
-
-		}
-
-		return appList;
-
-	}
+	// public List<Application> retrieveAppMenuAutoList(String appId) {
+	// List<Application> appList = null;
+	// Application app = null;
+	// try {
+	// appList = new ArrayList<Application>();
+	// String requestPath = APP_AUTO_LIST + appId;
+	// logger.info("webservice call starts with request path "
+	// + requestPath);
+	// JSONObject appAutoListJson = new JSONObject(
+	// serviceInterfaceDelegate.processGetRestRequest(requestPath));
+	// logger.info("webservice call starts with request path "
+	// + requestPath);
+	// JSONArray jsonArray = appAutoListJson
+	// .getJSONArray("applicationList");
+	// for (int i = 0; i < jsonArray.length(); i++) {
+	// app = new Application();
+	// JSONObject jsonobj = jsonArray.getJSONObject(i);
+	// app.setSeqNo(jsonobj.getJSONObject("appKey").get("seqNo")
+	// .toString());
+	// app.setAppId(jsonobj.getJSONObject("appKey").get("appId")
+	// .toString());
+	// app.setAppDesc(jsonobj.get("appDesc").toString().trim());
+	// app.setAppName(jsonobj.get("appName").toString().trim());
+	// app.setAppURL((jsonobj.get("appURL").toString()).trim());
+	// app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString())
+	// .trim());
+	// appList.add(app);
+	// }
+	// } catch (Exception e) {
+	// logger.error("Exception in retrieveAppMenuAutoList", e);
+	// }
+	// return appList;
+	//
+	// }
 
 	// For user app update
-	public void updateUserApp(UserApplication userApp, String userId)
-			throws AppException {
+	public void updateUserApp(UserApplication userApp, String userId) {
 		try {
 			String requestPath = UPDATE_USER_APP + userApp.getAppId().trim()
 					+ "/" + userApp.getSeqNo().trim() + "/" + userId + "/"
@@ -382,17 +242,8 @@ public class AppServiceImpl implements AppService {
 			serviceInterfaceDelegate.processGetRestRequest(requestPath);
 			logger.info("webservice call starts with request path "
 					+ requestPath);
-		} catch (AppException ae) {
-			throw ae;
-
 		} catch (Exception e) {
-			AppException ae = new AppException();
-			ae.setExceptionType("Service End Point");
-			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in Service Implmentation - " + e);
-			logger.error("Exception in createUserApp", e);
-			throw ae;
-
+			logger.error("Exception in updateUserApp", e);
 		}
 	}
 }

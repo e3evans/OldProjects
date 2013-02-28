@@ -19,7 +19,6 @@ import org.apache.log4j.Logger;
 import org.aurora.sitesapps.beans.AppCategory;
 import org.aurora.sitesapps.beans.AppFormBean;
 import org.aurora.sitesapps.beans.Application;
-import org.aurora.sitesapps.exceptions.AppException;
 import org.aurora.sitesapps.services.AppService;
 import org.aurora.sitesapps.utils.AppComparator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,28 +41,20 @@ public class CategorySortController {
 	@Qualifier("appService")
 	private AppService appService;
 
-	public void setAppService(AppService appService) {
-		this.appService = appService;
-	}
-
-	public AppService getAppService() {
-		return appService;
-	}
-
 	@ModelAttribute("appFormBean")
 	public AppFormBean getCommandObject(PortletRequest request) {
-		Principal user = request.getUserPrincipal();
-		PortletSession session = request.getPortletSession();
-		session.setAttribute("userId", user.toString());
 		AppFormBean appFormBean = new AppFormBean();
-		List<Application> appsByCategory = null;
-		List<Application> popularApps = null;
-		List<AppCategory> appCategories;
-		List<AppCategory> appCategoryList;
-		List<List<Application>> listAllApplication = new LinkedList<List<Application>>();
-		AppCategory applicationCategory = null;
-		AppComparator appComparator = new AppComparator();
 		try {
+			Principal user = request.getUserPrincipal();
+			PortletSession session = request.getPortletSession();
+			session.setAttribute("userId", user.toString());
+			List<Application> appsByCategory = null;
+			List<Application> popularApps = null;
+			List<AppCategory> appCategories;
+			List<AppCategory> appCategoryList;
+			List<List<Application>> listAllApplication = new LinkedList<List<Application>>();
+			AppCategory applicationCategory = null;
+			AppComparator appComparator = new AppComparator();
 			appCategoryList = new ArrayList<AppCategory>();
 			appCategories = appService.getAppCategories();
 			for (AppCategory appCategory : appCategories) {
@@ -97,20 +88,21 @@ public class CategorySortController {
 				popularApps = null;
 			}
 			appFormBean.setAppCategoryList(appCategoryList);
-		} catch (AppException ae) {
-			logger.error(ae.getExceptionDesc());
-			logger.error(ae.getExceptionCode());
-			logger.error(ae.getExceptionType());
-			logger.error(ae.getExceptionMessage());
+		} catch (Exception e) {
+			logger.error("Exception in getCommandObject", e);
 		}
 		return appFormBean;
 	}
 
 	@RenderMapping
 	public String showUserApplication(RenderRequest request) {
-		String errorMsg = request.getParameter("errorMsg");
-		if (null != errorMsg) {
-			request.setAttribute("errorMsg", errorMsg);
+		try {
+			String errorMsg = request.getParameter("errorMsg");
+			if (null != errorMsg) {
+				request.setAttribute("errorMsg", errorMsg);
+			}
+		} catch (Exception e) {
+			logger.error("Exception in showUserApplication", e);
 		}
 		return "sitesapps";
 	}
@@ -119,11 +111,11 @@ public class CategorySortController {
 	@ResourceMapping(value = "sitesappsalphabeticalsort")
 	public ModelAndView showQuickLinkForm(ResourceRequest request,
 			ResourceResponse response) {
-		PortletSession session = request.getPortletSession();
-		ModelAndView mav = new ModelAndView();
-		int i = 0;
-		int j = 0;
+		ModelAndView mav = new ModelAndView("sitesappsalphabeticalsort");
 		try {
+			PortletSession session = request.getPortletSession();
+			int i = 0;
+			int j = 0;
 			String[] alphabates = new String[] { "A", "B", "C", "D", "E", "F",
 					"G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
 					"S", "T", "U", "V", "W", "X", "Y", "Z" };
@@ -177,7 +169,6 @@ public class CategorySortController {
 		} catch (Exception e) {
 			logger.error("Exception in showQuickLinkForm", e);
 		}
-		mav.setViewName("sitesappsalphabeticalsort");
 		return mav;
 	}
 }

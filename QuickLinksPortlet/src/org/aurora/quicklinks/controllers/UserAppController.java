@@ -18,7 +18,6 @@ import org.aurora.quicklinks.beans.AppFormBean;
 import org.aurora.quicklinks.beans.Application;
 import org.aurora.quicklinks.beans.MenuApp;
 import org.aurora.quicklinks.beans.UserApplication;
-import org.aurora.quicklinks.exceptions.AppException;
 import org.aurora.quicklinks.services.AppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -44,28 +43,15 @@ public class UserAppController {
 	@Qualifier("appService")
 	private AppService appService;
 
-	public void setAppService(AppService appService) {
-		this.appService = appService;
-	}
-
-	public AppService getAppService() {
-		return appService;
-	}
-
 	@ModelAttribute("appFormBean")
 	public AppFormBean getCommandObject(PortletRequest request) {
-		Principal user = request.getUserPrincipal();
-		PortletSession session = request.getPortletSession();
-		session.setAttribute("userId", user.toString());
-		String userid = user.toString();
 		AppFormBean appFormBean = new AppFormBean();
 		try {
-			appFormBean.setListMenuApp(retrieveAvailMenuApps("EMP", userid));
-		} catch (AppException ae) {
-			logger.error(ae.getExceptionDesc());
-			logger.error(ae.getExceptionCode());
-			logger.error(ae.getExceptionType());
-			logger.error(ae.getExceptionMessage());
+			Principal user = request.getUserPrincipal();
+			PortletSession session = request.getPortletSession();
+			session.setAttribute("userId", user.toString());
+			String userid = user.toString();
+			appFormBean.setListMenuApp(retrieveAvailMenuApps(userid));
 		} catch (Exception e) {
 			logger.error("Exception in getCommandObject", e);
 		}
@@ -74,30 +60,31 @@ public class UserAppController {
 
 	@RenderMapping
 	public String showUserApplication(RenderRequest request) {
-		String errorMsg = request.getParameter("errorMsg");
-		if (null != errorMsg) {
-			request.setAttribute("errorMsg", errorMsg);
+		try {
+			String errorMsg = request.getParameter("errorMsg");
+			if (null != errorMsg) {
+				request.setAttribute("errorMsg", errorMsg);
+			}
+		} catch (Exception e) {
+			logger.error("Exception in showUserApplication", e);
 		}
 		return "userapp";
 	}
 
 	@ResourceMapping(value = "quicklinksEditList")
 	public ModelAndView showQuickLinkForm(ResourceResponse response) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("appedit");
-		return mav;
+		return new ModelAndView("appedit");
 	}
 
 	@ActionMapping(params = "action=updateUrl")
 	public void updateApp(@ModelAttribute AppFormBean appFormBean,
 			BindingResult bindingResult, ActionRequest request,
 			ActionResponse response, SessionStatus sessionStatus) {
-		PortletSession session = request.getPortletSession();
-		String userid = (String) session.getAttribute("userId");
-		// UserApplication userApp = null;
-		request.getPortletSession().setAttribute("flag", "true");
-		List<Application> updateduserapp = new ArrayList<Application>();
 		try {
+			PortletSession session = request.getPortletSession();
+			String userid = (String) session.getAttribute("userId");
+			request.getPortletSession().setAttribute("flag", "true");
+			List<Application> updateduserapp = new ArrayList<Application>();
 			List<UserApplication> listUserApp = appService
 					.listAllUserAppByUserId(userid);
 			for (MenuApp menuapp : appFormBean.getListMenuApp()) {
@@ -131,7 +118,6 @@ public class UserAppController {
 					appService.updateUserApp(userApp2, userid);
 				}
 			}
-			// List<Application> createList = new ArrayList<Application>();
 			for (Application app2 : updateduserapp) {
 				boolean isCreate = true;
 				for (UserApplication userApp2 : listUserApp) {
@@ -148,29 +134,21 @@ public class UserAppController {
 					appService.createUserApp(userid, appId, seqNo);
 				}
 			}
-		} catch (AppException ae) {
-			logger.error(ae.getExceptionDesc());
-			logger.error(ae.getExceptionCode());
-			logger.error(ae.getExceptionType());
-			logger.error(ae.getExceptionMessage());
-			response.setRenderParameter("errorMsg", ae.getExceptionMessage());
-		} catch (Exception ex) {
-			logger.error("Exception in updateApp");
+		} catch (Exception e) {
+			logger.error("Exception in updateApp", e);
 			response.setRenderParameter("error", "");
 		}
-		// urlService.updateUrl(listUrlBean);
 		response.setRenderParameter("action", "list");
 		sessionStatus.setComplete();
-
 	}
 
 	@ActionMapping(params = "action=updateFeaturedApp")
 	public void updateFeaturedApp(ActionRequest request,
 			ActionResponse response, SessionStatus sessionStatus) {
-		PortletSession session = request.getPortletSession();
-		String userid = (String) session.getAttribute("userId");
-		request.getPortletSession().setAttribute("flag", "true");
 		try {
+			PortletSession session = request.getPortletSession();
+			String userid = (String) session.getAttribute("userId");
+			request.getPortletSession().setAttribute("flag", "true");
 			List<UserApplication> listUserApp = appService
 					.listAllUserAppByUserId(userid);
 			String appId = null;
@@ -200,22 +178,15 @@ public class UserAppController {
 			if (isCreate) {
 				appService.createUserApp(userid, appId, seqNo);
 			}
-
-		} catch (AppException ae) {
-			logger.error(ae.getExceptionDesc());
-			logger.error(ae.getExceptionCode());
-			logger.error(ae.getExceptionType());
-			logger.error(ae.getExceptionMessage());
-			response.setRenderParameter("errorMsg", ae.getExceptionMessage());
-		} catch (Exception ex) {
-			logger.error("Exception in updateApp", ex);
+		} catch (Exception e) {
+			logger.error("Exception in updateApp", e);
 			response.setRenderParameter("error", "");
 		}
 		response.setRenderParameter("action", "list");
 		sessionStatus.setComplete();
 	}
 
-	public List<MenuApp> retrieveAvailMenuApps(String roleCd, String userid)
+	public List<MenuApp> retrieveAvailMenuApps(String userid)
 			throws Exception {
 		List<MenuApp> menuAppsList = new ArrayList<MenuApp>();
 		List<Application> availAppsList = appService.listApplication();
@@ -258,7 +229,8 @@ public class UserAppController {
 	// for (i$ = appList.iterator(); i$.hasNext();) {
 	// Object anAppList = i$.next();
 	// Application app = (Application) anAppList;
-	// UserApplication userApp = appService.retrieveUserApp(userid, app.getAppId(),
+	// UserApplication userApp = appService.retrieveUserApp(userid,
+	// app.getAppId(),
 	// app.getSeqNo());
 	//
 	// if (userApp == null) {

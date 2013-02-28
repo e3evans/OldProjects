@@ -1,10 +1,7 @@
 package org.aurora.quicklinks.controllers;
 
-import java.io.IOException;
-
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
-import javax.portlet.PortletException;
 import javax.portlet.PortletPreferences;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
@@ -29,16 +26,20 @@ public class EditDefaultsController {
 			RenderResponse response,
 			@ModelAttribute("FeaturedAppForm") FeaturedAppForm featuredAppForm,
 			Model model) {
-		PortletPreferences pf = request.getPreferences();
-		if (pf != null) {
-			featuredAppForm.setAppCategory(pf
-					.getValue("appCategory", "Not Set"));
-			featuredAppForm.setAppDesc(pf.getValue("appDesc", "Not Set"));
-			featuredAppForm.setAppId(pf.getValue("appID", "Not Set"));
-			featuredAppForm.setAppName(pf.getValue("appName", "Not Set"));
-			featuredAppForm.setSeqNo(pf.getValue("seqNO", "Not Set"));
+		try {
+			PortletPreferences pf = request.getPreferences();
+			if (pf != null) {
+				featuredAppForm.setAppCategory(pf.getValue("appCategory",
+						"Not Set"));
+				featuredAppForm.setAppDesc(pf.getValue("appDesc", "Not Set"));
+				featuredAppForm.setAppId(pf.getValue("appID", "Not Set"));
+				featuredAppForm.setAppName(pf.getValue("appName", "Not Set"));
+				featuredAppForm.setSeqNo(pf.getValue("seqNO", "Not Set"));
+			}
+			model.addAttribute("FeaturedAppForm", featuredAppForm);
+		} catch (Exception e) {
+			logger.error("Exception in defaultEditView", e);
 		}
-		model.addAttribute("FeaturedAppForm", featuredAppForm);
 		return "featuredapp";
 	}
 
@@ -54,9 +55,7 @@ public class EditDefaultsController {
 			pf.setValue("seqNO", featuredAppForm.getSeqNo());
 			pf.setValue("appCategory", featuredAppForm.getAppCategory());
 			pf.store();
-		} catch (IOException e) {
-			logger.error("Exception in savePrefs", e);
-		} catch (PortletException e) {
+		} catch (Exception e) {
 			logger.error("Exception in savePrefs", e);
 		}
 		model.addAttribute("Success", "Succesfully saved the preferences");

@@ -25,14 +25,18 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 	@Autowired
 	private QuickLinksService quickLinksService;
 
+	private final String ICONNECT_ROLE = "EMP";
+
 	// TODO: @GET with params is a security issue, ajax calls to this endpoint
-	// can be hacked with any params to get back information
+	// can be hacked with any params to get back information, this should change
+	// if we return sensitive data
 
 	@GET
 	@Path("/results")
 	public ApplicationResponse getAppList() {
 		ApplicationResponse appResponse = new ApplicationResponse();
-		List<App> list = quickLinksService.retrieveAvailAppListByRole("EMP");
+		List<App> list = quickLinksService
+				.retrieveAvailAppListByRole(ICONNECT_ROLE);
 		appResponse.setApplicationList(list);
 		return appResponse;
 	}

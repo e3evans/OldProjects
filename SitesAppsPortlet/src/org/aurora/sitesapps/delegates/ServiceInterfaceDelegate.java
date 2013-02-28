@@ -7,7 +7,6 @@ import javax.annotation.PostConstruct;
 
 import org.apache.commons.httpclient.HttpException;
 import org.apache.log4j.Logger;
-import org.aurora.sitesapps.exceptions.AppException;
 import org.aurora.sitesapps.utils.SitesAppsConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -19,9 +18,6 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * This class contains web service calling function and return JSONObject
- * 
- * 
- * 
  */
 @Service
 public class ServiceInterfaceDelegate {
@@ -58,26 +54,17 @@ public class ServiceInterfaceDelegate {
 	 * @throws HttpException
 	 * @throws IOException
 	 */
-	public String processGetRestRequest(String requestPath) throws AppException {
+	public String processGetRestRequest(String requestPath) throws Exception {
 		String urlPath = System.getProperty("org.aurora.cookie.url")
 				+ requestPath;
 		String responseText = SitesAppsConstants.SERVICE_ERROR_MESSAGE;
 		HttpEntity<String> requestEntity = new HttpEntity<String>(entityHeaders);
-		try {
-			URI requestURI = new URI(urlPath);
-			logger.warn("web service call start with request path : " + urlPath);
-			ResponseEntity<String> result = restTemplate.exchange(requestURI,
-					HttpMethod.GET, requestEntity, String.class);
-			logger.warn("web service call end with request path : " + urlPath);
-			responseText = result.getBody();
-		} catch (Exception e) {
-			AppException ae = new AppException();
-			ae.setExceptionType("Service Call");
-			ae.setExceptionCode("QLEXception 001");
-			ae.setExceptionMessage("Excetion in Rest Service Call - " + urlPath);
-			logger.error("Exception in processGetRestRequest" + e);
-			throw ae;
-		}
+		URI requestURI = new URI(urlPath);
+		logger.info("web service call start with request path : " + urlPath);
+		ResponseEntity<String> result = restTemplate.exchange(requestURI,
+				HttpMethod.GET, requestEntity, String.class);
+		logger.info("web service call end with request path : " + urlPath);
+		responseText = result.getBody();
 		return responseText;
 	}
 
