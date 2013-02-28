@@ -26,12 +26,12 @@
 
 		<property name="annotatedClasses">
 			<list>
-				<value>com.aurora.quicklinksservices.beans.AppKey</value>
-				<value>com.aurora.quicklinksservices.beans.App</value>
-				<value>com.aurora.quicklinksservices.beans.User</value>
-				<value>com.aurora.quicklinksservices.beans.UserApp</value>
-				<value>com.aurora.quicklinksservices.beans.UserAppKey</value>
-				<value>com.aurora.quicklinksservices.beans.AppCategory</value>
+				<value>org.aurora.quicklinksservices.beans.AppKey</value>
+				<value>org.aurora.quicklinksservices.beans.App</value>
+				<value>org.aurora.quicklinksservices.beans.User</value>
+				<value>org.aurora.quicklinksservices.beans.UserApp</value>
+				<value>org.aurora.quicklinksservices.beans.UserAppKey</value>
+				<value>org.aurora.quicklinksservices.beans.AppCategory</value>
 			</list>
 		</property>
 
@@ -46,12 +46,8 @@
 			</value>
 		</property>
 	</bean>
-
-
+	
 	<context:annotation-config />
-	<context:component-scan base-package="com.aurora.quicklinksservices.beans" />
-	<context:component-scan base-package="com.aurora.quicklinksservices.daos" />
-	<context:component-scan base-package="com.aurora.quicklinksservices.services" />
-	<context:component-scan base-package="com.aurora.quicklinksservices.rest" />
+	<context:component-scan base-package="org.aurora.quicklinksservices" />
 
 </beans>

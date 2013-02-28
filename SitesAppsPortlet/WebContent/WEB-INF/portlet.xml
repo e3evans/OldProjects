@@ -15,7 +15,7 @@
 			<portlet-mode>view</portlet-mode>
 		</supports>
 		<supported-locale>en</supported-locale>
-		<resource-bundle>com.aurora.sitesapps.nl.SitesAppsPortletResource</resource-bundle>
+		<resource-bundle>org.aurora.sitesapps.nl.SitesAppsPortletResource</resource-bundle>
 		<portlet-info>
 			<title>SitesAppsPortlet</title>
 			<short-title>SitesAppsPortlet</short-title>

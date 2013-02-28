@@ -8,8 +8,8 @@
 	<context:annotation-config/>
 		
 	<!-- Controllers -->
-	<context:component-scan base-package="com.aurora.sitesapps.controller"/>
-	<context:component-scan base-package="com.aurora.sitesapps.services"></context:component-scan>
+	<context:component-scan base-package="org.aurora.sitesapps.controllers"/>
+	<context:component-scan base-package="org.aurora.sitesapps.services"></context:component-scan>
 	
 	<!-- Handler Mappings0 -->
 	<bean class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>

@@ -8,7 +8,7 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
-				<value>com.aurora.quicklinks.nl.QuickLinksPortletResource</value>
+				<value>org.aurora.quicklinks.nl.QuickLinksPortletResource</value>
 			</list>
 		</property>
 	</bean>
@@ -36,10 +36,6 @@
 	</bean>
 
 	<context:annotation-config />
-	<context:component-scan base-package="com.aurora.quicklinks.beans" />
-	<context:component-scan base-package="com.aurora.quicklinks.delegates" />
-	<context:component-scan base-package="com.aurora.quicklinks.services" />
-	<context:component-scan base-package="com.aurora.quicklinks.controllers" />
-	<context:component-scan base-package="com.aurora.quicklinks.rest" />
+	<context:component-scan base-package="org.aurora.quicklinks" />
 
 </beans>

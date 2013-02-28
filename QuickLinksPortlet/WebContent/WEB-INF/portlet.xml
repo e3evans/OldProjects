@@ -13,7 +13,7 @@
 			<portlet-mode>edit_defaults</portlet-mode>
 		</supports>
 		<supported-locale>en</supported-locale>
-		<resource-bundle>com.aurora.quicklinks.nl.QuickLinksPortletResource</resource-bundle>
+		<resource-bundle>org.aurora.quicklinks.nl.QuickLinksPortletResource</resource-bundle>
 		<portlet-info>
 			<title>QuickLinksPortlet</title>
 			<short-title>QuickLinksPortlet</short-title>

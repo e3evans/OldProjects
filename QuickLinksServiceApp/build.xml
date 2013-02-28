@@ -2,7 +2,6 @@
 <!DOCTYPE project>
 
 <project name="QuickLinksServiceApp" basedir="." default="release">
-	<property file="user.properties" />
 	<property file="build.properties" />
 	<tstamp>
 		<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
@@ -109,11 +108,11 @@
 				<attribute name="Built-By" value="${bamboo.name}" />
 				<attribute name="Revision" value="${bamboo.buildKey}-${bamboo.buildNumber}" />
 				<attribute name="Build-Time" value="${TODAY}" />
-				<section name="org/aurora/${base.package}">
+				<section name="org/aurora/quicklinksservices">
 					<attribute name="Specification-Title" value="${ant.project.name}" />
 					<attribute name="Specification-Version" value="1.0" />
 					<attribute name="Specification-Vendor" value="Aurora Health Care, Inc." />
-					<attribute name="Implementation-Title" value="com.aurora.${base.package}" />
+					<attribute name="Implementation-Title" value="org.aurora.quicklinksservices" />
 					<attribute name="Implementation-Version" value="${bamboo.buildNumber}" />
 					<attribute name="Implementation-Vendor" value="Aurora Health Care, Inc." />
 				</section>
@@ -132,29 +131,6 @@
 		<ear destfile="${dist.dir}/${ear.file.name}.ear" appxml="${web.build.dir}/application.xml">
 			<fileset dir="${build.dir}" includes="*.war" />
 		</ear>
-
-		<!--<antcall target="build-client" />-->
-	</target>
-
-	<target name="build-client" description="Builds a service client JAR">
-		<echo level="info">Compiling Jar-Service-Client: version:${compile.version} deprecation:${compile.deprecation} debug:${compile.debug}</echo>
-
-		<jar jarfile="${dist.dir}/${client.jar.name}.jar" basedir="${webinf.build.dir}/classes">
-			<include name="**/beans/*" />
-			<manifest>
-				<attribute name="Built-By" value="${bamboo.name}" />
-				<attribute name="Revision" value="${bamboo.buildKey}-${bamboo.buildNumber}" />
-				<attribute name="Build-Time" value="${TODAY}" />
-				<section name="org/aurora/${base.package}">
-					<attribute name="Specification-Title" value="${ant.project.name}" />
-					<attribute name="Specification-Version" value="1.0" />
-					<attribute name="Specification-Vendor" value="Aurora Health Care, Inc." />
-					<attribute name="Implementation-Title" value="com.aurora.${base.package}" />
-					<attribute name="Implementation-Version" value="${bamboo.buildNumber}" />
-					<attribute name="Implementation-Vendor" value="Aurora Health Care, Inc." />
-				</section>
-			</manifest>
-		</jar>
 	</target>
 
 	<target name="javadoc" description="Produces javadoc for the project.">
@@ -164,7 +140,7 @@
 		</tstamp>
 
 		<mkdir dir="${javadoc.dir}" />
-		<javadoc packagenames="com.aurora.*" defaultexcludes="yes" destdir="${javadoc.dir}" source="${compile.version}" author="true" version="true" use="true" windowtitle="${ant.project.name} API">
+		<javadoc packagenames="org.aurora.*" defaultexcludes="yes" destdir="${javadoc.dir}" source="${compile.version}" author="true" version="true" use="true" windowtitle="${ant.project.name} API">
 			<packageset dir="${src.dir}" />
 			<classpath refid="project.class.path" />
 			<doctitle>
