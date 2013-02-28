@@ -13,7 +13,8 @@
     
 	String logo="false";
 	String mediaRedirect="";
-	String siteName,pageUniqueName ="";
+	String siteName=null;
+	String pageUniqueName =null;
 	String pth=null;
 	if(null!=request.getParameter("sa"))
 		siteName=request.getParameter("sa");
@@ -33,7 +34,7 @@
 	
 	
 	
-	if(("true".equalsIgnoreCase(logo)||(null==pth)){ //execute this block only when branding is required
+	if(null==pth){ //execute this block only when branding is required
 		try{ 
 		  //Creating a workspace 
 			Workspace ws = (Workspace) pageContext.getAttribute(Workspace.WCM_WORKSPACE_KEY); //this is cached call, so improves performance
@@ -118,7 +119,7 @@
 		 var insertElementsStr=null;
 		  $(document).ready(function() {
 			    qs="?&sa=<%=siteName%>&un=<%=pageUniqueName%>";  
-			    $("a.sitelanding").each(function() {
+			    $("a.sitelanding, .acgc_pagination_block a").each(function() {
 			   		var _href = $(this).attr("href"); 
 			   		$(this).attr("href", _href + qs);
 				});
@@ -134,7 +135,7 @@
 	             	$('#sortChangeForm').append(insertElementsStr); // for better performance- doing a bulk insert instead of each one.
 	           }
 	           
-	           $("a.allmedia, .acgc_pagination_block a").each(function() {
+	           $("a.allmedia").each(function() {
 			   		var _href = $(this).attr("href"); 
 			   		var _JSmediaredirect ="<%=pth%>";
 			   		if(_JSmediaredirect.length >0){
