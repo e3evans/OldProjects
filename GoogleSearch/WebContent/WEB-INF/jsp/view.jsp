@@ -45,6 +45,7 @@ function callService(params){
 		  success:function(data){
 		  	$('#<%=ViewController.SEARCH_RESULTS_BOX%>').empty();
 		    $('#<%=ViewController.SEARCH_RESULTS_BOX%>').html(data.toString());
+		    window.scrollTo(0, 0);
 		    loadSortByHoverState();
 		  },
 		  error:function(xhr,status,error){

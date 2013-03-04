@@ -188,14 +188,16 @@
 		<li>
 			<xsl:choose>
 				<xsl:when test="@collectName = $collection">
-					<a href="#filter" title="All Results">
-						<xsl:attribute name="onclick">javascript:switchCollection('<xsl:value-of select="@displayName"/>','<xsl:value-of select="@collectName"/>')</xsl:attribute>
+					<a href="#filter">
+						<xsl:attribute name="title"><xsl:value-of select="@displayName"/></xsl:attribute>
+						<xsl:attribute name="onclick">javascript:switchCollection('<xsl:value-of select="@displayName"/>','<xsl:value-of select="@collectName"/>');return false;</xsl:attribute>
 						<input type="radio" name="filter" value="all" checked="checked" /><xsl:value-of select="@displayName"/>
 					</a>
 				</xsl:when>
 				<xsl:otherwise>
-					<a href="#filter" title="All Results">
-						<xsl:attribute name="onclick">javascript:switchCollection('<xsl:value-of select="@displayName"/>','<xsl:value-of select="@collectName"/>')</xsl:attribute>
+					<a href="#filter">
+						<xsl:attribute name="title"><xsl:value-of select="@displayName"/></xsl:attribute>
+						<xsl:attribute name="onclick">javascript:switchCollection('<xsl:value-of select="@displayName"/>','<xsl:value-of select="@collectName"/>');return false;</xsl:attribute>
 						<input type="radio" name="filter" value="all" /><xsl:value-of select="@displayName"/>
 					</a>
 				</xsl:otherwise>
@@ -212,7 +214,7 @@
 			<xsl:for-each select="/GSP/cluster/gcluster">
 				<li>
 					<a href="#self">
-						<xsl:attribute name="onclick">javascript:searchSynonym('<xsl:value-of select="label/@data"/>')</xsl:attribute>
+						<xsl:attribute name="onclick">javascript:searchSynonym('<xsl:value-of select="label/@data"/>');return false;</xsl:attribute>
 						<xsl:attribute name="title"><xsl:value-of select="label/@data"/></xsl:attribute>
 						<xsl:attribute name="ctype">synonym</xsl:attribute>
 						<xsl:value-of select="label/@data"/>
