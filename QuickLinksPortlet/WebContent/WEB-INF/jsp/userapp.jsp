@@ -44,15 +44,19 @@
 			href="/cgc/myportal/connect/home" title=""
 			class="acgc_content_box_tabs_tab_link"> <span class="acgc_title">
 					Aurora </span> <span class="acgc_desc"> Official news,<br />blogs
-					&amp; events </span> </a></li>
+					&amp; events </span> </a>
+		</li>
 		<li class="acgc_content_box_tabs_tab_spacer">
-			<!-- spacer --></li>
+			<!-- spacer -->
+		</li>
 		<li class="acgc_content_box_tabs_tab selected" style="width: 464px">
 			<a href="/cgc/myportal/connect/home/me"
 			class="acgc_content_box_tabs_tab_link"> <span class="acgc_title">
-					Me </span> <span class="acgc_desc"> My quick links <br />& news </span> </a></li>
+					Me </span> <span class="acgc_desc"> My quick links <br />& news </span> </a>
+		</li>
 		<li class="acgc_content_box_tabs_tab_spacer">
-			<!-- spacer --></li>
+			<!-- spacer -->
+		</li>
 
 		<!--<li class="acgc_content_box_tabs_tab" style="width:465px">
 			<a href="/cgc/myportal/connect/Home/Team"  class="acgc_content_box_tabs_tab_link">
@@ -110,10 +114,10 @@
 				<%=portletPreferences.getValue("appCategory", "Not set")%>
 				<!-- </a> -->
 			</div>
-			<div class="acgc_app_text_box"><%= portletPreferences.getValue("appDesc", "Not set") %></div>
+			<div class="acgc_app_text_box"><%=portletPreferences.getValue("appDesc", "Not set")%></div>
 			<div class="acgc_app_bttn_box">
-				<a class="acgc_green_bttn acgc_radius_5" title="Browse Apps"
-					href="${formAction}"> <span
+				<a class="acgc_green_bttn acgc_radius_5"
+					title="Add To My Quick Links" href="${formAction}"> <span
 					class="acgc_green_bttn_inner acgc_radius_3"> Add To My Quick
 						Links </span> </a>
 			</div>
