@@ -16,8 +16,8 @@
 <c:when test="${fn:containsIgnoreCase(appCategory.categoryName,'CLINICAL') }">
 <c:set var="clinical" value="${appCategory}"/>
 </c:when>
-<c:when test="${fn:containsIgnoreCase(appCategory.categoryName,'BUSSINESS') }">
-<c:set var="Bussiness" value="${appCategory}"/>
+<c:when test="${fn:containsIgnoreCase(appCategory.categoryName,'BUSINESS') }">
+<c:set var="Business" value="${appCategory}"/>
 </c:when>
 <c:when test="${fn:containsIgnoreCase(appCategory.categoryName,'LOCATIONS')}">
 <c:set var="locations" value="${appCategory}"/>
@@ -297,7 +297,7 @@ PortletRequest pResquest = (PortletRequest)request;
 		<div class="acgc_spacer_10"><!-- spacer --></div>
 		<div class="acgc_content_inner_box">
 			<ul class="acgc_content_inner_box_list">
-				<c:forEach items="${Bussiness.appList}" var="application" varStatus="row">
+				<c:forEach items="${Business.appList}" var="application" varStatus="row">
 				 <li>
 					<a href="javascript:sitesAppUrlFormat('${application.appURL}')"; title="${application.appName}" >
 						${application.appName}
