@@ -188,13 +188,15 @@
 		<li>
 			<xsl:choose>
 				<xsl:when test="@collectName = $collection">
-					<a href="#filter" title="All Results">
+					<a href="#filter">
+						<xsl:attribute name="title"><xsl:value-of select="@displayName"/></xsl:attribute>
 						<xsl:attribute name="onclick">javascript:switchCollection('<xsl:value-of select="@displayName"/>','<xsl:value-of select="@collectName"/>');return false;</xsl:attribute>
 						<input type="radio" name="filter" value="all" checked="checked" /><xsl:value-of select="@displayName"/>
 					</a>
 				</xsl:when>
 				<xsl:otherwise>
-					<a href="#filter" title="All Results">
+					<a href="#filter">
+						<xsl:attribute name="title"><xsl:value-of select="@displayName"/></xsl:attribute>
 						<xsl:attribute name="onclick">javascript:switchCollection('<xsl:value-of select="@displayName"/>','<xsl:value-of select="@collectName"/>');return false;</xsl:attribute>
 						<input type="radio" name="filter" value="all" /><xsl:value-of select="@displayName"/>
 					</a>
