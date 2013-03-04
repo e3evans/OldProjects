@@ -13,13 +13,13 @@
 <c:when test="${fn:containsIgnoreCase(appCategory.categoryName,'Most Popular') }">
 <c:set var="mostpopular" value="${appCategory}"/>
 </c:when>
-<c:when test="${fn:containsIgnoreCase(appCategory.categoryName,'CLINICAL') }">
+<c:when test="${fn:containsIgnoreCase(appCategory.categoryName,'Clinical') }">
 <c:set var="clinical" value="${appCategory}"/>
 </c:when>
-<c:when test="${fn:containsIgnoreCase(appCategory.categoryName,'BUSINESS') }">
+<c:when test="${fn:containsIgnoreCase(appCategory.categoryName,'Business') }">
 <c:set var="Business" value="${appCategory}"/>
 </c:when>
-<c:when test="${fn:containsIgnoreCase(appCategory.categoryName,'LOCATIONS')}">
+<c:when test="${fn:containsIgnoreCase(appCategory.categoryName,'Locations')}">
 <c:set var="locations" value="${appCategory}"/>
 </c:when>
 <c:when test="${fn:containsIgnoreCase(appCategory.categoryName,'Strategic Plan')}">
