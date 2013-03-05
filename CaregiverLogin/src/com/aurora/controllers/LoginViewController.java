@@ -2,6 +2,7 @@ package com.aurora.controllers;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,9 +11,9 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
-import javax.portlet.PortletPreferences;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -49,8 +50,11 @@ public class LoginViewController {
 	public static String SYS_COOKIE_ENV = "org.aurora.cookie.url";
 	public static String PARAM_BAD_SESSION = "SESSIONTIMEOUT";
 	public static String REQ_HEADER_FORWARD_IP = "X-Forwarded-For";
+	public static String COOKIE_FORWARD = "WASReqURL";
 	public boolean BAD_LOGIN = false;
 	public boolean BAD_SESSION = false;
+	
+	public String temp="http://:10039/cgc/myportal/connect/home/media/news/weight%20watchers%20works%20--%20read%20one%20caregivers%20story%20and%20explore%20this%20option%20today/!ut/p/b1/hc9Lc4IwEAfwT1R2E17NMQiCNAkMD4VcHPpyEMG206nopy86XnrQ7m1nfrv7X9BQUxMdhtRCqEAPzU-7ab7b_dDszr121l7oycy3kiASguDC82WMitMwsCdQTwBvFMfL_BJDEaU-Jgmbn-ctJXMeUkQCK6i965I76p8QK9B_CaEXkgozKmKK1LyCOzlVtO_foJ6Ye_MUcaCACq11vj1-LE7dKdvi-CS7zVgUSpKSxDkOmSoCVGyu8s5W-FUecvwkKuhG5c9MqUT6usxKj3PZcxJDDLp97o3DS2-gQWxERojFXPvRYa47fTaDXu_E8aF796sT_wWXCYyu/dl4/d5/L2dBISEvZ0FBIS9nQSEh/";
 
 	LoginHome loginHome;
 
@@ -76,7 +80,6 @@ public class LoginViewController {
 			throws UnsupportedEncodingException {
 		HttpServletRequest hsreq = com.ibm.ws.portletcontainer.portlet.PortletUtils
 				.getHttpServletRequest(request);
-		
 		if (null != hsreq.getParameter(PARAM_BAD_SESSION) && !BAD_LOGIN) {
 			BAD_SESSION = true;
 		} else {
@@ -112,7 +115,6 @@ public class LoginViewController {
 			if (!BAD_LOGIN) {
 				String loginId = loginForm.getUserName();
 				User ssoUser = loginDAO.findUserDetails(loginId);
-				PortletPreferences prefs = request.getPreferences();
 				if (ssoUser != null) {
 					SSOManager.createSSOCookie(request, response,
 							Long.toString(ssoUser.getUserID()), loginId,
@@ -121,8 +123,27 @@ public class LoginViewController {
 							System.getProperty(SYS_COOKIE_ENV, "NOT SET"),
 							hsreq.getHeader(REQ_HEADER_FORWARD_IP));
 				}
-				response.sendRedirect("/cgc/myportal/connect/home");
+				
+				String sendRedirect = URLDecoder.decode(getCookieValue(hsreq.getCookies(), COOKIE_FORWARD, "EMPTY"),"UTF-8");
+				if ("EMPTY".equals(sendRedirect)){
+					response.sendRedirect("/cgc/myportal/connect/home");
+				}else{
+					String temp = sendRedirect.substring(sendRedirect.indexOf("/cgc"));
+					temp = temp.replaceAll("%20", " ");
+					temp = temp.substring(0,temp.indexOf("/!ut"));
+					response.sendRedirect(temp);
+				}
 			}
 		}
+	}
+	
+	public static String getCookieValue(Cookie[] cookies,String cookieName,String defaultValue){
+		for (int i=0;i<cookies.length;i++){
+			Cookie cookie = cookies[i];
+			if (cookieName.equals(cookie.getName())){
+				return (cookie.getValue());
+			}
+		}
+		return(defaultValue);
 	}
 }
