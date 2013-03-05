@@ -53,8 +53,6 @@ public class LoginViewController {
 	public static String COOKIE_FORWARD = "WASReqURL";
 	public boolean BAD_LOGIN = false;
 	public boolean BAD_SESSION = false;
-	
-	public String temp="http://:10039/cgc/myportal/connect/home/media/news/weight%20watchers%20works%20--%20read%20one%20caregivers%20story%20and%20explore%20this%20option%20today/!ut/p/b1/hc9Lc4IwEAfwT1R2E17NMQiCNAkMD4VcHPpyEMG206nopy86XnrQ7m1nfrv7X9BQUxMdhtRCqEAPzU-7ab7b_dDszr121l7oycy3kiASguDC82WMitMwsCdQTwBvFMfL_BJDEaU-Jgmbn-ctJXMeUkQCK6i965I76p8QK9B_CaEXkgozKmKK1LyCOzlVtO_foJ6Ye_MUcaCACq11vj1-LE7dKdvi-CS7zVgUSpKSxDkOmSoCVGyu8s5W-FUecvwkKuhG5c9MqUT6usxKj3PZcxJDDLp97o3DS2-gQWxERojFXPvRYa47fTaDXu_E8aF796sT_wWXCYyu/dl4/d5/L2dBISEvZ0FBIS9nQSEh/";
 
 	LoginHome loginHome;
 
