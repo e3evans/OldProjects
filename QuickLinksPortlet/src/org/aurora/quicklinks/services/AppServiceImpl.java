@@ -65,7 +65,7 @@ public class AppServiceImpl implements AppService {
 	public List<UserApplication> listAllUserAppByUserId(String userid) {
 		List<UserApplication> appList = new ArrayList<UserApplication>();
 		try {
-			String requestPath = USER_APP_LIST + userid;
+			String requestPath = ALL_USER_APP_LIST + userid;
 			logger.info("webservice call starts with request path "
 					+ requestPath);
 			JSONObject userAppJSON = new JSONObject(

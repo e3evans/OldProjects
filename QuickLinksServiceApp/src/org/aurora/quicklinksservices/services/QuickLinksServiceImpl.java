@@ -1,6 +1,7 @@
 package org.aurora.quicklinksservices.services;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -55,16 +56,18 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 
 	@Override
 	public Long retrieveUserId(String loginId) {
+		logger.info("Getting userId for loginId: " + loginId);
 		try {
 			Long userId = null;
 			List<User> list = quickLinksAPPDAO.findUserDetails(loginId);
 			if (!list.isEmpty()) {
 				userId = list.iterator().next().getUserID();
+				return userId;
 			}
-			return userId;
 		} catch (Exception e) {
 			logger.error("Exception in retrieveUserId", e);
 		}
+		logger.info("Did NOT find userId for loginId: " + loginId);
 		return null;
 	}
 
@@ -72,7 +75,11 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 		try {
 			Long userId = this.retrieveUserId(loginId);
 			if (userId != null) {
-				return quickLinksAPPDAO.findUserAppsByUser(userId);
+				logger.info("Getting apps for userId: " + userId);
+				List<UserAppResponseBean> list = quickLinksAPPDAO
+						.findUserAppsByUser(userId);
+				Collections.sort(list, UserAppResponseBean.APP_COMPARATOR);
+				return list;
 			} else {
 				logger.error("findUserAppsByUser - no userId found for loginId: "
 						+ loginId);
@@ -167,6 +174,7 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 	@Override
 	public List<AppCategory> findAppCategories() {
 		try {
+			logger.info("Getting all apps categories");
 			return quickLinksAPPDAO.findAppCategories();
 		} catch (Exception e) {
 			logger.error("Exception in findAppCategories", e);
@@ -177,6 +185,7 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 	@Override
 	public List<App> findAvailAppListByCategory(String categoryId) {
 		try {
+			logger.info("Getting apps for categoryId: " + categoryId);
 			List<App> appListFormatURL = new ArrayList<App>();
 			List<App> appList = quickLinksAPPDAO
 					.findAvailAppListByCategory(categoryId);
@@ -198,6 +207,7 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 	@Override
 	public List<App> findPopularAppListByCategory(String categoryId) {
 		try {
+			logger.info("Getting popular apps for categoryId: " + categoryId);
 			List<App> appListFormatURL = new ArrayList<App>();
 			List<App> appList = quickLinksAPPDAO
 					.findPopularAppListByCategory(categoryId);

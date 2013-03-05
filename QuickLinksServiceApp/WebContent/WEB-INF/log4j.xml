@@ -3,7 +3,7 @@
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-	<appender name="logfile" class="org.apache.log4j.DailyRollingFileAppender">
+	<appender name="logfile" class="org.apache.log4j.RollingFileAppender">
 		<param name="File" value="/aurora/logs/QuickLinksServiceApp.log" />
 		<param name="DatePattern" value="'.'yyyy-MM" />
 		<param name="MaxBackupIndex" value="15" />

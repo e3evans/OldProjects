@@ -1,6 +1,7 @@
 package org.aurora.quicklinksservices.beans;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
@@ -84,5 +85,20 @@ public class UserAppResponseBean implements Serializable {
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
+	}
+
+	/**
+	 * Comparator used to sort by app name
+	 */
+	public final static Comparator<UserAppResponseBean> APP_COMPARATOR = new AppComparator();
+
+	public static class AppComparator implements
+			Comparator<UserAppResponseBean>, Serializable {
+
+		private static final long serialVersionUID = 4783983219368967080L;
+
+		public int compare(UserAppResponseBean a, UserAppResponseBean b) {
+			return a.getAppName().toLowerCase().compareTo(b.getAppName().toLowerCase());
+		}
 	}
 }
