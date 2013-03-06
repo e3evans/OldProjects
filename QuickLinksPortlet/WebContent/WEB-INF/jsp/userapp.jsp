@@ -52,7 +52,7 @@
 		<li class="acgc_content_box_tabs_tab selected" style="width: 464px">
 			<a href="/cgc/myportal/connect/home/me"
 			class="acgc_content_box_tabs_tab_link"> <span class="acgc_title">
-					Me </span> <span class="acgc_desc"> My quick links <br />& news </span> </a>
+					Me </span> <span class="acgc_desc"> My quick links <br /></span> </a>
 		</li>
 		<li class="acgc_content_box_tabs_tab_spacer">
 			<!-- spacer -->
@@ -110,9 +110,7 @@
 			<div class="acgc_app_title_box">
 				<%=portletPreferences.getValue("appName", "Not set")%>
 				<br />
-				<!-- <a title="App Category" href=""> -->
-				<%=portletPreferences.getValue("appCategory", "Not set")%>
-				<!-- </a> -->
+				<a title="<%=portletPreferences.getValue("appCategory", "Not set")%>" href="/cgc/myportal/connect/home/sites"><%=portletPreferences.getValue("appCategory", "Not set")%></a>
 			</div>
 			<div class="acgc_app_text_box"><%=portletPreferences.getValue("appDesc", "Not set")%></div>
 			<div class="acgc_app_bttn_box">

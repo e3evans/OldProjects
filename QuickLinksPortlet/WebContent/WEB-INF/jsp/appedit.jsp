@@ -32,7 +32,7 @@
 						<span id="acgc_quicklinks_picker_show_selected_label">Show My Selected:</span>
 						&nbsp;
 						<span id="acgc_quicklinks_show_sites_trigger">
-							<input type="checkbox" name="acgc_show_sites" value="on" /> Sites &amp; Apps
+							<input type="checkbox" name="acgc_show_sites" value="on" /> Quick Links
 						</span>
 					</div>
 					<div class="acgc_searchblock acgc_radius_5">
@@ -62,16 +62,17 @@
     		<div class="acgc_quicklinks_link_canvas acgc_relative site">
     	</c:otherwise>
     </c:choose>
+    <!-- TODO: store defaults in table so we do not have to hard code them here -->
         <c:choose>
-         <c:when test="${appLst.defaultApp}">
-        <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked" disabled="true"/>
-        </c:when>
-        <c:when test="${appLst.alreadyRegistered}">
-        <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked"/>
-        </c:when>
-        <c:otherwise>
-        <form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listMenuApp[${row.index}].app.checked" />
-        </c:otherwise>
+        	<c:when test="${appLst.app.appId eq 'EBINO' || appLst.app.appId eq 'EB092' || appLst.app.appId eq 'EB500' || appLst.app.appId eq 'EBLIB' || appLst.app.appId eq 'ahcom' || appLst.app.appId eq 'EB122' || appLst.app.appId eq 'EB084' || appLst.app.appId eq 'EB538' || appLst.app.appId eq 'EB480' || appLst.app.appId eq 'EB057' || appLst.app.appId eq 'PETR' || appLst.app.appId eq 'EB294' || appLst.app.appId eq 'EB110' || appLst.app.appId eq 'EB294' || appLst.app.appId eq 'EB416'}">
+        		<form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked" disabled="true"/>
+        	</c:when>
+        	<c:when test="${appLst.alreadyRegistered}">
+        		<form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked"/>
+        	</c:when>
+        	<c:otherwise>
+        		<form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listMenuApp[${row.index}].app.checked" />
+        	</c:otherwise>
         </c:choose>
         
 	    <form:hidden path="listMenuApp[${row.index}].app.appName" value="${appLst.app.appName}" />

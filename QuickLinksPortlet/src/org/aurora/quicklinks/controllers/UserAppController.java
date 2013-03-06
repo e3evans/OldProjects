@@ -2,7 +2,8 @@ package org.aurora.quicklinks.controllers;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.portlet.ActionRequest;
@@ -43,8 +44,13 @@ public class UserAppController {
 	@Qualifier("appService")
 	private AppService appService;
 
+	private void log(String msg) {
+		logger.info(msg.replaceAll("/n", ""));
+	}
+
 	@ModelAttribute("appFormBean")
 	public AppFormBean getCommandObject(PortletRequest request) {
+		log("Entered getCommandObject");
 		AppFormBean appFormBean = new AppFormBean();
 		try {
 			Principal user = request.getUserPrincipal();
@@ -52,6 +58,7 @@ public class UserAppController {
 			session.setAttribute("userId", user.toString());
 			String userid = user.toString();
 			appFormBean.setListMenuApp(retrieveAvailMenuApps(userid));
+			log(Arrays.toString(appFormBean.getListMenuApp().toArray()));
 		} catch (Exception e) {
 			logger.error("Exception in getCommandObject", e);
 		}
@@ -60,6 +67,7 @@ public class UserAppController {
 
 	@RenderMapping
 	public String showUserApplication(RenderRequest request) {
+		log("Entered showUserApplication");
 		try {
 			String errorMsg = request.getParameter("errorMsg");
 			if (null != errorMsg) {
@@ -73,6 +81,7 @@ public class UserAppController {
 
 	@ResourceMapping(value = "quicklinksEditList")
 	public ModelAndView showQuickLinkForm(ResourceResponse response) {
+		log("Entered getCommandObject");
 		return new ModelAndView("appedit");
 	}
 
@@ -80,58 +89,71 @@ public class UserAppController {
 	public void updateApp(@ModelAttribute AppFormBean appFormBean,
 			BindingResult bindingResult, ActionRequest request,
 			ActionResponse response, SessionStatus sessionStatus) {
+		log("Entered updateApp");
 		try {
 			PortletSession session = request.getPortletSession();
 			String userid = (String) session.getAttribute("userId");
 			request.getPortletSession().setAttribute("flag", "true");
-			List<Application> updateduserapp = new ArrayList<Application>();
-			List<UserApplication> listUserApp = appService
-					.listAllUserAppByUserId(userid);
+
+			// collect checked apps
+			List<Application> checkedApps = new ArrayList<Application>();
 			for (MenuApp menuapp : appFormBean.getListMenuApp()) {
 				Application bean = menuapp.getApp();
 				String appId = bean.getAppId().trim();
 				String seqNo = bean.getSeqNo().trim();
-				if (appId != null && seqNo != null) {
-					if (bean.isChecked()) {
-						updateduserapp.add(bean);
-					}
+				if (appId != null && seqNo != null && bean.isChecked()) {
+					checkedApps.add(bean);
 				}
 			}
-			for (UserApplication userApp2 : listUserApp) {
-				boolean isInActive = true;
-				boolean toggleActive = false;
-				for (Application app2 : updateduserapp) {
-					if ((userApp2.getAppId() + userApp2.getSeqNo()).equals(app2
-							.getAppId() + app2.getSeqNo())) {
-						isInActive = false;
-						if (!userApp2.isActive()) {
-							toggleActive = true;
-						}
-					}
-				}
-				if (isInActive) {
-					userApp2.setActiveCd("I");
-					appService.updateUserApp(userApp2, userid);
-				}
-				if (toggleActive) {
-					userApp2.setActiveCd("A");
-					appService.updateUserApp(userApp2, userid);
-				}
-			}
-			for (Application app2 : updateduserapp) {
-				boolean isCreate = true;
-				for (UserApplication userApp2 : listUserApp) {
+
+			// get all user apps plus inactives
+			List<UserApplication> listAllUserApps = appService
+					.listAllUserAppByUserId(userid);
+
+			// create link for checked apps not found for user
+			for (Application app2 : checkedApps) {
+				boolean create = true;
+				for (UserApplication userApp2 : listAllUserApps) {
 					if (((userApp2.getAppId() + userApp2.getSeqNo())
-							.equals(app2.getAppId() + app2.getSeqNo()))) {
-						// if( userApp2.getFlagDefault().equals("true")){
-						isCreate = false;
-						// }
+							.equalsIgnoreCase(app2.getAppId() + app2.getSeqNo()))) {
+						// found checked app in user list
+						create = false;
+						break;
 					}
 				}
-				if (isCreate) {
-					String appId = app2.getAppId().trim();
-					String seqNo = app2.getSeqNo().trim();
-					appService.createUserApp(userid, appId, seqNo);
+
+				// create link for user
+				if (create) {
+					appService.createUserApp(userid, app2.getAppId(),
+							app2.getSeqNo());
+				}
+			}
+
+			// iterate user apps to see if they contain checked apps
+			for (UserApplication userApp : listAllUserApps) {
+				boolean found = false;
+				boolean activate = false;
+				for (Application app : checkedApps) {
+					if (((userApp.getAppId() + userApp.getSeqNo())
+							.equalsIgnoreCase(app.getAppId() + app.getSeqNo()))) {
+						found = true;
+						if (!userApp.isActive()) {
+							activate = true;
+						}
+						break;
+					}
+				}
+
+				// inactivate links not found to be checked
+				if (!found) {
+					userApp.setActiveCd("I");
+					appService.updateUserApp(userApp, userid);
+				}
+
+				// activate inactive links
+				if (activate) {
+					userApp.setActiveCd("A");
+					appService.updateUserApp(userApp, userid);
 				}
 			}
 		} catch (Exception e) {
@@ -145,6 +167,7 @@ public class UserAppController {
 	@ActionMapping(params = "action=updateFeaturedApp")
 	public void updateFeaturedApp(ActionRequest request,
 			ActionResponse response, SessionStatus sessionStatus) {
+		log("Entered updateFeaturedApp");
 		try {
 			PortletSession session = request.getPortletSession();
 			String userid = (String) session.getAttribute("userId");
@@ -158,25 +181,28 @@ public class UserAppController {
 			seqNo = pf.getValue("seqNO", "Not Set").trim();
 			boolean toggleActive = false;
 			boolean isCreate = true;
-			if (appId == "Not Set" && seqNo == "Not Set") {
-				isCreate = false;
-			}
-			for (UserApplication userApp2 : listUserApp) {
-				if ((userApp2.getAppId().trim() + userApp2.getSeqNo().trim())
-						.equals(appId + seqNo)) {
-					isCreate = false;
-					if (!userApp2.isActive()) {
-						toggleActive = true;
+			if (appId != "Not Set" && seqNo != "Not Set") {
+				for (UserApplication userApp2 : listUserApp) {
+					if ((userApp2.getAppId() + userApp2.getSeqNo())
+							.equalsIgnoreCase(appId + seqNo)) {
+						log("Found Featured App");
+						isCreate = false;
+						if (!userApp2.isActive()) {
+							toggleActive = true;
+						}
+					}
+					if (toggleActive) {
+						toggleActive = false;
+						userApp2.setActiveCd("A");
+						log("Update App: " + userApp2.getAppId() + ":"
+								+ userApp2.getSeqNo());
+						appService.updateUserApp(userApp2, userid);
 					}
 				}
-				if (toggleActive) {
-					toggleActive = false;
-					userApp2.setActiveCd("A");
-					appService.updateUserApp(userApp2, userid);
+				if (isCreate) {
+					log("Create App: " + appId + ":" + seqNo);
+					appService.createUserApp(userid, appId, seqNo);
 				}
-			}
-			if (isCreate) {
-				appService.createUserApp(userid, appId, seqNo);
 			}
 		} catch (Exception e) {
 			logger.error("Exception in updateApp", e);
@@ -186,36 +212,37 @@ public class UserAppController {
 		sessionStatus.setComplete();
 	}
 
-	public List<MenuApp> retrieveAvailMenuApps(String userid)
-			throws Exception {
+	public List<MenuApp> retrieveAvailMenuApps(String userid) throws Exception {
+		log("Entered retrieveAvailMenuApps");
 		List<MenuApp> menuAppsList = new ArrayList<MenuApp>();
+		// get all available iconnect apps
 		List<Application> availAppsList = appService.listApplication();
-		List<UserApplication> userAppsList;
-		Iterator<Application> i$;
 		if ((availAppsList != null) && (!availAppsList.isEmpty())) {
-			userAppsList = appService.listUserAppByUserId(userid);
-			for (i$ = availAppsList.iterator(); i$.hasNext();) {
-				Object anAvailAppsList = i$.next();
-				Application app = (Application) anAvailAppsList;
-				MenuApp menuApp = new MenuApp();
-				menuApp.setApp(app);
-				if (userAppsList != null)
-					for (Iterator<UserApplication> i = userAppsList.iterator(); i
-							.hasNext();) {
-						Object anUserAppsList = i.next();
-						UserApplication userApp = (UserApplication) anUserAppsList;
-						if ((userApp.getAppId().equals(app.getAppId()))
-								&& (userApp.getSeqNo().equals(app.getSeqNo()))) {
+			// get all user apps plus inactives
+			List<UserApplication> userAppsList = appService
+					.listAllUserAppByUserId(userid);
+			for (Application app : availAppsList) {
+				MenuApp menuApp = new MenuApp(app);
+				if (userAppsList != null) {
+					for (UserApplication userApp : userAppsList) {
+						if ((userApp.getAppId() + userApp.getSeqNo())
+								.equalsIgnoreCase(app.getAppId()
+										+ app.getSeqNo())) {
 							menuApp.setUserApp(userApp);
 							break;
 						}
 					}
+				}
+
+				// only add if app allows adding to menu
+				// or granted access
 				if ((!app.getLoggedInAccess().equals("R"))
 						|| (menuApp.getUserApp() != null)) {
 					menuAppsList.add(menuApp);
 				}
 			}
 		}
+		Collections.sort(menuAppsList, MenuApp.APP_COMPARATOR);
 		return menuAppsList;
 	}
 

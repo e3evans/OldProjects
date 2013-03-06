@@ -1,7 +1,13 @@
 package org.aurora.quicklinks.beans;
 
-public class FeaturedAppForm {
+import java.io.Serializable;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
+public class FeaturedAppForm implements Serializable {
+
+	private static final long serialVersionUID = -2700249616676280536L;
+	
 	private String appName;
 	private String appDesc;
 	private String seqNo;
@@ -46,5 +52,10 @@ public class FeaturedAppForm {
 
 	public void setAppCategory(String appCategory) {
 		this.appCategory = appCategory;
+	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
 	}
 }

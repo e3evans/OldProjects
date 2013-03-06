@@ -11,11 +11,15 @@ import org.aurora.quicklinksservices.beans.UserApp;
 import org.aurora.quicklinksservices.beans.UserAppKey;
 import org.aurora.quicklinksservices.beans.UserAppResponseBean;
 import org.aurora.quicklinksservices.daos.QuickLinksAPPDAO;
+import org.aurora.quicklinksservices.exceptions.WriteException;
 import org.aurora.quicklinksservices.utils.QuickLinksUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { WriteException.class })
 public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 		QuickLinksService {
 
@@ -43,7 +47,6 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 		return new ArrayList<App>();
 	}
 
-	@Override
 	public List<User> retrieveUserDetails(String loginId) {
 		try {
 			return quickLinksAPPDAO.findUserDetails(loginId);
@@ -55,16 +58,18 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 
 	@Override
 	public Long retrieveUserId(String loginId) {
+		logger.info("Getting userId for loginId: " + loginId);
 		try {
 			Long userId = null;
 			List<User> list = quickLinksAPPDAO.findUserDetails(loginId);
 			if (!list.isEmpty()) {
 				userId = list.iterator().next().getUserID();
+				return userId;
 			}
-			return userId;
 		} catch (Exception e) {
 			logger.error("Exception in retrieveUserId", e);
 		}
+		logger.info("Did NOT find userId for loginId: " + loginId);
 		return null;
 	}
 
@@ -72,7 +77,10 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 		try {
 			Long userId = this.retrieveUserId(loginId);
 			if (userId != null) {
-				return quickLinksAPPDAO.findUserAppsByUser(userId);
+				logger.info("Getting apps for userId: " + userId);
+				List<UserAppResponseBean> list = quickLinksAPPDAO
+						.findUserAppsByUser(userId);
+				return list;
 			} else {
 				logger.error("findUserAppsByUser - no userId found for loginId: "
 						+ loginId);
@@ -87,9 +95,11 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 		try {
 			Long userId = this.retrieveUserId(loginId);
 			if (userId != null) {
-				return quickLinksAPPDAO.findAllUserAppsByUser(userId);
+				List<UserAppResponseBean> list = quickLinksAPPDAO
+						.findAllUserAppsByUser(userId);
+				return list;
 			} else {
-				logger.error("findUserAppsByUser - no userId found for loginId: "
+				logger.error("findAllUserAppsByUser - no userId found for loginId: "
 						+ loginId);
 			}
 		} catch (Exception e) {
@@ -98,7 +108,6 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 		return new ArrayList<UserAppResponseBean>();
 	}
 
-	@Override
 	public UserAppResponseBean retrieveUserApp(String appId, String seqNo,
 			String loginId) {
 		try {
@@ -116,8 +125,8 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 		return new UserAppResponseBean();
 	}
 
-	@Override
-	public void createUserApp(String loginId, String appId, String seqNo) {
+	public void createUserApp(String loginId, String appId, String seqNo)
+			throws WriteException {
 		try {
 			Long userId = this.retrieveUserId(loginId);
 			if (userId != null) {
@@ -135,21 +144,12 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 			}
 		} catch (Exception e) {
 			logger.error("Exception in createUserApp", e);
+			throw new WriteException();
 		}
-	}
-
-	@Override
-	public List<App> retrieveAppMenuAutoList(String appId) {
-		try {
-			return quickLinksAPPDAO.findAppMenuAutoList(appId);
-		} catch (Exception e) {
-			logger.error("Exception in retrieveAppMenuAutoList", e);
-		}
-		return new ArrayList<App>();
 	}
 
 	public void updateUserApp(String loginId, String appId, String seqNo,
-			String activecd) {
+			String activecd) throws WriteException {
 		try {
 			Long userId = this.retrieveUserId(loginId);
 			if (userId != null) {
@@ -161,12 +161,22 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 			}
 		} catch (Exception e) {
 			logger.error("Exception in updateUserApp", e);
+			throw new WriteException();
 		}
 	}
 
-	@Override
+	public List<App> retrieveAppMenuAutoList(String appId) {
+		try {
+			return quickLinksAPPDAO.findAppMenuAutoList(appId);
+		} catch (Exception e) {
+			logger.error("Exception in retrieveAppMenuAutoList", e);
+		}
+		return new ArrayList<App>();
+	}
+
 	public List<AppCategory> findAppCategories() {
 		try {
+			logger.info("Getting all apps categories");
 			return quickLinksAPPDAO.findAppCategories();
 		} catch (Exception e) {
 			logger.error("Exception in findAppCategories", e);
@@ -174,9 +184,9 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 		return new ArrayList<AppCategory>();
 	}
 
-	@Override
 	public List<App> findAvailAppListByCategory(String categoryId) {
 		try {
+			logger.info("Getting apps for categoryId: " + categoryId);
 			List<App> appListFormatURL = new ArrayList<App>();
 			List<App> appList = quickLinksAPPDAO
 					.findAvailAppListByCategory(categoryId);
@@ -195,9 +205,9 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 		return new ArrayList<App>();
 	}
 
-	@Override
 	public List<App> findPopularAppListByCategory(String categoryId) {
 		try {
+			logger.info("Getting popular apps for categoryId: " + categoryId);
 			List<App> appListFormatURL = new ArrayList<App>();
 			List<App> appList = quickLinksAPPDAO
 					.findPopularAppListByCategory(categoryId);

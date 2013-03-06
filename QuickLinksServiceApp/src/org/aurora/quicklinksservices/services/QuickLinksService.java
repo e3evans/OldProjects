@@ -6,6 +6,7 @@ import org.aurora.quicklinksservices.beans.App;
 import org.aurora.quicklinksservices.beans.AppCategory;
 import org.aurora.quicklinksservices.beans.User;
 import org.aurora.quicklinksservices.beans.UserAppResponseBean;
+import org.aurora.quicklinksservices.exceptions.WriteException;
 
 public interface QuickLinksService {
 
@@ -15,17 +16,18 @@ public interface QuickLinksService {
 
 	public List<UserAppResponseBean> findUserAppsByUser(String loginId);
 
+	public List<UserAppResponseBean> findAllUserAppsByUser(String loginId);
+
 	public UserAppResponseBean retrieveUserApp(String appId, String seqNo,
 			String loginId);
 
-	public void createUserApp(String loginId, String appId, String seqNo);
+	public void createUserApp(String loginId, String appId, String seqNo)
+			throws WriteException;
 
 	public List<App> retrieveAppMenuAutoList(String appId);
 
 	public void updateUserApp(String loginId, String appId, String seqNo,
-			String activecd);
-
-	public List<UserAppResponseBean> findAllUserAppsByUser(String loginId);
+			String activecd) throws WriteException;
 
 	public Long retrieveUserId(String loginid);
 

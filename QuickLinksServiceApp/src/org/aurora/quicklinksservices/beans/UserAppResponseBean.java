@@ -1,6 +1,7 @@
 package org.aurora.quicklinksservices.beans;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
@@ -84,5 +85,41 @@ public class UserAppResponseBean implements Serializable {
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
+	}
+
+	/**
+	 * Comparator used to sort by app name
+	 */
+	public final static Comparator<UserAppResponseBean> APP_NAME_COMPARATOR = new AppNameComparator();
+
+	public static class AppNameComparator implements
+			Comparator<UserAppResponseBean>, Serializable {
+
+		private static final long serialVersionUID = 4783983219368967080L;
+
+		public int compare(UserAppResponseBean a, UserAppResponseBean b) {
+			return a.getAppName().toLowerCase()
+					.compareTo(b.getAppName().toLowerCase());
+		}
+	}
+
+	/**
+	 * Comparator used to sort by app id and seq no
+	 */
+	public final static Comparator<UserAppResponseBean> APP_ID_COMPARATOR = new AppIdComparator();
+
+	public static class AppIdComparator implements
+			Comparator<UserAppResponseBean>, Serializable {
+
+		private static final long serialVersionUID = 4783983219368967080L;
+
+		public int compare(UserAppResponseBean a, UserAppResponseBean b) {
+			if (a.getAppId().equalsIgnoreCase(b.getAppId())) {
+				return new Integer(Integer.parseInt(a.getSeqNo()))
+						.compareTo(new Integer(Integer.parseInt(b.getSeqNo())));
+			}
+			return a.getAppId().toLowerCase()
+					.compareTo(b.getAppId().toLowerCase());
+		}
 	}
 }

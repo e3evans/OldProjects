@@ -9,7 +9,9 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd
         http://www.springframework.org/schema/jee
-        http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
+        http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 	<jee:jndi-lookup id="iconnectBaseUrl"
 		jndi-name="cell/persistent/cgc/ea/iconnectBaseUrl" cache="true"
@@ -19,11 +21,15 @@
 		<property name="jndiName" value="jdbc/PTLDB2Z" />
 	</bean>
 
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="urlsessionFactory" />
+	</bean>
+
 	<!--Declaring Hibernate Session Factory -->
 	<bean id="urlsessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-
 		<property name="annotatedClasses">
 			<list>
 				<value>org.aurora.quicklinksservices.beans.AppKey</value>
@@ -34,7 +40,6 @@
 				<value>org.aurora.quicklinksservices.beans.AppCategory</value>
 			</list>
 		</property>
-
 		<property name="hibernateProperties">
 			<value>
 				hibernate.dialect=org.hibernate.dialect.DB2390Dialect
@@ -46,7 +51,10 @@
 			</value>
 		</property>
 	</bean>
-	
+
+	<!-- allows for annotation of services with @Transactional -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
 	<context:annotation-config />
 	<context:component-scan base-package="org.aurora.quicklinksservices" />
 

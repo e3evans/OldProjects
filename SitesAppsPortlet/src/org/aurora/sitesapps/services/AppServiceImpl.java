@@ -58,10 +58,9 @@ public class AppServiceImpl implements AppService {
 				app.setAppId(jsonobj.getJSONObject("appKey").get("appId")
 						.toString());
 				app.setAppDesc(description);
-				app.setAppName(jsonobj.get("appName").toString().trim());
-				app.setAppURL((jsonobj.get("appURL").toString()).trim());
-				app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString())
-						.trim());
+				app.setAppName(jsonobj.get("appName").toString());
+				app.setAppURL((jsonobj.get("appURL").toString()));
+				app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString()));
 				appList.add(app);
 			}
 
@@ -129,10 +128,9 @@ public class AppServiceImpl implements AppService {
 				app.setAppId(jsonobj.getJSONObject("appKey").get("appId")
 						.toString());
 				app.setAppDesc(description);
-				app.setAppName(jsonobj.get("appName").toString().trim());
-				app.setAppURL((jsonobj.get("appURL").toString()).trim());
-				app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString())
-						.trim());
+				app.setAppName(jsonobj.get("appName").toString());
+				app.setAppURL((jsonobj.get("appURL").toString()));
+				app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString()));
 				appList.add(app);
 			}
 		} catch (Exception e) {
@@ -165,10 +163,9 @@ public class AppServiceImpl implements AppService {
 				app.setAppId(jsonobj.getJSONObject("appKey").get("appId")
 						.toString());
 				app.setAppDesc(description);
-				app.setAppName(jsonobj.get("appName").toString().trim());
-				app.setAppURL((jsonobj.get("appURL").toString()).trim());
-				app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString())
-						.trim());
+				app.setAppName(jsonobj.get("appName").toString());
+				app.setAppURL((jsonobj.get("appURL").toString()));
+				app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString()));
 				appList.add(app);
 			}
 		} catch (Exception e) {

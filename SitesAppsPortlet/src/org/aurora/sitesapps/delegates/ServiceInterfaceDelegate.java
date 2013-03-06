@@ -55,15 +55,14 @@ public class ServiceInterfaceDelegate {
 	 * @throws IOException
 	 */
 	public String processGetRestRequest(String requestPath) throws Exception {
-		String urlPath = System.getProperty("org.aurora.cookie.url")
-				+ requestPath;
+		String urlPath = System.getProperty("org.aurora.cookie.url") + requestPath;
 		String responseText = SitesAppsConstants.SERVICE_ERROR_MESSAGE;
 		HttpEntity<String> requestEntity = new HttpEntity<String>(entityHeaders);
 		URI requestURI = new URI(urlPath);
-		logger.info("web service call start with request path : " + urlPath);
+		logger.info("web service call with request path : " + urlPath);
 		ResponseEntity<String> result = restTemplate.exchange(requestURI,
 				HttpMethod.GET, requestEntity, String.class);
-		logger.info("web service call end with request path : " + urlPath);
+		logger.info("web service returned : " + result);
 		responseText = result.getBody();
 		return responseText;
 	}
@@ -74,7 +73,7 @@ public class ServiceInterfaceDelegate {
 	 */
 	@PostConstruct
 	public void initService() {
-		logger.warn("*** In Init Service ***");
+		logger.info("*** In Init Service ***");
 		entityHeaders = createAuthenticationHeader();
 	}
 }

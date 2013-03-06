@@ -18,6 +18,9 @@ public interface QuickLinksAPPDAO {
 	public List<UserAppResponseBean> findUserAppsByUser(Long userid)
 			throws Exception;
 
+	public List<UserAppResponseBean> findAllUserAppsByUser(Long userid)
+			throws Exception;
+
 	public UserAppResponseBean readUserApp(UserAppKey userAppKey)
 			throws Exception;
 
@@ -26,9 +29,6 @@ public interface QuickLinksAPPDAO {
 	public List<App> findAppMenuAutoList(String paramString) throws Exception;
 
 	public void updateUserApp(UserAppKey userAppKey, String activecd)
-			throws Exception;
-
-	public List<UserAppResponseBean> findAllUserAppsByUser(Long userid)
 			throws Exception;
 
 	public List<AppCategory> findAppCategories() throws Exception;

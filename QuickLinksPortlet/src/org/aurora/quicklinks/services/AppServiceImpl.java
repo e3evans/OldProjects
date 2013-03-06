@@ -25,9 +25,17 @@ public class AppServiceImpl implements AppService {
 	protected String RETRIEVE_USER_APP = SERVICE_URL + "retrieveuserapp/";
 	protected String CREATE_USER_APP = SERVICE_URL + "createuserapp/";
 	protected String UPDATE_USER_APP = SERVICE_URL + "updateuserapp/";
-	protected String APP_AUTO_LIST = SERVICE_URL + "appautolist/";
+	// protected String APP_AUTO_LIST = SERVICE_URL + "appautolist/";
 	protected String AVAILABLE_APP_LIST = SERVICE_URL + "results";
 
+	/**
+	 * TODO: find out why appId needs to be trimmed for all methods since the
+	 * service returns it as trimmed
+	 */
+
+	/**
+	 * This method gets all active user saved quick links plus defaults.
+	 */
 	public List<UserApplication> listUserAppByUserId(String userid) {
 		List<UserApplication> appList = new ArrayList<UserApplication>();
 		try {
@@ -41,15 +49,14 @@ public class AppServiceImpl implements AppService {
 			for (int i = 0; i < jsonArray.length(); i++) {
 				UserApplication app = new UserApplication();
 				JSONObject jsonobj = jsonArray.getJSONObject(i);
-				app.setUserid(jsonobj.get("userId").toString().trim());
-				app.setAppName(jsonobj.get("appName").toString().trim());
-				app.setAppURL((jsonobj.get("appUrl").toString()).trim());
+				app.setUserid(jsonobj.get("userId").toString());
+				app.setAppName(jsonobj.get("appName").toString());
+				app.setAppURL((jsonobj.get("appUrl").toString()));
 				app.setSeqNo(jsonobj.get("seqNo").toString());
-				app.setAppId(jsonobj.get("appId").toString());
-				app.setActiveCd((jsonobj.get("activeCd").toString()).trim());
+				app.setAppId(jsonobj.get("appId").toString().trim());
+				app.setActiveCd((jsonobj.get("activeCd").toString()));
 				if (jsonobj.get("flagDefault") != null) {
-					app.setFlagDefault((jsonobj.get("flagDefault").toString())
-							.trim());
+					app.setFlagDefault((jsonobj.get("flagDefault").toString()));
 				}
 				appList.add(app);
 			}
@@ -65,7 +72,7 @@ public class AppServiceImpl implements AppService {
 	public List<UserApplication> listAllUserAppByUserId(String userid) {
 		List<UserApplication> appList = new ArrayList<UserApplication>();
 		try {
-			String requestPath = USER_APP_LIST + userid;
+			String requestPath = ALL_USER_APP_LIST + userid;
 			logger.info("webservice call starts with request path "
 					+ requestPath);
 			JSONObject userAppJSON = new JSONObject(
@@ -75,15 +82,14 @@ public class AppServiceImpl implements AppService {
 			for (int i = 0; i < jsonArray.length(); i++) {
 				UserApplication app = new UserApplication();
 				JSONObject jsonobj = jsonArray.getJSONObject(i);
-				app.setUserid(jsonobj.get("userId").toString().trim());
-				app.setAppName(jsonobj.get("appName").toString().trim());
-				app.setAppURL((jsonobj.get("appUrl").toString()).trim());
+				app.setUserid(jsonobj.get("userId").toString());
+				app.setAppName(jsonobj.get("appName").toString());
+				app.setAppURL((jsonobj.get("appUrl").toString()));
 				app.setSeqNo(jsonobj.get("seqNo").toString());
-				app.setAppId(jsonobj.get("appId").toString());
-				app.setActiveCd((jsonobj.get("activeCd").toString()).trim());
+				app.setAppId(jsonobj.get("appId").toString().trim());
+				app.setActiveCd((jsonobj.get("activeCd").toString()));
 				if (jsonobj.get("flagDefault") != null) {
-					app.setFlagDefault((jsonobj.get("flagDefault").toString())
-							.trim());
+					app.setFlagDefault((jsonobj.get("flagDefault").toString()));
 				}
 				appList.add(app);
 			}
@@ -119,12 +125,11 @@ public class AppServiceImpl implements AppService {
 				app.setSeqNo(jsonobj.getJSONObject("appKey").get("seqNo")
 						.toString());
 				app.setAppId(jsonobj.getJSONObject("appKey").get("appId")
-						.toString());
+						.toString().trim());
 				app.setAppDesc(description);
-				app.setAppName(jsonobj.get("appName").toString().trim());
-				app.setAppURL((jsonobj.get("appURL").toString()).trim());
-				app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString())
-						.trim());
+				app.setAppName(jsonobj.get("appName").toString());
+				app.setAppURL((jsonobj.get("appURL").toString()));
+				app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString()));
 				appList.add(app);
 			}
 		} catch (Exception e) {
@@ -147,12 +152,12 @@ public class AppServiceImpl implements AppService {
 	// serviceInterfaceDelegate.processGetRestRequest(requestPath));
 	// logger.info("webservice call ends with request path " + requestPath);
 	// if (jsonobj.get("appId") != null
-	// && !jsonobj.get("appId").toString().trim()
+	// && !jsonobj.get("appId").toString()
 	// .equalsIgnoreCase("null")) {
 	// UserApplication app = new UserApplication();
-	// app.setUserid(jsonobj.get("userId").toString().trim());
-	// app.setAppName(jsonobj.get("appName").toString().trim());
-	// app.setAppId((jsonobj.get("appId").toString()).trim());
+	// app.setUserid(jsonobj.get("userId").toString());
+	// app.setAppName(jsonobj.get("appName").toString());
+	// app.setAppId((jsonobj.get("appId").toString()));
 	// if (jsonobj.get("activeCd") != null) {
 	// app.setActiveCd(jsonobj.get("activeCd").toString());
 	// app.setSeqNo(jsonobj.get("seqNo").toString());
@@ -166,9 +171,8 @@ public class AppServiceImpl implements AppService {
 	// }
 
 	/**
-	 * Retrieving userapp
+	 * This method creates an association between user and app.
 	 */
-
 	public UserApplication createUserApp(String userid, String appId,
 			String seqNo) {
 		try {
@@ -181,11 +185,11 @@ public class AppServiceImpl implements AppService {
 			logger.info("webservice call ends with request path " + requestPath);
 			UserApplication app = new UserApplication();
 			if (jsonobj.get("appId") != null
-					&& !jsonobj.get("appId").toString().trim()
+					&& !jsonobj.get("appId").toString()
 							.equalsIgnoreCase("null")) {
-				app.setUserid(jsonobj.get("userId").toString().trim());
-				app.setAppName(jsonobj.get("appName").toString().trim());
-				app.setAppId((jsonobj.get("appId").toString()).trim());
+				app.setUserid(jsonobj.get("userId").toString());
+				app.setAppName(jsonobj.get("appName").toString());
+				app.setAppId((jsonobj.get("appId").toString().trim()));
 				app.setActiveCd(jsonobj.get("activeCd").toString());
 				app.setSeqNo(jsonobj.get("seqNo").toString());
 			}
@@ -217,11 +221,10 @@ public class AppServiceImpl implements AppService {
 	// .toString());
 	// app.setAppId(jsonobj.getJSONObject("appKey").get("appId")
 	// .toString());
-	// app.setAppDesc(jsonobj.get("appDesc").toString().trim());
-	// app.setAppName(jsonobj.get("appName").toString().trim());
-	// app.setAppURL((jsonobj.get("appURL").toString()).trim());
-	// app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString())
-	// .trim());
+	// app.setAppDesc(jsonobj.get("appDesc").toString());
+	// app.setAppName(jsonobj.get("appName").toString());
+	// app.setAppURL((jsonobj.get("appURL").toString()));
+	// app.setLoggedInAccess((jsonobj.get("loggedInAccess").toString()));
 	// appList.add(app);
 	// }
 	// } catch (Exception e) {
@@ -231,12 +234,14 @@ public class AppServiceImpl implements AppService {
 	//
 	// }
 
-	// For user app update
+	/**
+	 * This method updates an association between user and app.
+	 */
 	public void updateUserApp(UserApplication userApp, String userId) {
 		try {
-			String requestPath = UPDATE_USER_APP + userApp.getAppId().trim()
-					+ "/" + userApp.getSeqNo().trim() + "/" + userId + "/"
-					+ userApp.getActiveCd().trim();
+			String requestPath = UPDATE_USER_APP + userApp.getAppId() + "/"
+					+ userApp.getSeqNo() + "/" + userId + "/"
+					+ userApp.getActiveCd();
 			logger.info("webservice call starts with request path "
 					+ requestPath);
 			serviceInterfaceDelegate.processGetRestRequest(requestPath);
