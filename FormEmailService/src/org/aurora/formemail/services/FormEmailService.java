@@ -72,7 +72,7 @@ public class FormEmailService {
 			}
 			// Send message
 			Transport.send(message);
-
+			System.out.println("MESSAGE SENT!!");
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
