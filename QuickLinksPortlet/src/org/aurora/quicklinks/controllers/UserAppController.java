@@ -45,7 +45,7 @@ public class UserAppController {
 	private AppService appService;
 
 	private void log(String msg) {
-		logger.warn(msg.replaceAll("/n", ""));
+		logger.info(msg.replaceAll("/n", ""));
 	}
 
 	@ModelAttribute("appFormBean")

@@ -45,7 +45,7 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 	 * level for all calls
 	 */
 	private void log(String msg) {
-		logger.warn(msg.replaceAll("\n", ""));
+		logger.info(msg.replaceAll("\n", ""));
 	}
 
 	/* Get available quick links list based on user role */

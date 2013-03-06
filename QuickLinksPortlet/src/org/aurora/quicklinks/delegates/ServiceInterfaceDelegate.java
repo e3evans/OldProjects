@@ -60,10 +60,10 @@ public class ServiceInterfaceDelegate {
 		String responseText = QuickLinksConstants.SERVICE_ERROR_MESSAGE;
 		HttpEntity<String> requestEntity = new HttpEntity<String>(entityHeaders);
 		URI requestURI = new URI(urlPath);
-		logger.warn("web service call with request path : " + urlPath);
+		logger.info("web service call with request path : " + urlPath);
 		ResponseEntity<String> result = restTemplate.exchange(requestURI,
 				HttpMethod.GET, requestEntity, String.class);
-		logger.warn("web service returned : " + result);
+		logger.info("web service returned : " + result);
 		responseText = result.getBody();
 		return responseText;
 	}

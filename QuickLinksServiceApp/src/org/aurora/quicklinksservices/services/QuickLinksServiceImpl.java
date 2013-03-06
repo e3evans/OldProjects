@@ -30,7 +30,6 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 	private QuickLinksAPPDAO quickLinksAPPDAO;
 
 	public List<App> retrieveAvailAppListByRole(String roleCd) {
-		logger.warn("Entered retrieveAvailAppListByRole");
 		try {
 			List<App> appList = new ArrayList<App>();
 			List<App> apps = quickLinksAPPDAO.findAvailAppListByRole(roleCd);
@@ -41,7 +40,6 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 					appList.add(app);
 				}
 			}
-			logger.warn("Exiting retrieveAvailAppListByRole");
 			return appList;
 		} catch (Exception e) {
 			logger.error("Exception in retrieveAvailAppListByRole", e);
