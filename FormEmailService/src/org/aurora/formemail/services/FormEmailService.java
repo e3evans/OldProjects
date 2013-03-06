@@ -55,19 +55,19 @@ public class FormEmailService {
 			
 			
             if ((null == senderName) || (" " == senderName)||("Name".equalsIgnoreCase(senderName))) {
-            	message.setSubject(COMMENT_TITLE + " from - "+userID);
+            	message.setSubject(decodeUTF8(form.getFirst(COMMENT_TITLE)) + " from - "+userID);
 			} else {
-				message.setSubject(COMMENT_TITLE + " "+form.getFirst(TITLE)+"from - "+userID+" by -"+senderName);
+				message.setSubject(decodeUTF8(form.getFirst(COMMENT_TITLE)) + " "+form.getFirst(TITLE)+"from - "+userID+" by -"+senderName);
 			}
 
 			if ((null == form.getFirst(COMMENT)) || (" " == form.getFirst(COMMENT))||("Enter message here".equalsIgnoreCase(form.getFirst(COMMENT)))) {
 				message.setText("No message Entered");
 			} else{
-				textmsg.append("Email Subject Line:  "+form.getFirst(COMMENT_TITLE)+"\n");
-				textmsg.append("Name:  "+form.getFirst(LAST_NAME)+", "+form.getFirst(LAST_NAME)+"\n");
+				textmsg.append("Email Subject Line:  "+decodeUTF8(form.getFirst(COMMENT_TITLE)+"\n"));
+				textmsg.append("Name:  "+form.getFirst(LAST_NAME)+", "+form.getFirst(FIRST_NAME)+"\n");
 				textmsg.append("Location:  "+form.getFirst(LOCATION)+"\n");
 				textmsg.append("Telephone Number:  "+form.getFirst(PHONE)+"\n \n");
-				textmsg.append("Comment/Suggestion:  "+form.getFirst(COMMENT));
+				textmsg.append("Comment/Suggestion:  "+decodeUTF8(form.getFirst(COMMENT)));
 				message.setText(textmsg.toString());
 			}
 			// Send message
@@ -82,6 +82,7 @@ public class FormEmailService {
 	private String decodeUTF8(String input){	
 		try {
 			input =URLDecoder.decode(input, "UTF-8");
+			input.replaceAll("+", " ");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
