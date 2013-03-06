@@ -19,13 +19,13 @@ import javax.ws.rs.core.MultivaluedMap;
 public class FormEmailService {
 
 	private static final String DEFAULT_MAIL_SERVER = "xx";
-	private static final String MAIL_SUBJECT = "xx";
 	private static final String FIRST_NAME = "acgc_share_name";	
 	private static final String LAST_NAME = "acgc_share_lastname";
 	private static final String LOCATION = "acgc_share_location";
 	private static final String PHONE="acgc_share_phone";
 	private static final String TITLE="acgc_share_title";
 	private static final String COMMENT = "acgc_share_comment";
+	private static final String COMMENT_TITLE = "acgc_share_title";
 	private static final String SENDTO = "acgc_send_to";
 	private static final String SENDFROM = "acgc_send_from";
 	
@@ -53,19 +53,21 @@ public class FormEmailService {
 		
 			message.setFrom((new InternetAddress(fromAddr)));
 			
-            
+			
             if ((null == senderName) || (" " == senderName)||("Name".equalsIgnoreCase(senderName))) {
-            	message.setSubject(MAIL_SUBJECT + " from - "+userID);
+            	message.setSubject(COMMENT_TITLE + " from - "+userID);
 			} else {
-				message.setSubject(MAIL_SUBJECT + " "+form.getFirst(TITLE)+"from - "+userID+" by -"+senderName);
+				message.setSubject(COMMENT_TITLE + " "+form.getFirst(TITLE)+"from - "+userID+" by -"+senderName);
 			}
 
 			if ((null == form.getFirst(COMMENT)) || (" " == form.getFirst(COMMENT))||("Enter message here".equalsIgnoreCase(form.getFirst(COMMENT)))) {
 				message.setText("No message Entered");
 			} else{
-				textmsg.append(form.getFirst(LOCATION));
-				textmsg.append(form.getFirst(PHONE));
-				textmsg.append(form.getFirst(COMMENT));
+				textmsg.append("Email Subject Line:  "+form.getFirst(COMMENT_TITLE)+"\n");
+				textmsg.append("Name:  "+form.getFirst(LAST_NAME)+", "+form.getFirst(LAST_NAME)+"\n");
+				textmsg.append("Location:  "+form.getFirst(LOCATION)+"\n");
+				textmsg.append("Telephone Number:  "+form.getFirst(PHONE)+"\n \n");
+				textmsg.append("Comment/Suggestion:  "+form.getFirst(COMMENT));
 				message.setText(textmsg.toString());
 			}
 			// Send message
