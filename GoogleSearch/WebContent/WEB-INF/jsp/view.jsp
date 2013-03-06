@@ -1,6 +1,5 @@
 <%@page import="com.aurora.controllers.ViewController"%>
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
-<script language="JavaScript" src='<%= renderResponse.encodeURL(renderRequest.getContextPath() + "/js/jquery.1.8.2.js") %>'></script>
 <portlet:resourceURL var="search" id="search"/>
 <portlet:resourceURL var="googleClick" id="googleClick"/>
 <script>
@@ -60,5 +59,3 @@ function callService(params){
 <!-- input type="button" value="test" onclick="searchGoogle('news')"/-->
 <c:out escapeXml="false" value="${searchForm.searchResults}"/>
 </div>
-
-

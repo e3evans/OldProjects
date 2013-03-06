@@ -29,6 +29,9 @@
 								${pollForm.poll.answer} 
 					  </p>
 				  </c:if> 
+			  	  <p>
+			  		Total Responses: <c:out value="${pollForm.totalResults}"/>
+			  	  </p>
 				  <div class="acgc_clear"><!-- clear --></div>
 	            </div>
 	            <c:forEach items="${pollForm.archivePolls }" var="archPoll">
@@ -55,6 +58,9 @@
 							${archPoll.answer} 
 				  		</p> 
 				  	</c:if>
+				  	<p>
+				  		Total Responses: <c:out value="${archPoll.totalAnswers}"/>
+				  	</p>
 	            	<div class="acgc_clear"><!-- clear --></div>
 		            </div>
 	            </c:forEach>

@@ -82,15 +82,15 @@
 <div class="acgc_top_content_wrap">
 	<div class="acgc_top_content_box">
 		<h1><%=siteName%></h1>
+		<!-- 
 		<div class="acgc_searchblock acgc_radius_5">
-			
-			
 			<form class="acgc_relative" method="get" action="/aurora/htmlsite//">
 				<input type="hidden" value="searchresults" name="v">
 				<input type="text" class="acgc_searchinput" title="Search ..." value="" name="q">
 				<input type="submit" class="acgc_searchsubmit acgc_radius_3" value="go" name="go">
 			</form>
 		</div>
+		 -->
 	</div>
 </div>
 					
