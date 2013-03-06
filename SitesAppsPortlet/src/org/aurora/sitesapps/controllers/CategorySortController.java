@@ -131,13 +131,12 @@ public class CategorySortController {
 
 			Map<String, List<Application>> map = new HashMap<String, List<Application>>();
 			for (Application app : availAppsList) {
-				if (app.getAppName().trim().toUpperCase()
-						.indexOf(alphabates[i]) == 0) {
+				if (app.getAppName().toUpperCase().indexOf(alphabates[i]) == 0) {
 					listApplication.add(app);
 					j = 1;
 				} else if (j == 0) {
 					for (int k = 0; k < alphabates.length; k++) {
-						if (app.getAppName().trim().toUpperCase()
+						if (app.getAppName().toUpperCase()
 								.indexOf(alphabates[k]) == 0) {
 							i = k;
 							j = 1;
@@ -154,7 +153,7 @@ public class CategorySortController {
 					// i++;
 					listApplication = new ArrayList<Application>();
 					for (int l = 0; l < alphabates.length; l++) {
-						if (app.getAppName().trim().toUpperCase()
+						if (app.getAppName().toUpperCase()
 								.indexOf(alphabates[l]) == 0) {
 							listApplication.add(app);
 							i = l;

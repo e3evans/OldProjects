@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.hibernate.annotations.Type;
 
 // Referenced classes of package org.aurora.portalCommon.beans:
 //            AppKey
@@ -108,6 +109,7 @@ public class App implements Serializable {
 	 * getAppKey().getSeqNo(); } else { return null; } }
 	 */
 	@Column(name = "PT2B_APP_NAME", nullable = false, length = 19, insertable = false, updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getAppName() {
 		return appName;
 	}
@@ -136,6 +138,7 @@ public class App implements Serializable {
 	 */
 
 	@Column(name = "PT2B_APP_DESC", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getAppDesc() {
 		return appDesc;
 	}
@@ -145,6 +148,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_APP_COMMENTS", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getComments() {
 		return comments;
 	}
@@ -154,6 +158,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_APP_URL", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getAppURL() {
 		return appURL;
 	}
@@ -163,6 +168,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_APP_URL_RP", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getAppURLproxy() {
 		return appURLproxy;
 	}
@@ -172,6 +178,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_DFT_HM_URL", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getHomeURL() {
 		return homeURL;
 	}
@@ -181,6 +188,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_DFT_HM_URL_RP", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getHomeURLproxy() {
 		return homeURLproxy;
 	}
@@ -190,6 +198,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_HELP_URL", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getHelpURL() {
 		return helpURL;
 	}
@@ -199,6 +208,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_HELP_URL_RP", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getHelpURLproxy() {
 		return helpURLproxy;
 	}
@@ -208,6 +218,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_SRCH_URL", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getSearchURL() {
 		return searchURL;
 	}
@@ -217,6 +228,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_SRCH_URL_RP", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getSearchURLproxy() {
 		return searchURLproxy;
 	}
@@ -226,6 +238,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_FDBK_URL", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getFeedbackURL() {
 		return feedbackURL;
 	}
@@ -235,6 +248,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_FDBK_URL_RP", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getFeedbackURLproxy() {
 		return feedbackURLproxy;
 	}
@@ -244,6 +258,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_FDBK_EMAIL", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getFeedbackEmail() {
 		return feedbackEmail;
 	}
@@ -253,6 +268,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_ADMIN_URL", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getAdminURL() {
 		return adminURL;
 	}
@@ -262,6 +278,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_ADMIN_URL_RP", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getAdminURLproxy() {
 		return adminURLproxy;
 	}
@@ -271,6 +288,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_RGSTR_URL", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getRegstrURL() {
 		return regstrURL;
 	}
@@ -289,6 +307,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_TARGET_FRAME", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getTargetFrame() {
 		return targetFrame;
 	}
@@ -298,6 +317,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_TIMEOUT_MINS", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getTimeoutMinutes() {
 		return timeoutMinutes;
 	}
@@ -307,6 +327,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_ACTIVE_CD", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getActiveCd() {
 		return activeCd;
 	}
@@ -319,6 +340,7 @@ public class App implements Serializable {
 	 * public boolean isActive() { return activeCd.equalsIgnoreCase("A"); }
 	 */
 	@Column(name = "PT2B_ACCESS_TYPE", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getAccessType() {
 		return accessType;
 	}
@@ -328,6 +350,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_EXPLODE_ACCESS", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getExplodeAccDet() {
 		return explodeAccDet;
 	}
@@ -337,6 +360,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_DFLT_APP_BAR", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getDefAppBar() {
 		return defAppBar;
 	}
@@ -350,6 +374,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_APP_BAR_COLOR", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getDefAppBarColor() {
 		return defAppBarColor;
 	}
@@ -359,6 +384,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_DIS_ZERO_APPL", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getDispZeroApp() {
 		return dispZeroApp;
 	}
@@ -368,6 +394,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_DIS_USER_FLDS", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getDispUserFields() {
 		return dispUserFields;
 	}
@@ -377,6 +404,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_DIS_DGTL_AGREE", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getDigitalAgree() {
 		return digitalAgree;
 	}
@@ -386,6 +414,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_NON_EMP_ACCESS", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getNonEmpAccess() {
 		return nonEmpAccess;
 	}
@@ -395,6 +424,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_INT_EXT_ACCESS", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getIntExtAccessInd() {
 		return intExtAccessInd;
 	}
@@ -404,6 +434,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_HTTP_TYPE_ACC", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getHttpTypeAccessInd() {
 		return httpTypeAccessInd;
 	}
@@ -413,6 +444,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_LOGIN_ACC", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getLoggedInAccess() {
 		return loggedInAccess;
 	}
@@ -422,6 +454,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_NO_LOGIN_ACC", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getNotLoggedInAccess() {
 		return notLoggedInAccess;
 	}
@@ -431,6 +464,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_ALLOW_DELEGATE", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getAllowDelegate() {
 		return allowDelegate;
 	}
@@ -440,6 +474,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_CHAMP_EMP_NO", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getChampionEmpNo() {
 		return championEmpNo;
 	}
@@ -449,6 +484,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_AUTHOR_EMP_NO", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getAuthorEmpNo() {
 		return authorEmpNo;
 	}
@@ -458,6 +494,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_SPPRT_EMP_NO", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getSupportEmpNo() {
 		return supportEmpNo;
 	}
@@ -467,6 +504,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_SPPRT_COMMENT", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getSupportComment() {
 		return supportComment;
 	}
@@ -485,6 +523,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_TRACK_USAGE", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getTrackUsage() {
 		return trackUsage;
 	}
@@ -494,6 +533,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_AUTO_REG", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getAutoRegister() {
 		return autoRegister;
 	}
@@ -513,6 +553,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_SHORT_NAME", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getShortName() {
 		return shortName;
 	}
@@ -522,6 +563,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_DISP_TOPBAR", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getDisplayTopBar() {
 		return displayTopBar;
 	}
@@ -535,6 +577,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_DISP_LEFTNAV", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getDisplayLeftNav() {
 		return displayLeftNav;
 	}
@@ -548,6 +591,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_WINDOW_WIDTH", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getWindowWidth() {
 		return windowWidth;
 	}
@@ -557,6 +601,7 @@ public class App implements Serializable {
 	}
 
 	@Column(name = "PT2B_WINDOW_HEIGHT", updatable = false)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getWindowHeight() {
 		return windowHeight;
 	}

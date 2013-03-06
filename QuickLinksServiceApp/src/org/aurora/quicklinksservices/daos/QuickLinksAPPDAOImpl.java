@@ -40,6 +40,14 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 		this.hibernateTemplate = new HibernateTemplate(db2SessionFactory);
 	}
 
+	/*
+	 * Helper method for logging that can easily change to log at a different
+	 * level for all calls
+	 */
+	private void log(String msg) {
+		logger.warn(msg.replaceAll("\n", ""));
+	}
+
 	/* Get available quick links list based on user role */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List<App> findAvailAppListByRole(String roleCd) throws Exception {
@@ -89,12 +97,10 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 
 	/* Get user saved quick links including defaults */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public List<UserAppResponseBean> findUserAppsByUser(
-			boolean includeInactives, Long userId) throws Exception {
+	public List<UserAppResponseBean> findUserAppsByUser(Long userId)
+			throws Exception {
 		log("Entered findUserAppsByUser");
 		List<UserAppResponseBean> userAppList = new ArrayList<UserAppResponseBean>();
-		// Map<String, List<UserAppResponseBean>> userAppList = new
-		// TreeMap<String, List<UserAppResponseBean>>();
 
 		// get default apps, TODO: store some where so they are not hard coded
 		final StringBuilder sql = new StringBuilder()
@@ -116,22 +122,16 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 					+ userId);
 			for (App app : defaultApps) {
 				UserAppResponseBean bean = new UserAppResponseBean();
-				String appName = app.getAppName().trim();
+				String appName = app.getAppName();
 				bean.setAppName(appName);
 				bean.setAppId(app.getAppKey().getAppId());
 				bean.setAppUrl(QuickLinksUtility.urlFormat(BASE_ICONNECT_URL,
-						app.getAppURL().trim()));
-				bean.setActiveCd(app.getActiveCd().trim());
+						app.getAppURL()));
+				bean.setActiveCd(app.getActiveCd());
 				bean.setSeqNo(app.getAppKey().getSeqNo().toString());
 				bean.setFlagDefault("true");
 				bean.setUserId(userId.toString());
 				userAppList.add(bean);
-				// List<UserAppResponseBean> list = userAppList.get(appName);
-				// if (list == null) {
-				// list = new ArrayList<UserAppResponseBean>();
-				// }
-				// list.add(bean);
-				// userAppList.put(appName.toUpperCase(), list);
 			}
 		}
 
@@ -149,10 +149,8 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 				.append("AND app.PT2B_ACTIVE_CD = 'A' ")
 				.append("AND userapp.PT2J_APPID = app.PT2B_APPID ")
 				.append("AND userapp.PT2J_SEQ_NO = app.PT2B_SEQ_NO ")
-				.append("AND userapp.PT2J_USERID = ").append(userId);
-		if (!includeInactives) {
-			sql2.append(" AND userapp.PT2J_ACTIVE_CD = 'A' ");
-		}
+				.append("AND userapp.PT2J_USERID = ").append(userId)
+				.append(" AND userapp.PT2J_ACTIVE_CD = 'A' ");
 		log(sql2.toString());
 		List<UserApp> userApps = (List<UserApp>) this.hibernateTemplate
 				.execute(new HibernateCallback() {
@@ -162,46 +160,97 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 					}
 				});
 		if (userApps != null) {
-			log("Found " + userApps.size() + " user apps"
-					+ (includeInactives ? " plus inactives " : " ")
-					+ "for userId: " + userId);
+			log("Found " + userApps.size() + " user apps for userId: " + userId);
 			for (UserApp userApp : userApps) {
-				UserAppResponseBean bean = new UserAppResponseBean();
 				if (userApp.getApplication() != null) {
+					UserAppResponseBean bean = new UserAppResponseBean();
+					bean.setActiveCd(userApp.getActiveCd());
+					UserAppKey key = userApp.getUserAppKey();
+					bean.setAppId(key.getAppId());
+					bean.setSeqNo(key.getSeqNo().toString());
+					bean.setUserId(key.getUserId().toString());
 					App app = userApp.getApplication();
-					String appName = app.getAppName().trim();
-					bean.setAppName(appName);
+					bean.setAppName(app.getAppName());
 					bean.setAppUrl(QuickLinksUtility.urlFormat(
-							BASE_ICONNECT_URL, app.getAppURL().trim()));
-					bean.setAppId(app.getAppKey().getAppId().trim());
-					bean.setActiveCd(app.getActiveCd().trim());
-					bean.setSeqNo(app.getAppKey().getSeqNo().toString());
-					bean.setUserId(userId.toString());
+							BASE_ICONNECT_URL, app.getAppURL()));
 					userAppList.add(bean);
-					// List<UserAppResponseBean> list =
-					// userAppList.get(appName);
-					// if (list == null) {
-					// list = new ArrayList<UserAppResponseBean>();
-					// }
-					// list.add(bean);
-					// userAppList.put(appName.toUpperCase(), list);
 				}
 			}
 		}
 
 		// sort by app id and seq no and add parent app name to child app
+		log("Adding parent app name to children");
 		Collections.sort(userAppList, UserAppResponseBean.APP_ID_COMPARATOR);
 		Map<String, String> parentNames = new HashMap<String, String>();
 		for (UserAppResponseBean bean : userAppList) {
-			if ("0".equals(bean.getSeqNo().trim())) {
-				parentNames.put(bean.getAppId().trim().toLowerCase(), bean
-						.getAppName().trim());
+			if ("0".equals(bean.getSeqNo())) {
+				parentNames.put(bean.getAppId().toLowerCase(),
+						bean.getAppName());
 			} else {
-				bean.setAppName(parentNames.get(bean.getAppId().trim()
-						.toLowerCase())
-						+ " : " + bean.getAppName());
+				bean.setAppName(parentNames.get(bean.getAppId().toLowerCase())
+						+ ": " + bean.getAppName());
 			}
 		}
+
+		// sort by app name
+		Collections.sort(userAppList, UserAppResponseBean.APP_NAME_COMPARATOR);
+
+		return userAppList;
+	}
+
+	/* Get user saved quick links including defaults */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List<UserAppResponseBean> findAllUserAppsByUser(Long userId)
+			throws Exception {
+		log("Entered findAllUserAppsByUser");
+		List<UserAppResponseBean> userAppList = new ArrayList<UserAppResponseBean>();
+
+		// get user apps
+		final StringBuilder sql = new StringBuilder()
+				.append("SELECT userapp.* ")
+				.append("FROM TPT2B_APPLICATION app, TPT2B_APPLICATION parent, TPT2E_APP_ROLE approle, TPT2J_USER_APP userapp ")
+				.append("WHERE app.PT2B_APPID = approle.PT2E_APPID ")
+				.append("AND app.PT2B_SEQ_NO = approle.PT2E_SEQ_NO ")
+				.append("AND approle.PT2E_ROLE_CD = 'EMP' ")
+				.append("AND app.PT2B_APPID = parent.PT2B_APPID ")
+				.append("AND parent.PT2B_SEQ_NO = 0 ")
+				.append("AND parent.PT2B_ACTIVE_CD = 'A' ")
+				.append("AND app.PT2B_LOGIN_ACC NOT IN ('E','N') ")
+				.append("AND app.PT2B_ACTIVE_CD = 'A' ")
+				.append("AND userapp.PT2J_APPID = app.PT2B_APPID ")
+				.append("AND userapp.PT2J_SEQ_NO = app.PT2B_SEQ_NO ")
+				.append("AND userapp.PT2J_USERID = ").append(userId);
+		log(sql.toString());
+		List<UserApp> userApps = (List<UserApp>) this.hibernateTemplate
+				.execute(new HibernateCallback() {
+					public Object doInHibernate(Session session) {
+						SQLQuery query = session.createSQLQuery(sql.toString());
+						return query.addEntity(UserApp.class).list();
+					}
+				});
+		if (userApps != null) {
+			log("Found " + userApps.size() + " all user apps for userId: "
+					+ userId);
+			for (UserApp userApp : userApps) {
+				if (userApp.getApplication() != null) {
+					UserAppResponseBean bean = new UserAppResponseBean();
+					bean.setActiveCd(userApp.getActiveCd());
+					UserAppKey key = userApp.getUserAppKey();
+					bean.setAppId(key.getAppId());
+					bean.setSeqNo(key.getSeqNo().toString());
+					bean.setUserId(key.getUserId().toString());
+					App app = userApp.getApplication();
+					bean.setAppName(app.getAppName());
+					bean.setAppUrl(QuickLinksUtility.urlFormat(
+							BASE_ICONNECT_URL, app.getAppURL()));
+					userAppList.add(bean);
+				}
+			}
+		}
+
+		// sort by app name
+		Collections.sort(userAppList, UserAppResponseBean.APP_NAME_COMPARATOR);
+
 		return userAppList;
 	}
 
@@ -216,10 +265,10 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 		if (userApp != null) {
 			log("Found user app: " + userApp.toString());
 			UserAppKey key = userApp.getUserAppKey();
-			userAppResponseBean.setAppId(key.getAppId().trim());
+			userAppResponseBean.setAppId(key.getAppId());
 			userAppResponseBean.setSeqNo(key.getSeqNo().toString());
 			userAppResponseBean.setUserId(key.getUserId().toString());
-			userAppResponseBean.setActiveCd(userApp.getActiveCd().trim());
+			userAppResponseBean.setActiveCd(userApp.getActiveCd());
 		}
 		return userAppResponseBean;
 	}
@@ -348,13 +397,5 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 		log("Found " + apps.size() + " popular apps for categoryId: "
 				+ categoryId);
 		return apps;
-	}
-
-	/*
-	 * Helper method for logging that can easily change to log at a different
-	 * level for all calls
-	 */
-	private void log(String msg) {
-		logger.warn(msg.replaceAll("\n", ""));
 	}
 }

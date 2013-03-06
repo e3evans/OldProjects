@@ -1,8 +1,6 @@
 package org.aurora.quicklinksservices.services;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -39,7 +37,7 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 			if (null != apps && !apps.isEmpty()) {
 				for (App app : apps) {
 					app.setAppURL(QuickLinksUtility.urlFormat(
-							BASE_ICONNECT_URL, app.getAppURL().trim()));
+							BASE_ICONNECT_URL, app.getAppURL()));
 					appList.add(app);
 				}
 			}
@@ -83,17 +81,7 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 			if (userId != null) {
 				logger.info("Getting apps for userId: " + userId);
 				List<UserAppResponseBean> list = quickLinksAPPDAO
-						.findUserAppsByUser(false, userId);
-				// Map<String, List<UserAppResponseBean>> list =
-				// quickLinksAPPDAO
-				// .findUserAppsByUser(false, userId);
-				// List<UserAppResponseBean> sortedList = new
-				// ArrayList<UserAppResponseBean>();
-				// for (List<UserAppResponseBean> apps : list.values()) {
-				// sortedList.addAll(apps);
-				// }
-				Collections.sort(list, UserAppResponseBean.APP_NAME_COMPARATOR);
-				logger.warn(Arrays.toString(list.toArray()));
+						.findUserAppsByUser(userId);
 				return list;
 			} else {
 				logger.error("findUserAppsByUser - no userId found for loginId: "
@@ -110,15 +98,7 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 			Long userId = this.retrieveUserId(loginId);
 			if (userId != null) {
 				List<UserAppResponseBean> list = quickLinksAPPDAO
-						.findUserAppsByUser(true, userId);
-				// Map<String, List<UserAppResponseBean>> list =
-				// quickLinksAPPDAO
-				// .findUserAppsByUser(true, userId);
-				// List<UserAppResponseBean> sortedList = new
-				// ArrayList<UserAppResponseBean>();
-				// for (List<UserAppResponseBean> apps : list.values()) {
-				// sortedList.addAll(apps);
-				// }
+						.findAllUserAppsByUser(userId);
 				return list;
 			} else {
 				logger.error("findAllUserAppsByUser - no userId found for loginId: "
@@ -215,7 +195,7 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 			if (null != appList && !appList.isEmpty()) {
 				for (App app : appList) {
 					app.setAppURL(QuickLinksUtility.urlFormat(
-							BASE_ICONNECT_URL, app.getAppURL().trim()));
+							BASE_ICONNECT_URL, app.getAppURL()));
 					appListFormatURL.add(app);
 				}
 
@@ -236,7 +216,7 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 			if (null != appList && !appList.isEmpty()) {
 				for (App app : appList) {
 					app.setAppURL(QuickLinksUtility.urlFormat(
-							BASE_ICONNECT_URL, app.getAppURL().trim()));
+							BASE_ICONNECT_URL, app.getAppURL()));
 					appListFormatURL.add(app);
 				}
 			}

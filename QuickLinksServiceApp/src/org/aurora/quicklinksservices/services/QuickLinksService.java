@@ -16,6 +16,8 @@ public interface QuickLinksService {
 
 	public List<UserAppResponseBean> findUserAppsByUser(String loginId);
 
+	public List<UserAppResponseBean> findAllUserAppsByUser(String loginId);
+
 	public UserAppResponseBean retrieveUserApp(String appId, String seqNo,
 			String loginId);
 
@@ -26,8 +28,6 @@ public interface QuickLinksService {
 
 	public void updateUserApp(String loginId, String appId, String seqNo,
 			String activecd) throws WriteException;
-
-	public List<UserAppResponseBean> findAllUserAppsByUser(String loginId);
 
 	public Long retrieveUserId(String loginid);
 

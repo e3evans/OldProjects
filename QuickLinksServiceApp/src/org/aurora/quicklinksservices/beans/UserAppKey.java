@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.hibernate.annotations.Type;
 
 @Embeddable
 public class UserAppKey implements Serializable {
@@ -16,6 +17,7 @@ public class UserAppKey implements Serializable {
 	private Long userId;
 
 	@Column(name = "PT2J_APPID")
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	private String appId;
 
 	@Column(name = "PT2J_SEQ_NO")

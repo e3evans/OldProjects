@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.hibernate.annotations.Type;
 
 @Embeddable
 public class AppKey implements Serializable {
@@ -13,6 +14,7 @@ public class AppKey implements Serializable {
 	private static final long serialVersionUID = 8529886211840887944L;
 
 	@Column(name = "PT2B_APPID")
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	private String appId;
 
 	@Column(name = "PT2B_SEQ_NO")
@@ -48,7 +50,9 @@ public class AppKey implements Serializable {
 	}
 
 	public String getAppId() {
-		return appId;
+		// TODO: find out why org.aurora.spring.dao.hibernate.StringTrimUserType
+		// does not work for only this field
+		return appId.trim();
 	}
 
 	public void setAppId(String appId) {

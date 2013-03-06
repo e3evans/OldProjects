@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "TPT2Z_APP_CATEGORY")
@@ -21,9 +22,11 @@ public class AppCategory implements Serializable {
 	private Integer appCategoryId;
 
 	@Column(name = "PT2Z_APP_CATEGORY_NAME")
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	private String appCategoryName;
 
 	@Column(name = "PT2Z_ACTIVE_CD")
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	private String activeCD;
 
 	@Column(name = "PT2Z_UPDATED_TMSP")

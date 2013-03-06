@@ -1,7 +1,6 @@
 package org.aurora.quicklinksservices.daos;
 
 import java.util.List;
-import java.util.Map;
 
 import org.aurora.quicklinksservices.beans.App;
 import org.aurora.quicklinksservices.beans.AppCategory;
@@ -16,8 +15,11 @@ public interface QuickLinksAPPDAO {
 
 	public List<User> findUserDetails(String loginid) throws Exception;
 
-	public List<UserAppResponseBean> findUserAppsByUser(
-			boolean includeInactives, Long userid) throws Exception;
+	public List<UserAppResponseBean> findUserAppsByUser(Long userid)
+			throws Exception;
+
+	public List<UserAppResponseBean> findAllUserAppsByUser(Long userid)
+			throws Exception;
 
 	public UserAppResponseBean readUserApp(UserAppKey userAppKey)
 			throws Exception;

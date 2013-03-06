@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "TPT2A_USER")
@@ -20,15 +21,19 @@ public class User implements Serializable {
 	private Long userID;
 
 	@Column(name = "PT2A_PORTAL_ID")
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	private String portalID;
 
 	@Column(name = "PT2A_LAST_NAME")
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	private String lastName;
 
 	@Column(name = "PT2A_EMP_NO")
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	private String empNO;
 
 	@Column(name = "PT2A_LOGIN_ID")
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	private String loginId;
 
 	public String getLoginId() {

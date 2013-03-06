@@ -52,7 +52,7 @@
 		<li class="acgc_content_box_tabs_tab selected" style="width: 464px">
 			<a href="/cgc/myportal/connect/home/me"
 			class="acgc_content_box_tabs_tab_link"> <span class="acgc_title">
-					Me </span> <span class="acgc_desc"> My quick links <br />& news </span> </a>
+					Me </span> <span class="acgc_desc"> My quick links <br /></span> </a>
 		</li>
 		<li class="acgc_content_box_tabs_tab_spacer">
 			<!-- spacer -->

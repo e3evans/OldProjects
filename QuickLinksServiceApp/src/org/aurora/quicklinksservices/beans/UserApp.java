@@ -8,13 +8,13 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "TPT2J_USER_APP")
@@ -29,7 +29,8 @@ public class UserApp implements Serializable {
 	private Timestamp lastAccess;
 	private Integer dispSeq;
 	private String activeCd;
-	private User user;
+
+	// private User user;
 
 	@EmbeddedId
 	@AttributeOverrides({
@@ -72,6 +73,7 @@ public class UserApp implements Serializable {
 	}
 
 	@Column(name = "PT2J_ACTIVE_CD", insertable = true, updatable = true)
+	@Type(type = "org.aurora.spring.dao.hibernate.StringTrimUserType")
 	public String getActiveCd() {
 		return this.activeCd;
 	}
@@ -105,7 +107,7 @@ public class UserApp implements Serializable {
 	 * userAppParam = tmpUserAppParam; } } return userAppParam; }
 	 */
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumns({
 			@JoinColumn(name = "PT2J_APPID", updatable = false, insertable = false),
 			@JoinColumn(name = "PT2J_SEQ_NO", updatable = false, insertable = false) })
@@ -117,15 +119,16 @@ public class UserApp implements Serializable {
 		this.application = application;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumns({ @JoinColumn(name = "PT2J_USERID", updatable = false, insertable = false) })
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+	// @ManyToOne(fetch = FetchType.LAZY)
+	// @JoinColumns({ @JoinColumn(name = "PT2J_USERID", updatable = false,
+	// insertable = false) })
+	// public User getUser() {
+	// return this.user;
+	// }
+	//
+	// public void setUser(User user) {
+	// this.user = user;
+	// }
 
 	@Override
 	public String toString() {

@@ -98,8 +98,8 @@ public class UserAppResponseBean implements Serializable {
 		private static final long serialVersionUID = 4783983219368967080L;
 
 		public int compare(UserAppResponseBean a, UserAppResponseBean b) {
-			return a.getAppName().trim().toLowerCase()
-					.compareTo(b.getAppName().trim().toLowerCase());
+			return a.getAppName().toLowerCase()
+					.compareTo(b.getAppName().toLowerCase());
 		}
 	}
 
@@ -114,13 +114,12 @@ public class UserAppResponseBean implements Serializable {
 		private static final long serialVersionUID = 4783983219368967080L;
 
 		public int compare(UserAppResponseBean a, UserAppResponseBean b) {
-			if (a.getAppId().trim().equalsIgnoreCase(b.getAppId().trim())) {
-				return new Integer(Integer.parseInt(a.getSeqNo().trim()))
-						.compareTo(new Integer(Integer.parseInt(b.getSeqNo()
-								.trim())));
+			if (a.getAppId().equalsIgnoreCase(b.getAppId())) {
+				return new Integer(Integer.parseInt(a.getSeqNo()))
+						.compareTo(new Integer(Integer.parseInt(b.getSeqNo())));
 			}
-			return a.getAppId().trim().toLowerCase()
-					.compareTo(b.getAppId().trim().toLowerCase());
+			return a.getAppId().toLowerCase()
+					.compareTo(b.getAppId().toLowerCase());
 		}
 	}
 }
