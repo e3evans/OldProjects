@@ -14,6 +14,7 @@ import org.aurora.quicklinksservices.beans.CategoryResponse;
 import org.aurora.quicklinksservices.beans.User;
 import org.aurora.quicklinksservices.beans.UserAppResponseBean;
 import org.aurora.quicklinksservices.beans.UserApplicationResponse;
+import org.aurora.quicklinksservices.exceptions.WriteException;
 import org.aurora.quicklinksservices.services.QuickLinksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
@@ -84,8 +85,12 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 	public UserAppResponseBean createUserApp(@PathParam("appId") String appId,
 			@PathParam("seqNo") String seqNo,
 			@PathParam("loginId") String loginId) {
-		quickLinksService.createUserApp(loginId, appId, seqNo);
-		return quickLinksService.retrieveUserApp(appId, seqNo, loginId);
+		try {
+			quickLinksService.createUserApp(loginId, appId, seqNo);
+			return quickLinksService.retrieveUserApp(appId, seqNo, loginId);
+		} catch (WriteException we) {
+			return new UserAppResponseBean();
+		}
 	}
 
 	@GET
@@ -104,7 +109,9 @@ public class QuickLinksServiceEndPoint extends SpringBeanAutowiringSupport {
 			@PathParam("seqNo") String seqNo,
 			@PathParam("loginId") String loginId,
 			@PathParam("activecd") String activecd) {
-		quickLinksService.updateUserApp(loginId, appId, seqNo, activecd);
+		try {
+			quickLinksService.updateUserApp(loginId, appId, seqNo, activecd);
+		} catch (WriteException we) { /* ignore since we return new bean either way */ }
 		return new UserAppResponseBean();
 	}
 

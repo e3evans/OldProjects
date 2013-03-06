@@ -1,13 +1,20 @@
 package org.aurora.quicklinks.beans;
 
-public class Application {
+import java.io.Serializable;
+
+import org.apache.commons.lang.builder.ToStringBuilder;
+
+public class Application implements Serializable {
+
+	private static final long serialVersionUID = -6210124706832456836L;
+
 	private String appName;
 	private String appDesc;
-    private String seqNo;
-    private String appId;
-    private String appURL;
-    private boolean checked;
-    private String loggedInAccess;
+	private String seqNo;
+	private String appId;
+	private String appURL;
+	private boolean checked;
+	private String loggedInAccess;
 
 	public String getLoggedInAccess() {
 		return loggedInAccess;
@@ -64,15 +71,9 @@ public class Application {
 	public void setAppURL(String appURL) {
 		this.appURL = appURL;
 	}
-	
-	
-	 @Override
-		public String toString() {
-			return "Application [appName=" + appName + ", appDesc=" + appDesc
-					+ ", seqNo=" + seqNo + ", appId=" + appId + ", appURL="
-					+ appURL + ", checked=" + checked + ", loggedInAccess="
-					+ loggedInAccess + "]";
-		}
 
-
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
 }

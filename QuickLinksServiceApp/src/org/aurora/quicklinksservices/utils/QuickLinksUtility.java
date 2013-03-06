@@ -29,6 +29,11 @@ public class QuickLinksUtility {
 				&& firstsubStringurl.indexOf(".org") == -1) {
 			appUrl = baseUrl + appUrl;
 		}
+
+		// make sure prod url uses https
+		if (baseUrl.startsWith("https:") && appUrl.startsWith("http:")) {
+			appUrl.replace("http:", "https:");
+		}
 		return appUrl;
 	}
 }

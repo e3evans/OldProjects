@@ -20,7 +20,6 @@ import org.aurora.sitesapps.beans.AppCategory;
 import org.aurora.sitesapps.beans.AppFormBean;
 import org.aurora.sitesapps.beans.Application;
 import org.aurora.sitesapps.services.AppService;
-import org.aurora.sitesapps.utils.AppComparator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -54,7 +53,6 @@ public class CategorySortController {
 			List<AppCategory> appCategoryList;
 			List<List<Application>> listAllApplication = new LinkedList<List<Application>>();
 			AppCategory applicationCategory = null;
-			AppComparator appComparator = new AppComparator();
 			appCategoryList = new ArrayList<AppCategory>();
 			appCategories = appService.getAppCategories();
 			for (AppCategory appCategory : appCategories) {
@@ -64,7 +62,8 @@ public class CategorySortController {
 					popularApps = appService.getPopularApps(appCategory
 							.getCategoryId());
 					if (null != popularApps && !popularApps.isEmpty()) {
-						Collections.sort(popularApps, appComparator);
+						Collections.sort(popularApps,
+								Application.APP_COMPARATOR);
 						applicationCategory.setPopularapplist(popularApps);
 						applicationCategory.setCategoryName(appCategory
 								.getCategoryName());
@@ -77,7 +76,8 @@ public class CategorySortController {
 					session.setAttribute("listAllApplication",
 							listAllApplication);
 					if (null != appsByCategory && !appsByCategory.isEmpty()) {
-						Collections.sort(appsByCategory, appComparator);
+						Collections.sort(appsByCategory,
+								Application.APP_COMPARATOR);
 						applicationCategory.setAppList(appsByCategory);
 						applicationCategory.setCategoryName(appCategory
 								.getCategoryName());
@@ -127,7 +127,7 @@ public class CategorySortController {
 			for (List<Application> availAppsList2 : availAppsList1) {
 				availAppsList.addAll(availAppsList2);
 			}
-			Collections.sort(availAppsList, new AppComparator());
+			Collections.sort(availAppsList, Application.APP_COMPARATOR);
 
 			Map<String, List<Application>> map = new HashMap<String, List<Application>>();
 			for (Application app : availAppsList) {

@@ -25,7 +25,7 @@ public class AppServiceImpl implements AppService {
 	protected String RETRIEVE_USER_APP = SERVICE_URL + "retrieveuserapp/";
 	protected String CREATE_USER_APP = SERVICE_URL + "createuserapp/";
 	protected String UPDATE_USER_APP = SERVICE_URL + "updateuserapp/";
-	protected String APP_AUTO_LIST = SERVICE_URL + "appautolist/";
+//	protected String APP_AUTO_LIST = SERVICE_URL + "appautolist/";
 	protected String AVAILABLE_APP_LIST = SERVICE_URL + "results";
 
 	public List<UserApplication> listUserAppByUserId(String userid) {

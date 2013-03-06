@@ -1,6 +1,7 @@
 package org.aurora.sitesapps.beans;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
@@ -75,5 +76,21 @@ public class Application implements Serializable {
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
+	}
+
+	/**
+	 * Comparator used to sort by app name
+	 */
+	public final static Comparator<Application> APP_COMPARATOR = new AppComparator();
+
+	public static class AppComparator implements Comparator<Application>,
+			Serializable {
+
+		private static final long serialVersionUID = 4783983219368967080L;
+
+		public int compare(Application a, Application b) {
+			return a.getAppName().toLowerCase()
+					.compareTo(b.getAppName().toLowerCase());
+		}
 	}
 }

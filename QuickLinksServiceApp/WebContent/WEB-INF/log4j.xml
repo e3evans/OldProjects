@@ -5,7 +5,6 @@
 
 	<appender name="logfile" class="org.apache.log4j.RollingFileAppender">
 		<param name="File" value="/aurora/logs/QuickLinksServiceApp.log" />
-		<param name="DatePattern" value="'.'yyyy-MM" />
 		<param name="MaxBackupIndex" value="15" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%p %d [%c] - %m%n" />

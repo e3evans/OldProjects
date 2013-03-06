@@ -90,8 +90,8 @@ public class App implements Serializable {
 
 	@EmbeddedId
 	@AttributeOverrides({
-			@AttributeOverride(name = "appId", column = @Column(name = "PT2B_APPID", nullable = false)),
-			@AttributeOverride(name = "seqNo", column = @Column(name = "PT2B_SEQ_NO", nullable = false)) })
+			@AttributeOverride(name = "appId", column = @Column(name = "PT2B_APPID", nullable = false, updatable = false)),
+			@AttributeOverride(name = "seqNo", column = @Column(name = "PT2B_SEQ_NO", nullable = false, updatable = false)) })
 	public AppKey getAppKey() {
 		return appKey;
 	}
@@ -107,7 +107,7 @@ public class App implements Serializable {
 	 * public Integer getSeqNo() { if(getAppKey() != null) { return
 	 * getAppKey().getSeqNo(); } else { return null; } }
 	 */
-	@Column(name = "PT2B_APP_NAME", nullable = false, length = 19, insertable = true, updatable = true)
+	@Column(name = "PT2B_APP_NAME", nullable = false, length = 19, insertable = false, updatable = false)
 	public String getAppName() {
 		return appName;
 	}
@@ -135,7 +135,7 @@ public class App implements Serializable {
 	 * encoded;
 	 */
 
-	@Column(name = "PT2B_APP_DESC", updatable = true)
+	@Column(name = "PT2B_APP_DESC", updatable = false)
 	public String getAppDesc() {
 		return appDesc;
 	}
@@ -144,7 +144,7 @@ public class App implements Serializable {
 		this.appDesc = appDesc;
 	}
 
-	@Column(name = "PT2B_APP_COMMENTS", updatable = true)
+	@Column(name = "PT2B_APP_COMMENTS", updatable = false)
 	public String getComments() {
 		return comments;
 	}
@@ -153,7 +153,7 @@ public class App implements Serializable {
 		this.comments = comments;
 	}
 
-	@Column(name = "PT2B_APP_URL", updatable = true)
+	@Column(name = "PT2B_APP_URL", updatable = false)
 	public String getAppURL() {
 		return appURL;
 	}
@@ -162,7 +162,7 @@ public class App implements Serializable {
 		this.appURL = appURL;
 	}
 
-	@Column(name = "PT2B_APP_URL_RP", updatable = true)
+	@Column(name = "PT2B_APP_URL_RP", updatable = false)
 	public String getAppURLproxy() {
 		return appURLproxy;
 	}
@@ -171,7 +171,7 @@ public class App implements Serializable {
 		this.appURLproxy = appURLproxy;
 	}
 
-	@Column(name = "PT2B_DFT_HM_URL", updatable = true)
+	@Column(name = "PT2B_DFT_HM_URL", updatable = false)
 	public String getHomeURL() {
 		return homeURL;
 	}
@@ -180,7 +180,7 @@ public class App implements Serializable {
 		this.homeURL = homeURL;
 	}
 
-	@Column(name = "PT2B_DFT_HM_URL_RP", updatable = true)
+	@Column(name = "PT2B_DFT_HM_URL_RP", updatable = false)
 	public String getHomeURLproxy() {
 		return homeURLproxy;
 	}
@@ -189,7 +189,7 @@ public class App implements Serializable {
 		this.homeURLproxy = homeURLproxy;
 	}
 
-	@Column(name = "PT2B_HELP_URL", updatable = true)
+	@Column(name = "PT2B_HELP_URL", updatable = false)
 	public String getHelpURL() {
 		return helpURL;
 	}
@@ -198,7 +198,7 @@ public class App implements Serializable {
 		this.helpURL = helpURL;
 	}
 
-	@Column(name = "PT2B_HELP_URL_RP", updatable = true)
+	@Column(name = "PT2B_HELP_URL_RP", updatable = false)
 	public String getHelpURLproxy() {
 		return helpURLproxy;
 	}
@@ -207,7 +207,7 @@ public class App implements Serializable {
 		this.helpURLproxy = helpURLproxy;
 	}
 
-	@Column(name = "PT2B_SRCH_URL", updatable = true)
+	@Column(name = "PT2B_SRCH_URL", updatable = false)
 	public String getSearchURL() {
 		return searchURL;
 	}
@@ -216,7 +216,7 @@ public class App implements Serializable {
 		this.searchURL = searchURL;
 	}
 
-	@Column(name = "PT2B_SRCH_URL_RP", updatable = true)
+	@Column(name = "PT2B_SRCH_URL_RP", updatable = false)
 	public String getSearchURLproxy() {
 		return searchURLproxy;
 	}
@@ -225,7 +225,7 @@ public class App implements Serializable {
 		this.searchURLproxy = searchURLproxy;
 	}
 
-	@Column(name = "PT2B_FDBK_URL", updatable = true)
+	@Column(name = "PT2B_FDBK_URL", updatable = false)
 	public String getFeedbackURL() {
 		return feedbackURL;
 	}
@@ -234,7 +234,7 @@ public class App implements Serializable {
 		this.feedbackURL = feedbackURL;
 	}
 
-	@Column(name = "PT2B_FDBK_URL_RP", updatable = true)
+	@Column(name = "PT2B_FDBK_URL_RP", updatable = false)
 	public String getFeedbackURLproxy() {
 		return feedbackURLproxy;
 	}
@@ -243,7 +243,7 @@ public class App implements Serializable {
 		this.feedbackURLproxy = feedbackURLproxy;
 	}
 
-	@Column(name = "PT2B_FDBK_EMAIL", updatable = true)
+	@Column(name = "PT2B_FDBK_EMAIL", updatable = false)
 	public String getFeedbackEmail() {
 		return feedbackEmail;
 	}
@@ -252,7 +252,7 @@ public class App implements Serializable {
 		this.feedbackEmail = feedbackEmail;
 	}
 
-	@Column(name = "PT2B_ADMIN_URL", updatable = true)
+	@Column(name = "PT2B_ADMIN_URL", updatable = false)
 	public String getAdminURL() {
 		return adminURL;
 	}
@@ -261,7 +261,7 @@ public class App implements Serializable {
 		this.adminURL = adminURL;
 	}
 
-	@Column(name = "PT2B_ADMIN_URL_RP", updatable = true)
+	@Column(name = "PT2B_ADMIN_URL_RP", updatable = false)
 	public String getAdminURLproxy() {
 		return adminURLproxy;
 	}
@@ -270,7 +270,7 @@ public class App implements Serializable {
 		this.adminURLproxy = adminURLproxy;
 	}
 
-	@Column(name = "PT2B_RGSTR_URL", updatable = true)
+	@Column(name = "PT2B_RGSTR_URL", updatable = false)
 	public String getRegstrURL() {
 		return regstrURL;
 	}
@@ -279,7 +279,7 @@ public class App implements Serializable {
 		this.regstrURL = regstrURL;
 	}
 
-	@Column(name = "PT2B_RGSTR_URL_RP", updatable = true)
+	@Column(name = "PT2B_RGSTR_URL_RP", updatable = false)
 	public String getRegstrURLproxy() {
 		return regstrURLproxy;
 	}
@@ -288,7 +288,7 @@ public class App implements Serializable {
 		this.regstrURLproxy = regstrURLproxy;
 	}
 
-	@Column(name = "PT2B_TARGET_FRAME", updatable = true)
+	@Column(name = "PT2B_TARGET_FRAME", updatable = false)
 	public String getTargetFrame() {
 		return targetFrame;
 	}
@@ -297,7 +297,7 @@ public class App implements Serializable {
 		this.targetFrame = targetFrame;
 	}
 
-	@Column(name = "PT2B_TIMEOUT_MINS", updatable = true)
+	@Column(name = "PT2B_TIMEOUT_MINS", updatable = false)
 	public String getTimeoutMinutes() {
 		return timeoutMinutes;
 	}
@@ -306,7 +306,7 @@ public class App implements Serializable {
 		this.timeoutMinutes = timeoutMinutes;
 	}
 
-	@Column(name = "PT2B_ACTIVE_CD", updatable = true)
+	@Column(name = "PT2B_ACTIVE_CD", updatable = false)
 	public String getActiveCd() {
 		return activeCd;
 	}
@@ -318,7 +318,7 @@ public class App implements Serializable {
 	/*
 	 * public boolean isActive() { return activeCd.equalsIgnoreCase("A"); }
 	 */
-	@Column(name = "PT2B_ACCESS_TYPE", updatable = true)
+	@Column(name = "PT2B_ACCESS_TYPE", updatable = false)
 	public String getAccessType() {
 		return accessType;
 	}
@@ -327,7 +327,7 @@ public class App implements Serializable {
 		this.accessType = accessType;
 	}
 
-	@Column(name = "PT2B_EXPLODE_ACCESS", updatable = true)
+	@Column(name = "PT2B_EXPLODE_ACCESS", updatable = false)
 	public String getExplodeAccDet() {
 		return explodeAccDet;
 	}
@@ -336,7 +336,7 @@ public class App implements Serializable {
 		this.explodeAccDet = explodeAccDet;
 	}
 
-	@Column(name = "PT2B_DFLT_APP_BAR", updatable = true)
+	@Column(name = "PT2B_DFLT_APP_BAR", updatable = false)
 	public String getDefAppBar() {
 		return defAppBar;
 	}
@@ -349,7 +349,7 @@ public class App implements Serializable {
 		return !defAppBar.equals("N");
 	}
 
-	@Column(name = "PT2B_APP_BAR_COLOR", updatable = true)
+	@Column(name = "PT2B_APP_BAR_COLOR", updatable = false)
 	public String getDefAppBarColor() {
 		return defAppBarColor;
 	}
@@ -358,7 +358,7 @@ public class App implements Serializable {
 		this.defAppBarColor = defAppBarColor;
 	}
 
-	@Column(name = "PT2B_DIS_ZERO_APPL", updatable = true)
+	@Column(name = "PT2B_DIS_ZERO_APPL", updatable = false)
 	public String getDispZeroApp() {
 		return dispZeroApp;
 	}
@@ -367,7 +367,7 @@ public class App implements Serializable {
 		this.dispZeroApp = dispZeroApp;
 	}
 
-	@Column(name = "PT2B_DIS_USER_FLDS", updatable = true)
+	@Column(name = "PT2B_DIS_USER_FLDS", updatable = false)
 	public String getDispUserFields() {
 		return dispUserFields;
 	}
@@ -376,7 +376,7 @@ public class App implements Serializable {
 		this.dispUserFields = dispUserFields;
 	}
 
-	@Column(name = "PT2B_DIS_DGTL_AGREE", updatable = true)
+	@Column(name = "PT2B_DIS_DGTL_AGREE", updatable = false)
 	public String getDigitalAgree() {
 		return digitalAgree;
 	}
@@ -385,7 +385,7 @@ public class App implements Serializable {
 		this.digitalAgree = digitalAgree;
 	}
 
-	@Column(name = "PT2B_NON_EMP_ACCESS", updatable = true)
+	@Column(name = "PT2B_NON_EMP_ACCESS", updatable = false)
 	public String getNonEmpAccess() {
 		return nonEmpAccess;
 	}
@@ -394,7 +394,7 @@ public class App implements Serializable {
 		this.nonEmpAccess = nonEmpAccess;
 	}
 
-	@Column(name = "PT2B_INT_EXT_ACCESS", updatable = true)
+	@Column(name = "PT2B_INT_EXT_ACCESS", updatable = false)
 	public String getIntExtAccessInd() {
 		return intExtAccessInd;
 	}
@@ -403,7 +403,7 @@ public class App implements Serializable {
 		this.intExtAccessInd = intExtAccessInd;
 	}
 
-	@Column(name = "PT2B_HTTP_TYPE_ACC", updatable = true)
+	@Column(name = "PT2B_HTTP_TYPE_ACC", updatable = false)
 	public String getHttpTypeAccessInd() {
 		return httpTypeAccessInd;
 	}
@@ -412,7 +412,7 @@ public class App implements Serializable {
 		this.httpTypeAccessInd = httpTypeAccessInd;
 	}
 
-	@Column(name = "PT2B_LOGIN_ACC", updatable = true)
+	@Column(name = "PT2B_LOGIN_ACC", updatable = false)
 	public String getLoggedInAccess() {
 		return loggedInAccess;
 	}
@@ -421,7 +421,7 @@ public class App implements Serializable {
 		this.loggedInAccess = loggedInAccess;
 	}
 
-	@Column(name = "PT2B_NO_LOGIN_ACC", updatable = true)
+	@Column(name = "PT2B_NO_LOGIN_ACC", updatable = false)
 	public String getNotLoggedInAccess() {
 		return notLoggedInAccess;
 	}
@@ -430,7 +430,7 @@ public class App implements Serializable {
 		this.notLoggedInAccess = notLoggedInAccess;
 	}
 
-	@Column(name = "PT2B_ALLOW_DELEGATE", updatable = true)
+	@Column(name = "PT2B_ALLOW_DELEGATE", updatable = false)
 	public String getAllowDelegate() {
 		return allowDelegate;
 	}
@@ -439,7 +439,7 @@ public class App implements Serializable {
 		this.allowDelegate = allowDelegate;
 	}
 
-	@Column(name = "PT2B_CHAMP_EMP_NO", updatable = true)
+	@Column(name = "PT2B_CHAMP_EMP_NO", updatable = false)
 	public String getChampionEmpNo() {
 		return championEmpNo;
 	}
@@ -448,7 +448,7 @@ public class App implements Serializable {
 		this.championEmpNo = championEmpNo;
 	}
 
-	@Column(name = "PT2B_AUTHOR_EMP_NO", updatable = true)
+	@Column(name = "PT2B_AUTHOR_EMP_NO", updatable = false)
 	public String getAuthorEmpNo() {
 		return authorEmpNo;
 	}
@@ -457,7 +457,7 @@ public class App implements Serializable {
 		this.authorEmpNo = authorEmpNo;
 	}
 
-	@Column(name = "PT2B_SPPRT_EMP_NO", updatable = true)
+	@Column(name = "PT2B_SPPRT_EMP_NO", updatable = false)
 	public String getSupportEmpNo() {
 		return supportEmpNo;
 	}
@@ -466,7 +466,7 @@ public class App implements Serializable {
 		this.supportEmpNo = supportEmpNo;
 	}
 
-	@Column(name = "PT2B_SPPRT_COMMENT", updatable = true)
+	@Column(name = "PT2B_SPPRT_COMMENT", updatable = false)
 	public String getSupportComment() {
 		return supportComment;
 	}
@@ -475,7 +475,7 @@ public class App implements Serializable {
 		this.supportComment = supportComment;
 	}
 
-	@Column(name = "PT2B_APPL_ADD_DT", updatable = true)
+	@Column(name = "PT2B_APPL_ADD_DT", updatable = false)
 	public Date getAppAddDate() {
 		return appAddDate;
 	}
@@ -484,7 +484,7 @@ public class App implements Serializable {
 		this.appAddDate = appAddDate;
 	}
 
-	@Column(name = "PT2B_TRACK_USAGE", updatable = true)
+	@Column(name = "PT2B_TRACK_USAGE", updatable = false)
 	public String getTrackUsage() {
 		return trackUsage;
 	}
@@ -493,7 +493,7 @@ public class App implements Serializable {
 		this.trackUsage = trackUsage;
 	}
 
-	@Column(name = "PT2B_AUTO_REG", updatable = true)
+	@Column(name = "PT2B_AUTO_REG", updatable = false)
 	public String getAutoRegister() {
 		return autoRegister;
 	}
@@ -503,7 +503,7 @@ public class App implements Serializable {
 	}
 
 	// @Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "PT2B_ALERT_TMSP", updatable = true)
+	@Column(name = "PT2B_ALERT_TMSP", updatable = false)
 	public Timestamp getAlertTmsp() {
 		return alertTmsp;
 	}
@@ -512,7 +512,7 @@ public class App implements Serializable {
 		this.alertTmsp = alertTmsp;
 	}
 
-	@Column(name = "PT2B_SHORT_NAME", updatable = true)
+	@Column(name = "PT2B_SHORT_NAME", updatable = false)
 	public String getShortName() {
 		return shortName;
 	}
@@ -521,7 +521,7 @@ public class App implements Serializable {
 		this.shortName = shortName;
 	}
 
-	@Column(name = "PT2B_DISP_TOPBAR", updatable = true)
+	@Column(name = "PT2B_DISP_TOPBAR", updatable = false)
 	public String getDisplayTopBar() {
 		return displayTopBar;
 	}
@@ -534,7 +534,7 @@ public class App implements Serializable {
 		return !displayTopBar.equals("N");
 	}
 
-	@Column(name = "PT2B_DISP_LEFTNAV", updatable = true)
+	@Column(name = "PT2B_DISP_LEFTNAV", updatable = false)
 	public String getDisplayLeftNav() {
 		return displayLeftNav;
 	}
@@ -547,7 +547,7 @@ public class App implements Serializable {
 		return !displayLeftNav.equals("N");
 	}
 
-	@Column(name = "PT2B_WINDOW_WIDTH", updatable = true)
+	@Column(name = "PT2B_WINDOW_WIDTH", updatable = false)
 	public String getWindowWidth() {
 		return windowWidth;
 	}
@@ -556,7 +556,7 @@ public class App implements Serializable {
 		this.windowWidth = windowWidth;
 	}
 
-	@Column(name = "PT2B_WINDOW_HEIGHT", updatable = true)
+	@Column(name = "PT2B_WINDOW_HEIGHT", updatable = false)
 	public String getWindowHeight() {
 		return windowHeight;
 	}
@@ -565,7 +565,7 @@ public class App implements Serializable {
 		this.windowHeight = windowHeight;
 	}
 
-	@Column(name = "PT2B_PRIMARY_CATEGORY_ID", updatable = true)
+	@Column(name = "PT2B_PRIMARY_CATEGORY_ID", updatable = false)
 	public Integer getPrimaryCategoryId() {
 		return primaryCategoryId;
 	}
@@ -574,7 +574,7 @@ public class App implements Serializable {
 		this.primaryCategoryId = primaryCategoryId;
 	}
 
-	@Column(name = "PT2B_SECONDARY_CATEGORY_ID", updatable = true)
+	@Column(name = "PT2B_SECONDARY_CATEGORY_ID", updatable = false)
 	public Integer getSecondaryCategoryId() {
 		return secondaryCategoryId;
 	}

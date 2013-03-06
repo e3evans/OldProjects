@@ -2,7 +2,7 @@ package org.aurora.quicklinks.controllers;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
 
 import javax.portlet.ActionRequest;
@@ -84,54 +84,68 @@ public class UserAppController {
 			PortletSession session = request.getPortletSession();
 			String userid = (String) session.getAttribute("userId");
 			request.getPortletSession().setAttribute("flag", "true");
-			List<Application> updateduserapp = new ArrayList<Application>();
-			List<UserApplication> listUserApp = appService
-					.listAllUserAppByUserId(userid);
+
+			// collect checked apps
+			List<Application> checkedApps = new ArrayList<Application>();
 			for (MenuApp menuapp : appFormBean.getListMenuApp()) {
 				Application bean = menuapp.getApp();
 				String appId = bean.getAppId().trim();
 				String seqNo = bean.getSeqNo().trim();
-				if (appId != null && seqNo != null) {
-					if (bean.isChecked()) {
-						updateduserapp.add(bean);
-					}
+				if (appId != null && seqNo != null && bean.isChecked()) {
+					checkedApps.add(bean);
 				}
 			}
-			for (UserApplication userApp2 : listUserApp) {
-				boolean isInActive = true;
-				boolean toggleActive = false;
-				for (Application app2 : updateduserapp) {
-					if ((userApp2.getAppId() + userApp2.getSeqNo()).equals(app2
-							.getAppId() + app2.getSeqNo())) {
-						isInActive = false;
-						if (!userApp2.isActive()) {
-							toggleActive = true;
+
+			// get all user apps plus inactives
+			List<UserApplication> listAllUserApps = appService
+					.listAllUserAppByUserId(userid);
+
+			// create link for checked apps not found for user
+			for (Application app2 : checkedApps) {
+				boolean create = true;
+				for (UserApplication userApp2 : listAllUserApps) {
+					if (((userApp2.getAppId().trim() + userApp2.getSeqNo()
+							.trim()).equalsIgnoreCase(app2.getAppId().trim()
+							+ app2.getSeqNo().trim()))) {
+						// found checked app in user list
+						create = false;
+						break;
+					}
+				}
+
+				// create link for user
+				if (create) {
+					appService.createUserApp(userid, app2.getAppId().trim(),
+							app2.getSeqNo().trim());
+				}
+			}
+
+			// iterate user apps to see if they contain checked apps
+			for (UserApplication userApp : listAllUserApps) {
+				boolean found = false;
+				boolean activate = false;
+				for (Application app : checkedApps) {
+					if (((userApp.getAppId().trim() + userApp.getSeqNo().trim())
+							.equalsIgnoreCase(app.getAppId().trim()
+									+ app.getSeqNo().trim()))) {
+						found = true;
+						if (!userApp.isActive()) {
+							activate = true;
 						}
+						break;
 					}
 				}
-				if (isInActive) {
-					userApp2.setActiveCd("I");
-					appService.updateUserApp(userApp2, userid);
+
+				// inactivate links not found to be checked
+				if (!found) {
+					userApp.setActiveCd("I");
+					appService.updateUserApp(userApp, userid);
 				}
-				if (toggleActive) {
-					userApp2.setActiveCd("A");
-					appService.updateUserApp(userApp2, userid);
-				}
-			}
-			for (Application app2 : updateduserapp) {
-				boolean isCreate = true;
-				for (UserApplication userApp2 : listUserApp) {
-					if (((userApp2.getAppId() + userApp2.getSeqNo())
-							.equals(app2.getAppId() + app2.getSeqNo()))) {
-						// if( userApp2.getFlagDefault().equals("true")){
-						isCreate = false;
-						// }
-					}
-				}
-				if (isCreate) {
-					String appId = app2.getAppId().trim();
-					String seqNo = app2.getSeqNo().trim();
-					appService.createUserApp(userid, appId, seqNo);
+
+				// activate inactive links
+				if (activate) {
+					userApp.setActiveCd("A");
+					appService.updateUserApp(userApp, userid);
 				}
 			}
 		} catch (Exception e) {
@@ -163,7 +177,7 @@ public class UserAppController {
 			}
 			for (UserApplication userApp2 : listUserApp) {
 				if ((userApp2.getAppId().trim() + userApp2.getSeqNo().trim())
-						.equals(appId + seqNo)) {
+						.equalsIgnoreCase(appId.trim() + seqNo.trim())) {
 					isCreate = false;
 					if (!userApp2.isActive()) {
 						toggleActive = true;
@@ -186,36 +200,36 @@ public class UserAppController {
 		sessionStatus.setComplete();
 	}
 
-	public List<MenuApp> retrieveAvailMenuApps(String userid)
-			throws Exception {
+	public List<MenuApp> retrieveAvailMenuApps(String userid) throws Exception {
 		List<MenuApp> menuAppsList = new ArrayList<MenuApp>();
+		// get all available iconnect apps
 		List<Application> availAppsList = appService.listApplication();
-		List<UserApplication> userAppsList;
-		Iterator<Application> i$;
 		if ((availAppsList != null) && (!availAppsList.isEmpty())) {
-			userAppsList = appService.listUserAppByUserId(userid);
-			for (i$ = availAppsList.iterator(); i$.hasNext();) {
-				Object anAvailAppsList = i$.next();
-				Application app = (Application) anAvailAppsList;
-				MenuApp menuApp = new MenuApp();
-				menuApp.setApp(app);
-				if (userAppsList != null)
-					for (Iterator<UserApplication> i = userAppsList.iterator(); i
-							.hasNext();) {
-						Object anUserAppsList = i.next();
-						UserApplication userApp = (UserApplication) anUserAppsList;
-						if ((userApp.getAppId().equals(app.getAppId()))
-								&& (userApp.getSeqNo().equals(app.getSeqNo()))) {
+			// get all user apps plus inactives
+			List<UserApplication> userAppsList = appService
+					.listAllUserAppByUserId(userid);
+			for (Application app : availAppsList) {
+				MenuApp menuApp = new MenuApp(app);
+				if (userAppsList != null) {
+					for (UserApplication userApp : userAppsList) {
+						if ((userApp.getAppId().trim() + userApp.getSeqNo()
+								.trim()).equalsIgnoreCase(app.getAppId().trim()
+								+ app.getSeqNo().trim())) {
 							menuApp.setUserApp(userApp);
 							break;
 						}
 					}
+				}
+
+				// only add if app allows adding to menu
+				// or granted access
 				if ((!app.getLoggedInAccess().equals("R"))
 						|| (menuApp.getUserApp() != null)) {
 					menuAppsList.add(menuApp);
 				}
 			}
 		}
+		Collections.sort(menuAppsList, MenuApp.APP_COMPARATOR);
 		return menuAppsList;
 	}
 

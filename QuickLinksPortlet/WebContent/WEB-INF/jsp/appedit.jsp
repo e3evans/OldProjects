@@ -32,7 +32,7 @@
 						<span id="acgc_quicklinks_picker_show_selected_label">Show My Selected:</span>
 						&nbsp;
 						<span id="acgc_quicklinks_show_sites_trigger">
-							<input type="checkbox" name="acgc_show_sites" value="on" /> Sites &amp; Apps
+							<input type="checkbox" name="acgc_show_sites" value="on" /> Quick Links
 						</span>
 					</div>
 					<div class="acgc_searchblock acgc_radius_5">
