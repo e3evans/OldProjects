@@ -10,6 +10,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.log4j.Logger;
 import org.aurora.quicklinksservices.beans.App;
 import org.aurora.quicklinksservices.beans.AppCategory;
+import org.aurora.quicklinksservices.beans.AppKey;
 import org.aurora.quicklinksservices.beans.User;
 import org.aurora.quicklinksservices.beans.UserApp;
 import org.aurora.quicklinksservices.beans.UserAppKey;
@@ -105,10 +106,8 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 		// get default apps, TODO: store some where so they are not hard coded
 		final StringBuilder sql = new StringBuilder()
 				.append("SELECT app.* FROM TPT2B_APPLICATION app ")
-				.append("WHERE (app.PT2B_APPID = 'EBINO' OR app.PT2B_APPID = 'EB092' OR app.PT2B_APPID = 'EB500' OR app.PT2B_APPID = 'EBLIB' OR app.PT2B_APPID = 'ahcom' ")
-				.append("OR app.PT2B_APPID = 'EB122' OR app.PT2B_APPID = 'EB084' OR app.PT2B_APPID = 'EB538' OR app.PT2B_APPID = 'EB480' OR app.PT2B_APPID = 'EB057' ")
-				.append("OR app.PT2B_APPID = 'PETR' OR app.PT2B_APPID = 'EB294' OR app.PT2B_APPID = 'EB110' OR app.PT2B_APPID = 'EB294' OR app.PT2B_APPID = 'EB416') ")
-				.append("AND app.PT2B_SEQ_NO = 0");
+				.append("WHERE app.PT2B_APPID IN ('EBINO', 'EB092', 'EB500', 'EBLIB', 'ahcom', 'EB122', 'EB084', ")
+				.append("'EB538', 'EB480', 'EB057', 'PETR', 'EB294', 'EB110', 'EB294', 'EB416') AND app.PT2B_SEQ_NO = 0");
 		log(sql.toString());
 		List<App> defaultApps = (List<App>) this.hibernateTemplate
 				.execute(new HibernateCallback() {
@@ -122,15 +121,18 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 					+ userId);
 			for (App app : defaultApps) {
 				UserAppResponseBean bean = new UserAppResponseBean();
+				AppKey key = app.getAppKey();
+				bean.setAppId(key.getAppId());
+				bean.setSeqNo(key.getSeqNo().toString());
 				String appName = app.getAppName();
 				bean.setAppName(appName);
-				bean.setAppId(app.getAppKey().getAppId());
 				bean.setAppUrl(QuickLinksUtility.urlFormat(BASE_ICONNECT_URL,
 						app.getAppURL()));
 				bean.setActiveCd(app.getActiveCd());
-				bean.setSeqNo(app.getAppKey().getSeqNo().toString());
 				bean.setFlagDefault("true");
 				bean.setUserId(userId.toString());
+				logger.warn(key.getAppId() + "/" + key.getSeqNo().toString()
+						+ "/" + userId.toString());
 				userAppList.add(bean);
 			}
 		}
@@ -149,8 +151,11 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 				.append("AND app.PT2B_ACTIVE_CD = 'A' ")
 				.append("AND userapp.PT2J_APPID = app.PT2B_APPID ")
 				.append("AND userapp.PT2J_SEQ_NO = app.PT2B_SEQ_NO ")
-				.append("AND userapp.PT2J_USERID = ").append(userId)
-				.append(" AND userapp.PT2J_ACTIVE_CD = 'A' ");
+				.append("AND userapp.PT2J_USERID = ").append(userId).append(" ")
+				.append("AND userapp.PT2J_ACTIVE_CD = 'A' ")
+				.append("AND (userapp.PT2J_SEQ_NO <> 0 ")
+				.append("OR userapp.PT2J_APPID NOT IN ('EBINO', 'EB092', 'EB500', 'EBLIB', 'ahcom', 'EB122', 'EB084', ")
+				.append("'EB538', 'EB480', 'EB057', 'PETR', 'EB294', 'EB110', 'EB294', 'EB416'))");
 		log(sql2.toString());
 		List<UserApp> userApps = (List<UserApp>) this.hibernateTemplate
 				.execute(new HibernateCallback() {
@@ -173,6 +178,9 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 					bean.setAppName(app.getAppName());
 					bean.setAppUrl(QuickLinksUtility.urlFormat(
 							BASE_ICONNECT_URL, app.getAppURL()));
+					logger.warn(key.getAppId() + "/"
+							+ key.getSeqNo().toString() + "/"
+							+ key.getUserId().toString());
 					userAppList.add(bean);
 				}
 			}

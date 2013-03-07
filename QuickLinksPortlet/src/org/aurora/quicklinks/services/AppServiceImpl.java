@@ -29,11 +29,6 @@ public class AppServiceImpl implements AppService {
 	protected String AVAILABLE_APP_LIST = SERVICE_URL + "results";
 
 	/**
-	 * TODO: find out why appId needs to be trimmed for all methods since the
-	 * service returns it as trimmed
-	 */
-
-	/**
 	 * This method gets all active user saved quick links plus defaults.
 	 */
 	public List<UserApplication> listUserAppByUserId(String userid) {
@@ -53,7 +48,7 @@ public class AppServiceImpl implements AppService {
 				app.setAppName(jsonobj.get("appName").toString());
 				app.setAppURL((jsonobj.get("appUrl").toString()));
 				app.setSeqNo(jsonobj.get("seqNo").toString());
-				app.setAppId(jsonobj.get("appId").toString().trim());
+				app.setAppId(jsonobj.get("appId").toString());
 				app.setActiveCd((jsonobj.get("activeCd").toString()));
 				if (jsonobj.get("flagDefault") != null) {
 					app.setFlagDefault((jsonobj.get("flagDefault").toString()));
@@ -86,7 +81,7 @@ public class AppServiceImpl implements AppService {
 				app.setAppName(jsonobj.get("appName").toString());
 				app.setAppURL((jsonobj.get("appUrl").toString()));
 				app.setSeqNo(jsonobj.get("seqNo").toString());
-				app.setAppId(jsonobj.get("appId").toString().trim());
+				app.setAppId(jsonobj.get("appId").toString());
 				app.setActiveCd((jsonobj.get("activeCd").toString()));
 				if (jsonobj.get("flagDefault") != null) {
 					app.setFlagDefault((jsonobj.get("flagDefault").toString()));
@@ -125,7 +120,7 @@ public class AppServiceImpl implements AppService {
 				app.setSeqNo(jsonobj.getJSONObject("appKey").get("seqNo")
 						.toString());
 				app.setAppId(jsonobj.getJSONObject("appKey").get("appId")
-						.toString().trim());
+						.toString());
 				app.setAppDesc(description);
 				app.setAppName(jsonobj.get("appName").toString());
 				app.setAppURL((jsonobj.get("appURL").toString()));
@@ -189,7 +184,7 @@ public class AppServiceImpl implements AppService {
 							.equalsIgnoreCase("null")) {
 				app.setUserid(jsonobj.get("userId").toString());
 				app.setAppName(jsonobj.get("appName").toString());
-				app.setAppId((jsonobj.get("appId").toString().trim()));
+				app.setAppId((jsonobj.get("appId").toString()));
 				app.setActiveCd(jsonobj.get("activeCd").toString());
 				app.setSeqNo(jsonobj.get("seqNo").toString());
 			}
