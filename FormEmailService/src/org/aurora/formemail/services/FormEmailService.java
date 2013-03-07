@@ -56,7 +56,7 @@ public class FormEmailService {
             if ((null == senderName) || (" " == senderName)||("Name".equalsIgnoreCase(senderName))) {
             	message.setSubject(decodeUTF8(form.getFirst(COMMENT_TITLE)) + " from - "+userID);
 			} else {
-				message.setSubject(decodeUTF8(form.getFirst(COMMENT_TITLE)) + " from - "+userID+" by -"+senderName);
+				message.setSubject(decodeUTF8(form.getFirst(COMMENT_TITLE)) + " from - "+userID);
 			}
 
 			if ((null == form.getFirst(COMMENT)) || (" " == form.getFirst(COMMENT))||("Enter message here".equalsIgnoreCase(form.getFirst(COMMENT)))) {
