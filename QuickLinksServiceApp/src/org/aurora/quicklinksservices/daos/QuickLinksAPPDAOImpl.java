@@ -131,8 +131,6 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 				bean.setActiveCd(app.getActiveCd());
 				bean.setFlagDefault("true");
 				bean.setUserId(userId.toString());
-				logger.warn(key.getAppId() + "/" + key.getSeqNo().toString()
-						+ "/" + userId.toString());
 				userAppList.add(bean);
 			}
 		}
@@ -178,9 +176,6 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 					bean.setAppName(app.getAppName());
 					bean.setAppUrl(QuickLinksUtility.urlFormat(
 							BASE_ICONNECT_URL, app.getAppURL()));
-					logger.warn(key.getAppId() + "/"
-							+ key.getSeqNo().toString() + "/"
-							+ key.getUserId().toString());
 					userAppList.add(bean);
 				}
 			}
