@@ -64,7 +64,7 @@
     </c:choose>
     <!-- TODO: store defaults in table so we do not have to hard code them here -->
         <c:choose>
-        	<c:when test="${appLst.app.appId eq 'EBINO' || appLst.app.appId eq 'EB092' || appLst.app.appId eq 'EB500' || appLst.app.appId eq 'EBLIB' || appLst.app.appId eq 'ahcom' || appLst.app.appId eq 'EB122' || appLst.app.appId eq 'EB084' || appLst.app.appId eq 'EB538' || appLst.app.appId eq 'EB480' || appLst.app.appId eq 'EB057' || appLst.app.appId eq 'PETR' || appLst.app.appId eq 'EB294' || appLst.app.appId eq 'EB110' || appLst.app.appId eq 'EB294' || appLst.app.appId eq 'EB416'}">
+        	<c:when test="${appLst.app.appId eq 'EBOEX' || appLst.app.appId eq 'EB092' || appLst.app.appId eq 'EB500' || appLst.app.appId eq 'EBLIB' || appLst.app.appId eq 'ahcom' || appLst.app.appId eq 'EB122' || appLst.app.appId eq 'EB084' || appLst.app.appId eq 'EB538' || appLst.app.appId eq 'EB480' || appLst.app.appId eq 'EB057' || appLst.app.appId eq 'PETR' || appLst.app.appId eq 'EB294' || appLst.app.appId eq 'EB110' || appLst.app.appId eq 'EB294' || appLst.app.appId eq 'EB416'}">
         		<form:checkbox  path="listMenuApp[${row.index}].app.checked" id="listUrlBean[${row.index}].app.checked" checked="checked" disabled="true"/>
         	</c:when>
         	<c:when test="${appLst.alreadyRegistered}">

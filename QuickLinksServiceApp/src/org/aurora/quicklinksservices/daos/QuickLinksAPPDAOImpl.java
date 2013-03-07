@@ -106,7 +106,7 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 		// get default apps, TODO: store some where so they are not hard coded
 		final StringBuilder sql = new StringBuilder()
 				.append("SELECT app.* FROM TPT2B_APPLICATION app ")
-				.append("WHERE app.PT2B_APPID IN ('EBINO', 'EB092', 'EB500', 'EBLIB', 'ahcom', 'EB122', 'EB084', ")
+				.append("WHERE app.PT2B_APPID IN ('EBOEX', 'EB092', 'EB500', 'EBLIB', 'ahcom', 'EB122', 'EB084', ")
 				.append("'EB538', 'EB480', 'EB057', 'PETR', 'EB294', 'EB110', 'EB294', 'EB416') AND app.PT2B_SEQ_NO = 0");
 		log(sql.toString());
 		List<App> defaultApps = (List<App>) this.hibernateTemplate
@@ -152,7 +152,7 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 				.append("AND userapp.PT2J_USERID = ").append(userId).append(" ")
 				.append("AND userapp.PT2J_ACTIVE_CD = 'A' ")
 				.append("AND (userapp.PT2J_SEQ_NO <> 0 ")
-				.append("OR userapp.PT2J_APPID NOT IN ('EBINO', 'EB092', 'EB500', 'EBLIB', 'ahcom', 'EB122', 'EB084', ")
+				.append("OR userapp.PT2J_APPID NOT IN ('EBOEX', 'EB092', 'EB500', 'EBLIB', 'ahcom', 'EB122', 'EB084', ")
 				.append("'EB538', 'EB480', 'EB057', 'PETR', 'EB294', 'EB110', 'EB294', 'EB416'))");
 		log(sql2.toString());
 		List<UserApp> userApps = (List<UserApp>) this.hibernateTemplate
