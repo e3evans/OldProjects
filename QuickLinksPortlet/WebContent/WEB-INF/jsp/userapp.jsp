@@ -88,10 +88,10 @@
 		<div class="acgc_content_box_header acgc_relative">
 			<div class="content_box_button_wrap">
 				<a id="acgc_quicklinks_picker_trigger"
-					class="content_box_button acgc_radius_5" title="" href="#edit"
+					class="content_box_button acgc_radius_5" title="Edit Quick Links" href="#edit"
 					onclick="javascript: loadQuicklinksEditOverlay(); return false;">
 					<span class="content_box_button_inner acgc_radius_3"> Edit
-						Quicklink </span> </a>
+						Quick Links </span> </a>
 			</div>
 			<div class="acgc_content_box_header_icon acgc_site_icon links">
 				<!--  icon -->

@@ -36,7 +36,8 @@ public class AppKey implements Serializable {
 			return false;
 		}
 		AppKey appKey = (AppKey) o;
-		if (appId == null ? appKey.appId != null : !appId.equals(appKey.appId)) {
+		if (getAppId() == null ? appKey.getAppId() != null : !getAppId()
+				.equals(appKey.getAppId())) {
 			return false;
 		}
 		return seqNo == null ? appKey.seqNo == null : seqNo
@@ -44,14 +45,12 @@ public class AppKey implements Serializable {
 	}
 
 	public int hashCode() {
-		int result = appId == null ? 0 : appId.hashCode();
+		int result = getAppId() == null ? 0 : getAppId().hashCode();
 		result = 31 * result + (seqNo == null ? 0 : seqNo.hashCode());
 		return result;
 	}
 
 	public String getAppId() {
-		// TODO: find out why org.aurora.spring.dao.hibernate.StringTrimUserType
-		// does not work for only this field
 		return appId.trim();
 	}
 

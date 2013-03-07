@@ -41,7 +41,7 @@ public class UserAppKey implements Serializable {
 	}
 
 	public String getAppId() {
-		return this.appId;
+		return this.appId.trim();
 	}
 
 	public void setAppId(String appId) {
@@ -64,7 +64,7 @@ public class UserAppKey implements Serializable {
 
 		UserAppKey that = (UserAppKey) o;
 
-		if (!this.appId.equals(that.appId))
+		if (!this.getAppId().equals(that.getAppId()))
 			return false;
 		if (!this.seqNo.equals(that.seqNo))
 			return false;
@@ -76,7 +76,7 @@ public class UserAppKey implements Serializable {
 
 	public int hashCode() {
 		int result = this.userId.hashCode();
-		result = 29 * result + this.appId.hashCode();
+		result = 29 * result + this.getAppId().hashCode();
 		result = 29 * result + this.seqNo.hashCode();
 		return result;
 	}
