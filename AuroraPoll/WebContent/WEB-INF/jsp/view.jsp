@@ -24,6 +24,7 @@ function getPollResults(){
 			alert('blank');
 			return;
 		}
+		 acgcHandlePollSubmit();
 		//$('#ajax-panel2').empty();
 		$.ajax({
 		  type: 'GET',
@@ -32,7 +33,7 @@ function getPollResults(){
 		  data: { selectedPoll: getCheckedValue(document.forms['pollForm'].pollSelection)},
 		  beforeSend:function(){
 		    //$('#acgc_pollbox').html('<div class="loading"><img src="/images/loading.gif" alt="Loading..." /></div>');
-		    acgcHandlePollSubmit();
+		   
 		  },
 		  success:function(data){
 		  	acgcRemovePollOverlay();
