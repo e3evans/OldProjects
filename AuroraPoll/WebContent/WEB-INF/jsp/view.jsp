@@ -57,7 +57,7 @@ function getPollResults(){
                      <!-- decal -->
      </div>
      <div class="acgc_content_box_body acgc_relative acgc_poll" style="height: 280px;" id="acgc_pollbox">
-              <p>POLL</p>
+              <p class="heading">POLL</p>
               <h3><c:out value="${pollForm.poll.question}"/></h3>
               <portlet:actionURL var="submitPoll">
               	<portlet:param name="action" value="submitPoll"/>

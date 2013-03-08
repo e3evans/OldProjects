@@ -8,7 +8,7 @@
      <div id="acgc_polls_canvas_slider" class="acgc_relative">
      	<div id="acgc_polls_canvas_slides">
 				<div class="slide">
-				<p>POLL RESULT</p>
+				<p class="heading">POLL RESULT</p>
 	              <h3><c:out value="${pollForm.poll.question}"/></h3>
 	              <c:forEach items="${pollForm.poll.pollOptions}" var="pOpt">
 	             	<p>
@@ -29,14 +29,14 @@
 								${pollForm.poll.answer} 
 					  </p>
 				  </c:if> 
-			  	  <p>
+			  	  <p class="responseNum">
 			  		Total Responses: <c:out value="${pollForm.totalResults}"/>
 			  	  </p>
 				  <div class="acgc_clear"><!-- clear --></div>
 	            </div>
 	            <c:forEach items="${pollForm.archivePolls }" var="archPoll">
 	            <div class="slide">
-				<p>POLL RESULT</p>
+				<p class="heading">POLL RESULT</p>
 	            <h3><c:out value="${archPoll.question}"/></h3>
 	            	<c:forEach items="${archPoll.pollOptions }" var="archOption" varStatus="status">
 		            	<p>
@@ -58,7 +58,7 @@
 							${archPoll.answer} 
 				  		</p> 
 				  	</c:if>
-				  	<p>
+				  	<p class="responseNum">
 				  		Total Responses: <c:out value="${archPoll.totalAnswers}"/>
 				  	</p>
 	            	<div class="acgc_clear"><!-- clear --></div>
