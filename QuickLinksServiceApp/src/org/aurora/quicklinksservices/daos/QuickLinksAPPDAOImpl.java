@@ -117,8 +117,7 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 					}
 				});
 		if (defaultApps != null) {
-			log("Found " + defaultApps.size() + " default apps for userId: "
-					+ userId);
+			log("Found " + defaultApps.size() + " default apps.");
 			for (App app : defaultApps) {
 				UserAppResponseBean bean = new UserAppResponseBean();
 				AppKey key = app.getAppKey();
@@ -130,53 +129,61 @@ public class QuickLinksAPPDAOImpl extends BaseQuickLinksService implements
 						app.getAppURL()));
 				bean.setActiveCd(app.getActiveCd());
 				bean.setFlagDefault("true");
-				bean.setUserId(userId.toString());
+				if (userId != null) {
+					bean.setUserId(userId.toString());
+				}
 				userAppList.add(bean);
 			}
 		}
 
 		// get user apps
-		final StringBuilder sql2 = new StringBuilder()
-				.append("SELECT userapp.* ")
-				.append("FROM TPT2B_APPLICATION app, TPT2B_APPLICATION parent, TPT2E_APP_ROLE approle, TPT2J_USER_APP userapp ")
-				.append("WHERE app.PT2B_APPID = approle.PT2E_APPID ")
-				.append("AND app.PT2B_SEQ_NO = approle.PT2E_SEQ_NO ")
-				.append("AND approle.PT2E_ROLE_CD = 'EMP' ")
-				.append("AND app.PT2B_APPID = parent.PT2B_APPID ")
-				.append("AND parent.PT2B_SEQ_NO = 0 ")
-				.append("AND parent.PT2B_ACTIVE_CD = 'A' ")
-				.append("AND app.PT2B_LOGIN_ACC NOT IN ('E','N') ")
-				.append("AND app.PT2B_ACTIVE_CD = 'A' ")
-				.append("AND userapp.PT2J_APPID = app.PT2B_APPID ")
-				.append("AND userapp.PT2J_SEQ_NO = app.PT2B_SEQ_NO ")
-				.append("AND userapp.PT2J_USERID = ").append(userId).append(" ")
-				.append("AND userapp.PT2J_ACTIVE_CD = 'A' ")
-				.append("AND (userapp.PT2J_SEQ_NO <> 0 ")
-				.append("OR userapp.PT2J_APPID NOT IN ('EBOEX', 'EB092', 'EB500', 'EBLIB', 'ahcom', 'EB122', 'EB084', ")
-				.append("'EB538', 'EB480', 'EB057', 'PETR', 'EB294', 'EB110', 'EB294', 'EB416'))");
-		log(sql2.toString());
-		List<UserApp> userApps = (List<UserApp>) this.hibernateTemplate
-				.execute(new HibernateCallback() {
-					public Object doInHibernate(Session session) {
-						SQLQuery query = session.createSQLQuery(sql2.toString());
-						return query.addEntity(UserApp.class).list();
+		if (userId != null) {
+			final StringBuilder sql2 = new StringBuilder()
+					.append("SELECT userapp.* ")
+					.append("FROM TPT2B_APPLICATION app, TPT2B_APPLICATION parent, TPT2E_APP_ROLE approle, TPT2J_USER_APP userapp ")
+					.append("WHERE app.PT2B_APPID = approle.PT2E_APPID ")
+					.append("AND app.PT2B_SEQ_NO = approle.PT2E_SEQ_NO ")
+					.append("AND approle.PT2E_ROLE_CD = 'EMP' ")
+					.append("AND app.PT2B_APPID = parent.PT2B_APPID ")
+					.append("AND parent.PT2B_SEQ_NO = 0 ")
+					.append("AND parent.PT2B_ACTIVE_CD = 'A' ")
+					.append("AND app.PT2B_LOGIN_ACC NOT IN ('E','N') ")
+					.append("AND app.PT2B_ACTIVE_CD = 'A' ")
+					.append("AND userapp.PT2J_APPID = app.PT2B_APPID ")
+					.append("AND userapp.PT2J_SEQ_NO = app.PT2B_SEQ_NO ")
+					.append("AND userapp.PT2J_USERID = ")
+					.append(userId)
+					.append(" ")
+					.append("AND userapp.PT2J_ACTIVE_CD = 'A' ")
+					.append("AND (userapp.PT2J_SEQ_NO <> 0 ")
+					.append("OR userapp.PT2J_APPID NOT IN ('EBOEX', 'EB092', 'EB500', 'EBLIB', 'ahcom', 'EB122', 'EB084', ")
+					.append("'EB538', 'EB480', 'EB057', 'PETR', 'EB294', 'EB110', 'EB294', 'EB416'))");
+			log(sql2.toString());
+			List<UserApp> userApps = (List<UserApp>) this.hibernateTemplate
+					.execute(new HibernateCallback() {
+						public Object doInHibernate(Session session) {
+							SQLQuery query = session.createSQLQuery(sql2
+									.toString());
+							return query.addEntity(UserApp.class).list();
+						}
+					});
+			if (userApps != null) {
+				log("Found " + userApps.size() + " user apps for userId: "
+						+ userId);
+				for (UserApp userApp : userApps) {
+					if (userApp.getApplication() != null) {
+						UserAppResponseBean bean = new UserAppResponseBean();
+						bean.setActiveCd(userApp.getActiveCd());
+						UserAppKey key = userApp.getUserAppKey();
+						bean.setAppId(key.getAppId());
+						bean.setSeqNo(key.getSeqNo().toString());
+						bean.setUserId(key.getUserId().toString());
+						App app = userApp.getApplication();
+						bean.setAppName(app.getAppName());
+						bean.setAppUrl(QuickLinksUtility.urlFormat(
+								BASE_ICONNECT_URL, app.getAppURL()));
+						userAppList.add(bean);
 					}
-				});
-		if (userApps != null) {
-			log("Found " + userApps.size() + " user apps for userId: " + userId);
-			for (UserApp userApp : userApps) {
-				if (userApp.getApplication() != null) {
-					UserAppResponseBean bean = new UserAppResponseBean();
-					bean.setActiveCd(userApp.getActiveCd());
-					UserAppKey key = userApp.getUserAppKey();
-					bean.setAppId(key.getAppId());
-					bean.setSeqNo(key.getSeqNo().toString());
-					bean.setUserId(key.getUserId().toString());
-					App app = userApp.getApplication();
-					bean.setAppName(app.getAppName());
-					bean.setAppUrl(QuickLinksUtility.urlFormat(
-							BASE_ICONNECT_URL, app.getAppURL()));
-					userAppList.add(bean);
 				}
 			}
 		}

@@ -78,13 +78,13 @@ public class QuickLinksServiceImpl extends BaseQuickLinksService implements
 			Long userId = this.retrieveUserId(loginId);
 			if (userId != null) {
 				logger.info("Getting apps for userId: " + userId);
-				List<UserAppResponseBean> list = quickLinksAPPDAO
-						.findUserAppsByUser(userId);
-				return list;
 			} else {
 				logger.error("findUserAppsByUser - no userId found for loginId: "
 						+ loginId);
 			}
+			List<UserAppResponseBean> list = quickLinksAPPDAO
+					.findUserAppsByUser(userId);
+			return list;
 		} catch (Exception e) {
 			logger.error("Exception in findUserAppsByUser", e);
 		}
