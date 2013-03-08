@@ -20,10 +20,6 @@ function getCheckedValue(radioObj) {
 
 function getPollResults(){
 		
-		if (getCheckedValue(document.forms['pollForm'].pollSelection)==''){
-			alert('blank');
-			return;
-		}
 		 acgcHandlePollSubmit();
 		//$('#ajax-panel2').empty();
 		$.ajax({
@@ -45,7 +41,7 @@ function getPollResults(){
 		  },
 		  error:function(){
 		    // failed request; give feedback to user
-		    $('#acgc_pollbox').html('<p class="error"><strong>Oops!</strong> Try that again in a few moments.</p>');
+		    $('#acgc_pollbox').html('<div class="acgc_error"><p>Please check back later to see the poll!</p></div>');
 		  }
 		});	
 	}
@@ -57,26 +53,34 @@ function getPollResults(){
                      <!-- decal -->
      </div>
      <div class="acgc_content_box_body acgc_relative acgc_poll" style="height: 280px;" id="acgc_pollbox">
-              <p class="heading">POLL</p>
-              <h3><c:out value="${pollForm.poll.question}"/></h3>
-              <portlet:actionURL var="submitPoll">
-              	<portlet:param name="action" value="submitPoll"/>
-              </portlet:actionURL>
-              <form:form commandName="pollForm" name="pollForm">
-              <c:forEach items="${pollForm.poll.pollOptions}" var="pOpt">
-             	<p>
-             		<form:radiobutton path="pollSelection" value="${pOpt.key}" />${pOpt.answer}
-             	</p>
-			  </c:forEach>                                 
-              <p>
-                  <a class="acgc_green_bttn acgc_radius_5" title="Sumit" href="javascript:void(0);" onclick="getPollResults()">
-                    <span class="acgc_green_bttn_inner acgc_radius_3" >
-                         Submit
-                    </span>
-                  </a>
-              </p>
-             </form:form>
-
+              <c:choose>
+              <c:when test="${pollForm.poll.question!=null}">
+	              <p class="heading">POLL</p>
+	              <h3><c:out value="${pollForm.poll.question}"/></h3>
+	              <portlet:actionURL var="submitPoll">
+	              	<portlet:param name="action" value="submitPoll"/>
+	              </portlet:actionURL>
+	              <form:form commandName="pollForm" name="pollForm">
+	              <c:forEach items="${pollForm.poll.pollOptions}" var="pOpt">
+	             	<p>
+	             		<form:radiobutton path="pollSelection" value="${pOpt.key}" />${pOpt.answer}
+	             	</p>
+				  </c:forEach>                                 
+	              <p>
+	                  <a class="acgc_green_bttn acgc_radius_5" title="Submit" href="javascript:void(0);" onclick="getPollResults()">
+	                    <span class="acgc_green_bttn_inner acgc_radius_3" >
+	                         Submit
+	                    </span>
+	                  </a>
+	              </p>
+	             </form:form>
+			 </c:when>
+			 <c:otherwise>
+			 	<div class="acgc_error">
+			 		<p>Please check back later to see the poll!</p>
+			 	</div>
+			 </c:otherwise>
+			 </c:choose>
               <div class="acgc_clear"><!-- clear --></div>                                        
      </div>
  </div>

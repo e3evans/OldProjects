@@ -49,7 +49,7 @@ public class ViewController {
 		Poll poll = pollDAO.getLatestPoll();
 		PollForm pollForm = new PollForm(poll);
 		request.getPortletSession().setAttribute("currentPoll", poll);
-		
+
 		
 		String lastPoll = request.getPreferences().getValue(PREF_LAST_POLL_TAKEN, "EMPTY");
 		/*
