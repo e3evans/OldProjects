@@ -46,6 +46,12 @@ function callService(params){
 		    $('#<%=ViewController.SEARCH_RESULTS_BOX%>').html(data.toString());
 		    window.scrollTo(0, 0);
 		    loadSortByHoverState();
+		    if (window.PIE) {
+				$('#acgc_recordsorter').each(function() {
+					PIE.attach(this);
+				});
+			}
+		    
 		  },
 		  error:function(xhr,status,error){
 		  	alert(error);
