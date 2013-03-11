@@ -107,11 +107,11 @@
 				<attribute name="Built-By" value="${bamboo.name}" />
 				<attribute name="Revision" value="${bamboo.buildKey}-${bamboo.buildNumber}" />
 				<attribute name="Build-Time" value="${TODAY}" />
-				<section name="com/aurora">
+				<section name="org/aurora/caregiverlogin">
 					<attribute name="Specification-Title" value="${ant.project.name}" />
 					<attribute name="Specification-Version" value="1.0" />
 					<attribute name="Specification-Vendor" value="Aurora Health Care, Inc." />
-					<attribute name="Implementation-Title" value="com.aurora" />
+					<attribute name="Implementation-Title" value="org.aurora.caregiverlogin" />
 					<attribute name="Implementation-Version" value="${bamboo.buildNumber}" />
 					<attribute name="Implementation-Vendor" value="Aurora Health Care, Inc." />
 				</section>

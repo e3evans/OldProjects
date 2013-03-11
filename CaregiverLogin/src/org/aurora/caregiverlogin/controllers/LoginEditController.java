@@ -1,4 +1,4 @@
-package com.aurora.controllers;
+package org.aurora.caregiverlogin.controllers;
 
 import java.io.IOException;
 import java.util.Map;
@@ -12,13 +12,12 @@ import javax.portlet.RenderResponse;
 import javax.portlet.ValidatorException;
 
 import org.apache.log4j.Logger;
+import org.aurora.caregiverlogin.forms.LoginEditForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.bind.annotation.ActionMapping;
-
-import com.aurora.org.caregiverlogin.forms.LoginEditForm;
 
 @Controller
 @RequestMapping("edit_defaults")
@@ -35,11 +34,14 @@ public class LoginEditController {
 		if (editForm == null)
 			editForm = new LoginEditForm();
 		PortletPreferences prefs = request.getPreferences();
-		editForm.setWcm_menuComponent(prefs.getValue(LoginViewController.PREF_WCM_COMPONENT, ""));
-		editForm.setWcm_path(prefs.getValue(LoginViewController.PREF_WCM_PATH, ""));
-		editForm.setWcm_library(prefs.getValue(LoginViewController.PRED_WCM_LIB, ""));
-	
-		return new ModelAndView("loginEdit","editForm",editForm);
+		editForm.setWcm_menuComponent(prefs.getValue(
+				LoginViewController.PREF_WCM_COMPONENT, ""));
+		editForm.setWcm_path(prefs.getValue(LoginViewController.PREF_WCM_PATH,
+				""));
+		editForm.setWcm_library(prefs.getValue(
+				LoginViewController.PRED_WCM_LIB, ""));
+
+		return new ModelAndView("loginEdit", "editForm", editForm);
 	}
 
 	@ActionMapping("doSavePrefs")

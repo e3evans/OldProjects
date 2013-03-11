@@ -1,7 +1,7 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.portlet.PortletPreferences"%>
-<%@page import="com.aurora.controllers.LoginViewController"%>
+<%@page import="org.aurora.caregiverlogin.controllers.LoginViewController"%>
 <%@page import="com.ibm.workplace.wcm.api.*" %>
 <%@ page session="false" %>
 <%@ include file="/WEB-INF/jsp/include.jsp" %>

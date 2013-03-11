@@ -1,4 +1,4 @@
-package com.aurora.org.caregiverlogin.forms;
+package org.aurora.caregiverlogin.forms;
 
 import java.io.Serializable;
 

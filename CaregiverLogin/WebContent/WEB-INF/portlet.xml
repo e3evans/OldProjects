@@ -12,7 +12,7 @@
 			<portlet-mode>edit_defaults</portlet-mode>
 		</supports>
 		<supported-locale>en</supported-locale>
-		<resource-bundle>com.aurora.org.caregiverlogin.nl.CaregiverLoginPortletResource</resource-bundle>
+		<resource-bundle>org.aurora.caregiverlogin.nl.CaregiverLoginPortletResource</resource-bundle>
 		<portlet-info>
 			<title>CaregiverLogin</title>
 			<short-title>CaregiverLogin</short-title>

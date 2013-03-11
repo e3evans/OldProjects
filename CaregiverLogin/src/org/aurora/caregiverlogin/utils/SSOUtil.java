@@ -1,4 +1,4 @@
-package org.aurora.portalSSO.util;
+package org.aurora.caregiverlogin.utils;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;

@@ -1,4 +1,4 @@
-package org.aurora.portalSSO.util;
+package org.aurora.caregiverlogin.utils;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;

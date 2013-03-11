@@ -1,4 +1,4 @@
-package org.aurora.portalSSO.util;
+package org.aurora.caregiverlogin.utils;
 
 public class AppAuthInfo {
 

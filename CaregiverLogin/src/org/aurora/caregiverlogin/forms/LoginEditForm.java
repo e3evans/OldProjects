@@ -1,12 +1,11 @@
-package com.aurora.org.caregiverlogin.forms;
+package org.aurora.caregiverlogin.forms;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
-
-import com.aurora.controllers.LoginViewController;
+import org.aurora.caregiverlogin.controllers.LoginViewController;
 
 public class LoginEditForm implements Serializable {
 	private static final long serialVersionUID = -7973203745169930070L;
@@ -15,7 +14,7 @@ public class LoginEditForm implements Serializable {
 	private String wcm_library;
 	private String wcm_menuComponent;
 	private String cookie_env;
-	
+
 	public String getWcm_path() {
 		return wcm_path;
 	}
@@ -54,11 +53,12 @@ public class LoginEditForm implements Serializable {
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}
+
 	public String getCookie_env() {
 		return cookie_env;
 	}
+
 	public void setCookie_env(String cookie_env) {
 		this.cookie_env = cookie_env;
 	}
-	
 }

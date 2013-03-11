@@ -1,4 +1,4 @@
-package org.aurora.portalSSO.util;
+package org.aurora.caregiverlogin.utils;
 
 /**
  * This exception is thrown to indicate that the user's permissions are unavailable due to

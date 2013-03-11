@@ -1,4 +1,4 @@
-package com.aurora.hibernate.login.dao.impl;
+package org.aurora.caregiverlogin.daos.impl;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

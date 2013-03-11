@@ -1,7 +1,7 @@
 /*
  * Class created Sep 12, 2006
  */
-package org.aurora.portalSSO.util;
+package org.aurora.caregiverlogin.utils;
 
 //import org.aurora.portal_services.beans.AppAuthInfo;
 
