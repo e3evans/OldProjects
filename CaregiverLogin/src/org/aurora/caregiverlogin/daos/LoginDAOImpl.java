@@ -1,16 +1,24 @@
-package org.aurora.caregiverlogin.daos.impl;
+package org.aurora.caregiverlogin.daos;
 
 import java.util.List;
 
 import org.aurora.caregiverlogin.beans.User;
-import org.aurora.caregiverlogin.daos.LoginDAO;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class LoginDAOImpl extends BaseDAOImpl implements LoginDAO {
+public class LoginDAOImpl implements LoginDAO {
+
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	public SessionFactory getSessionFactory() {
+		return this.sessionFactory;
+	}
 
 	/* Service for getting user details */
 	@SuppressWarnings("unchecked")
