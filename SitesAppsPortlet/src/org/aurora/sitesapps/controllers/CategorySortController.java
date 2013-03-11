@@ -116,7 +116,7 @@ public class CategorySortController {
 			PortletSession session = request.getPortletSession();
 			int i = 0;
 			int j = 0;
-			String[] alphabates = new String[] { "A", "B", "C", "D", "E", "F",
+			String[] alphabet = new String[] { "A", "B", "C", "D", "E", "F",
 					"G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
 					"S", "T", "U", "V", "W", "X", "Y", "Z" };
 			List<Application> listApplication = new ArrayList<Application>();
@@ -131,13 +131,12 @@ public class CategorySortController {
 
 			Map<String, List<Application>> map = new HashMap<String, List<Application>>();
 			for (Application app : availAppsList) {
-				if (app.getAppName().toUpperCase().indexOf(alphabates[i]) == 0) {
+				if (app.getAppName().toUpperCase().indexOf(alphabet[i]) == 0) {
 					listApplication.add(app);
 					j = 1;
 				} else if (j == 0) {
-					for (int k = 0; k < alphabates.length; k++) {
-						if (app.getAppName().toUpperCase()
-								.indexOf(alphabates[k]) == 0) {
+					for (int k = 0; k < alphabet.length; k++) {
+						if (app.getAppName().toUpperCase().indexOf(alphabet[k]) == 0) {
 							i = k;
 							j = 1;
 							break;
@@ -147,14 +146,13 @@ public class CategorySortController {
 
 				} else {
 					if (listApplication.size() > 0) {
-						map.put(alphabates[i], listApplication);
+						map.put(alphabet[i], listApplication);
 					}
 
 					// i++;
 					listApplication = new ArrayList<Application>();
-					for (int l = 0; l < alphabates.length; l++) {
-						if (app.getAppName().toUpperCase()
-								.indexOf(alphabates[l]) == 0) {
+					for (int l = 0; l < alphabet.length; l++) {
+						if (app.getAppName().toUpperCase().indexOf(alphabet[l]) == 0) {
 							listApplication.add(app);
 							i = l;
 							break;
@@ -162,8 +160,8 @@ public class CategorySortController {
 					}
 				}
 			}
-			mav.addObject("alphabateskeys", new ArrayList(map.keySet()));
-			mav.addObject("alphabates", Arrays.asList(alphabates));
+			mav.addObject("alphabetkeys", new ArrayList(map.keySet()));
+			mav.addObject("alphabets", Arrays.asList(alphabet));
 			mav.addObject("availAppsMap", map);
 		} catch (Exception e) {
 			logger.error("Exception in showQuickLinkForm", e);

@@ -41,7 +41,7 @@
 <div class="acgc_content_box">
 	<ul class="acgc_content_box_tabs">
 		<li class="acgc_content_box_tabs_tab" style="width: 465px"><a
-			href="/cgc/myportal/connect/home" title=""
+			href="/cgc/myportal/connect/home"
 			class="acgc_content_box_tabs_tab_link"> <span class="acgc_title">
 					Aurora </span> <span class="acgc_desc"> Official news,<br />blogs
 					&amp; events </span> </a>

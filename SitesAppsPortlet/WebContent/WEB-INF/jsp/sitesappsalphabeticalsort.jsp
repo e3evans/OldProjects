@@ -4,22 +4,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
-<div id="acgc_sites_apps_alpha_jump" class="acgc_jump_to_section" style="display:none;">
-			<strong>Jump To: </strong>&nbsp; 
-			<c:set var="countalphabates" value="0"/>
-            <c:forEach var="alphabate" items="${alphabates}">
-         <c:choose>
-            <c:when test="${alphabate == alphabateskeys[countalphabates]}">
-            <a href="#alpha-${fn:toLowerCase(alphabate)}" title="${alphabate}">${alphabate}</a> &nbsp;
-            <c:set var="countalphabates" value="${countalphabates+1}"/>
-            </c:when>
-           <c:otherwise>
-            <span title="${alphabate}">${alphabate}</span>&nbsp; 
+<div id="acgc_sites_apps_alpha_jump" class="acgc_jump_to_section"
+	style="display: none;">
+	<strong>Jump To: </strong>&nbsp;
+	<c:set var="countalphets" value="0" />
+	<c:forEach var="alphabet" items="${alphabets}">
+		<c:choose>
+			<c:when test="${alphabet == alphabetkeys[countalphabets]}">
+				<a href="#alpha-${fn:toLowerCase(alphabet)}" title="${alphabet}">${alphabet}</a> &nbsp;
+            	<c:set var="countalphabets" value="${countalphabets+1}" />
+			</c:when>
+			<c:otherwise>
+				<span title="${alphabet}">${alphabet}</span>&nbsp; 
            </c:otherwise>
-        </c:choose>
-          </c:forEach>
+		</c:choose>
+	</c:forEach>
 </div>
-	
+
 <c:forEach var="sitesappsList" items="${availAppsMap}">
     
      <div class="acgc_content_box" id="alpha-${fn:toLowerCase(sitesappsList.key)}">
@@ -50,7 +51,7 @@
 		<div class="acgc_content_inner_box">
 			<ul class="acgc_content_inner_box_list">
 				<c:forEach var="sitesapps" items="${sitesappsList.value}">
-					<li><a href="javascript:sitesAppUrlFormat('${sitesapps.appURL}')"; title="Title of Application Here">${sitesapps.appName}
+					<li><a href="javascript:sitesAppUrlFormat('${sitesapps.appURL}')"; title="${sitesapps.appName}">${sitesapps.appName}
 <!-- 					<img src="/AuroraTheme/themes/html/assets/images/popout-icon-no-shadow.gif" class="acgc_vertical_middle" alt="popout" /> -->
 					</a></li>
 				</c:forEach>
