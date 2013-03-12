@@ -7,7 +7,7 @@
 <div id="acgc_sites_apps_alpha_jump" class="acgc_jump_to_section"
 	style="display: none;">
 	<strong>Jump To: </strong>&nbsp;
-	<c:set var="countalphets" value="0" />
+	<c:set var="countalphabets" value="0" />
 	<c:forEach var="alphabet" items="${alphabets}">
 		<c:choose>
 			<c:when test="${alphabet == alphabetkeys[countalphabets]}">
