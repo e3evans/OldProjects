@@ -130,7 +130,8 @@ $("#acgc_login_form input").keypress(function(event) {
 
 $(document).ready(function(){
 	$("a#inline").fancybox({
-		'hideOnContentClick':true
+		'hideOnContentClick':true,
+		'width':400
 	});
 
 });
