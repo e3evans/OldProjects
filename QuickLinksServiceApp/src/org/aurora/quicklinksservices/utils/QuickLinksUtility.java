@@ -12,27 +12,14 @@ public class QuickLinksUtility {
 	}
 
 	public static String urlFormat(String baseUrl, String appUrl) {
-		String firstsubStringurl = null;
-		if (appUrl.indexOf("actionUrl") != -1) {
-			firstsubStringurl = appUrl
-					.substring(0, appUrl.indexOf("actionUrl"));
+		if (appUrl.startsWith("//")) {
+			appUrl = "http:" + appUrl;
 		}
-		if (appUrl.indexOf(".org") == -1 && appUrl.indexOf(".com") == -1
-				&& appUrl.indexOf("http") == -1
-				&& appUrl.indexOf("https") == -1) {
-			appUrl = baseUrl + appUrl;
-		} else if (appUrl.indexOf("https") == -1
-				&& appUrl.indexOf("http") == -1) {
-			appUrl = "http://" + appUrl;
-			appUrl = appUrl.replaceAll("////", "//");
-		} else if (firstsubStringurl != null
-				&& firstsubStringurl.indexOf(".org") == -1) {
+		if (!appUrl.startsWith("http")) {
 			appUrl = baseUrl + appUrl;
 		}
-
-		// make sure prod url uses https
-		if (baseUrl.startsWith("https:") && appUrl.startsWith("http:")) {
-			appUrl.replace("http:", "https:");
+		if (baseUrl.startsWith("https")) {
+			appUrl.replaceAll("http", "https");
 		}
 		return appUrl;
 	}
