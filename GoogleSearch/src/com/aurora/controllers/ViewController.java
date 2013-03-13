@@ -87,7 +87,7 @@ public class ViewController {
 		}
 		
 		sb.append("&filter=0");
-		return sb.toString()+"&filter=0";
+		return sb.toString()+"&filter=0&getfields=google:title";
 	}
 	private String createURLwithParams(String urlIn, ResourceRequest request,PortletSession session) throws UnsupportedEncodingException{
 		Enumeration<String> e = request.getParameterNames();
@@ -99,7 +99,7 @@ public class ViewController {
 			sb.append("&"+temp+"="+URLEncoder.encode(request.getParameter(temp),"ISO-8859-1"));
 		}
 		sb.append("&filter=0");
-		return sb.toString()+"&filter=0";
+		return sb.toString()+"&filter=0&getfields=google:title";
 	}
 	
 }

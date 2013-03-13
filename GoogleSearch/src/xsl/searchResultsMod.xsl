@@ -232,12 +232,15 @@
 <xsl:template name="results">
 	<ul class="acgc_search_results_list">
 		<xsl:for-each select="/GSP/RES/R">
+			
 			<xsl:choose>
 			<xsl:when test="position() mod 2=1">
 				<li class="even">
 					<strong>
 					<xsl:call-template name="createUrl">
 							<xsl:with-param name="rank" select="@N"/>
+							<xsl:with-param name="gTitle"><xsl:value-of select="MT[@N='google:title']/@V" disable-output-escaping="yes"/></xsl:with-param>
+							<xsl:with-param name="gLinkvalue" ><xsl:value-of select="MT[@N='google:title']/@V" disable-output-escaping="yes"/></xsl:with-param>
 							<xsl:with-param name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:with-param>
 							<xsl:with-param name="linkvalue" ><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:with-param>
 							<xsl:with-param name="googleUrl" select="U"/>
@@ -259,6 +262,9 @@
 					<strong>
 					<xsl:call-template name="createUrl">
 							<xsl:with-param name="rank" select="@N"/>
+							<xsl:with-param name="rank" select="@N"/>
+							<xsl:with-param name="gTitle"><xsl:value-of select="MT[@N='google:title']/@V" disable-output-escaping="yes"/></xsl:with-param>
+							<xsl:with-param name="gLinkvalue" ><xsl:value-of select="MT[@N='google:title']/@V" disable-output-escaping="yes"/></xsl:with-param>
 							<xsl:with-param name="title"><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:with-param>
 							<xsl:with-param name="linkvalue" ><xsl:value-of select="T" disable-output-escaping="yes"/></xsl:with-param>
 							<xsl:with-param name="googleUrl" select="U"/>
@@ -285,14 +291,26 @@
 	<xsl:param name="title"/>
 	<xsl:param name="linkvalue"/>
 	<xsl:param name="googleUrl"/>
+	<xsl:param name="gTitle"/>
+	<xsl:param name="gLinkvalue"/>
 	<a>
 		<xsl:attribute name="href">
 			<xsl:value-of select="$googleUrl"/>					
 		</xsl:attribute>
 		<xsl:attribute name="rank"><xsl:value-of select="$rank"/></xsl:attribute>
 		<xsl:attribute name="ctype">c</xsl:attribute>
-		<xsl:attribute name="title"><xsl:value-of select="$title" disable-output-escaping="yes"/></xsl:attribute>
-		<xsl:value-of select="$linkvalue" disable-output-escaping="yes"/>
+		<xsl:choose>
+			<xsl:when test="$gTitle !=''">
+				<xsl:attribute name="title"><xsl:value-of select="$gTitle" disable-output-escaping="yes"/></xsl:attribute>
+				<xsl:value-of select="$gLinkvalue" disable-output-escaping="yes"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:attribute name="title"><xsl:value-of select="$title" disable-output-escaping="yes"/></xsl:attribute>
+				<xsl:value-of select="$linkvalue" disable-output-escaping="yes"/>
+			</xsl:otherwise>
+		
+		</xsl:choose>
+		
 	</a>
 </xsl:template>
 
